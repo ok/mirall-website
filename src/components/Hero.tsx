@@ -29,9 +29,11 @@ export default function Hero() {
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl"></div>
           <img
-            className="w-full object-cover relative" style={{ filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.08))' }}
+            className="w-full h-auto object-cover relative" style={{ filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.08))' }}
             alt="Mirall desktop app showing Shared Spaces with active peer connections"
             src="/hero-screenshot.png"
+            width={1400}
+            height={1039}
           />
         </div>
       </div>

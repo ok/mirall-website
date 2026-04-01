@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <h5 className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</h5>
+          <p className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</p>
           <ul className="space-y-4 font-body text-sm">
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#features">{t('footer.product.features')}</a></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#security">{t('footer.product.security')}</a></li>
@@ -34,14 +34,14 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h5 className="font-bold mb-6 text-on-surface">{t('footer.resources.title')}</h5>
+          <p className="font-bold mb-6 text-on-surface">{t('footer.resources.title')}</p>
           <ul className="space-y-4 font-body text-sm">
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/docs">{t('footer.resources.docs')}</Link></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/support">{t('footer.resources.support')}</Link></li>
           </ul>
         </div>
         <div>
-          <h5 className="font-bold mb-6 text-on-surface">{t('footer.legal.title')}</h5>
+          <p className="font-bold mb-6 text-on-surface">{t('footer.legal.title')}</p>
           <ul className="space-y-4 font-body text-sm">
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.privacy')}</a></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.terms')}</a></li>
