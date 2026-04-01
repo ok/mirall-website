@@ -18,9 +18,6 @@ export default function CTA() {
             <button className="bg-white text-primary px-10 py-5 rounded-lg font-black hover:bg-surface-container-low transition-colors">
               {t('cta.primaryButton')}
             </button>
-            <button className="bg-primary/20 border border-white/30 px-10 py-5 rounded-lg font-black hover:bg-primary/30 transition-colors">
-              {t('cta.secondaryButton')}
-            </button>
           </div>
         </div>
       </div>

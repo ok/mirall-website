@@ -1,117 +1,139 @@
 {
   "brand": "Mirall",
   "nav": {
-    "collections": "Collections",
-    "assets": "Assets",
-    "collaborators": "Collaborators",
-    "history": "History"
+    "spaces": "Spaces",
+    "features": "Features",
+    "security": "Security",
+    "download": "Download"
   },
   "hero": {
-    "label": "Premium File Orchestration",
-    "title": "The art of <1>seamless</1> sharing.",
-    "description": "A luminous space for your digital assets. Secure, lightning-fast, and designed for the editorial eye. Experience file management as a gallery of your work.",
+    "label": "Peer-to-Peer File Sharing",
+    "title": "Share files <1>directly</1>. No cloud. No middleman.",
+    "description": "Mirall connects you and your team peer-to-peer. Create a space, invite collaborators, and share files that travel directly between devices — encrypted, instant, and completely serverless.",
     "cta": "Download for Desktop"
   },
   "features": {
-    "title": "Precision Engineering",
-    "description": "Every pixel is tuned for performance. Our features are designed to disappear, leaving only your productivity.",
-    "instantSync": {
-      "title": "Instant Sync",
-      "description": "Files sync faster than you can think, utilizing global edge nodes for zero latency."
+    "title": "Built different",
+    "description": "No accounts. No uploads to someone else's server. Mirall gives you a private space to share files the way it should work.",
+    "spaces": {
+      "title": "Shared Spaces",
+      "description": "Create topic-based spaces for your team, project, or group. Everyone in a space sees all available files and chooses what to download."
     },
-    "biometricEncryption": {
-      "title": "Biometric Encryption",
-      "description": "Military-grade protection with a sophisticated key rotation system."
+    "p2p": {
+      "title": "True Peer-to-Peer",
+      "description": "Files travel directly between devices over encrypted connections. No server ever touches your data."
     },
-    "globalHub": {
-      "title": "Global Hub",
-      "description": "Collaborate across borders with seamless permission management."
+    "encrypted": {
+      "title": "Encrypted by Default",
+      "description": "Every connection is end-to-end encrypted via Hyperswarm. No keys to manage — it just works."
     },
-    "aiCuration": {
-      "title": "AI Curation",
-      "description": "Smart tagging and organization that learns your project structure."
+    "inviteOnly": {
+      "title": "Invite-Only Access",
+      "description": "Share a simple invite code to add peers to a space. No accounts, no sign-ups, no permission dashboards."
     },
-    "infiniteHistory": {
-      "title": "Infinite History",
-      "description": "Restore any version of any file from any point in the timeline."
+    "explicitDownload": {
+      "title": "You Choose What to Keep",
+      "description": "See every file available in a space. Download only what you need — nothing syncs without your say-so."
     },
-    "editorialApi": {
-      "title": "Editorial API",
-      "description": "Deep integration for developers who value clean documentation."
+    "zeroInfra": {
+      "title": "Zero Infrastructure",
+      "description": "No cloud storage fees. No server maintenance. Mirall runs on the Holepunch network — fully decentralized."
     }
   },
-  "testimonials": {
-    "title": "Trusted by the Creators of Tomorrow",
-    "description": "The world's most innovative teams use Mirall to maintain their creative velocity.",
+  "howItWorks": {
+    "title": "How it works",
+    "description": "Three steps. No setup wizards, no admin panels, no billing pages.",
     "items": [
       {
-        "quote": "The cleanest file interface I've ever used. It feels more like a creative tool than a utility app.",
-        "name": "Elena Vance",
-        "role": "Creative Director, Lumos"
+        "step": "1",
+        "title": "Create a space",
+        "description": "Name it, pick an icon, and you're live. Mirall generates a unique invite code you can share with anyone."
       },
       {
-        "quote": "Security that doesn't get in the way. Our engineers and designers are finally on the same page.",
-        "name": "Marcus Chen",
-        "role": "Lead Engineer, Synthesis"
+        "step": "2",
+        "title": "Invite your people",
+        "description": "Send the invite code. Your peers paste it in and they're connected — directly to you, no server in between."
       },
       {
-        "quote": "The curation features are a lifesaver. We found lost assets from three years ago in seconds.",
-        "name": "Sarah Jenkins",
-        "role": "Operations Manager, Flux"
+        "step": "3",
+        "title": "Share and download",
+        "description": "Drop files into the space. Everyone sees what's available. Each person downloads exactly what they need."
       }
     ]
   },
   "faq": {
-    "title": "Common Enquiries",
-    "description": "Everything you need to know about the Mirall ecosystem.",
+    "title": "Common questions",
+    "description": "Everything you need to know about Mirall.",
     "items": [
       {
-        "question": "How secure is my data on Mirall?",
-        "answer": "We use AES-256 bit encryption for data at rest and TLS 1.3 for data in transit. Your files are fragmented across multiple secure data centers, ensuring that only you hold the decryption keys."
+        "question": "Where are my files stored?",
+        "answer": "On your device, and only your device. When you share a file, peers download it directly from you. There is no cloud server, no intermediary storage. Once someone downloads a file, they have their own local copy."
       },
       {
-        "question": "Are there limits on file sizes?",
-        "answer": "Mirall supports individual file uploads up to 250GB on our professional plans, and unlimited total storage for enterprise customers."
+        "question": "What happens when I'm offline?",
+        "answer": "Files you've downloaded stay on your device — they're yours. Your peers can still see the file metadata, but they can't download files from you until you're back online. If another peer who has the same file is online, they can download from them instead."
       },
       {
-        "question": "Can I use Mirall with my existing workflow?",
-        "answer": "Yes, Mirall integrates seamlessly with Adobe Creative Cloud, Slack, Microsoft Teams, and Figma through our dedicated plugins and robust API."
+        "question": "Is it really encrypted?",
+        "answer": "Yes. Every peer connection is end-to-end encrypted via Hyperswarm's noise protocol. No one — not even us — can see your files or metadata in transit. There's no central server that could be breached."
       },
       {
-        "question": "What happens if I cancel my subscription?",
-        "answer": "Your data remains accessible in read-only mode for 90 days after cancellation, allowing you ample time to migrate your assets if needed."
+        "question": "How do I invite someone to a space?",
+        "answer": "When you create a space, Mirall generates an invite code. Share it however you like — chat, email, text. Your peer pastes it into the app and they're connected instantly."
+      },
+      {
+        "question": "Are there file size limits?",
+        "answer": "No hard limits. Mirall streams files in chunks, so large files work fine. Transfer speed depends on your network connection and your peer's upload bandwidth."
+      },
+      {
+        "question": "Is Mirall free?",
+        "answer": "Mirall is free to use. There are no storage fees because there are no servers — your files live on your own devices."
       }
     ]
   },
   "cta": {
-    "title": "Ready to elevate your workflow?",
-    "description": "Join over 50,000 teams who have already upgraded to a faster, more beautiful way of sharing.",
-    "primaryButton": "Create Free Account",
-    "secondaryButton": "Talk to Sales"
+    "title": "Your files. Your devices. No middleman.",
+    "description": "Join thousands of teams who share files the way it should be — direct, encrypted, and free from cloud lock-in.",
+    "primaryButton": "Download Mirall",
+    "secondaryButton": "Read the Docs"
   },
   "footer": {
-    "tagline": "The high-end editorial tech for creative file management. Built for speed, designed for clarity.",
+    "tagline": "Peer-to-peer file sharing for teams. No cloud, no accounts, no compromises.",
     "product": {
       "title": "Product",
-      "collections": "Collections",
-      "assets": "Assets",
+      "features": "Features",
       "security": "Security",
-      "integrations": "Integrations"
+      "download": "Download",
+      "changelog": "Changelog"
     },
     "resources": {
       "title": "Resources",
-      "apiDocs": "API Documentation",
-      "helpCenter": "Help Center",
-      "contact": "Contact",
-      "blog": "Editorial Blog"
+      "docs": "Documentation",
+      "support": "Support"
     },
     "legal": {
       "title": "Legal",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
-      "cookies": "Cookie Policy"
+      "licenses": "Open Source Licenses"
     },
-    "copyright": "© 2025 Mirall. All rights reserved.",
-    "status": "Systems Operational"
+"copyright": "© 2025 Mirall. All rights reserved.",
+    "builtOn": "Built on Holepunch"
+  },
+  "support": {
+    "title": "Support",
+    "heading": "Get help from inside the app",
+    "description": "Mirall has built-in support. Click the \"Send Feedback\" button in the top right corner of the app to report issues, request features, or ask questions. Your message goes directly to our team.",
+    "screenshotAlt": "Mirall app with the Send Feedback button highlighted",
+    "steps": {
+      "title": "How to reach us",
+      "items": [
+        "Open Mirall on your desktop",
+        "Click the \"Send Feedback\" button in the top right corner",
+        "Describe your issue or question",
+        "Hit send — we'll get back to you"
+      ]
+    },
+    "note": "No external ticketing system, no email chains. Everything stays in the app."
   }
 }

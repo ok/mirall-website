@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   const { t } = useTranslation()
@@ -26,19 +27,16 @@ export default function Footer() {
         <div>
           <h5 className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</h5>
           <ul className="space-y-4 font-body text-sm">
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.product.collections')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.product.assets')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.product.security')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.product.integrations')}</a></li>
+            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#features">{t('footer.product.features')}</a></li>
+            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#security">{t('footer.product.security')}</a></li>
+            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#download">{t('footer.product.download')}</a></li>
+            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.product.changelog')}</a></li>
           </ul>
         </div>
         <div>
           <h5 className="font-bold mb-6 text-on-surface">{t('footer.resources.title')}</h5>
           <ul className="space-y-4 font-body text-sm">
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.resources.apiDocs')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.resources.helpCenter')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.resources.contact')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.resources.blog')}</a></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/support">{t('footer.resources.support')}</Link></li>
           </ul>
         </div>
         <div>
@@ -46,18 +44,11 @@ export default function Footer() {
           <ul className="space-y-4 font-body text-sm">
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.privacy')}</a></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.terms')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.cookies')}</a></li>
           </ul>
         </div>
       </div>
       <div className="max-w-7xl mx-auto mt-12 pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-slate-500 font-body text-sm">{t('footer.copyright')}</p>
-        <div className="flex items-center gap-6">
-          <span className="flex items-center gap-2 text-sm text-slate-500">
-            <span className="w-2 h-2 rounded-full bg-primary"></span>
-            {t('footer.status')}
-          </span>
-        </div>
       </div>
     </footer>
   )

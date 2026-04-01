@@ -1,19 +1,19 @@
 import { useTranslation } from 'react-i18next'
 
 const featureCards = [
-  { key: 'instantSync', icon: 'bolt', iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
-  { key: 'biometricEncryption', icon: 'shield', iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
-  { key: 'globalHub', icon: 'hub', iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
-  { key: 'aiCuration', icon: 'auto_awesome', iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
-  { key: 'infiniteHistory', icon: 'history', iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
-  { key: 'editorialApi', icon: 'api', iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
+  { key: 'spaces', icon: 'workspaces', iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
+  { key: 'p2p', icon: 'swap_horiz', iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
+  { key: 'encrypted', icon: 'lock', iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
+  { key: 'inviteOnly', icon: 'badge', iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
+  { key: 'explicitDownload', icon: 'download_for_offline', iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
+  { key: 'zeroInfra', icon: 'cloud_off', iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
 ] as const
 
 export default function Features() {
   const { t } = useTranslation()
 
   return (
-    <section className="py-24 bg-surface-container-low">
+    <section id="features" className="py-24 bg-surface-container-low">
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl font-black font-headline mb-4">{t('features.title')}</h2>

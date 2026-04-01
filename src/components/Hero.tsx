@@ -28,13 +28,11 @@ export default function Hero() {
         <div className="relative">
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl"></div>
-          <div className="bg-surface-container-lowest rounded-xl ambient-shadow p-4 relative overflow-hidden">
-            <img
-              className="rounded-lg w-full aspect-[4/3] object-cover shadow-inner"
-              alt="Modern sleek application interface showing a clean file management dashboard"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWWL8sz2CkYlItzGERbp73f2Nq-XOVotNUgny_-kfXmkmnREnQf0xOexm7R_g0KG-Gbsq9N4a_XP7u6Km6_dkd-zTH3TnLFciNj45kb_p9YYELnrNTtuuSFCUJ1ekh7deHQpyj1vBQJZuEeel2GiX3o4ynE99WzjFfgKRkpVlnBwpjE9Xmb1UzY_3IliPsZKAUc1r_c2fUptloTdVmDM9pCI5bmtnTP3QJ_dVEoP_xalDgVxE0cQHQC4lehu9jCigDE-R57Aed3UYS"
-            />
-          </div>
+          <img
+            className="w-full object-cover relative" style={{ filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.08))' }}
+            alt="Mirall desktop app showing Shared Spaces with active peer connections"
+            src="/hero-screenshot.png"
+          />
         </div>
       </div>
     </section>
