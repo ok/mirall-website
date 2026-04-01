@@ -4,6 +4,7 @@ import Home from './pages/Home'
 
 const Docs = lazy(() => import('./pages/Docs'))
 const Support = lazy(() => import('./pages/Support'))
+const Download = lazy(() => import('./pages/Download'))
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/docs" element={<Docs />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/download" element={<Download />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

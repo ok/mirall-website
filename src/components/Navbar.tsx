@@ -42,12 +42,12 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-6">
-          <HashLink
-            to="/#download"
+          <Link
+            to="/download"
             className="hero-gradient text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm ambient-shadow hover:scale-105 transition-transform"
           >
             {t('nav.download')}
-          </HashLink>
+          </Link>
         </div>
       </nav>
     </header>

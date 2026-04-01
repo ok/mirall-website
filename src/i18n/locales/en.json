@@ -91,6 +91,21 @@
       }
     ]
   },
+  "download": {
+    "label": "Download",
+    "title": "Download Mirall",
+    "description": "Available for macOS, Windows, and Linux. Pick your platform and start sharing files peer-to-peer in seconds.",
+    "downloadFor": "Download for {{platform}}",
+    "otherPlatforms": "Other platforms",
+    "desktop": "Desktop app",
+    "platforms": {
+      "macArm": "macOS (Apple Silicon)",
+      "macIntel": "macOS (Intel)",
+      "windows": "Windows (x64)",
+      "linuxX64": "Linux (x64)",
+      "linuxArm": "Linux (ARM64)"
+    }
+  },
   "cta": {
     "title": "Your files. Your devices. No middleman.",
     "description": "Join the movement that share files the way it should be — direct, encrypted, and free from cloud lock-in.",
