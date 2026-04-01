@@ -1,4 +1,5 @@
 import { Trans, useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export default function Hero() {
   const { t } = useTranslation()
@@ -19,10 +20,10 @@ export default function Hero() {
             {t('hero.description')}
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="hero-gradient text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-3 ambient-shadow hover:scale-105 transition-transform">
+            <Link to="/download" className="hero-gradient text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-3 ambient-shadow hover:scale-105 transition-transform">
               <span className="material-symbols-outlined">download</span>
               {t('hero.cta')}
-            </button>
+            </Link>
           </div>
         </div>
         <div className="relative">
