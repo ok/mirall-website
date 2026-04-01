@@ -27,7 +27,7 @@ export default function Support() {
                 className="w-full object-cover"
                 style={{ filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.08))' }}
                 alt={t('support.screenshotAlt')}
-                src="/support-screenshot.png"
+                src="/support-screenshot.webp"
               />
               <div className="absolute top-[4.5%] right-[9%] w-[14%] h-[8%] border-3 border-primary rounded-xl animate-pulse pointer-events-none" />
             </div>
