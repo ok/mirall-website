@@ -28,8 +28,7 @@ export default function Footer() {
           <p className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</p>
           <ul className="space-y-4 font-body text-sm">
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#features">{t('footer.product.features')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#security">{t('footer.product.security')}</a></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#download">{t('footer.product.download')}</a></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/download">{t('footer.product.download')}</Link></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.product.changelog')}</a></li>
           </ul>
         </div>
