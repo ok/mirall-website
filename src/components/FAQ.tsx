@@ -10,7 +10,7 @@ export default function FAQ() {
   }>
 
   return (
-    <section className="py-32 bg-surface-container-low">
+    <section id="faq" className="py-32 bg-surface-container-low">
       <div className="max-w-3xl mx-auto px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-black font-headline mb-4">{t('faq.title')}</h2>

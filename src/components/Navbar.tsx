@@ -15,11 +15,8 @@ export default function Navbar() {
             <a className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" href="/#features">
               {t('nav.features')}
             </a>
-            <a className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" href="/#security">
-              {t('nav.security')}
-            </a>
-            <a className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" href="/#how-it-works">
-              {t('nav.spaces')}
+            <a className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" href="/#faq">
+              {t('faq.title')}
             </a>
             <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/docs">
               {t('docs.title')}

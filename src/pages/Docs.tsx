@@ -100,6 +100,8 @@ export default function Docs() {
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.files.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.files.description')}</p>
 
+              <Screenshot src="/docs-space-view.png" alt="Mirall Space View showing shared files, drop zone, storage indicator, and peers" />
+
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.files.uploading.title')}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.files.uploading.description')}</p>
@@ -129,6 +131,8 @@ export default function Docs() {
                 <h3 className="text-xl font-bold mb-3">{t('docs.peers.inviting.title')}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.peers.inviting.description')}</p>
               </div>
+
+              <Screenshot src="/docs-invite.png" alt="Mirall Invite to Space modal showing invite code and copy button" />
             </Section>
 
             <Section id="settings">
