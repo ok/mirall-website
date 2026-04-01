@@ -69,7 +69,7 @@ export default function Docs() {
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.spaces.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.spaces.description')}</p>
 
-              <Screenshot src="/hero-screenshot.png" alt={t('docs.spaces.screenshotAlt')} />
+              <Screenshot src="/hero-screenshot.webp" alt={t('docs.spaces.screenshotAlt')} />
 
               <h3 className="text-xl font-bold mb-3 mt-10">{t('docs.spaces.creating.title')}</h3>
               <ol className="space-y-3 mb-8">
@@ -100,7 +100,7 @@ export default function Docs() {
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.files.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.files.description')}</p>
 
-              <Screenshot src="/docs-space-view.png" alt="Mirall Space View showing shared files, drop zone, storage indicator, and peers" />
+              <Screenshot src="/docs-space-view.webp" alt="Mirall Space View showing shared files, drop zone, storage indicator, and peers" />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.files.uploading.title')}</h3>
@@ -132,7 +132,7 @@ export default function Docs() {
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.peers.inviting.description')}</p>
               </div>
 
-              <Screenshot src="/docs-invite.png" alt="Mirall Invite to Space modal showing invite code and copy button" />
+              <Screenshot src="/docs-invite.webp" alt="Mirall Invite to Space modal showing invite code and copy button" />
             </Section>
 
             <Section id="settings">
@@ -147,7 +147,7 @@ export default function Docs() {
                 ))}
               </ul>
 
-              <Screenshot src="/docs-settings.png" alt={t('docs.settings.screenshotAlt')} />
+              <Screenshot src="/docs-settings.webp" alt={t('docs.settings.screenshotAlt')} />
             </Section>
 
             <Section id="privacy">

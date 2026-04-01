@@ -31,7 +31,7 @@ export default function Hero() {
           <img
             className="w-full h-auto object-cover relative" style={{ filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.08))' }}
             alt="Mirall desktop app showing Shared Spaces with active peer connections"
-            src="/hero-screenshot.png"
+            src="/hero-screenshot.webp"
             width={1400}
             height={1039}
           />
