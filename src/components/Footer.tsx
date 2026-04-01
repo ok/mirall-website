@@ -36,6 +36,7 @@ export default function Footer() {
         <div>
           <h5 className="font-bold mb-6 text-on-surface">{t('footer.resources.title')}</h5>
           <ul className="space-y-4 font-body text-sm">
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/docs">{t('footer.resources.docs')}</Link></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/support">{t('footer.resources.support')}</Link></li>
           </ul>
         </div>

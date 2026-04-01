@@ -87,13 +87,13 @@
       },
       {
         "question": "Is Mirall free?",
-        "answer": "Mirall is free to use. There are no storage fees because there are no servers — your files live on your own devices."
+        "answer": "Mirall is free to use for now, but we plan to charge for it in the future."
       }
     ]
   },
   "cta": {
     "title": "Your files. Your devices. No middleman.",
-    "description": "Join thousands of teams who share files the way it should be — direct, encrypted, and free from cloud lock-in.",
+    "description": "Join the movement that share files the way it should be — direct, encrypted, and free from cloud lock-in.",
     "primaryButton": "Download Mirall",
     "secondaryButton": "Read the Docs"
   },
@@ -135,5 +135,83 @@
       ]
     },
     "note": "No external ticketing system, no email chains. Everything stays in the app."
+  },
+  "docs": {
+    "title": "Documentation",
+    "heading": "Getting started with Mirall",
+    "intro": "Mirall is a peer-to-peer file sharing app. No cloud, no accounts — just direct connections between you and your peers. This guide walks you through everything you need to know.",
+    "gettingStarted": {
+      "title": "Getting started",
+      "description": "When you first open Mirall, you'll be asked to set up a profile. Choose a display name and optionally upload an avatar. This is how your peers will see you in shared spaces."
+    },
+    "spaces": {
+      "title": "Shared Spaces",
+      "description": "Spaces are where file sharing happens. Each space is a private group where members can share and download files directly from each other.",
+      "screenshotAlt": "Mirall Shared Spaces screen showing active spaces with members",
+      "creating": {
+        "title": "Creating a space",
+        "steps": [
+          "Click \"Create Space\" in the top right",
+          "Give your space a name and pick an icon",
+          "Mirall generates an invite code — share it with anyone you want to join"
+        ]
+      },
+      "joining": {
+        "title": "Joining a space",
+        "steps": [
+          "Click \"Join Space\" in the top right",
+          "Paste the invite code you received",
+          "You're connected — files from other members will appear automatically"
+        ]
+      }
+    },
+    "files": {
+      "title": "Sharing files",
+      "description": "Inside a space, you'll see all files shared by every member. Files are not downloaded automatically — you see what's available and choose what to keep.",
+      "uploading": {
+        "title": "Adding files",
+        "description": "Drag and drop files into the space, or click \"Select Files\" to pick them from your computer. Your files are shared immediately with all connected peers."
+      },
+      "downloading": {
+        "title": "Downloading files",
+        "description": "Click the download button on any file shared by a peer. The file transfers directly from their device to yours — no server involved. You'll see real-time progress with speed and ETA."
+      },
+      "statuses": {
+        "title": "File statuses",
+        "items": [
+          { "status": "Local", "meaning": "The file is on your device — either you uploaded it or you've downloaded it." },
+          { "status": "Remote", "meaning": "The file is available from a connected peer. Click download to get it." },
+          { "status": "Downloading", "meaning": "The file is being transferred to your device right now." },
+          { "status": "Unavailable", "meaning": "The file exists in the space but the owner is currently offline." }
+        ]
+      }
+    },
+    "peers": {
+      "title": "Peers and connections",
+      "description": "The sidebar in each space shows all members. A green dot means they're online and you can download their files. When a peer goes offline, their files show as unavailable until they reconnect.",
+      "inviting": {
+        "title": "Inviting peers",
+        "description": "Click the invite button inside any space to copy the invite code. Send it to whoever you want to join — via chat, email, or any other way. They paste it in and they're connected."
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Click the gear icon in the top right to access settings. From here you can:",
+      "screenshotAlt": "Mirall Settings screen showing profile, appearance, and general options",
+      "items": [
+        "Change your display name and avatar",
+        "Switch between light and dark theme",
+        "View storage usage on your device",
+        "Check the app version and about info"
+      ]
+    },
+    "privacy": {
+      "title": "Privacy and security",
+      "description": "Mirall is built on the Holepunch network. Every connection between peers is end-to-end encrypted. Your files never pass through a server — they travel directly between devices. There are no accounts, no tracking, and no one can access your files except the peers you invite."
+    },
+    "leaving": {
+      "title": "Leaving a space",
+      "description": "To leave a space, open it and use the leave option. Mirall will cancel any active transfers, clean up peer data, and remove the space from your list. Files you've already downloaded stay on your device."
+    }
   }
 }

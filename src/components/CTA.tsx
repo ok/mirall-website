@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export default function CTA() {
   const { t } = useTranslation()
@@ -18,6 +19,9 @@ export default function CTA() {
             <button className="bg-white text-primary px-10 py-5 rounded-lg font-black hover:bg-surface-container-low transition-colors">
               {t('cta.primaryButton')}
             </button>
+            <Link to="/docs" className="bg-primary/20 border border-white/30 px-10 py-5 rounded-lg font-black hover:bg-primary/30 transition-colors">
+              {t('cta.secondaryButton')}
+            </Link>
           </div>
         </div>
       </div>

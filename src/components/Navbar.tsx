@@ -21,6 +21,9 @@ export default function Navbar() {
             <a className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" href="/#how-it-works">
               {t('nav.spaces')}
             </a>
+            <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/docs">
+              {t('docs.title')}
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-6">
