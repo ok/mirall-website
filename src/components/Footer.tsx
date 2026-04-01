@@ -1,5 +1,23 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+
+function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    const hash = to.replace('/', '')
+    if (location.pathname === '/') {
+      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      setTimeout(() => document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' }), 100)
+    }
+  }
+
+  return <a href={to} className={className} onClick={handleClick}>{children}</a>
+}
 
 export default function Footer() {
   const { t } = useTranslation()
@@ -27,9 +45,8 @@ export default function Footer() {
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</p>
           <ul className="space-y-4 font-body text-sm">
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#features">{t('footer.product.features')}</a></li>
+            <li><HashLink className="text-slate-500 hover:text-emerald-600 transition-all" to="/#features">{t('footer.product.features')}</HashLink></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/download">{t('footer.product.download')}</Link></li>
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.product.changelog')}</a></li>
           </ul>
         </div>
         <div>
