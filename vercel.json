@@ -1,10 +1,10 @@
 {
   "redirects": [
-    { "source": "/download/darwin-arm64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-darwin-arm64.zip", "statusCode": 302 },
-    { "source": "/download/darwin-x64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-darwin-x64.zip", "statusCode": 302 },
-    { "source": "/download/win32-x64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-win32-x64.zip", "statusCode": 302 },
-    { "source": "/download/linux-x64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-linux-x64.zip", "statusCode": 302 },
-    { "source": "/download/linux-arm64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-linux-arm64.zip", "statusCode": 302 }
+    { "source": "/download/darwin-arm64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-darwin-arm64.tar.gz", "statusCode": 302 },
+    { "source": "/download/darwin-x64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-darwin-x64.tar.gz", "statusCode": 302 },
+    { "source": "/download/win32-x64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-win32-x64.tar.gz", "statusCode": 302 },
+    { "source": "/download/linux-x64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-linux-x64.tar.gz", "statusCode": 302 },
+    { "source": "/download/linux-arm64", "destination": "https://pub-7dab5f0adaba46c9a685d033915dd7bc.r2.dev/latest/mirall-linux-arm64.tar.gz", "statusCode": 302 }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
