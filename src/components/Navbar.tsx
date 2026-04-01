@@ -1,5 +1,23 @@
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+
+function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    const hash = to.replace('/', '')
+    if (location.pathname === '/') {
+      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      setTimeout(() => document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' }), 100)
+    }
+  }
+
+  return <a href={to} className={className} onClick={handleClick}>{children}</a>
+}
 
 export default function Navbar() {
   const { t } = useTranslation()
@@ -12,24 +30,24 @@ export default function Navbar() {
             {t('brand')}
           </Link>
           <div className="hidden md:flex items-center gap-8 font-body font-semibold tracking-tight">
-            <a className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" href="/#features">
+            <HashLink className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/#features">
               {t('nav.features')}
-            </a>
-            <a className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" href="/#faq">
+            </HashLink>
+            <HashLink className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/#faq">
               {t('faq.title')}
-            </a>
+            </HashLink>
             <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/docs">
               {t('docs.title')}
             </Link>
           </div>
         </div>
         <div className="flex items-center gap-6">
-          <a
-            href="/#download"
+          <HashLink
+            to="/#download"
             className="hero-gradient text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm ambient-shadow hover:scale-105 transition-transform"
           >
             {t('nav.download')}
-          </a>
+          </HashLink>
         </div>
       </nav>
     </header>
