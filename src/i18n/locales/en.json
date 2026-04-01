@@ -1,0 +1,117 @@
+{
+  "brand": "Mirall",
+  "nav": {
+    "collections": "Collections",
+    "assets": "Assets",
+    "collaborators": "Collaborators",
+    "history": "History"
+  },
+  "hero": {
+    "label": "Premium File Orchestration",
+    "title": "The art of <1>seamless</1> sharing.",
+    "description": "A luminous space for your digital assets. Secure, lightning-fast, and designed for the editorial eye. Experience file management as a gallery of your work.",
+    "cta": "Download for Desktop"
+  },
+  "features": {
+    "title": "Precision Engineering",
+    "description": "Every pixel is tuned for performance. Our features are designed to disappear, leaving only your productivity.",
+    "instantSync": {
+      "title": "Instant Sync",
+      "description": "Files sync faster than you can think, utilizing global edge nodes for zero latency."
+    },
+    "biometricEncryption": {
+      "title": "Biometric Encryption",
+      "description": "Military-grade protection with a sophisticated key rotation system."
+    },
+    "globalHub": {
+      "title": "Global Hub",
+      "description": "Collaborate across borders with seamless permission management."
+    },
+    "aiCuration": {
+      "title": "AI Curation",
+      "description": "Smart tagging and organization that learns your project structure."
+    },
+    "infiniteHistory": {
+      "title": "Infinite History",
+      "description": "Restore any version of any file from any point in the timeline."
+    },
+    "editorialApi": {
+      "title": "Editorial API",
+      "description": "Deep integration for developers who value clean documentation."
+    }
+  },
+  "testimonials": {
+    "title": "Trusted by the Creators of Tomorrow",
+    "description": "The world's most innovative teams use Mirall to maintain their creative velocity.",
+    "items": [
+      {
+        "quote": "The cleanest file interface I've ever used. It feels more like a creative tool than a utility app.",
+        "name": "Elena Vance",
+        "role": "Creative Director, Lumos"
+      },
+      {
+        "quote": "Security that doesn't get in the way. Our engineers and designers are finally on the same page.",
+        "name": "Marcus Chen",
+        "role": "Lead Engineer, Synthesis"
+      },
+      {
+        "quote": "The curation features are a lifesaver. We found lost assets from three years ago in seconds.",
+        "name": "Sarah Jenkins",
+        "role": "Operations Manager, Flux"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Common Enquiries",
+    "description": "Everything you need to know about the Mirall ecosystem.",
+    "items": [
+      {
+        "question": "How secure is my data on Mirall?",
+        "answer": "We use AES-256 bit encryption for data at rest and TLS 1.3 for data in transit. Your files are fragmented across multiple secure data centers, ensuring that only you hold the decryption keys."
+      },
+      {
+        "question": "Are there limits on file sizes?",
+        "answer": "Mirall supports individual file uploads up to 250GB on our professional plans, and unlimited total storage for enterprise customers."
+      },
+      {
+        "question": "Can I use Mirall with my existing workflow?",
+        "answer": "Yes, Mirall integrates seamlessly with Adobe Creative Cloud, Slack, Microsoft Teams, and Figma through our dedicated plugins and robust API."
+      },
+      {
+        "question": "What happens if I cancel my subscription?",
+        "answer": "Your data remains accessible in read-only mode for 90 days after cancellation, allowing you ample time to migrate your assets if needed."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to elevate your workflow?",
+    "description": "Join over 50,000 teams who have already upgraded to a faster, more beautiful way of sharing.",
+    "primaryButton": "Create Free Account",
+    "secondaryButton": "Talk to Sales"
+  },
+  "footer": {
+    "tagline": "The high-end editorial tech for creative file management. Built for speed, designed for clarity.",
+    "product": {
+      "title": "Product",
+      "collections": "Collections",
+      "assets": "Assets",
+      "security": "Security",
+      "integrations": "Integrations"
+    },
+    "resources": {
+      "title": "Resources",
+      "apiDocs": "API Documentation",
+      "helpCenter": "Help Center",
+      "contact": "Contact",
+      "blog": "Editorial Blog"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    },
+    "copyright": "© 2025 Mirall. All rights reserved.",
+    "status": "Systems Operational"
+  }
+}

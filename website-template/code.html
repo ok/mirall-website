@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Curator | Secure File Sharing for Creative Teams</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "error-container": "#ffdad6",
+                "on-surface": "#191c1e",
+                "primary-fixed-dim": "#4edea3",
+                "primary-fixed": "#6ffbbe",
+                "tertiary-fixed": "#e9ddff",
+                "inverse-on-surface": "#eff1f3",
+                "outline": "#6c7a71",
+                "on-primary": "#ffffff",
+                "primary-container": "#10b981",
+                "secondary-fixed": "#e1e0ff",
+                "on-secondary-fixed-variant": "#2f2ebe",
+                "on-primary-container": "#00422b",
+                "tertiary-container": "#b090ff",
+                "surface-bright": "#f7f9fb",
+                "inverse-primary": "#4edea3",
+                "surface-container-highest": "#e0e3e5",
+                "on-tertiary-fixed": "#23005c",
+                "inverse-surface": "#2d3133",
+                "tertiary-fixed-dim": "#d0bcff",
+                "secondary": "#4648d4",
+                "on-background": "#191c1e",
+                "secondary-container": "#6063ee",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "primary": "#006c49",
+                "tertiary": "#6d3bd7",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed": "#002113",
+                "on-tertiary-fixed-variant": "#5516be",
+                "on-secondary-container": "#fffbff",
+                "on-surface-variant": "#3c4a42",
+                "surface-container-high": "#e6e8ea",
+                "surface-container": "#eceef0",
+                "surface-tint": "#006c49",
+                "error": "#ba1a1a",
+                "on-secondary-fixed": "#07006c",
+                "on-tertiary-container": "#4600a7",
+                "surface-variant": "#e0e3e5",
+                "outline-variant": "#bbcabf",
+                "secondary-fixed-dim": "#c0c1ff",
+                "surface-container-low": "#f2f4f6",
+                "surface-container-lowest": "#ffffff",
+                "surface-dim": "#d8dadc",
+                "on-error-container": "#93000a",
+                "background": "#f7f9fb",
+                "on-primary-fixed-variant": "#005236",
+                "surface": "#f7f9fb"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #006c49 0%, #10b981 100%);
+        }
+        .ambient-shadow {
+            shadow-color: rgba(7, 0, 108, 0.08);
+            box-shadow: 0 8px 30px rgba(7, 0, 108, 0.08);
+        }
+      </style>
+</head>
+<body class="bg-background font-body text-on-surface overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center px-8 h-20 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black text-emerald-700 dark:text-emerald-300 font-headline tracking-tighter">Curator</span>
+<div class="hidden md:flex items-center gap-8 font-manrope font-semibold tracking-tight">
+<a class="text-emerald-700 dark:text-emerald-300 border-b-2 border-emerald-600 pb-1" href="#">Collections</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors duration-300" href="#">Assets</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors duration-300" href="#">Collaborators</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors duration-300" href="#">History</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative pt-20 pb-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<span class="label-md uppercase tracking-[0.1em] text-primary font-bold mb-6 block">Premium File Orchestration</span>
+<h1 class="text-6xl font-black font-headline text-on-surface leading-[1.1] tracking-tighter mb-8">
+                        The art of <span class="text-primary-container">seamless</span> sharing.
+                    </h1>
+<p class="text-xl text-on-surface-variant leading-relaxed mb-12 max-w-xl">
+                        A luminous space for your digital assets. Secure, lightning-fast, and designed for the editorial eye. Experience file management as a gallery of your work.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="hero-gradient text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-3 ambient-shadow hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">download</span>
+                            Download for Desktop
+                        </button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl"></div>
+<div class="bg-surface-container-lowest rounded-xl ambient-shadow p-4 relative overflow-hidden">
+<img class="rounded-lg w-full aspect-[4/3] object-cover shadow-inner" data-alt="Modern sleek application interface showing a clean file management dashboard with minimalist charts and vibrant emerald accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWWL8sz2CkYlItzGERbp73f2Nq-XOVotNUgny_-kfXmkmnREnQf0xOexm7R_g0KG-Gbsq9N4a_XP7u6Km6_dkd-zTH3TnLFciNj45kb_p9YYELnrNTtuuSFCUJ1ekh7deHQpyj1vBQJZuEeel2GiX3o4ynE99WzjFfgKRkpVlnBwpjE9Xmb1UzY_3IliPsZKAUc1r_c2fUptloTdVmDM9pCI5bmtnTP3QJ_dVEoP_xalDgVxE0cQHQC4lehu9jCigDE-R57Aed3UYS"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Grid -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-black font-headline mb-4">Precision Engineering</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Every pixel is tuned for performance. Our features are designed to disappear, leaving only your productivity.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Feature Cards -->
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow group hover:-translate-y-2 transition-all">
+<div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">bolt</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Instant Sync</h3>
+<p class="text-on-surface-variant leading-relaxed">Files sync faster than you can think, utilizing global edge nodes for zero latency.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow group hover:-translate-y-2 transition-all">
+<div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-tertiary transition-colors">
+<span class="material-symbols-outlined text-tertiary group-hover:text-white">shield</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Biometric Encryption</h3>
+<p class="text-on-surface-variant leading-relaxed">Military-grade protection with a sophisticated key rotation system.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow group hover:-translate-y-2 transition-all">
+<div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-white">hub</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Global Hub</h3>
+<p class="text-on-surface-variant leading-relaxed">Collaborate across borders with seamless permission management.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow group hover:-translate-y-2 transition-all">
+<div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white">auto_awesome</span>
+</div>
+<h3 class="text-xl font-bold mb-3">AI Curation</h3>
+<p class="text-on-surface-variant leading-relaxed">Smart tagging and organization that learns your project structure.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow group hover:-translate-y-2 transition-all">
+<div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-tertiary transition-colors">
+<span class="material-symbols-outlined text-tertiary group-hover:text-white">history</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Infinite History</h3>
+<p class="text-on-surface-variant leading-relaxed">Restore any version of any file from any point in the timeline.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl ambient-shadow group hover:-translate-y-2 transition-all">
+<div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-white">api</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Editorial API</h3>
+<p class="text-on-surface-variant leading-relaxed">Deep integration for developers who value clean documentation.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-32 bg-background overflow-hidden relative">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="flex justify-between items-end mb-16">
+<div class="max-w-xl">
+<h2 class="text-4xl font-black font-headline mb-4">Trusted by the Creators of Tomorrow</h2>
+<p class="text-on-surface-variant">The world's most innovative teams use Curator to maintain their creative velocity.</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white p-10 rounded-xl ambient-shadow border-l-4 border-primary">
+<div class="flex gap-1 mb-6 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-lg italic mb-8 text-on-surface">"The cleanest file interface I've ever used. It feels more like a creative tool than a utility app."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young woman with a confident smile, working in a creative agency setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHDlwgoaJOfS05NdsrsepEMSFMTJTDuGpZSy3Qr6d-PoRQp673rBidDAXPioRNnzLHD5nHdZmjJkAQosz8t9ZtVP3JPx8PFtWq1ArFEFqCvUz10NQ8vezEbA5-0ps5sBPjCXJe8pgWZdrbUDVEgnQxjVswFlEEx_T6mGGukoI_ICfrrJxFBxLJ5-Syisn0SPKfuoMbMhWjtKKwGReza-Re2YlknMVEi41xg4_m2HbZS5U_MCP7GEfTmRTHMFGc-fXKi_jqcX5OhD46"/>
+<div>
+<h4 class="font-bold">Elena Vance</h4>
+<p class="text-sm text-on-surface-variant">Creative Director, Lumos</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-10 rounded-xl ambient-shadow border-l-4 border-secondary">
+<div class="flex gap-1 mb-6 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-lg italic mb-8 text-on-surface">"Security that doesn't get in the way. Our engineers and designers are finally on the same page."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a professional man in a tech office with soft daylight and greenery in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJDa6iDU0JmqE0Nwu6Xomtyg_1djytkF5aO9xeuVJSfDV7t-ZR8PjEeRHuil784Dle4BgOjtaFAPznYjTFFHuIqt8eGoWf_Jc_OWhoeaSdrDOFnOgQo-ITRkQP9JryYoyiAqap6hX7XbczbGZZzT3Jndx-dx8Dlox5IawvVgZHPVL2LI3oQYKZ0Ieg9abm1oCsKOHsgIgM0P7IDzk9XLvWAaksXaH03ADJdx9d9lvf1CNki1Ach9gwBzbLqbqIj66_11mE5sSe4_an"/>
+<div>
+<h4 class="font-bold">Marcus Chen</h4>
+<p class="text-sm text-on-surface-variant">Lead Engineer, Synthesis</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-10 rounded-xl ambient-shadow border-l-4 border-tertiary">
+<div class="flex gap-1 mb-6 text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-lg italic mb-8 text-on-surface">"The curation features are a lifesaver. We found lost assets from three years ago in seconds."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Close up of a smiling professional woman wearing glasses in a modern coworking space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-6h8BchQIEOMqNqpTpQEAgMqoDOid-XWGHhx10dkAF__CKicaeag9DYtw88W5WvjznyHAniIfd4fEyYKUlO-m9xnyXg77jvEdr_qJLcxNhsLEd3meRc5hZZcTlf5hU34_SPJV2bVXqeeoF7XOnC10yZif1dLaF1vP5csIaPSXQRBcJcFrVcICQAyj2V79o6QhiNVeuud8nkHSQW0zswY_O9IgV0Imzd1ZfqmjxYAsqTFCMqBuXOjyAX0I1Kx89k1n80QD7agC-NNs"/>
+<div>
+<h4 class="font-bold">Sarah Jenkins</h4>
+<p class="text-sm text-on-surface-variant">Operations Manager, Flux</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 bg-surface-container-low">
+<div class="max-w-3xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black font-headline mb-4">Common Enquiries</h2>
+<p class="text-on-surface-variant">Everything you need to know about the Curator ecosystem.</p>
+</div>
+<div class="space-y-4">
+<!-- Accordion Item 1 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-surface-container-high transition-colors">
+<span class="font-bold text-lg">How secure is my data on Curator?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                            We use AES-256 bit encryption for data at rest and TLS 1.3 for data in transit. Your files are fragmented across multiple secure data centers, ensuring that only you hold the decryption keys.
+                        </div>
+</div>
+<!-- Accordion Item 2 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-surface-container-high transition-colors">
+<span class="font-bold text-lg">Are there limits on file sizes?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed hidden">
+                            Curator supports individual file uploads up to 250GB on our professional plans, and unlimited total storage for enterprise customers.
+                        </div>
+</div>
+<!-- Accordion Item 3 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-surface-container-high transition-colors">
+<span class="font-bold text-lg">Can I use Curator with my existing workflow?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed hidden">
+                            Yes, Curator integrates seamlessly with Adobe Creative Cloud, Slack, Microsoft Teams, and Figma through our dedicated plugins and robust API.
+                        </div>
+</div>
+<!-- Accordion Item 4 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-surface-container-high transition-colors">
+<span class="font-bold text-lg">What happens if I cancel my subscription?</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed hidden">
+                            Your data remains accessible in read-only mode for 90 days after cancellation, allowing you ample time to migrate your assets if needed.
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32">
+<div class="max-w-7xl mx-auto px-8">
+<div class="hero-gradient rounded-xl p-16 text-center text-on-primary ambient-shadow relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 100 C 20 0 50 0 100 100 Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-5xl font-black font-headline mb-8 relative z-10">Ready to curate your workflow?</h2>
+<p class="text-xl mb-12 opacity-90 max-w-2xl mx-auto relative z-10">Join over 50,000 teams who have already upgraded to a faster, more beautiful way of sharing.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+<button class="bg-white text-primary px-10 py-5 rounded-lg font-black hover:bg-surface-container-low transition-colors">Create Free Account</button>
+<button class="bg-primary/20 border border-white/30 px-10 py-5 rounded-lg font-black hover:bg-primary/30 transition-colors">Talk to Sales</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full py-12 px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+<div class="space-y-6">
+<span class="font-bold text-emerald-900 dark:text-emerald-100 text-2xl font-headline tracking-tighter">Curator</span>
+<p class="text-slate-500 font-manrope text-sm leading-relaxed">The high-end editorial tech for creative file management. Built for speed, designed for clarity.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-emerald-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-emerald-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">share</span></a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-emerald-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-surface">Product</h5>
+<ul class="space-y-4 font-manrope text-sm">
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Collections</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Assets</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Security</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Integrations</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-surface">Resources</h5>
+<ul class="space-y-4 font-manrope text-sm">
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">API Documentation</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Help Center</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Contact</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Editorial Blog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-surface">Legal</h5>
+<ul class="space-y-4 font-manrope text-sm">
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Terms of Service</a></li>
+<li><a class="text-slate-500 dark:text-slate-500 hover:text-emerald-600 transition-all" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-slate-500 font-manrope text-sm">© 2024 Curator Editorial Tech. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<span class="flex items-center gap-2 text-sm text-slate-500"><span class="w-2 h-2 rounded-full bg-primary"></span> Systems Operational</span>
+</div>
+</div>
+</footer>
+</body></html>
