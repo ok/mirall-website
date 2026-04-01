@@ -9,14 +9,15 @@ interface PlatformInfo {
   key: Platform
   icon: string
   translationKey: string
+  format: string
 }
 
 const platforms: PlatformInfo[] = [
-  { key: 'darwin-arm64', icon: 'laptop_mac', translationKey: 'download.platforms.macArm' },
-  { key: 'darwin-x64', icon: 'laptop_mac', translationKey: 'download.platforms.macIntel' },
-  { key: 'win32-x64', icon: 'laptop_windows', translationKey: 'download.platforms.windows' },
-  { key: 'linux-x64', icon: 'terminal', translationKey: 'download.platforms.linuxX64' },
-  { key: 'linux-arm64', icon: 'terminal', translationKey: 'download.platforms.linuxArm' },
+  { key: 'darwin-arm64', icon: 'laptop_mac', translationKey: 'download.platforms.macArm', format: '.dmg' },
+  { key: 'darwin-x64', icon: 'laptop_mac', translationKey: 'download.platforms.macIntel', format: '.dmg' },
+  { key: 'win32-x64', icon: 'laptop_windows', translationKey: 'download.platforms.windows', format: '.zip' },
+  { key: 'linux-x64', icon: 'terminal', translationKey: 'download.platforms.linuxX64', format: '.AppImage' },
+  { key: 'linux-arm64', icon: 'terminal', translationKey: 'download.platforms.linuxArm', format: '.AppImage' },
 ]
 
 function detectPlatform(): Platform | null {
@@ -85,7 +86,7 @@ export default function Download() {
                     <span className="material-symbols-outlined text-2xl text-primary">{platform.icon}</span>
                     <div>
                       <span className="font-bold text-on-surface block">{t(platform.translationKey)}</span>
-                      <span className="text-sm text-on-surface-variant">{t('download.desktop')}</span>
+                      <span className="text-sm text-on-surface-variant">{platform.format}</span>
                     </div>
                     <span className="material-symbols-outlined text-on-surface-variant ml-auto">download</span>
                   </a>
