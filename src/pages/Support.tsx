@@ -29,7 +29,7 @@ export default function Support() {
                 alt={t('support.screenshotAlt')}
                 src="/support-screenshot.webp"
               />
-              <div className="absolute top-[4.5%] right-[9%] w-[14%] h-[8%] border-3 border-primary rounded-xl animate-pulse pointer-events-none" />
+              <div className="absolute top-[4.5%] right-[9%] w-[14%] h-[8%] rounded-xl animate-pulse pointer-events-none" />
             </div>
 
             <div className="bg-surface-container-low rounded-xl p-10 mb-12">
