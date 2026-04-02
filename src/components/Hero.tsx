@@ -19,6 +19,9 @@ export default function Hero() {
           <p className="text-xl text-on-surface-variant leading-relaxed mb-12 max-w-xl">
             {t('hero.description')}
           </p>
+          <p className="text-sm text-on-surface-variant/70 mb-8 -mt-6">
+            {t('hero.betaNotice')}
+          </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/download" className="hero-gradient text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-3 ambient-shadow hover:scale-105 transition-transform">
               <span className="material-symbols-outlined">download</span>

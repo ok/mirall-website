@@ -1,5 +1,6 @@
 {
   "brand": "Mirall",
+  "beta": "Beta",
   "nav": {
     "spaces": "Spaces",
     "features": "Features",
@@ -10,7 +11,8 @@
     "label": "Peer-to-Peer File Sharing",
     "title": "Share files <1>directly</1>. No cloud. No middleman.",
     "description": "Mirall connects you and your team peer-to-peer. Create a space, invite collaborators, and share files that travel directly between devices — encrypted, instant, and completely serverless.",
-    "cta": "Download for Desktop"
+    "cta": "Download for Desktop",
+    "betaNotice": "Mirall is currently in beta. Some features may change and you might encounter bugs."
   },
   "features": {
     "title": "Built different",
@@ -95,6 +97,7 @@
     "label": "Download",
     "title": "Download Mirall",
     "description": "Available for macOS, Windows, and Linux. Pick your platform and start sharing files peer-to-peer in seconds.",
+    "betaNotice": "This is a beta release — we are looking for your feedback.",
     "downloadFor": "Download for {{platform}}",
     "otherPlatforms": "Other platforms",
     "desktop": "Desktop app",

@@ -56,9 +56,13 @@ export default function Download() {
             <h1 className="text-5xl font-black font-headline text-on-surface tracking-tighter mb-6">
               {t('download.title')}
             </h1>
-            <p className="text-xl text-on-surface-variant leading-relaxed mb-16 max-w-2xl mx-auto">
+            <p className="text-xl text-on-surface-variant leading-relaxed mb-8 max-w-2xl mx-auto">
               {t('download.description')}
             </p>
+            <div className="mb-16 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-4 py-2 rounded-lg text-sm font-medium">
+              <span className="material-symbols-outlined text-lg">info</span>
+              {t('download.betaNotice')}
+            </div>
 
             {detectedPlatform && (
               <div className="mb-16">
