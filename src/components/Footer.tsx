@@ -30,17 +30,6 @@ export default function Footer() {
             {t('brand')}
           </span>
           <p className="text-slate-500 font-body text-sm leading-relaxed">{t('footer.tagline')}</p>
-          <div className="flex gap-4">
-            <a className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-emerald-600 transition-colors" href="#">
-              <span className="material-symbols-outlined text-lg">public</span>
-            </a>
-            <a className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-emerald-600 transition-colors" href="#">
-              <span className="material-symbols-outlined text-lg">share</span>
-            </a>
-            <a className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-emerald-600 transition-colors" href="#">
-              <span className="material-symbols-outlined text-lg">alternate_email</span>
-            </a>
-          </div>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</p>

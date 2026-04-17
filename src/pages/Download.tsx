@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-
-type Platform = 'darwin-arm64' | 'darwin-x64' | 'win32-x64' | 'linux-x64' | 'linux-arm64'
+import { detectPlatform, type Platform } from '../lib/detectPlatform'
 
 interface PlatformInfo {
   key: Platform
@@ -20,25 +19,14 @@ const platforms: PlatformInfo[] = [
   { key: 'linux-arm64', icon: 'terminal', translationKey: 'download.platforms.linuxArm', format: '.AppImage' },
 ]
 
-function detectPlatform(): Platform | null {
-  const ua = navigator.userAgent
-  if (ua.includes('Macintosh') || ua.includes('Mac OS X')) {
-    // Apple Silicon detection: check via WebGL renderer or platform
-    // navigator.platform is deprecated but still the most reliable way
-    // to distinguish arm64 vs x64 on macOS
-    return 'darwin-arm64'
-  }
-  if (ua.includes('Windows')) return 'win32-x64'
-  if (ua.includes('Linux')) return 'linux-x64'
-  return null
-}
-
 export default function Download() {
   const { t } = useTranslation()
   const [detected, setDetected] = useState<Platform | null>(null)
 
   useEffect(() => {
-    setDetected(detectPlatform())
+    let cancelled = false
+    detectPlatform().then(p => { if (!cancelled) setDetected(p) })
+    return () => { cancelled = true }
   }, [])
 
   const detectedPlatform = platforms.find(p => p.key === detected)
