@@ -56,16 +56,22 @@ export async function detectPlatform(): Promise<Platform | null> {
   }
 
   if (!arch) {
-    if (/aarch64|arm64/i.test(ua)) arch = 'arm'
-    else if (/x86_64|x64|Win64|WOW64|amd64/i.test(ua)) arch = 'x86'
+    // navigator.platform is deprecated but still honest about arch on
+    // Firefox (e.g. "Linux aarch64"). macOS always lies here ("MacIntel").
+    const platformStr = (navigator as Navigator & { platform?: string }).platform ?? ''
+    const hint = `${ua} ${platformStr}`
+    if (/aarch64|arm64|armv\d/i.test(hint)) arch = 'arm'
+    else if (/x86_64|x64|Win64|WOW64|amd64/i.test(hint)) arch = 'x86'
   }
 
-  // macOS spoofs UA to "Intel" on Apple Silicon; use WebGL renderer.
-  // Default to arm when inconclusive — Apple stopped shipping Intel Macs in 2023.
+  // macOS spoofs UA to "Intel" on Apple Silicon; the only live signal left
+  // is WebGL renderer, and Safari 15+ hides it. Default to x86 when
+  // inconclusive: Rosetta 2 runs x64 binaries on Apple Silicon transparently,
+  // but Intel Macs cannot run arm64 at all — Intel is the safer miss.
   if (isMac && !arch) {
     const apple = isAppleSiliconViaWebGL()
-    if (apple === false) arch = 'x86'
-    else arch = 'arm'
+    if (apple === true) arch = 'arm'
+    else arch = 'x86'
   }
 
   if (!arch) arch = 'x86'
