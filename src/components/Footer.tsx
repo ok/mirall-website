@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import BrandLogo from './BrandLogo'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -25,29 +26,27 @@ export default function Footer() {
   return (
     <footer className="bg-slate-50 w-full py-12 px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-        <div className="space-y-6">
-          <span className="font-bold text-emerald-900 text-2xl font-headline tracking-tighter">
-            {t('brand')}
-          </span>
+        <div className="space-y-4">
+          <BrandLogo />
           <p className="text-slate-500 font-body text-sm leading-relaxed">{t('footer.tagline')}</p>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</p>
-          <ul className="space-y-4 font-body text-sm">
+          <ul className="space-y-3 font-body text-sm">
             <li><HashLink className="text-slate-500 hover:text-emerald-600 transition-all" to="/#features">{t('footer.product.features')}</HashLink></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/download">{t('footer.product.download')}</Link></li>
           </ul>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.resources.title')}</p>
-          <ul className="space-y-4 font-body text-sm">
+          <ul className="space-y-3 font-body text-sm">
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/docs">{t('footer.resources.docs')}</Link></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/support">{t('footer.resources.support')}</Link></li>
           </ul>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.legal.title')}</p>
-          <ul className="space-y-4 font-body text-sm">
+          <ul className="space-y-3 font-body text-sm">
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.privacy')}</a></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.terms')}</a></li>
           </ul>

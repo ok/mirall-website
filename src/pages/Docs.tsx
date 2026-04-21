@@ -7,7 +7,7 @@ function Screenshot({ src, alt }: { src: string; alt: string }) {
     <div className="my-10">
       <img
         className="w-full max-w-3xl mx-auto object-cover"
-        style={{ filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.08))' }}
+        style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
         alt={alt}
         src={src}
       />
@@ -29,6 +29,7 @@ export default function Docs() {
   const creatingSteps = t('docs.spaces.creating.steps', { returnObjects: true }) as string[]
   const joiningSteps = t('docs.spaces.joining.steps', { returnObjects: true }) as string[]
   const fileStatuses = t('docs.files.statuses.items', { returnObjects: true }) as Array<{ status: string; meaning: string }>
+  const fileActions = t('docs.files.actions.items', { returnObjects: true }) as string[]
   const settingsItems = t('docs.settings.items', { returnObjects: true }) as string[]
 
   return (
@@ -50,7 +51,7 @@ export default function Docs() {
             <nav className="bg-surface-container-low rounded-xl p-8 mb-16">
               <h2 className="text-sm font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-4">On this page</h2>
               <ul className="space-y-2">
-                {['gettingStarted', 'spaces', 'files', 'peers', 'settings', 'privacy', 'leaving'].map((key) => (
+                {['gettingStarted', 'spaces', 'files', 'members', 'settings', 'privacy', 'leaving'].map((key) => (
                   <li key={key}>
                     <a href={`#${key}`} className="text-primary hover:text-emerald-500 transition-colors font-medium">
                       {t(`docs.${key}.title`)}
@@ -63,6 +64,7 @@ export default function Docs() {
             <Section id="gettingStarted">
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.gettingStarted.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed">{t('docs.gettingStarted.description')}</p>
+              <Screenshot src="/docs-getting-started.webp" alt={t('docs.gettingStarted.screenshotAlt')} />
             </Section>
 
             <Section id="spaces">
@@ -84,7 +86,7 @@ export default function Docs() {
               </ol>
 
               <h3 className="text-xl font-bold mb-3">{t('docs.spaces.joining.title')}</h3>
-              <ol className="space-y-3">
+              <ol className="space-y-3 mb-8">
                 {joiningSteps.map((step, i) => (
                   <li key={i} className="flex items-start gap-4">
                     <span className="w-7 h-7 rounded-full hero-gradient text-on-primary flex items-center justify-center font-bold text-xs shrink-0">
@@ -94,13 +96,18 @@ export default function Docs() {
                   </li>
                 ))}
               </ol>
+
+              <div className="bg-surface-container-low rounded-xl p-8">
+                <h3 className="text-xl font-bold mb-3">{t('docs.spaces.managing.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.spaces.managing.description')}</p>
+              </div>
             </Section>
 
             <Section id="files">
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.files.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.files.description')}</p>
 
-              <Screenshot src="/docs-space-view.webp" alt="Mirall Space View showing shared files, drop zone, storage indicator, and peers" />
+              <Screenshot src="/docs-space-view.webp" alt={t('docs.files.screenshotAlt')} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.files.uploading.title')}</h3>
@@ -112,27 +119,42 @@ export default function Docs() {
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.files.downloading.description')}</p>
               </div>
 
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8">
+                <h3 className="text-xl font-bold mb-3">{t('docs.files.transfers.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.files.transfers.description')}</p>
+              </div>
+
               <h3 className="text-xl font-bold mb-4">{t('docs.files.statuses.title')}</h3>
-              <div className="space-y-3">
+              <div className="space-y-3 mb-10">
                 {fileStatuses.map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <span className="font-bold text-on-surface min-w-[110px] shrink-0">{item.status}</span>
+                    <span className="font-bold text-on-surface min-w-[140px] shrink-0">{item.status}</span>
                     <span className="text-on-surface-variant">{item.meaning}</span>
                   </div>
                 ))}
               </div>
+
+              <h3 className="text-xl font-bold mb-4">{t('docs.files.actions.title')}</h3>
+              <ul className="space-y-2">
+                {fileActions.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-primary text-lg mt-0.5">check</span>
+                    <span className="text-on-surface-variant">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </Section>
 
-            <Section id="peers">
-              <h2 className="text-3xl font-black font-headline mb-4">{t('docs.peers.title')}</h2>
-              <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.peers.description')}</p>
+            <Section id="members">
+              <h2 className="text-3xl font-black font-headline mb-4">{t('docs.members.title')}</h2>
+              <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.members.description')}</p>
 
               <div className="bg-surface-container-low rounded-xl p-8">
-                <h3 className="text-xl font-bold mb-3">{t('docs.peers.inviting.title')}</h3>
-                <p className="text-on-surface-variant leading-relaxed">{t('docs.peers.inviting.description')}</p>
+                <h3 className="text-xl font-bold mb-3">{t('docs.members.inviting.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.members.inviting.description')}</p>
               </div>
 
-              <Screenshot src="/docs-invite.webp" alt="Mirall Invite to Space modal showing invite code and copy button" />
+              <Screenshot src="/docs-invite.webp" alt={t('docs.members.inviting.title')} />
             </Section>
 
             <Section id="settings">
@@ -148,6 +170,16 @@ export default function Docs() {
               </ul>
 
               <Screenshot src="/docs-settings.webp" alt={t('docs.settings.screenshotAlt')} />
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.storage.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.storage.description')}</p>
+              </div>
+
+              <div className="bg-surface-container-low rounded-xl p-8">
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.about.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.about.description')}</p>
+              </div>
             </Section>
 
             <Section id="privacy">

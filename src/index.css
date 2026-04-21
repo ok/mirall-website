@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/manrope";
+@import "@fontsource-variable/plus-jakarta-sans";
 
 @font-face {
   font-family: "Material Symbols Outlined";
@@ -9,9 +10,9 @@
 }
 
 @theme {
-  --font-headline: "Manrope", sans-serif;
-  --font-body: "Manrope", sans-serif;
-  --font-label: "Manrope", sans-serif;
+  --font-headline: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
+  --font-body: "Manrope Variable", "Manrope", sans-serif;
+  --font-label: "Manrope Variable", "Manrope", sans-serif;
 
   --color-error-container: #ffdad6;
   --color-on-surface: #191c1e;

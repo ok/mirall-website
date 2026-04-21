@@ -8,9 +8,9 @@
     "download": "Download"
   },
   "hero": {
-    "label": "Peer-to-Peer File Sharing",
-    "title": "Share files <1>directly</1>. No cloud. No middleman.",
-    "description": "Mirall connects you and your team peer-to-peer. Create a space, invite collaborators, and share files that travel directly between devices — encrypted, instant, and completely serverless.",
+    "label": "Secure Data Transfer",
+    "title": "Move data <1>directly</1>.\nNo cloud.\nNo middleman.",
+    "description": "Mirall connects your devices directly. Create a space, invite collaborators, and move files that travel straight between devices — encrypted end-to-end, and completely serverless.",
     "cta": "Download for Desktop",
     "betaNotice": "Mirall is currently in beta. Some features may change and you might encounter bugs."
   },
@@ -21,17 +21,17 @@
       "title": "Shared Spaces",
       "description": "Create topic-based spaces for your team, project, or group. Everyone in a space sees all available files and chooses what to download."
     },
-    "p2p": {
-      "title": "True Peer-to-Peer",
-      "description": "Files travel directly between devices over encrypted connections. No server ever touches your data."
+    "direct": {
+      "title": "Direct Device-to-Device",
+      "description": "Files move straight between your devices over encrypted connections. No server ever sees your data."
     },
     "encrypted": {
       "title": "Encrypted by Default",
-      "description": "Every connection is end-to-end encrypted via Hyperswarm. No keys to manage — it just works."
+      "description": "Every connection between devices is end-to-end encrypted. No keys to manage — it just works."
     },
     "inviteOnly": {
       "title": "Invite-Only Access",
-      "description": "Share a simple invite code to add peers to a space. No accounts, no sign-ups, no permission dashboards."
+      "description": "Share a simple invite code to add people to a space. No accounts, no sign-ups, no permission dashboards."
     },
     "explicitDownload": {
       "title": "You Choose What to Keep",
@@ -39,12 +39,12 @@
     },
     "zeroInfra": {
       "title": "Zero Infrastructure",
-      "description": "No cloud storage fees. No server maintenance. Mirall runs on the Holepunch network — fully decentralized."
+      "description": "No cloud storage fees. No server maintenance. Mirall is fully decentralized — files move directly between your devices."
     }
   },
   "howItWorks": {
     "title": "How it works",
-    "description": "Three steps. No setup wizards, no admin panels, no billing pages.",
+    "description": "Three steps. No setup wizards, no admin panels.",
     "items": [
       {
         "step": "1",
@@ -54,7 +54,7 @@
       {
         "step": "2",
         "title": "Invite your people",
-        "description": "Send the invite code. Your peers paste it in and they're connected — directly to you, no server in between."
+        "description": "Send the invite code. Your collaborators paste it in and they're connected — directly to you, no server in between."
       },
       {
         "step": "3",
@@ -69,23 +69,23 @@
     "items": [
       {
         "question": "Where are my files stored?",
-        "answer": "On your device, and only your device. When you share a file, peers download it directly from you. There is no cloud server, no intermediary storage. Once someone downloads a file, they have their own local copy."
+        "answer": "On your device, and only your device. When you share a file, other members download it directly from you. There is no cloud server, no intermediary storage. Once someone downloads a file, they have their own local copy."
       },
       {
         "question": "What happens when I'm offline?",
-        "answer": "Files you've downloaded stay on your device — they're yours. Your peers can still see the file metadata, but they can't download files from you until you're back online. If another peer who has the same file is online, they can download from them instead."
+        "answer": "Files you've downloaded stay on your device — they're yours. Other members can still see the file metadata, but they can't download files from you until you're back online. If another member who has the same file is online, they can download from them instead."
       },
       {
         "question": "Is it really encrypted?",
-        "answer": "Yes. Every peer connection is end-to-end encrypted via Hyperswarm's noise protocol. No one — not even us — can see your files or metadata in transit. There's no central server that could be breached."
+        "answer": "Yes. Every connection between devices is end-to-end encrypted. No one — not even us — can see your files or metadata in transit. There's no central server that could be breached."
       },
       {
         "question": "How do I invite someone to a space?",
-        "answer": "When you create a space, Mirall generates an invite code. Share it however you like — chat, email, text. Your peer pastes it into the app and they're connected instantly."
+        "answer": "When you create a space, Mirall generates an invite code. Share it however you like — chat, email, text. They paste it into the app and they're connected instantly."
       },
       {
         "question": "Are there file size limits?",
-        "answer": "No hard limits. Mirall streams files in chunks, so large files work fine. Transfer speed depends on your network connection and your peer's upload bandwidth."
+        "answer": "No hard limits. Mirall streams files in chunks, so large files work fine. Transfer speed depends on your network connection and the sender's upload bandwidth."
       },
       {
         "question": "Is Mirall free?",
@@ -96,7 +96,7 @@
   "download": {
     "label": "Download",
     "title": "Download Mirall",
-    "description": "Available for macOS, Windows, and Linux. Pick your platform and start sharing files peer-to-peer in seconds.",
+    "description": "Available for macOS, Windows, and Linux. Pick your platform and start moving data directly between devices in seconds.",
     "betaNotice": "This is a beta release — we are looking for your feedback.",
     "downloadFor": "Download for {{platform}}",
     "otherPlatforms": "Other platforms",
@@ -116,7 +116,7 @@
     "secondaryButton": "Read the Docs"
   },
   "footer": {
-    "tagline": "Peer-to-peer file sharing for teams. No cloud, no accounts, no compromises.",
+    "tagline": "Secure data transfer for teams. No cloud, no accounts, no compromises.",
     "product": {
       "title": "Product",
       "features": "Features",
@@ -135,8 +135,7 @@
       "terms": "Terms of Service",
       "licenses": "Open Source Licenses"
     },
-"copyright": "© 2025 Mirall. All rights reserved.",
-    "builtOn": "Built on Holepunch"
+"copyright": "© 2026 Mirall. All rights reserved."
   },
   "support": {
     "title": "Support",
@@ -157,79 +156,113 @@
   "docs": {
     "title": "Documentation",
     "heading": "Getting started with Mirall",
-    "intro": "Mirall is a peer-to-peer file sharing app. No cloud, no accounts — just direct connections between you and your peers. This guide walks you through everything you need to know.",
+    "intro": "Mirall is a secure data transfer app for desktop. No cloud, no accounts — files move directly between you and the people you invite. This guide walks you through everything the app can do.",
     "gettingStarted": {
       "title": "Getting started",
-      "description": "When you first open Mirall, you'll be asked to set up a profile. Choose a display name and optionally upload an avatar. This is how your peers will see you in shared spaces."
+      "description": "The first time you open Mirall, it asks for a display name and an optional avatar. That's your profile — it's how other members will see you inside any space you join or create. You can change both later in Settings.",
+      "screenshotAlt": "Mirall onboarding screen asking for a display name and optional avatar"
     },
     "spaces": {
       "title": "Shared Spaces",
-      "description": "Spaces are where file sharing happens. Each space is a private group where members can share and download files directly from each other.",
-      "screenshotAlt": "Mirall Shared Spaces screen showing active spaces with members",
+      "description": "Spaces are private groups where people share files with each other. Every space has its own members and its own files, and the list of spaces you belong to lives on the \"Shared Spaces\" home screen. You can filter the list by All Spaces or Favorites, and star any space to pin it to Favorites.",
+      "screenshotAlt": "Mirall Shared Spaces screen with space cards and create/join buttons",
       "creating": {
         "title": "Creating a space",
         "steps": [
-          "Click \"Create Space\" in the top right",
-          "Give your space a name and pick an icon",
-          "Mirall generates an invite code — share it with anyone you want to join"
+          "Click \"Create Space\" on the Shared Spaces screen",
+          "Give the space a name and pick an icon",
+          "Click \"Initialize Space\" — Mirall generates an invite code and shows it right away",
+          "Copy the invite code and send it to anyone you want to add"
         ]
       },
       "joining": {
         "title": "Joining a space",
         "steps": [
-          "Click \"Join Space\" in the top right",
+          "Click \"Join Space\" on the Shared Spaces screen",
           "Paste the invite code you received",
-          "You're connected — files from other members will appear automatically"
+          "Optionally give the space a local name — only you will see it",
+          "Click \"Join Space\" — once another member is online, their files appear automatically"
         ]
+      },
+      "managing": {
+        "title": "Managing a space",
+        "description": "Open a space and use the More menu next to \"Invite to Space\" to add it to Favorites, edit its name or icon, or leave it. The member avatars on each space card show you at a glance who's active."
       }
     },
     "files": {
       "title": "Sharing files",
-      "description": "Inside a space, you'll see all files shared by every member. Files are not downloaded automatically — you see what's available and choose what to keep.",
+      "description": "Inside a space you see every file every member has shared. Nothing downloads automatically — metadata travels between devices so you know what's available, and you decide which files to actually pull onto your device.",
+      "screenshotAlt": "Mirall Space View showing shared files, drop zone, storage indicator, and members",
       "uploading": {
         "title": "Adding files",
-        "description": "Drag and drop files into the space, or click \"Select Files\" to pick them from your computer. Your files are shared immediately with all connected peers."
+        "description": "Drag files onto the \"Drop to Mirror\" zone in the sidebar, or click \"Select Files\" to pick them from your computer. Mirall adds them to the space and starts making them available to other members right away. Very large files (up to 1TB) work fine — content is streamed in chunks, so there's no upload step to wait through."
       },
       "downloading": {
         "title": "Downloading files",
-        "description": "Click the download button on any file shared by a peer. The file transfers directly from their device to yours — no server involved. You'll see real-time progress with speed and ETA."
+        "description": "Click the download button on any file shared by another member. The file transfers directly from their device to yours with live progress, speed, and ETA. If multiple members have the same file, Mirall pulls from whoever is available."
+      },
+      "transfers": {
+        "title": "Transfers that resume",
+        "description": "If your network drops or the member you're downloading from goes offline, the transfer pauses automatically. It picks up from where it left off as soon as another member with that file comes back — you don't need to restart anything. A file that's half-downloaded but no longer wanted can be discarded with one click."
       },
       "statuses": {
         "title": "File statuses",
         "items": [
-          { "status": "Local", "meaning": "The file is on your device — either you uploaded it or you've downloaded it." },
-          { "status": "Remote", "meaning": "The file is available from a connected peer. Click download to get it." },
-          { "status": "Downloading", "meaning": "The file is being transferred to your device right now." },
-          { "status": "Unavailable", "meaning": "The file exists in the space but the owner is currently offline." }
+          { "status": "Shared by you", "meaning": "A file you added to the space. It lives on your device and is offered to other members." },
+          { "status": "On your device", "meaning": "A file you downloaded from another member. It's yours to keep and works offline." },
+          { "status": "Available", "meaning": "Another member is sharing this file and at least one copy is online. Click download to pull it." },
+          { "status": "Downloading", "meaning": "A transfer is in progress. The card shows bytes, speed, and ETA." },
+          { "status": "Adding", "meaning": "Mirall is finishing preparing a file you just added so other members can fetch it." },
+          { "status": "Interrupted", "meaning": "A partial download paused due to a network issue. Click play to resume." },
+          { "status": "Owner offline", "meaning": "Every member who has this file is currently offline. It will become available when one reconnects." },
+          { "status": "Failed", "meaning": "A transfer errored out. Click retry to try again, or dismiss it." }
+        ]
+      },
+      "actions": {
+        "title": "File actions",
+        "items": [
+          "Reveal in folder — open a downloaded or shared file in your OS file browser",
+          "Unshare — remove a file you added so it's no longer offered to other members (files they've already downloaded stay on their devices)",
+          "Pause — stop an in-progress download; its progress is kept so you can resume later",
+          "Resume — continue an interrupted download from where it stopped",
+          "Discard partial — throw away a paused or failed download and free the space",
+          "Retry — reattempt a download that ended in an error"
         ]
       }
     },
-    "peers": {
-      "title": "Peers and connections",
-      "description": "The sidebar in each space shows all members. A green dot means they're online and you can download their files. When a peer goes offline, their files show as unavailable until they reconnect.",
+    "members": {
+      "title": "Members and connections",
+      "description": "Every space has a Members panel on the right showing everyone else in it. You'll see their name, avatar, and whether they're currently online. When someone is online you can download from them; when everyone offering a given file is offline, that file is marked accordingly until someone comes back.",
       "inviting": {
-        "title": "Inviting peers",
-        "description": "Click the invite button inside any space to copy the invite code. Send it to whoever you want to join — via chat, email, or any other way. They paste it in and they're connected."
+        "title": "Sending an invite",
+        "description": "Click \"Invite to Space\" at the top of a space to open the invite dialog, then copy the code and send it to whoever you want to add — chat, email, anything works. They paste it into Mirall's Join Space flow and they're in. The same code can be shared with as many people as you like."
       }
     },
     "settings": {
       "title": "Settings",
-      "description": "Click the gear icon in the top right to access settings. From here you can:",
+      "description": "The gear icon in the top right opens Settings. From here you can manage your profile, switch between light and dark mode, and drill into storage or app info.",
       "screenshotAlt": "Mirall Settings screen showing profile, appearance, and general options",
       "items": [
-        "Change your display name and avatar",
-        "Switch between light and dark theme",
-        "View storage usage on your device",
-        "Check the app version and about info"
-      ]
+        "Profile — update your display name and avatar at any time; changes sync to spaces automatically",
+        "Appearance — toggle between light and dark theme",
+        "General — open the Storage or About subpages for more detail"
+      ],
+      "storage": {
+        "title": "Storage",
+        "description": "The Storage page shows how much disk Mirall is using on this device and breaks it down per space. For each space you see the cached content vs. metadata split. Only the cache is counted — files you've already saved to your Downloads folder aren't included, and leaving a space automatically clears its cache."
+      },
+      "about": {
+        "title": "About",
+        "description": "The About page shows the installed version and links to documentation and support so you can always find your way back here."
+      }
     },
     "privacy": {
       "title": "Privacy and security",
-      "description": "Mirall is built on the Holepunch network. Every connection between peers is end-to-end encrypted. Your files never pass through a server — they travel directly between devices. There are no accounts, no tracking, and no one can access your files except the peers you invite."
+      "description": "Every connection between devices is end-to-end encrypted. Your files never pass through a server — they travel directly between devices. There are no accounts and no tracking, and only the people you invite can see what you share."
     },
     "leaving": {
       "title": "Leaving a space",
-      "description": "To leave a space, open it and use the leave option. Mirall will cancel any active transfers, clean up peer data, and remove the space from your list. Files you've already downloaded stay on your device."
+      "description": "To leave a space, open it, open the More menu, and choose Leave Space. Mirall cancels any in-flight transfers and removes the space's cached data from your device. Files you've already saved to your Downloads folder are untouched — they stay yours."
     }
   }
 }

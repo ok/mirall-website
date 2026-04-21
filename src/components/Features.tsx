@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 const featureCards = [
   { key: 'spaces', icon: 'workspaces', iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
-  { key: 'p2p', icon: 'swap_horiz', iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
+  { key: 'direct', icon: 'swap_horiz', iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
   { key: 'encrypted', icon: 'lock', iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
   { key: 'inviteOnly', icon: 'badge', iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
   { key: 'explicitDownload', icon: 'download_for_offline', iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },

@@ -25,7 +25,7 @@ export default function Support() {
             <div className="relative mb-16">
               <img
                 className="w-full object-cover"
-                style={{ filter: 'drop-shadow(0 25px 25px rgba(0, 0, 0, 0.08))' }}
+                style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
                 alt={t('support.screenshotAlt')}
                 src="/support-screenshot.webp"
               />

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import BrandLogo from './BrandLogo'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -26,8 +27,8 @@ export default function Navbar() {
     <header className="fixed top-0 w-full z-50 glass-nav shadow-sm">
       <nav className="flex justify-between items-center px-8 h-20 max-w-screen-2xl mx-auto">
         <div className="flex items-center gap-12">
-          <Link to="/" className="text-2xl font-black text-emerald-700 font-headline tracking-tighter flex items-center gap-2">
-            {t('brand')}
+          <Link to="/" className="flex items-center gap-2">
+            <BrandLogo />
             <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full leading-none">
               {t('beta')}
             </span>
