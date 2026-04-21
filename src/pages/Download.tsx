@@ -15,8 +15,8 @@ const platforms: PlatformInfo[] = [
   { key: 'darwin-arm64', icon: 'laptop_mac', translationKey: 'download.platforms.macArm', format: '.dmg' },
   { key: 'darwin-x64', icon: 'laptop_mac', translationKey: 'download.platforms.macIntel', format: '.dmg' },
   { key: 'win32-x64', icon: 'laptop_windows', translationKey: 'download.platforms.windows', format: '.msix' },
-  { key: 'linux-x64', icon: 'terminal', translationKey: 'download.platforms.linuxX64', format: '.AppImage' },
-  { key: 'linux-arm64', icon: 'terminal', translationKey: 'download.platforms.linuxArm', format: '.AppImage' },
+  { key: 'linux-x64', icon: 'terminal', translationKey: 'download.platforms.linuxX64', format: '.AppImage.tar.gz' },
+  { key: 'linux-arm64', icon: 'terminal', translationKey: 'download.platforms.linuxArm', format: '.AppImage.tar.gz' },
 ]
 
 export default function Download() {
