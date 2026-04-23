@@ -12,7 +12,8 @@
     "title": "Move data <1>directly</1>.\nNo cloud.\nNo middleman.",
     "description": "Mirall connects your devices directly. Create a space, invite collaborators, and move files that travel straight between devices — encrypted end-to-end, and completely serverless.",
     "cta": "Download for Desktop",
-    "betaNotice": "Mirall is currently in beta. Some features may change and you might encounter bugs."
+    "betaNotice": "Mirall is currently in beta. Some features may change and you might encounter bugs.",
+    "industries": "Trusted for post-production, architecture, legal, and research workflows."
   },
   "features": {
     "title": "Built different",
@@ -90,6 +91,14 @@
       {
         "question": "Is Mirall free?",
         "answer": "Mirall is free to use for now, but we plan to charge for it in the future."
+      },
+      {
+        "question": "How is Mirall different from Aspera, MASV, or WeTransfer?",
+        "answer": "Those services all route or store your files on their own infrastructure, which means per-GB fees, transfer ceilings, and a cloud vendor in the middle of your data. Mirall transfers files directly between devices with no servers in between — so there are no per-GB costs, no transfer caps, and nothing to breach."
+      },
+      {
+        "question": "Is Mirall suitable for GDPR, Schrems II, or HIPAA workflows?",
+        "answer": "Yes. Because Mirall never stores your files on a third-party server, there is no cross-border data transfer or cloud processor relationship to worry about — the jurisdictional question doesn't apply. Many regulated teams in healthcare, legal, and post-production use this as an architectural answer to GDPR, Schrems II, and HIPAA concerns."
       }
     ]
   },

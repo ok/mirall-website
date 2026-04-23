@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Seo from '../components/Seo'
+import { breadcrumbSchema } from '../lib/schema'
 import { detectPlatform, type Platform } from '../lib/detectPlatform'
 import { AppleLogo, WindowsLogo, LinuxLogo, Info, Download as DownloadIcon, type Icon } from '@phosphor-icons/react'
 
@@ -35,6 +37,15 @@ export default function Download() {
 
   return (
     <>
+      <Seo
+        title="Download Mirall for Mac, Windows, Linux"
+        description="Secure large file transfer app for desktop. End-to-end encrypted, runs on macOS, Windows, and Linux. Free beta — download now."
+        path="/download"
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Download', path: '/download' },
+        ])}
+      />
       <Navbar />
       <main className="pt-20">
         <section className="py-24 bg-background">

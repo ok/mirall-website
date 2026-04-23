@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next'
 import { Check } from '@phosphor-icons/react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Seo from '../components/Seo'
+import { breadcrumbSchema } from '../lib/schema'
 
 function Screenshot({ src, alt, width = 1400, height = 1039 }: { src: string; alt: string; width?: number; height?: number }) {
   return (
@@ -39,6 +41,15 @@ export default function Docs() {
 
   return (
     <>
+      <Seo
+        title="Mirall Documentation — Secure File Transfer Guide"
+        description="Set up spaces, invite members, and transfer large files directly between devices. Complete guide to Mirall's secure, serverless file transfer app."
+        path="/docs"
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Documentation', path: '/docs' },
+        ])}
+      />
       <Navbar />
       <main className="pt-20">
         <div className="py-24 bg-background">

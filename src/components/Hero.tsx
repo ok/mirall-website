@@ -31,13 +31,16 @@ export default function Hero() {
               {t('hero.cta')}
             </Link>
           </div>
+          <p className="text-sm text-on-surface-variant/80 mt-8 max-w-xl">
+            {t('hero.industries')}
+          </p>
         </div>
         <div className="relative">
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl"></div>
           <img
             className="w-full h-auto object-cover relative" style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
-            alt="Mirall desktop app showing Shared Spaces with active device connections"
+            alt="Mirall desktop app — Shared Spaces view with large files transferring directly between devices for post-production, architecture, and legal workflows"
             src={heroSrc}
             srcSet={heroSrcSet}
             sizes="(min-width: 1024px) 580px, calc(100vw - 64px)"

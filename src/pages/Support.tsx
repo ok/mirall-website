@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Seo from '../components/Seo'
+import { breadcrumbSchema } from '../lib/schema'
 
 export default function Support() {
   const { t } = useTranslation()
@@ -8,6 +10,15 @@ export default function Support() {
 
   return (
     <>
+      <Seo
+        title="Mirall Support — Built-in Feedback"
+        description="Get help directly inside the Mirall app. No tickets, no email chains — feedback goes straight to our team."
+        path="/support"
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Support', path: '/support' },
+        ])}
+      />
       <Navbar />
       <main className="pt-20">
         <section className="py-24 bg-background">
