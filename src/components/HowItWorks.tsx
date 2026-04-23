@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next'
+import { PlusCircle, UserPlus, CloudArrowDown, type Icon } from '@phosphor-icons/react'
 
 const stepColors = ['bg-primary', 'bg-secondary', 'bg-tertiary']
-const stepIcons = ['add_circle', 'person_add', 'cloud_download']
+const stepIcons: Icon[] = [PlusCircle, UserPlus, CloudArrowDown]
 
 export default function HowItWorks() {
   const { t } = useTranslation()
@@ -19,10 +20,12 @@ export default function HowItWorks() {
           <p className="text-on-surface-variant">{t('howItWorks.description')}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {items.map((item, i) => (
+          {items.map((item, i) => {
+            const StepIcon = stepIcons[i]
+            return (
             <div key={i} className="bg-white p-10 rounded-xl ambient-shadow relative">
               <div className={`w-14 h-14 ${stepColors[i]} rounded-xl flex items-center justify-center mb-8`}>
-                <span className="material-symbols-outlined text-white text-2xl">{stepIcons[i]}</span>
+                <StepIcon size={28} weight="regular" className="text-white" />
               </div>
               <span className="text-sm font-bold text-on-surface-variant uppercase tracking-[0.1em] mb-2 block">
                 Step {item.step}
@@ -30,7 +33,8 @@ export default function HowItWorks() {
               <h3 className="text-xl font-bold mb-3">{item.title}</h3>
               <p className="text-on-surface-variant leading-relaxed">{item.description}</p>
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

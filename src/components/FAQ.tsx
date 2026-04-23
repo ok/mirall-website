@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { CaretDown } from '@phosphor-icons/react'
 
 export default function FAQ() {
   const { t } = useTranslation()
@@ -24,12 +25,12 @@ export default function FAQ() {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
                 <span className="font-bold text-lg">{item.question}</span>
-                <span
-                  className="material-symbols-outlined text-primary transition-transform duration-300"
+                <CaretDown
+                  size={20}
+                  weight="bold"
+                  className="text-primary transition-transform duration-300 shrink-0"
                   style={{ transform: openIndex === i ? 'rotate(180deg)' : undefined }}
-                >
-                  expand_more
-                </span>
+                />
               </button>
               {openIndex === i && (
                 <div className="px-6 pb-6 text-on-surface-variant leading-relaxed">

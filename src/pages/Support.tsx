@@ -28,6 +28,10 @@ export default function Support() {
                 style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
                 alt={t('support.screenshotAlt')}
                 src="/support-screenshot.webp"
+                width={1400}
+                height={1039}
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute top-[4.5%] right-[9%] w-[14%] h-[8%] rounded-xl animate-pulse pointer-events-none" />
             </div>

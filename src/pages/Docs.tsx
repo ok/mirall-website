@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next'
+import { Check } from '@phosphor-icons/react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-function Screenshot({ src, alt }: { src: string; alt: string }) {
+function Screenshot({ src, alt, width = 1400, height = 1039 }: { src: string; alt: string; width?: number; height?: number }) {
   return (
     <div className="my-10">
       <img
@@ -10,6 +11,10 @@ function Screenshot({ src, alt }: { src: string; alt: string }) {
         style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
         alt={alt}
         src={src}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
       />
     </div>
   )
@@ -138,7 +143,7 @@ export default function Docs() {
               <ul className="space-y-2">
                 {fileActions.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-primary text-lg mt-0.5">check</span>
+                    <Check size={20} weight="bold" className="text-primary mt-0.5 shrink-0" />
                     <span className="text-on-surface-variant">{item}</span>
                   </li>
                 ))}
@@ -163,7 +168,7 @@ export default function Docs() {
               <ul className="space-y-2 mb-8">
                 {settingsItems.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-primary text-lg mt-0.5">check</span>
+                    <Check size={20} weight="bold" className="text-primary mt-0.5 shrink-0" />
                     <span className="text-on-surface-variant">{item}</span>
                   </li>
                 ))}

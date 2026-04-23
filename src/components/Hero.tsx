@@ -1,5 +1,8 @@
 import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { Download } from '@phosphor-icons/react'
+import heroSrcSet from '../assets/hero-screenshot.webp?w=640;960;1280;1600&format=webp&as=srcset'
+import heroSrc from '../assets/hero-screenshot.webp?w=960&format=webp'
 
 export default function Hero() {
   const { t } = useTranslation()
@@ -24,7 +27,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/download" className="hero-gradient text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-3 ambient-shadow hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined">download</span>
+              <Download size={24} weight="regular" />
               {t('hero.cta')}
             </Link>
           </div>
@@ -35,9 +38,13 @@ export default function Hero() {
           <img
             className="w-full h-auto object-cover relative" style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
             alt="Mirall desktop app showing Shared Spaces with active device connections"
-            src="/hero-screenshot.webp"
+            src={heroSrc}
+            srcSet={heroSrcSet}
+            sizes="(max-width: 1024px) 90vw, 45vw"
             width={1400}
             height={1039}
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       </div>
