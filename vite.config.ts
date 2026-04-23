@@ -25,8 +25,38 @@ function preloadCriticalFonts(): Plugin {
   }
 }
 
+function inlineCss(): Plugin {
+  return {
+    name: 'inline-css',
+    apply: 'build',
+    enforce: 'post',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        if (!ctx.bundle) return html
+        let cssContents = ''
+        const cssFiles: string[] = []
+        for (const [fileName, chunk] of Object.entries(ctx.bundle)) {
+          if (fileName.endsWith('.css') && chunk.type === 'asset') {
+            const source = chunk.source
+            cssContents += typeof source === 'string' ? source : Buffer.from(source).toString()
+            cssFiles.push(fileName)
+          }
+        }
+        if (!cssContents) return html
+        for (const fileName of cssFiles) {
+          delete ctx.bundle[fileName]
+        }
+        let out = html.replace(/\s*<link\s+rel="stylesheet"[^>]+href="[^"]+\.css"[^>]*>/g, '')
+        out = out.replace('</head>', `<style>${cssContents}</style></head>`)
+        return out
+      },
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), imagetools(), preloadCriticalFonts()],
+  plugins: [react(), tailwindcss(), imagetools(), preloadCriticalFonts(), inlineCss()],
   build: {
     rollupOptions: {
       output: {

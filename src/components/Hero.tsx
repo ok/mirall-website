@@ -1,7 +1,7 @@
 import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Download } from '@phosphor-icons/react'
-import heroSrcSet from '../assets/hero-screenshot.webp?w=640;960;1280;1600&format=webp&as=srcset'
+import heroSrcSet from '../assets/hero-screenshot.webp?w=400;640;960;1280;1600&format=webp&as=srcset'
 import heroSrc from '../assets/hero-screenshot.webp?w=960&format=webp'
 
 export default function Hero() {
@@ -40,9 +40,9 @@ export default function Hero() {
             alt="Mirall desktop app showing Shared Spaces with active device connections"
             src={heroSrc}
             srcSet={heroSrcSet}
-            sizes="(max-width: 1024px) 90vw, 45vw"
-            width={1400}
-            height={1039}
+            sizes="(min-width: 1024px) 580px, calc(100vw - 64px)"
+            width={2624}
+            height={2224}
             fetchPriority="high"
             decoding="async"
           />
