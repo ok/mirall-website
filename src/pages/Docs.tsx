@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Seo from '../components/Seo'
 import { breadcrumbSchema } from '../lib/schema'
+import heroScreenshot from '../assets/hero-screenshot.webp?w=960&format=webp'
 
 function Screenshot({ src, alt, width = 1400, height = 1039 }: { src: string; alt: string; width?: number; height?: number }) {
   return (
@@ -87,7 +88,7 @@ export default function Docs() {
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.spaces.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.spaces.description')}</p>
 
-              <Screenshot src="/hero-screenshot.webp" alt={t('docs.spaces.screenshotAlt')} />
+              <Screenshot src={heroScreenshot} alt={t('docs.spaces.screenshotAlt')} />
 
               <h3 className="text-xl font-bold mb-3 mt-10">{t('docs.spaces.creating.title')}</h3>
               <ol className="space-y-3 mb-8">
