@@ -55,8 +55,35 @@ function inlineCss(): Plugin {
   }
 }
 
+function inlineEntryJs(): Plugin {
+  return {
+    name: 'inline-entry-js',
+    apply: 'build',
+    enforce: 'post',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        if (!ctx.bundle) return html
+        const scriptRegex = /<script\s+type="module"\s+[^>]*src="\/(assets\/index-[^"]+\.js)"[^>]*><\/script>/
+        const match = html.match(scriptRegex)
+        if (!match) return html
+        const entryPath = match[1]
+        const chunk = ctx.bundle[entryPath]
+        if (!chunk || chunk.type !== 'chunk') return html
+        // Rewrite relative imports to absolute /assets/ paths since the
+        // inline script resolves modules against the document URL, not /assets/.
+        const code = chunk.code
+          .replace(/(from\s*["'`])\.\/([^"'`]+["'`])/g, '$1/assets/$2')
+          .replace(/(import\s*\(\s*["'`])\.\/([^"'`]+["'`]\s*\))/g, '$1/assets/$2')
+        delete ctx.bundle[entryPath]
+        return html.replace(match[0], `<script type="module">${code}</script>`)
+      },
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), imagetools(), preloadCriticalFonts(), inlineCss()],
+  plugins: [react(), tailwindcss(), imagetools(), preloadCriticalFonts(), inlineCss(), inlineEntryJs()],
   build: {
     rollupOptions: {
       output: {

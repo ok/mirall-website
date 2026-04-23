@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Seo from '../components/Seo'
 import { breadcrumbSchema } from '../lib/schema'
+import supportSrcSet from '../assets/support-screenshot.webp?w=400;640;960;1280;1600&format=webp&as=srcset'
+import supportSrc from '../assets/support-screenshot.webp?w=960&format=webp'
 
 export default function Support() {
   const { t } = useTranslation()
@@ -38,10 +40,12 @@ export default function Support() {
                 className="w-full object-cover"
                 style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
                 alt={t('support.screenshotAlt')}
-                src="/support-screenshot.webp"
-                width={1400}
-                height={1039}
-                loading="lazy"
+                src={supportSrc}
+                srcSet={supportSrcSet}
+                sizes="(min-width: 896px) 832px, calc(100vw - 64px)"
+                width={2624}
+                height={2224}
+                fetchPriority="high"
                 decoding="async"
               />
               <div className="absolute top-[4.5%] right-[9%] w-[14%] h-[8%] rounded-xl animate-pulse pointer-events-none" />
