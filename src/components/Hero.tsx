@@ -23,7 +23,7 @@ export default function Hero() {
             {t('hero.description')}
           </p>
           <p className="text-sm text-on-surface-variant/70 mb-8 -mt-6">
-            {t('hero.betaNotice')}
+            {t('hero.industries')}
           </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/download" className="hero-gradient text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-3 ambient-shadow hover:scale-105 transition-transform">
@@ -31,9 +31,6 @@ export default function Hero() {
               {t('hero.cta')}
             </Link>
           </div>
-          <p className="text-sm text-on-surface-variant/80 mt-8 max-w-xl">
-            {t('hero.industries')}
-          </p>
         </div>
         <div className="relative">
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl"></div>
