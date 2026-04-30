@@ -1,6 +1,6 @@
 {
   "redirects": [
-    { "source": "/download/darwin-arm64", "destination": "https://dl.mirall.app/desktop/latest/darwin-universal/Mirall.dmg", "statusCode": 302 },
+    { "source": "/download/darwin-universal", "destination": "https://dl.mirall.app/desktop/latest/darwin-universal/Mirall.dmg", "statusCode": 302 },
     { "source": "/download/win32-x64", "destination": "https://dl.mirall.app/desktop/latest/win32-x64/signed/Mirall.msix", "statusCode": 302 },
     { "source": "/download/linux-x64", "destination": "https://dl.mirall.app/desktop/latest/linux-x64/Mirall.AppImage", "statusCode": 302 },
     { "source": "/download/linux-arm64", "destination": "https://dl.mirall.app/desktop/latest/linux-arm64/Mirall.AppImage", "statusCode": 302 }
