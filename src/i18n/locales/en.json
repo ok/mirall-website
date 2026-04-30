@@ -111,8 +111,7 @@
     "otherPlatforms": "Other platforms",
     "desktop": "Desktop app",
     "platforms": {
-      "macArm": "macOS (Apple Silicon)",
-      "macIntel": "macOS (Intel)",
+      "mac": "macOS (Universal)",
       "windows": "Windows (x64)",
       "linuxX64": "Linux (x64)",
       "linuxArm": "Linux (ARM64)"
