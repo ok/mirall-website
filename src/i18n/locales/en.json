@@ -105,7 +105,7 @@
   "download": {
     "label": "Download",
     "title": "Download Mirall",
-    "description": "Available for macOS, Windows, and Linux. Pick your platform and start moving data directly between devices in seconds.",
+    "description": "Available for macOS, Windows, and Linux. Pick your platform and start moving data directly between devices in seconds. Once installed, Mirall keeps itself up to date — new versions arrive in the background.",
     "betaNotice": "This is a beta release — we are looking for your feedback.",
     "downloadFor": "Download for {{platform}}",
     "otherPlatforms": "Other platforms",
@@ -148,14 +148,14 @@
   "support": {
     "title": "Support",
     "heading": "Get help from inside the app",
-    "description": "Mirall has built-in support. Click the \"Send Feedback\" button in the top right corner of the app to report issues, request features, or ask questions. Your message goes directly to our team.",
+    "description": "Mirall has built-in support. Click the \"Send Feedback\" button in the top right corner of the app to report issues, request features, or ask questions. Add your email if you'd like a reply, and Mirall attaches version and platform diagnostics so we can debug faster. Your message goes directly to our team.",
     "screenshotAlt": "Mirall app with the Send Feedback button highlighted",
     "steps": {
       "title": "How to reach us",
       "items": [
         "Open Mirall on your desktop",
         "Click the \"Send Feedback\" button in the top right corner",
-        "Describe your issue or question",
+        "Describe your issue or question — add your email if you want a reply",
         "Hit send — we'll get back to you"
       ]
     },
@@ -167,7 +167,7 @@
     "intro": "Mirall is a secure data transfer app for desktop. No cloud, no accounts — files move directly between you and the people you invite. This guide walks you through everything the app can do.",
     "gettingStarted": {
       "title": "Getting started",
-      "description": "The first time you open Mirall, it asks for a display name and an optional avatar. That's your profile — it's how other members will see you inside any space you join or create. You can change both later in Settings.",
+      "description": "The first time you open Mirall, it asks for a display name and an optional avatar. That's your profile — it's how other members will see you inside any space you join or create. The interface picks up your OS language automatically (English, German, French, or Spanish), and you can change everything — name, avatar, language, theme — later in Settings.",
       "screenshotAlt": "Mirall onboarding screen asking for a display name and optional avatar"
     },
     "spaces": {
@@ -248,11 +248,13 @@
     },
     "settings": {
       "title": "Settings",
-      "description": "The gear icon in the top right opens Settings. From here you can manage your profile, switch between light and dark mode, and drill into storage or app info.",
+      "description": "The gear icon in the top right opens Settings. From here you can manage your profile, change theme and language, tune which desktop notifications you get, and drill into storage or app info.",
       "screenshotAlt": "Mirall Settings screen showing profile, appearance, and general options",
       "items": [
         "Profile — update your display name and avatar at any time; changes sync to spaces automatically",
-        "Appearance — toggle between light and dark theme",
+        "Appearance — pick Light, Dark, or System (follows your OS automatically)",
+        "Language — English, German, French, or Spanish; auto-detected on first launch",
+        "Notifications — opt in or out per event (member joins, transfer complete, transfer error, paused/resumed); plus a master toggle, sound, and suppress-when-focused",
         "General — open the Storage or About subpages for more detail"
       ],
       "storage": {
