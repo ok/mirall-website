@@ -85,12 +85,20 @@
         "answer": "When you create a space, Mirall generates an invite code. Share it however you like — chat, email, text. They paste it into the app and they're connected instantly."
       },
       {
+        "question": "What languages does Mirall support?",
+        "answer": "English, German, French, and Spanish. Mirall picks up your OS language on first launch; you can change it any time in Settings → Language."
+      },
+      {
         "question": "Are there file size limits?",
         "answer": "No hard limits. Mirall streams files in chunks, so large files work fine. Transfer speed depends on your network connection and the sender's upload bandwidth."
       },
       {
         "question": "Is Mirall free?",
         "answer": "Mirall is free to use for now, but we plan to charge for it in the future."
+      },
+      {
+        "question": "How do I keep Mirall up to date?",
+        "answer": "You don't have to. Once installed, Mirall updates itself in the background and the new version is live the next time you launch — no reinstalls, no installer downloads."
       },
       {
         "question": "How is Mirall different from Aspera, MASV, or WeTransfer?",
