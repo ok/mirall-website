@@ -211,7 +211,7 @@
       "screenshotAlt": "Mirall Space View showing shared files, drop zone, storage indicator, and members",
       "uploading": {
         "title": "Adding files",
-        "description": "Drag files onto the \"Drop to Mirror\" zone in the sidebar, or click \"Select Files\" to pick them from your computer. Mirall adds them to the space and starts making them available to other members right away. Very large files (up to 1TB) work fine — content is streamed in chunks, so there's no upload step to wait through."
+        "description": "Drag files onto the \"Drop to Share\" zone in the sidebar, or click \"Select Files\" to pick them from your computer. Mirall adds them to the space and starts making them available to other members right away. Very large files (up to 1TB) work fine — content is streamed in chunks, so there's no upload step to wait through."
       },
       "downloading": {
         "title": "Downloading files",
