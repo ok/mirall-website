@@ -86,7 +86,7 @@
       },
       {
         "question": "What languages does Mirall support?",
-        "answer": "English, German, French, and Spanish. Mirall picks up your OS language on first launch; you can change it any time in Settings → Language."
+        "answer": "English, German, French, Spanish, and Italian. Mirall picks up your OS language on first launch; you can change it any time in Settings → Language."
       },
       {
         "question": "Are there file size limits?",
@@ -175,13 +175,13 @@
     "intro": "Mirall is a secure data transfer app for desktop. No cloud, no accounts — files move directly between you and the people you invite. This guide walks you through everything the app can do.",
     "gettingStarted": {
       "title": "Getting started",
-      "description": "The first time you open Mirall, it asks for a display name and an optional avatar. That's your profile — it's how other members will see you inside any space you join or create. The interface picks up your OS language automatically (English, German, French, or Spanish), and you can change everything — name, avatar, language, theme — later in Settings.",
-      "screenshotAlt": "Mirall onboarding screen asking for a display name and optional avatar"
+      "description": "The first time you open Mirall, it asks for a display name and an optional avatar. That's your profile — it's how other members will see you inside any space you join or create. This information is only shared with the peers you connect with, and only with them. The interface picks up your OS language automatically (English, German, French, Spanish, or Italian), and you can change everything — name, avatar, language, theme — later in Settings.",
+      "screenshotAlt": "Mirall onboarding screen with the 'Welcome to Mirall' card asking for a display name and avatar"
     },
     "spaces": {
       "title": "Shared Spaces",
       "description": "Spaces are private groups where people share files with each other. Every space has its own members and its own files, and the list of spaces you belong to lives on the \"Shared Spaces\" home screen. You can filter the list by All Spaces or Favorites, and star any space to pin it to Favorites.",
-      "screenshotAlt": "Mirall Shared Spaces screen with space cards and create/join buttons",
+      "screenshotAlt": "Mirall Shared Spaces home with All Spaces and Favorites tabs and Create Space and Join Space buttons",
       "creating": {
         "title": "Creating a space",
         "steps": [
@@ -208,14 +208,14 @@
     "files": {
       "title": "Sharing files",
       "description": "Inside a space you see every file every member has shared. Nothing downloads automatically — metadata travels between devices so you know what's available, and you decide which files to actually pull onto your device.",
-      "screenshotAlt": "Mirall Space View showing shared files, drop zone, storage indicator, and members",
+      "screenshotAlt": "Mirall space view showing shared files, the Drop to Share zone, the File Storage card, and the Members panel",
       "uploading": {
         "title": "Adding files",
-        "description": "Drag files onto the \"Drop to Share\" zone in the sidebar, or click \"Select Files\" to pick them from your computer. Mirall adds them to the space and starts making them available to other members right away. Very large files (up to 1TB) work fine — content is streamed in chunks, so there's no upload step to wait through."
+        "description": "Drag files onto the \"Drop to Share\" zone in the sidebar, or click \"Select Files\" to pick them from your computer. Mirall adds them to the space and starts making them available to other members right away. Very large files (up to 1TB) work fine — content is streamed in chunks rather than uploaded as a whole. Mirall still needs a moment to chunk the file before sharing can start, so expect a short preparation step for very large files."
       },
       "downloading": {
         "title": "Downloading files",
-        "description": "Click the download button on any file shared by another member. The file transfers directly from their device to yours with live progress, speed, and ETA. If multiple members have the same file, Mirall pulls from whoever is available."
+        "description": "Click the download button on any file shared by another member. The file transfers directly from their device to yours with live progress, speed, and ETA."
       },
       "transfers": {
         "title": "Transfers that resume",
@@ -251,23 +251,39 @@
       "description": "Every space has a Members panel on the right showing everyone else in it. You'll see their name, avatar, and whether they're currently online. When someone is online you can download from them; when everyone offering a given file is offline, that file is marked accordingly until someone comes back.",
       "inviting": {
         "title": "Sending an invite",
-        "description": "Click \"Invite to Space\" at the top of a space to open the invite dialog, then copy the code and send it to whoever you want to add — chat, email, anything works. They paste it into Mirall's Join Space flow and they're in. The same code can be shared with as many people as you like."
+        "description": "Click \"Invite to Space\" at the top of a space to open the invite dialog, then copy the code and send it to whoever you want to add — chat, email, anything works. They paste it into Mirall's Join Space flow and they're in. The same code can be shared with as many people as you like.",
+        "screenshotAlt": "Mirall 'Invite to Space' dialog showing the invite code and a Copy Code button"
       }
     },
     "settings": {
       "title": "Settings",
-      "description": "The gear icon in the top right opens Settings. From here you can manage your profile, change theme and language, tune which desktop notifications you get, and drill into storage or app info.",
-      "screenshotAlt": "Mirall Settings screen showing profile, appearance, and general options",
+      "description": "The gear icon in the top right opens Settings. Profile and Appearance live on the main page; everything else — Language, Notifications, Storage, and About — opens in a dedicated sub-page from the General section.",
+      "screenshotAlt": "Mirall Settings screen showing Profile, Appearance with Theme Mode and Display size, and the General section with Language, Notifications, Storage, and About",
       "items": [
-        "Profile — update your display name and avatar at any time; changes sync to spaces automatically",
-        "Appearance — pick Light, Dark, or System (follows your OS automatically)",
-        "Language — English, German, French, or Spanish; auto-detected on first launch",
-        "Notifications — opt in or out per event (member joins, transfer complete, transfer error, paused/resumed); plus a master toggle, sound, and suppress-when-focused",
-        "General — open the Storage or About subpages for more detail"
+        "Profile — update your display name and avatar at any time; changes propagate to all your spaces",
+        "Appearance → Theme Mode — pick Light, Dark, or System (follows your OS automatically)",
+        "Appearance → Display size — choose Compact, Cozy, Default, or Spacious; or use Cmd/Ctrl +, −, and 0 to step through any zoom. Your choice persists across restarts",
+        "General → Language — English, German, French, Spanish, or Italian; auto-detected from your OS on first launch",
+        "General → Notifications — opens the Notifications sub-page (see below)",
+        "General → Storage — opens the Storage sub-page (see below)",
+        "General → About — version info, documentation and support links, plus What's new"
       ],
+      "notifications": {
+        "title": "Notifications",
+        "description": "Mirall surfaces incoming files and space activity through your operating system's notification center. Open Settings → Notifications to fine-tune what shows up. The General toggles cover the master switch, whether the system notification sound plays, and whether Mirall stays quiet while its window is in front. Per-event toggles let you opt in or out of: someone comes online, someone goes offline, download finished, download failed, download paused (sender went offline), and download resumed."
+      },
+      "languages": {
+        "title": "Languages",
+        "description": "Mirall ships in five languages — English, German, French, Spanish, and Italian. Your OS locale is detected on first launch, and you can switch any time under Settings → Language. Your choice persists across restarts."
+      },
       "storage": {
         "title": "Storage",
-        "description": "The Storage page shows how much disk Mirall is using on this device and breaks it down per space. For each space you see the cached content vs. metadata split. Only the cache is counted — files you've already saved to your Downloads folder aren't included, and leaving a space automatically clears its cache."
+        "description": "The Storage sub-page shows total disk usage on this device with the path to your storage folder (with a one-click copy button). Each space you've joined gets a row breaking down its cached content vs. metadata, plus its share of the total. An 'Other' row surfaces index, cache overhead, and unreferenced data. Files you've already saved to your Downloads folder aren't included, and leaving a space automatically clears its cache. Per-space figures are flagged as estimates.",
+        "screenshotAlt": "Mirall Storage settings showing Total Storage, the storage path, and per-space Cache, Metadata, and percent-of-total figures"
+      },
+      "whatsNew": {
+        "title": "What's new",
+        "description": "After an update, Mirall shows you what changed since the version you were last running. You can also open the full release history any time from Settings → About → What's new."
       },
       "about": {
         "title": "About",
