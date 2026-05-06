@@ -6,7 +6,7 @@ import Seo from '../components/Seo'
 import { breadcrumbSchema } from '../lib/schema'
 import heroScreenshot from '../assets/hero-screenshot.webp?w=960&format=webp'
 
-function Screenshot({ src, alt, width = 1400, height = 1039 }: { src: string; alt: string; width?: number; height?: number }) {
+function Screenshot({ src, alt, width = 1600, height = 1356 }: { src: string; alt: string; width?: number; height?: number }) {
   return (
     <div className="my-10">
       <img
@@ -81,14 +81,14 @@ export default function Docs() {
             <Section id="gettingStarted">
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.gettingStarted.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed">{t('docs.gettingStarted.description')}</p>
-              <Screenshot src="/docs-getting-started.webp" alt={t('docs.gettingStarted.screenshotAlt')} />
+              <Screenshot src="/docs-getting-started.webp" alt={t('docs.gettingStarted.screenshotAlt')} width={1600} height={1356} />
             </Section>
 
             <Section id="spaces">
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.spaces.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.spaces.description')}</p>
 
-              <Screenshot src={heroScreenshot} alt={t('docs.spaces.screenshotAlt')} />
+              <Screenshot src={heroScreenshot} alt={t('docs.spaces.screenshotAlt')} width={1600} height={1356} />
 
               <h3 className="text-xl font-bold mb-3 mt-10">{t('docs.spaces.creating.title')}</h3>
               <ol className="space-y-3 mb-8">
@@ -124,7 +124,7 @@ export default function Docs() {
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.files.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.files.description')}</p>
 
-              <Screenshot src="/docs-space-view.webp" alt={t('docs.files.screenshotAlt')} />
+              <Screenshot src="/docs-space-view.webp" alt={t('docs.files.screenshotAlt')} width={1600} height={1356} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.files.uploading.title')}</h3>
@@ -171,7 +171,7 @@ export default function Docs() {
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.members.inviting.description')}</p>
               </div>
 
-              <Screenshot src="/docs-invite.webp" alt={t('docs.members.inviting.title')} />
+              <Screenshot src="/docs-invite.webp" alt={t('docs.members.inviting.screenshotAlt')} width={1600} height={1356} />
             </Section>
 
             <Section id="settings">
@@ -186,11 +186,28 @@ export default function Docs() {
                 ))}
               </ul>
 
-              <Screenshot src="/docs-settings.webp" alt={t('docs.settings.screenshotAlt')} />
+              <Screenshot src="/docs-settings.webp" alt={t('docs.settings.screenshotAlt')} width={1600} height={1564} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.notifications.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.notifications.description')}</p>
+              </div>
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8">
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.languages.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.languages.description')}</p>
+              </div>
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.settings.storage.title')}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.storage.description')}</p>
+              </div>
+
+              <Screenshot src="/docs-storage.webp" alt={t('docs.settings.storage.screenshotAlt')} width={1600} height={1564} />
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.whatsNew.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.whatsNew.description')}</p>
               </div>
 
               <div className="bg-surface-container-low rounded-xl p-8">
