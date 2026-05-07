@@ -25,7 +25,7 @@ export default function Hero() {
           <p className="text-sm text-on-surface-variant/70 mb-8 -mt-6">
             {t('hero.industries')}
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4">
             <Link to="/download" className="hero-gradient text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-3 ambient-shadow hover:scale-105 transition-transform">
               <Download size={24} weight="regular" />
               {t('hero.cta')}

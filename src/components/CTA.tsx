@@ -6,8 +6,8 @@ export default function CTA() {
 
   return (
     <section className="py-32">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="hero-gradient rounded-xl p-16 text-center text-on-primary ambient-shadow relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="hero-gradient rounded-xl p-8 sm:p-12 md:p-16 text-center text-on-primary ambient-shadow relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
               <path d="M0 100 C 20 0 50 0 100 100 Z" fill="currentColor" />

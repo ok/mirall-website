@@ -203,7 +203,7 @@ export default function Docs() {
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.storage.description')}</p>
               </div>
 
-              <Screenshot src="/docs-storage.webp" alt={t('docs.settings.storage.screenshotAlt')} width={1600} height={1564} />
+              <Screenshot src="/docs-storage.webp" alt={t('docs.settings.storage.screenshotAlt')} width={1600} height={1565} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
                 <h3 className="text-xl font-bold mb-3">{t('docs.settings.whatsNew.title')}</h3>

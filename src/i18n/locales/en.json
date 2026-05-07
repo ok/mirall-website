@@ -219,7 +219,7 @@
       },
       "transfers": {
         "title": "Transfers that resume",
-        "description": "If your network drops or the member you're downloading from goes offline, the transfer pauses automatically. It picks up from where it left off as soon as another member with that file comes back — you don't need to restart anything. A file that's half-downloaded but no longer wanted can be discarded with one click."
+        "description": "If your network drops or the member you're downloading from goes offline, the transfer pauses automatically. It picks up from where it left off as soon as another member with that file comes back — you don't need to restart anything. In-progress downloads are written to a hidden .partial file and renamed to the final name once the transfer is complete, so only fully-downloaded files appear under their real name in your Downloads folder. A file that's half-downloaded but no longer wanted can be discarded with one click."
       },
       "statuses": {
         "title": "File statuses",
@@ -231,7 +231,8 @@
           { "status": "Adding", "meaning": "Mirall is finishing preparing a file you just added so other members can fetch it." },
           { "status": "Interrupted", "meaning": "A partial download paused due to a network issue. Click play to resume." },
           { "status": "Owner offline", "meaning": "Every member who has this file is currently offline. It will become available when one reconnects." },
-          { "status": "Failed", "meaning": "A transfer errored out. Click retry to try again, or dismiss it." }
+          { "status": "Failed", "meaning": "A transfer errored out. Click retry to try again, or dismiss it." },
+          { "status": "No longer shared", "meaning": "The owner removed this file from their drive while a download was in progress. Mirall frees the partial and surfaces what happened." }
         ]
       },
       "actions": {
@@ -270,7 +271,7 @@
       ],
       "notifications": {
         "title": "Notifications",
-        "description": "Mirall surfaces incoming files and space activity through your operating system's notification center. Open Settings → Notifications to fine-tune what shows up. The General toggles cover the master switch, whether the system notification sound plays, and whether Mirall stays quiet while its window is in front. Per-event toggles let you opt in or out of: someone comes online, someone goes offline, download finished, download failed, download paused (sender went offline), and download resumed."
+        "description": "Mirall surfaces incoming files and space activity through your operating system's notification center. Open Settings → Notifications to fine-tune what shows up. The General toggles cover the master switch, whether the system notification sound plays, and whether Mirall stays quiet while its window is in front. Per-event toggles let you opt in or out of: someone comes online, someone goes offline, download finished, download failed, download interrupted because the owner removed the file, download paused (sender went offline), and download resumed."
       },
       "languages": {
         "title": "Languages",
@@ -278,8 +279,8 @@
       },
       "storage": {
         "title": "Storage",
-        "description": "The Storage sub-page shows total disk usage on this device with the path to your storage folder (with a one-click copy button). Each space you've joined gets a row breaking down its cached content vs. metadata, plus its share of the total. An 'Other' row surfaces index, cache overhead, and unreferenced data. Files you've already saved to your Downloads folder aren't included, and leaving a space automatically clears its cache. Per-space figures are flagged as estimates.",
-        "screenshotAlt": "Mirall Storage settings showing Total Storage, the storage path, and per-space Cache, Metadata, and percent-of-total figures"
+        "description": "The Storage sub-page is where you control where downloads land and what Mirall keeps cached on this device. The Download folder entry at the top lets you pick any folder via your OS picker — every space saves there, and the choice persists across restarts. Total Storage shows total disk usage with a one-click copy button on the storage path. Each space you've joined gets a row breaking down its cached content vs. metadata and its share of the total; peer-downloaded files count toward the space they belong to. The More menu on a space row drops locally-cached content from peers in just that space without leaving it — your own published files stay, and you can re-download anything from peers any time they're online. Files saved to your Downloads folder aren't included, and leaving a space automatically clears its cache. Per-space figures are flagged as estimates.",
+        "screenshotAlt": "Mirall Storage settings with the Download folder selector at the top, Total Storage of 444 MB with copyable storage path, and per-space Cache, Metadata, and percent-of-total figures with a More menu on each row"
       },
       "whatsNew": {
         "title": "What's new",
