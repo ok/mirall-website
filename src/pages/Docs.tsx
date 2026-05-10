@@ -4,9 +4,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Seo from '../components/Seo'
 import { breadcrumbSchema } from '../lib/schema'
-import heroScreenshot from '../assets/hero-screenshot.webp?w=960&format=webp'
 
-function Screenshot({ src, alt, width = 1600, height = 1356 }: { src: string; alt: string; width?: number; height?: number }) {
+function Screenshot({ src, alt, width = 1600, height = 1357 }: { src: string; alt: string; width?: number; height?: number }) {
   return (
     <div className="my-10">
       <img
@@ -39,6 +38,7 @@ export default function Docs() {
   const fileStatuses = t('docs.files.statuses.items', { returnObjects: true }) as Array<{ status: string; meaning: string }>
   const fileActions = t('docs.files.actions.items', { returnObjects: true }) as string[]
   const settingsItems = t('docs.settings.items', { returnObjects: true }) as string[]
+  const shortcuts = t('docs.keyboardShortcuts.items', { returnObjects: true }) as Array<{ keys: string; action: string }>
 
   return (
     <>
@@ -68,7 +68,7 @@ export default function Docs() {
             <nav className="bg-surface-container-low rounded-xl p-8 mb-16">
               <h2 className="text-sm font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-4">On this page</h2>
               <ul className="space-y-2">
-                {['gettingStarted', 'spaces', 'files', 'members', 'settings', 'privacy', 'leaving'].map((key) => (
+                {['gettingStarted', 'spaces', 'files', 'members', 'settings', 'keyboardShortcuts', 'privacy', 'leaving'].map((key) => (
                   <li key={key}>
                     <a href={`#${key}`} className="text-primary hover:text-emerald-500 transition-colors font-medium">
                       {t(`docs.${key}.title`)}
@@ -81,14 +81,14 @@ export default function Docs() {
             <Section id="gettingStarted">
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.gettingStarted.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed">{t('docs.gettingStarted.description')}</p>
-              <Screenshot src="/docs-getting-started.webp" alt={t('docs.gettingStarted.screenshotAlt')} width={1600} height={1356} />
+              <Screenshot src="/docs-onboarding.webp" alt={t('docs.gettingStarted.screenshotAlt')} width={1600} height={1357} />
             </Section>
 
             <Section id="spaces">
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.spaces.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.spaces.description')}</p>
 
-              <Screenshot src={heroScreenshot} alt={t('docs.spaces.screenshotAlt')} width={1600} height={1356} />
+              <Screenshot src="/docs-space-list.webp" alt={t('docs.spaces.screenshotAlt')} width={1600} height={1357} />
 
               <h3 className="text-xl font-bold mb-3 mt-10">{t('docs.spaces.creating.title')}</h3>
               <ol className="space-y-3 mb-8">
@@ -124,7 +124,7 @@ export default function Docs() {
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.files.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.files.description')}</p>
 
-              <Screenshot src="/docs-space-view.webp" alt={t('docs.files.screenshotAlt')} width={1600} height={1356} />
+              <Screenshot src="/docs-space-view.webp" alt={t('docs.files.screenshotAlt')} width={1600} height={1357} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.files.uploading.title')}</h3>
@@ -171,7 +171,7 @@ export default function Docs() {
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.members.inviting.description')}</p>
               </div>
 
-              <Screenshot src="/docs-invite.webp" alt={t('docs.members.inviting.screenshotAlt')} width={1600} height={1356} />
+              <Screenshot src="/docs-invite-to-space.webp" alt={t('docs.members.inviting.screenshotAlt')} width={1600} height={1357} />
             </Section>
 
             <Section id="settings">
@@ -186,7 +186,7 @@ export default function Docs() {
                 ))}
               </ul>
 
-              <Screenshot src="/docs-settings.webp" alt={t('docs.settings.screenshotAlt')} width={1600} height={1564} />
+              <Screenshot src="/docs-settings.webp" alt={t('docs.settings.screenshotAlt')} width={1600} height={1565} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
                 <h3 className="text-xl font-bold mb-3">{t('docs.settings.notifications.title')}</h3>
@@ -199,11 +199,16 @@ export default function Docs() {
               </div>
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.backgroundMode.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.backgroundMode.description')}</p>
+              </div>
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.settings.storage.title')}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.storage.description')}</p>
               </div>
 
-              <Screenshot src="/docs-storage.webp" alt={t('docs.settings.storage.screenshotAlt')} width={1600} height={1565} />
+              <Screenshot src="/docs-settings-storage.webp" alt={t('docs.settings.storage.screenshotAlt')} width={1600} height={1565} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
                 <h3 className="text-xl font-bold mb-3">{t('docs.settings.whatsNew.title')}</h3>
@@ -213,6 +218,19 @@ export default function Docs() {
               <div className="bg-surface-container-low rounded-xl p-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.settings.about.title')}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.about.description')}</p>
+              </div>
+            </Section>
+
+            <Section id="keyboardShortcuts">
+              <h2 className="text-3xl font-black font-headline mb-4">{t('docs.keyboardShortcuts.title')}</h2>
+              <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.keyboardShortcuts.description')}</p>
+              <div className="space-y-3">
+                {shortcuts.map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <span className="font-mono text-sm font-bold text-on-surface bg-surface-container-low rounded px-2 py-1 min-w-[140px] shrink-0">{item.keys}</span>
+                    <span className="text-on-surface-variant pt-1">{item.action}</span>
+                  </div>
+                ))}
               </div>
             </Section>
 

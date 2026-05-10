@@ -181,7 +181,7 @@
     "spaces": {
       "title": "Shared Spaces",
       "description": "Spaces are private groups where people share files with each other. Every space has its own members and its own files, and the list of spaces you belong to lives on the \"Shared Spaces\" home screen. You can filter the list by All Spaces or Favorites, and star any space to pin it to Favorites.",
-      "screenshotAlt": "Mirall Shared Spaces home with All Spaces and Favorites tabs and Create Space and Join Space buttons",
+      "screenshotAlt": "Mirall Shared Spaces home with All Spaces and Favorites tabs, Create Space and Join Space buttons, and three example spaces",
       "creating": {
         "title": "Creating a space",
         "steps": [
@@ -208,7 +208,7 @@
     "files": {
       "title": "Sharing files",
       "description": "Inside a space you see every file every member has shared. Nothing downloads automatically — metadata travels between devices so you know what's available, and you decide which files to actually pull onto your device.",
-      "screenshotAlt": "Mirall space view showing shared files, the Drop to Share zone, the File Storage card, and the Members panel",
+      "screenshotAlt": "Mirall space view for 'Project Fairlight' showing files Shared by You and Available, the Drop to Share zone, the File Storage card, and the Members panel",
       "uploading": {
         "title": "Adding files",
         "description": "Drag files onto the \"Drop to Share\" zone in the sidebar, or click \"Select Files\" to pick them from your computer. Mirall adds them to the space and starts making them available to other members right away. Very large files (up to 1TB) work fine — content is streamed in chunks rather than uploaded as a whole. Mirall still needs a moment to chunk the file before sharing can start, so expect a short preparation step for very large files."
@@ -252,22 +252,23 @@
       "description": "Every space has a Members panel on the right showing everyone else in it. You'll see their name, avatar, and whether they're currently online. When someone is online you can download from them; when everyone offering a given file is offline, that file is marked accordingly until someone comes back.",
       "inviting": {
         "title": "Sending an invite",
-        "description": "Click \"Invite to Space\" at the top of a space to open the invite dialog, then copy the code and send it to whoever you want to add — chat, email, anything works. They paste it into Mirall's Join Space flow and they're in. The same code can be shared with as many people as you like.",
-        "screenshotAlt": "Mirall 'Invite to Space' dialog showing the invite code and a Copy Code button"
+        "description": "Click \"Invite\" at the top of a space to open the invite dialog, then copy the code and send it to whoever you want to add — chat, email, anything works. They paste it into Mirall's Join Space flow and they're in. The same code can be shared with as many people as you like. Click Done when you're finished.",
+        "screenshotAlt": "Mirall 'Invite to Space' dialog showing the invite code, a Copy Code button, and a Done button"
       }
     },
     "settings": {
       "title": "Settings",
-      "description": "The gear icon in the top right opens Settings. Profile and Appearance live on the main page; everything else — Language, Notifications, Storage, and About — opens in a dedicated sub-page from the General section.",
-      "screenshotAlt": "Mirall Settings screen showing Profile, Appearance with Theme Mode and Display size, and the General section with Language, Notifications, Storage, and About",
+      "description": "The gear icon in the top right opens Settings. Your profile lives on the main page; everything else opens in a dedicated sub-page — General, Appearance, Notifications, Storage, and About.",
+      "screenshotAlt": "Mirall Settings screen showing Profile and the General, Appearance, Notifications, Storage, and About sub-page entries",
       "items": [
         "Profile — update your display name and avatar at any time; changes propagate to all your spaces",
+        "General — Background mode (menu bar / system tray) and Launch at login",
         "Appearance → Theme Mode — pick Light, Dark, or System (follows your OS automatically)",
         "Appearance → Display size — choose Compact, Cozy, Default, or Spacious; or use Cmd/Ctrl +, −, and 0 to step through any zoom. Your choice persists across restarts",
-        "General → Language — English, German, French, Spanish, or Italian; auto-detected from your OS on first launch",
-        "General → Notifications — opens the Notifications sub-page (see below)",
-        "General → Storage — opens the Storage sub-page (see below)",
-        "General → About — version info, documentation and support links, plus What's new"
+        "Appearance → Language — English, German, French, Spanish, or Italian; auto-detected from your OS on first launch",
+        "Notifications — fine-tune which events trigger a desktop alert",
+        "Storage — pick the download folder and review per-space cache usage",
+        "About — version info, documentation and support links, plus What's new"
       ],
       "notifications": {
         "title": "Notifications",
@@ -275,12 +276,16 @@
       },
       "languages": {
         "title": "Languages",
-        "description": "Mirall ships in five languages — English, German, French, Spanish, and Italian. Your OS locale is detected on first launch, and you can switch any time under Settings → Language. Your choice persists across restarts."
+        "description": "Mirall ships in five languages — English, German, French, Spanish, and Italian. Your OS locale is detected on first launch, and you can switch any time under Settings → Appearance → Language. Your choice persists across restarts."
+      },
+      "backgroundMode": {
+        "title": "Background mode",
+        "description": "Mirall lives in your menu bar (macOS) or system tray (Windows and Linux). Closing the window keeps the app running so peers stay connected, transfers keep going, and notifications still arrive — click the tray icon to bring the window back. Settings → General lets you opt out of background mode, or turn on Launch at login so Mirall starts quietly with your computer."
       },
       "storage": {
         "title": "Storage",
         "description": "The Storage sub-page is where you control where downloads land and what Mirall keeps cached on this device. The Download folder entry at the top lets you pick any folder via your OS picker — every space saves there, and the choice persists across restarts. Total Storage shows total disk usage with a one-click copy button on the storage path. Each space you've joined gets a row breaking down its cached content vs. metadata and its share of the total; peer-downloaded files count toward the space they belong to. The More menu on a space row drops locally-cached content from peers in just that space without leaving it — your own published files stay, and you can re-download anything from peers any time they're online. Files saved to your Downloads folder aren't included, and leaving a space automatically clears its cache. Per-space figures are flagged as estimates.",
-        "screenshotAlt": "Mirall Storage settings with the Download folder selector at the top, Total Storage of 444 MB with copyable storage path, and per-space Cache, Metadata, and percent-of-total figures with a More menu on each row"
+        "screenshotAlt": "Mirall Storage settings with the Download folder picker at the top showing path and Change button, Total Storage of 444 MB with copyable storage path, and per-space Cache, Metadata, and percent-of-total figures"
       },
       "whatsNew": {
         "title": "What's new",
@@ -290,6 +295,19 @@
         "title": "About",
         "description": "The About page shows the installed version and links to documentation and support so you can always find your way back here."
       }
+    },
+    "keyboardShortcuts": {
+      "title": "Keyboard shortcuts",
+      "description": "Press ⌘K (Ctrl-K on Windows and Linux) for a search-style command palette that jumps to any space or runs any action. Press ⌘/ (Ctrl-/) for the full shortcut list.",
+      "items": [
+        { "keys": "⌘K / Ctrl-K", "action": "Open the command palette" },
+        { "keys": "⌘/ / Ctrl-/", "action": "Show all keyboard shortcuts" },
+        { "keys": "⌘N / Ctrl-N", "action": "Create a new space" },
+        { "keys": "⌘J / Ctrl-J", "action": "Join a space with an invite code" },
+        { "keys": "⌘U / Ctrl-U", "action": "Add files to the current space" },
+        { "keys": "⌘, / Ctrl-,", "action": "Open Settings" },
+        { "keys": "⌘Enter / Ctrl-Enter", "action": "Confirm the current dialog" }
+      ]
     },
     "privacy": {
       "title": "Privacy and security",
