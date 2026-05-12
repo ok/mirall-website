@@ -68,7 +68,7 @@ export default function Docs() {
             <nav className="bg-surface-container-low rounded-xl p-8 mb-16">
               <h2 className="text-sm font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-4">On this page</h2>
               <ul className="space-y-2">
-                {['gettingStarted', 'spaces', 'files', 'members', 'settings', 'keyboardShortcuts', 'privacy', 'leaving'].map((key) => (
+                {['gettingStarted', 'account', 'spaces', 'files', 'members', 'settings', 'keyboardShortcuts', 'privacy', 'leaving'].map((key) => (
                   <li key={key}>
                     <a href={`#${key}`} className="text-primary hover:text-emerald-500 transition-colors font-medium">
                       {t(`docs.${key}.title`)}
@@ -84,11 +84,28 @@ export default function Docs() {
               <Screenshot src="/docs-onboarding.webp" alt={t('docs.gettingStarted.screenshotAlt')} width={1600} height={1357} />
             </Section>
 
+            <Section id="account">
+              <h2 className="text-3xl font-black font-headline mb-4">{t('docs.account.title')}</h2>
+              <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.account.description')}</p>
+
+              <Screenshot src="/docs-account.webp" alt={t('docs.account.screenshotAlt')} width={1600} height={1565} />
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
+                <h3 className="text-xl font-bold mb-3">{t('docs.account.connection.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.account.connection.description')}</p>
+              </div>
+
+              <div className="bg-surface-container-low rounded-xl p-8">
+                <h3 className="text-xl font-bold mb-3">{t('docs.account.network.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.account.network.description')}</p>
+              </div>
+            </Section>
+
             <Section id="spaces">
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.spaces.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.spaces.description')}</p>
 
-              <Screenshot src="/docs-space-list.webp" alt={t('docs.spaces.screenshotAlt')} width={1600} height={1357} />
+              <Screenshot src="/docs-space-list.webp" alt={t('docs.spaces.screenshotAlt')} width={1600} height={1268} />
 
               <h3 className="text-xl font-bold mb-3 mt-10">{t('docs.spaces.creating.title')}</h3>
               <ol className="space-y-3 mb-8">
@@ -124,7 +141,7 @@ export default function Docs() {
               <h2 className="text-3xl font-black font-headline mb-4">{t('docs.files.title')}</h2>
               <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{t('docs.files.description')}</p>
 
-              <Screenshot src="/docs-space-view.webp" alt={t('docs.files.screenshotAlt')} width={1600} height={1357} />
+              <Screenshot src="/docs-space-view.webp" alt={t('docs.files.screenshotAlt')} width={1600} height={1268} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-bold mb-3">{t('docs.files.uploading.title')}</h3>
@@ -171,7 +188,7 @@ export default function Docs() {
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.members.inviting.description')}</p>
               </div>
 
-              <Screenshot src="/docs-invite-to-space.webp" alt={t('docs.members.inviting.screenshotAlt')} width={1600} height={1357} />
+              <Screenshot src="/docs-invite-to-space.webp" alt={t('docs.members.inviting.screenshotAlt')} width={1600} height={1565} />
             </Section>
 
             <Section id="settings">
@@ -189,8 +206,8 @@ export default function Docs() {
               <Screenshot src="/docs-settings.webp" alt={t('docs.settings.screenshotAlt')} width={1600} height={1565} />
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
-                <h3 className="text-xl font-bold mb-3">{t('docs.settings.notifications.title')}</h3>
-                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.notifications.description')}</p>
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.backgroundMode.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.backgroundMode.description')}</p>
               </div>
 
               <div className="bg-surface-container-low rounded-xl p-8 mb-8">
@@ -198,12 +215,16 @@ export default function Docs() {
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.languages.description')}</p>
               </div>
 
-              <div className="bg-surface-container-low rounded-xl p-8 mb-8">
-                <h3 className="text-xl font-bold mb-3">{t('docs.settings.backgroundMode.title')}</h3>
-                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.backgroundMode.description')}</p>
+              <Screenshot src="/docs-settings-appearance.webp" alt={t('docs.settings.appearanceScreenshotAlt')} width={1600} height={1268} />
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
+                <h3 className="text-xl font-bold mb-3">{t('docs.settings.notifications.title')}</h3>
+                <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.notifications.description')}</p>
               </div>
 
-              <div className="bg-surface-container-low rounded-xl p-8 mb-8">
+              <Screenshot src="/docs-settings-notifications.webp" alt={t('docs.settings.notifications.screenshotAlt')} width={1600} height={1716} />
+
+              <div className="bg-surface-container-low rounded-xl p-8 mb-8 mt-10">
                 <h3 className="text-xl font-bold mb-3">{t('docs.settings.storage.title')}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{t('docs.settings.storage.description')}</p>
               </div>

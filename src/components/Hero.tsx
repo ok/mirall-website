@@ -37,12 +37,12 @@ export default function Hero() {
           <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl"></div>
           <img
             className="w-full h-auto object-cover relative" style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
-            alt="Mirall desktop app — Shared Spaces view with large files transferring directly between devices for post-production, architecture, and legal workflows"
+            alt="Mirall desktop app — Shared Spaces home with All Spaces and Favorites tabs, three example spaces with member avatars, and Create / Join Space actions, for post-production, architecture, and legal workflows"
             src={heroSrc}
             srcSet={heroSrcSet}
             sizes="(min-width: 1024px) 580px, calc(100vw - 64px)"
             width={2624}
-            height={2224}
+            height={2078}
             fetchPriority="high"
             decoding="async"
           />
