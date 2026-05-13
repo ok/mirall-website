@@ -9,6 +9,7 @@ interface SeoProps {
   ogImage?: string
   ogType?: 'website' | 'article'
   jsonLd?: JsonLd | JsonLd[]
+  noindex?: boolean
 }
 
 export default function Seo({
@@ -18,6 +19,7 @@ export default function Seo({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
   jsonLd,
+  noindex = false,
 }: SeoProps) {
   const canonical = `${SITE_URL}${path}`
   const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
@@ -26,6 +28,7 @@ export default function Seo({
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={canonical} />
 
       <meta property="og:site_name" content={SITE_NAME} />

@@ -125,6 +125,12 @@
       "linuxArm": "Linux (ARM64)"
     }
   },
+  "preview": {
+    "label": "Preview",
+    "title": "Mirall preview build",
+    "description": "Internal staging channel for testing the next Mirall release before it ships to production. Builds here are signed and installable, but may contain unfinished features or bugs.",
+    "warning": "Preview builds are pre-release and may be unstable. Don't install on a machine you depend on."
+  },
   "cta": {
     "title": "Your files. Your devices. No middleman.",
     "description": "Join the movement that share files the way it should be — direct, encrypted, and free from cloud lock-in.",

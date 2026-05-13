@@ -5,6 +5,7 @@ import Home from './pages/Home'
 const Docs = lazy(() => import('./pages/Docs'))
 const Support = lazy(() => import('./pages/Support'))
 const Download = lazy(() => import('./pages/Download'))
+const Preview = lazy(() => import('./pages/Preview'))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/docs" element={<Docs />} />
           <Route path="/support" element={<Support />} />
           <Route path="/download" element={<Download />} />
+          <Route path="/preview" element={<Preview />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
