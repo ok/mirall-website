@@ -3,7 +3,11 @@
     { "source": "/download/darwin-universal", "destination": "https://dl.mirall.app/desktop/latest/darwin-universal/Mirall.dmg", "statusCode": 302 },
     { "source": "/download/win32-x64", "destination": "https://dl.mirall.app/desktop/latest/win32-x64/signed/Mirall.msix", "statusCode": 302 },
     { "source": "/download/linux-x64", "destination": "https://dl.mirall.app/desktop/latest/linux-x64/Mirall.AppImage", "statusCode": 302 },
-    { "source": "/download/linux-arm64", "destination": "https://dl.mirall.app/desktop/latest/linux-arm64/Mirall.AppImage", "statusCode": 302 }
+    { "source": "/download/linux-arm64", "destination": "https://dl.mirall.app/desktop/latest/linux-arm64/Mirall.AppImage", "statusCode": 302 },
+    { "source": "/preview/darwin-universal", "destination": "https://dl.mirall.app/desktop/channels/staging/darwin-universal/Mirall.dmg", "statusCode": 302 },
+    { "source": "/preview/win32-x64", "destination": "https://dl.mirall.app/desktop/channels/staging/win32-x64/signed/Mirall.msix", "statusCode": 302 },
+    { "source": "/preview/linux-x64", "destination": "https://dl.mirall.app/desktop/channels/staging/linux-x64/Mirall.AppImage", "statusCode": 302 },
+    { "source": "/preview/linux-arm64", "destination": "https://dl.mirall.app/desktop/channels/staging/linux-arm64/Mirall.AppImage", "statusCode": 302 }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
