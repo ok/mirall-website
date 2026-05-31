@@ -37,6 +37,7 @@ export default function Footer() {
           <ul className="space-y-3 font-body text-sm">
             <li><HashLink className="text-slate-500 hover:text-emerald-600 transition-all" to="/#features">{t('footer.product.features')}</HashLink></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/download">{t('footer.product.download')}</Link></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/changelog">{t('footer.product.changelog')}</Link></li>
           </ul>
         </div>
         <div>
