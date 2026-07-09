@@ -1,0 +1,7 @@
+# Security contact for mirall.app
+# https://www.rfc-editor.org/rfc/rfc9116
+
+Contact: mailto:security@mirall.app
+Expires: 2027-07-01T00:00:00.000Z
+Preferred-Languages: en, de
+Canonical: https://mirall.app/.well-known/security.txt
