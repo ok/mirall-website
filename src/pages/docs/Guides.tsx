@@ -32,7 +32,7 @@ export default function Guides() {
       seo={
         <Seo
           title="Mirall How-to Guides — Spaces, Files & Folders"
-          description="Step-by-step recipes for everyday tasks in Mirall: create and join spaces, share files and folders, mirror a folder to disk, reclaim disk space, and more."
+          description="Step-by-step recipes for everyday tasks in Mirall: create and join spaces, approve who joins, share files and folders, mirror a folder to disk, and more."
           path="/docs/guides"
           jsonLd={[
             breadcrumbSchema([
