@@ -248,7 +248,7 @@
               { "title": "Share a file", "text": "Drag a file onto the **Drop to Share** zone in the sidebar, or use **Share…** to pick one. Mirall offers it to the space straight from the original on your disk — it never makes a second copy." },
               { "title": "Download on the other side", "text": "On the other person's Mirall, the file appears with a download button. They click it and the file transfers directly from your device to theirs, with live progress, speed, and time remaining. When it lands, a green shield confirms the contents match your original exactly. No server ever touched the file." }
             ] },
-            { "type": "image", "src": "/docs-onboarding.webp", "alt": "Mirall's welcome screen asking for a display name and an optional avatar before first use", "width": 1344, "height": 1139 },
+            { "type": "image", "src": "/docs-onboarding.webp", "alt": "Mirall's welcome screen asking for a display name and an optional avatar before first use", "width": 1344, "height": 1173 },
             { "type": "image", "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1173 },
             { "type": "image", "src": "/docs-join-approval.webp", "alt": "A Mirall space showing a “wants to join” banner with Approve and Deny buttons above the shared files", "width": 1344, "height": 1173 },
             { "type": "image", "src": "/docs-space-view.webp", "alt": "A Mirall space with shared files, the Drop to Share zone, and the Members panel in the sidebar", "width": 1344, "height": 1173 },
@@ -887,14 +887,6 @@
           "blocks": [
             { "type": "p", "text": "Mirall checks for new versions on its own and downloads them in the background while you keep working — no installer downloads, no reinstalls. Updates never restart the app on their own." },
             { "type": "p", "text": "A staged update is applied the next time you quit and reopen Mirall, so restarts happen on your schedule. You can see a pending version on the Settings → About screen before you restart." }
-          ]
-        },
-        {
-          "id": "comparison-compliance",
-          "title": "How Mirall compares & compliance",
-          "blocks": [
-            { "type": "p", "text": "Services like Aspera, MASV, or WeTransfer route or store your files on their own infrastructure — which means per-GB fees, transfer ceilings, and a cloud vendor in the middle of your data. Mirall transfers files directly between devices with no servers in between, so there are no per-GB costs, no transfer caps, and nothing to breach." },
-            { "type": "p", "text": "Because Mirall never stores your files on a third-party server, there is no cross-border data transfer or cloud-processor relationship to reason about — the jurisdictional question doesn't arise. Many regulated teams in healthcare, legal, and post-production use this as an architectural answer to GDPR, Schrems II, and HIPAA concerns." }
           ]
         }
       ]
