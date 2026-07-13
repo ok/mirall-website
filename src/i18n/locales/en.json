@@ -70,7 +70,7 @@
     "items": [
       {
         "question": "Where are my files stored?",
-        "answer": "On your device, and only your device — right where they already are. Mirall shares your files in place and never keeps a second copy of them, so sharing doesn't cost you extra disk space. Other members download directly from you; there is no cloud server and no intermediary storage. Once someone downloads a file, they have their own local copy."
+        "answer": "On your device, and only your device — right where they already are. Sharing a file leaves it where it is on your disk; other members download it directly from you, and there is no cloud server and no intermediary storage in between. Once someone downloads a file, they have their own local copy."
       },
       {
         "question": "Do both of us need to be online at the same time?",
@@ -82,11 +82,11 @@
       },
       {
         "question": "Is it really encrypted?",
-        "answer": "Yes. Every connection between devices is end-to-end encrypted, so no one — not even us — can see your files or metadata in transit, and there's no central server that could be breached. On your own device, Mirall's records are encrypted at rest and your identity key is wrapped using your operating system's keychain, so copying Mirall's data folder gives up neither."
+        "answer": "Yes. Every connection between devices is end-to-end encrypted, so nobody can see your files or metadata in transit, and there's no central server that could be breached. On your own device, Mirall's records are encrypted at rest and your identity key is wrapped using your operating system's keychain, so copying Mirall's data folder gives up neither."
       },
       {
         "question": "How do I invite someone to a space?",
-        "answer": "Open the space and click Invite. Choose how long the link should stay valid — 2 hours, 2 days, or 2 weeks — and share it however you like: chat, email, text. They paste it into Mirall and ask to join, and you approve them with one click. Prefer no gatekeeping? Turn on auto-approve when you create the link and anyone holding it is admitted straight away."
+        "answer": "A space gives you an invite link. Getting it to the other person is up to you — Mirall never sends it on your behalf, so pass it through a channel you trust, ideally an end-to-end encrypted messenger. Treat the link like a key: anyone holding it can ask to join, and it works until the expiry you chose. Approval is the backstop — by default you still let each person in yourself, so a link that gets forwarded doesn't quietly hand someone access."
       },
       {
         "question": "What languages does Mirall support?",
@@ -820,7 +820,7 @@
           "id": "privacy-security",
           "title": "Privacy & security model",
           "blocks": [
-            { "type": "p", "text": "Every connection between devices is end-to-end encrypted. No one — not even us — can see your files or metadata in transit, and there's no central server that could be breached. There are no accounts and no tracking." },
+            { "type": "p", "text": "Every connection between devices is end-to-end encrypted, so nobody can see your files or metadata in transit, and there's no central server that could be breached. There are no accounts and no tracking." },
             { "type": "subheading", "text": "Getting in is not the same as being able to read" },
             { "type": "p", "text": "A space's contents are protected by a key of their own. That key is handed to you only once an existing member approves your request to join. Reaching a space, or holding a link to it, is therefore not the same as being able to read what's shared in it — a pending member is outside the door, not merely unlisted." },
             { "type": "subheading", "text": "Your device at rest" },
