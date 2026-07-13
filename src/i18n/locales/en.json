@@ -1,6 +1,5 @@
 {
   "brand": "Mirall",
-  "beta": "Beta",
   "nav": {
     "spaces": "Spaces",
     "features": "Features",
@@ -14,7 +13,6 @@
     "title": "Move data <1>directly</1>.\nNo cloud.\nNo middleman.",
     "description": "Mirall is built for very large files. Move hundreds of gigabytes or even terabytes straight between devices: create a space, invite the people who need the data, and it travels device to device, encrypted end-to-end, with no cloud in the middle.",
     "cta": "Download for Desktop",
-    "betaNotice": "Mirall is currently in beta. Some features may change and you might encounter bugs.",
     "industries": "Designed for hundreds of gigabytes to terabytes. No size caps, no per-GB fees."
   },
   "features": {
@@ -124,7 +122,6 @@
     "label": "Download",
     "title": "Download Mirall",
     "description": "Available for macOS, Windows, and Linux. Pick your platform and start moving data directly between devices in seconds. Once installed, Mirall keeps itself up to date — new versions arrive in the background.",
-    "betaNotice": "This is a beta release — we are looking for your feedback.",
     "downloadFor": "Download for {{platform}}",
     "otherPlatforms": "Other platforms",
     "desktop": "Desktop app",

@@ -48,9 +48,6 @@ export default function Navbar() {
         <div className="flex items-center gap-12">
           <Link to="/" className="flex items-center gap-2">
             <BrandLogo />
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full leading-none">
-              {t('beta')}
-            </span>
           </Link>
           <div className="hidden md:flex items-center gap-8 font-body font-semibold tracking-tight">
             <HashLink className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/#features">
