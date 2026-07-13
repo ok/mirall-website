@@ -77,6 +77,10 @@
         "answer": "Yes. Files move directly between devices, so the person sharing a file has to be online and running Mirall while you download it — there's no server holding a copy in the middle. You don't have to sit and watch it, though: if either of you drops off, the transfer pauses and picks up where it left off the next time you're both online."
       },
       {
+        "question": "Will Mirall work on my network?",
+        "answer": "Almost always, and with no setup — Mirall finds its own way through home and office routers, so there are no ports to forward and nothing to configure. The exception is a network that blocks the traffic it needs to connect two devices directly, which some strict corporate firewalls and VPNs do. If a connection won't come up, the Network screen under Account tells you what Mirall can see about your setup, so you're not guessing."
+      },
+      {
         "question": "What happens when I'm offline?",
         "answer": "Files you've already downloaded stay on your device — they're yours, and they work offline. Other members can still see what you've shared, but they can't download it from you until you're back. Downloading a file doesn't make you a second source for it either: the member who shared a file is the one who serves it, so while they're offline it's marked “Owner offline” and waits for them."
       },
