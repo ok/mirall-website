@@ -162,6 +162,7 @@
     },
     "legal": {
       "title": "Legal",
+      "impressum": "Impressum",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
     }
@@ -1141,6 +1142,171 @@
             "Onboarding flow for choosing a display name and avatar.",
             "Available for macOS, Windows, and Linux."
           ] }
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "label": "Legal",
+    "title": "Privacy Policy",
+    "updated": "Last updated: PLACEHOLDER_DATE",
+    "intro": "Mirall is built so that we don't have your data — not as a promise, but as an architecture. Your files never pass through a server we control, because there is no such server. This policy sets out precisely what stays on your device, what necessarily leaves it, and the one case where you choose to send something to us.",
+    "sections": [
+      {
+        "id": "not-collected",
+        "title": "1. Information we do not collect",
+        "blocks": [
+          { "type": "subheading", "text": "1.1 No telemetry, no analytics" },
+          { "type": "p", "text": "Mirall contains no analytics, no tracking, and no automatic crash reporting. We do not measure how you use the app, which features you open, or how often you run it. Nothing about your use of Mirall is transmitted anywhere." },
+          { "type": "subheading", "text": "1.2 No accounts" },
+          { "type": "p", "text": "There is no sign-up, no password, and no email address required to use Mirall. Your identity is a cryptographic key generated on your device the first time you open the app. We never see it." },
+          { "type": "subheading", "text": "1.3 Your files" },
+          { "type": "p", "text": "We never receive, store, or process your files. Mirall serves them in place, directly from your disk to the device of the person downloading them. There is no upload step, and no copy on any infrastructure of ours." }
+        ]
+      },
+      {
+        "id": "leaves-device",
+        "title": "2. What necessarily leaves your device",
+        "blocks": [
+          { "type": "p", "text": "Mirall connects devices directly. That has consequences worth stating plainly rather than glossing over." },
+          { "type": "subheading", "text": "2.1 Your IP address is visible to the people you connect with" },
+          { "type": "p", "text": "For two devices to reach each other directly, each must learn how to reach the other. Mirall discovers peers over a public distributed hash table. Your IP address is therefore visible to the other members of the spaces you join, and to other nodes taking part in that network." },
+          { "type": "note", "text": "This is inherent to any direct connection, not a flaw in Mirall — it's the same reason a phone call reveals that you're on the line. If you need to keep your IP address from the people you share with, use a VPN. No peer-to-peer application can avoid this and still connect you directly." },
+          { "type": "subheading", "text": "2.2 Your profile" },
+          { "type": "p", "text": "Your display name and, if you set one, your avatar are shared with the other members of the spaces you belong to. They are shared with nobody else." },
+          { "type": "subheading", "text": "2.3 What a space knows" },
+          { "type": "p", "text": "Inside a space, the names, sizes and origins of shared files are visible to its members, so that everyone can see what is available. This travels encrypted, and a space's contents can only be read once an existing member has approved you. It never reaches us." },
+          { "type": "subheading", "text": "2.4 Updates" },
+          { "type": "p", "text": "Mirall updates itself over the same peer-to-peer network it uses for everything else. There is no update server of ours recording that you checked, or when." }
+        ]
+      },
+      {
+        "id": "feedback",
+        "title": "3. Feedback — the one thing you send us",
+        "blocks": [
+          { "type": "p", "text": "The only data that ever reaches us is what you deliberately send with **Send Feedback** inside the app. Nothing is sent automatically, ever. If you never press that button, we receive nothing from you at all." },
+          { "type": "p", "text": "When you do submit feedback, it carries:" },
+          { "type": "bullets", "items": [
+            "**Your message** — the text you wrote.",
+            "**Your email address** — only if you choose to type one, so we can reply. Leave it blank and we have no way to contact you.",
+            "**A screenshot** — only if you leave that option ticked.",
+            "**The app version and your operating system** — so we can reproduce the problem.",
+            "**An anonymous install identifier** — a random value generated on your device, which lets us recognise several reports as coming from the same installation. It is not derived from your identity key, and it is not linked to your files, your spaces, or the people you share with."
+          ] },
+          { "type": "p", "text": "Feedback travels over an encrypted connection to a relay we run at `feedback.mirall.app`, which forwards it to our team. We keep it for as long as we need it to answer you or fix the problem." }
+        ]
+      },
+      {
+        "id": "stored-locally",
+        "title": "4. What Mirall stores on your device",
+        "blocks": [
+          { "type": "subheading", "text": "4.1 Your files" },
+          { "type": "p", "text": "They stay exactly where they are. Sharing a file doesn't move it, copy it, or import it into Mirall. Files you download from others are ordinary files, in the download folder you chose." },
+          { "type": "subheading", "text": "4.2 Mirall's own records" },
+          { "type": "p", "text": "Mirall keeps a record of your spaces, their members, the folders you mirror, and your transfers. That record is encrypted at rest with a key tied to your identity, so copying Mirall's data folder off your machine doesn't reveal it." },
+          { "type": "subheading", "text": "4.3 Your identity key" },
+          { "type": "p", "text": "Your signing key is wrapped using your operating system's secure keychain, and the plaintext is not kept in Mirall's storage. The **Account** screen tells you which protection is active on your machine." },
+          { "type": "note", "text": "To be exact about the limits of this: Mirall encrypts its own records, not your files. Your files are ordinary files on your disk, and what protects them on a lost or stolen device is your operating system's disk encryption, not Mirall." }
+        ]
+      },
+      {
+        "id": "your-control",
+        "title": "5. Your control",
+        "blocks": [
+          { "type": "p", "text": "Because your data is on your device, you don't have to ask us to delete it:" },
+          { "type": "bullets", "items": [
+            "**Leave a space** and Mirall drops its records from your device.",
+            "**Uninstall Mirall**, or delete its data folder, and everything it stored is gone. Your own files, your downloads, and any folder you mirrored are untouched — they're yours.",
+            "**Stop sharing a file** whenever you like. Copies other members already downloaded stay on their devices; we have no way to reach into them, and neither do you."
+          ] },
+          { "type": "p", "text": "The one exception is feedback you have already sent us. To ask what we hold, or to have it erased, write to us at the address below." }
+        ]
+      },
+      {
+        "id": "website",
+        "title": "6. This website",
+        "blocks": [
+          { "type": "subheading", "text": "6.1 Hosting" },
+          { "type": "p", "text": "mirall.app is hosted by Vercel. As any web host must, Vercel processes what is needed to serve you a page — your IP address, your browser's user agent, and the page you asked for — and holds it in short-lived operational logs. We don't combine it with anything else, and we don't use it to build a picture of you." },
+          { "type": "subheading", "text": "6.2 No analytics, no cookies" },
+          { "type": "p", "text": "This site runs no analytics, no tracking pixels, and no third-party scripts. Fonts, images and code are all served from this domain, so reading these pages causes your browser to contact nobody else. We set no cookies." },
+          { "type": "p", "text": "Your browser does keep one value in its local storage, remembering which language you last read the site in. It never leaves your browser, and you can clear it from your browser's settings at any time." },
+          { "type": "subheading", "text": "6.3 Links to other sites" },
+          { "type": "p", "text": "This site links to places we don't run — our source code on GitHub, for instance. Follow such a link and that site's privacy policy applies, not ours." }
+        ]
+      },
+      {
+        "id": "rights",
+        "title": "7. Your rights",
+        "blocks": [
+          { "type": "p", "text": "If you are in the European Union or the United Kingdom, data protection law gives you the right to see the personal data an organisation holds about you, to correct it, and to have it erased." },
+          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have sent feedback, write to us and we will tell you what it contained and delete it on request." }
+        ]
+      },
+      {
+        "id": "changes",
+        "title": "8. Changes to this policy",
+        "blocks": [
+          { "type": "p", "text": "We may update this policy as Mirall changes. The date at the top always reflects the current version, and any material change will be announced in the app's release notes rather than made quietly." }
+        ]
+      },
+      {
+        "id": "contact",
+        "title": "9. Contact",
+        "blocks": [
+          { "type": "p", "text": "Questions about this policy, or about data we hold, go to **privacy@mirall.app**." },
+          { "type": "p", "text": "The data controller for the purposes of the GDPR is named, with a postal address, in the **Impressum**." },
+          { "type": "p", "text": "Security issues have their own channel: write to **security@mirall.app**." }
+        ]
+      }
+    ]
+  },
+  "impressum": {
+    "label": "Legal",
+    "title": "Impressum",
+    "intro": "Angaben gemäß § 5 DDG. An English translation follows each section; in case of doubt, the German wording is the legally binding one.",
+    "sections": [
+      {
+        "id": "anbieter",
+        "title": "Diensteanbieter · Service provider",
+        "blocks": [
+          { "type": "p", "text": "**Zsapping Software**" },
+          { "type": "p", "text": "Eisenacher Straße 108" },
+          { "type": "p", "text": "10777 Berlin" },
+          { "type": "p", "text": "Deutschland · Germany" }
+        ]
+      },
+      {
+        "id": "kontakt",
+        "title": "Kontakt · Contact",
+        "blocks": [
+          { "type": "p", "text": "E-Mail: **hello@mirall.app**" },
+          { "type": "p", "text": "Datenschutz · Privacy: **privacy@mirall.app**" },
+          { "type": "p", "text": "Sicherheit · Security: **security@mirall.app**" }
+        ]
+      },
+      {
+        "id": "umsatzsteuer",
+        "title": "Umsatzsteuer-Identifikationsnummer · VAT ID",
+        "blocks": [
+          { "type": "p", "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: **PLACEHOLDER_VAT_ID**" },
+          { "type": "p", "text": "VAT identification number pursuant to § 27 a of the German VAT Act: **PLACEHOLDER_VAT_ID**" }
+        ]
+      },
+      {
+        "id": "streitbeilegung",
+        "title": "Verbraucherstreitbeilegung · Consumer dispute resolution",
+        "blocks": [
+          { "type": "p", "text": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen." },
+          { "type": "p", "text": "We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board." }
+        ]
+      },
+      {
+        "id": "haftung-links",
+        "title": "Haftung für Links · Liability for links",
+        "blocks": [
+          { "type": "p", "text": "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Bei Bekanntwerden von Rechtsverletzungen entfernen wir derartige Links umgehend." },
+          { "type": "p", "text": "This site links to external websites over whose content we have no influence. Responsibility for the content of a linked page always lies with its provider or operator. No unlawful content was apparent at the time the link was created. Should we become aware of any infringement, we will remove such links without delay." }
         ]
       }
     ]

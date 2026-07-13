@@ -56,7 +56,8 @@ export default function Footer() {
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.legal.title')}</p>
           <ul className="space-y-3 font-body text-sm">
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.privacy')}</a></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/impressum">{t('footer.legal.impressum')}</Link></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/privacy">{t('footer.legal.privacy')}</Link></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.terms')}</a></li>
           </ul>
         </div>
