@@ -30,13 +30,13 @@
       "title": "Files or Whole Folders",
       "description": "Share single files, or a whole folder that keeps itself in sync as you work. Others can browse it and take what they need, or mirror it to their own device as a live copy that follows every change."
     },
-    "explicitDownload": {
-      "title": "You Choose What to Keep",
-      "description": "See every file available in a space. Download only what you need — nothing lands on your device without your say-so."
+    "noLimits": {
+      "title": "No Limits, No Meter",
+      "description": "Move a 500 GB master as easily as a PDF. No size caps and no per-GB bill — ever. Transfers pause and resume, pick themselves back up when the other person returns, and every finished file is checked against the original."
     },
     "direct": {
       "title": "Direct Device-to-Device",
-      "description": "Files move straight between devices over encrypted connections, served in place from the originals. No server ever sees your data — and there's no storage bill, because there's no cloud."
+      "description": "Files move straight between devices over encrypted connections, served in place from the originals. No server ever sees your data, because there is no server."
     },
     "encrypted": {
       "title": "Encrypted by Default",
