@@ -392,9 +392,13 @@ Homepage copy is the easiest place to ship a lie, because nothing type-checks it
 > Files are served **in place from the originals**; downloads and mirrors land as ordinary files. Their protection against a stolen laptop is the user's **disk encryption**, not Mirall.
 > What v1.7.0 *does* encrypt at rest is **Mirall's own records** — which spaces you're in, who's in them, and what you share — plus the **identity key**, which lives in the system keychain. That is the honest device-theft claim, and it's the one the card makes.
 
-> **File size: there is no hard cap in the code.** The practical ceiling is ~1.1 TB (chunk-map paging; beyond that `files:add` throws `BAD_ARGUMENT`). "No size caps" is fair; a specific number above ~1 TB is not.
+> **File size: there is no hard cap, and terabyte-scale files are explicitly supported.** Mirall engineered *for* them: `§4.11` (chunk-map paging) and `§4.12` (chunk-hashes wire paging) in `src/shared/transfer/backends/overlay/vendor/` exist specifically so multi-TB files stop hitting Hypercore's 15 MiB block cap and the Noise transport's 16 MiB frame cap. "Hundreds of gigabytes or even terabytes" is accurate.
 
-Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1). If you cannot find it in the source, it does not go on the homepage.
+**A cautionary tale about how to read that source, because it burned me.** Those two files discuss a "1.1 TB file" throwing `BAD_ARGUMENT` and a "1.25 TB file" dropping the connection — and I cited them as a *live ~1.1 TB ceiling* on the homepage. They are the opposite: they are **descriptions of upstream bugs that Mirall fixed**, and the TB figures are the illustrative file sizes that used to break. `PROVENANCE.md` is a changelog of divergences *from* upstream, so almost every limit it names is one that no longer applies.
+
+> **Read a limit's tense before you quote it.** A number in a comment or a provenance note is as likely to be a fixed bug as a live constraint. Find the code that *enforces* it — a real cap is a guard that throws, not a paragraph that explains why one used to.
+
+Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1). If you cannot find it in the source, it does not go on the homepage — and if you find it in a comment, confirm it's still true in the code.
 
 ---
 

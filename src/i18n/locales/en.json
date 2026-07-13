@@ -10,10 +10,10 @@
   "hero": {
     "label": "Secure Data Transfer",
     "title": "Move data <1>directly</1>.\nNo cloud.\nNo middleman.",
-    "description": "Mirall connects your devices directly. Create a space, invite collaborators, and move files that travel straight between devices — encrypted end-to-end, and completely serverless.",
+    "description": "Mirall is built for very large files. Move hundreds of gigabytes or even terabytes straight between devices: create a space, invite the people who need the data, and it travels device to device, encrypted end-to-end, with no cloud in the middle.",
     "cta": "Download for Desktop",
     "betaNotice": "Mirall is currently in beta. Some features may change and you might encounter bugs.",
-    "industries": "Trusted for post-production, architecture, legal, and research workflows."
+    "industries": "Designed for hundreds of gigabytes to terabytes. No size caps, no per-GB fees."
   },
   "features": {
     "title": "Built different",
@@ -380,7 +380,7 @@
               "blocks": [
                 { "type": "p", "text": "Drag files onto the **Drop to Share** zone in the sidebar, or use **Share…** to pick them from your computer. While you drag a file over the space, the drop zone grows to fill the whole area, so you don't have to aim carefully. Mirall offers the file to the space right away." },
                 { "type": "p", "text": "Mirall shares the file **in place**, straight from the original on your disk. Sharing never doubles a file's disk usage, and when you edit a shared file, the change is picked up where it lies." },
-                { "type": "p", "text": "Very large files (up to 1 TB) work fine — content is streamed in chunks rather than uploaded as a whole. Mirall still needs a moment to index a file before sharing can start, so expect a short **Preparing** step for very large files. Members waiting on it can watch that preparation progress rather than staring at a blank spinner." },
+                { "type": "p", "text": "There's no size limit. Hundreds of gigabytes, or a file into the terabytes, all work the same way — content is streamed in chunks rather than uploaded as a whole. Mirall does need a moment to index a file before sharing can start, so expect a short **Preparing** step on something that large. Members waiting on it can watch that preparation progress rather than staring at a blank spinner." },
                 { "type": "note", "text": "Want to share a whole folder instead of picking files? See **Share a whole folder**." }
               ]
             },
@@ -789,7 +789,7 @@
             "**Platforms** — macOS, Windows, and Linux (x64 and ARM64).",
             "**Languages** — English, German, French, Spanish, and Italian, auto-detected from your OS on first launch.",
             "**Updates** — delivered automatically in the background and applied when you next quit and reopen.",
-            "**File sizes** — no hard limit; very large files (up to 1 TB) stream in chunks."
+            "**File sizes** — no limit. Files are streamed in chunks, so hundreds of gigabytes or a file into the terabytes transfer like any other."
           ]
         }
       ]
