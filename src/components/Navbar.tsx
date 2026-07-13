@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { List, X, GithubLogo } from '@phosphor-icons/react'
+import { List, X } from '@phosphor-icons/react'
 import BrandLogo from './BrandLogo'
+import GithubMark from './GithubMark'
 import { GITHUB_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
@@ -70,11 +71,11 @@ export default function Navbar() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t('nav.github')}
-            title={t('nav.github')}
+            aria-label={t('nav.githubAria')}
+            title={t('nav.githubAria')}
             className="hidden md:flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors"
           >
-            <GithubLogo size={22} weight="regular" aria-hidden="true" />
+            <GithubMark size={22} />
           </a>
           <Link
             to="/download"
@@ -120,8 +121,8 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <GithubLogo size={20} weight="regular" aria-hidden="true" />
-              {t('nav.sourceCode')}
+              <GithubMark size={20} />
+              {t('nav.github')}
             </a>
           </div>
         </div>

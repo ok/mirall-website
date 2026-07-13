@@ -6,8 +6,8 @@
     "features": "Features",
     "security": "Security",
     "download": "Download",
-    "github": "Mirall on GitHub",
-    "sourceCode": "Source code"
+    "github": "GitHub",
+    "githubAria": "Mirall on GitHub"
   },
   "hero": {
     "label": "Secure Data Transfer",
@@ -161,15 +161,13 @@
       "title": "Resources",
       "docs": "Documentation",
       "support": "Support",
-      "source": "Source code"
+      "github": "GitHub"
     },
     "legal": {
       "title": "Legal",
       "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "license": "License (AGPL-3.0)"
-    },
-"copyright": "© 2026 Mirall. All rights reserved."
+      "terms": "Terms of Service"
+    }
   },
   "support": {
     "title": "Support",
