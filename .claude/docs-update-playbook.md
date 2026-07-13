@@ -17,6 +17,7 @@ Read this top to bottom once, then work the **Procedure** checklist. The **Scree
 - **All screenshots are LIGHT mode**, captured from the **current build**, every release, with **real names and avatars**.
 - **Re-shoot EVERY screenshot on every release — not just the new-feature ones.** Shared chrome (nav, buttons, status pills, badges, spacing, radii) changes between versions and silently makes *every* older screenshot wrong. **Never carry a screenshot over from a previous version.**
 - **Drive the app through the frontend test harness** (`mirall-app/test/frontend/`), not raw `agent-desktop` calls. §4.
+- **The homepage rots too.** Audit `features` / `howItWorks` / `faq` / `hero` every release — §6. And **never ship a capability claim you haven't found in the app source**; the homepage is the easiest place to publish a lie, because nothing type-checks it.
 - **agent-desktop must be ≥ 0.3.0** (0.4.4 verified). *An older version of this playbook demanded 0.1.14 — that is wrong now; the harness preflight rejects anything below 0.3.0.*
 - **Feature branch off `main`**, PR into `main`. Do **not** push to `main`. Do **not** branch from `stage` — it is stale (43 commits behind as of 2026-07-12 and predates the Diátaxis restructure).
 - **No mention of AI** anywhere in content, commits, or PRs. No `Co-Authored-By` trailer.
@@ -149,7 +150,7 @@ Forget step 2 and the image silently falls back to a bare `src` that 404s (nothi
    - App menu: `src/main/menu.js`
    - Feature flags (is it actually on by default?): `feature-flags.json`
 4. **Beware orphaned i18n keys.** `common.json` keeps strings for removed UI. A key existing does **not** mean the UI does — grep the `.tsx` files for the key before documenting it.
-5. Also **audit the marketing pages** (`features`, `howItWorks`, `faq`, `hero` in `en.json`). They drift too. v1.7.0 left an "Invite-Only Access" card and two FAQ answers describing an invite flow that no longer existed.
+5. Also **audit the marketing pages** (`features`, `howItWorks`, `faq`, `hero` in `en.json`) — see **§6**. They drift too, and nobody notices because the docs get all the attention. v1.7.0 left a feature card, both "how it works" steps, and two FAQ answers describing an invite flow that no longer existed.
 
 ### 3.2 Branch
 
@@ -173,9 +174,11 @@ Mirror the new `CHANGELOG.md` entry into `changelog.releases[0]` (newest first),
 
 ### 3.6 Wire images — §2.4, with **descriptive alt text** on every one.
 
-### 3.7 Verify — §5.
+### 3.7 Update the homepage — §6.
 
-### 3.8 Hand off
+### 3.8 Verify — §5.
+
+### 3.9 Hand off
 
 Commit and push **only when asked**. Feature branch → PR into `main`. No `Co-Authored-By`.
 
@@ -343,12 +346,65 @@ Confirm the images render, the chrome looks current, and the sidebar works. Spot
 
 ---
 
-## 6. Conventions & guardrails
+## 6. The homepage (feature grid & marketing copy)
+
+The docs get all the attention; the homepage silently rots. Audit it **every release** — `features`, `howItWorks`, `faq`, `hero` in `en.json`. In v1.7.0 a single change (invite codes → invite links + approval) falsified a feature card, **both** how-it-works steps, and two FAQ answers.
+
+### 6.1 Where it lives
+
+A card is defined in **two places** — miss either and you get an orphan:
+
+| | |
+|---|---|
+| **Layout** — key, icon, colours | `src/components/Features.tsx` (the `featureCards` array) |
+| **Copy** — title + description | `src/i18n/locales/en.json` → `features.<key>.{title,description}` |
+
+After removing a card, grep for the key **and** its icon import:
+```bash
+grep -rn "zeroInfra\|CloudSlash" src/     # must return nothing
+```
+An unused icon import is a lint error; a stale `features.*` key is dead weight nobody will ever find.
+
+### 6.2 Grid mechanics
+
+- The grid is `md:grid-cols-2 lg:grid-cols-3` → **keep the card count at 6**. It tiles cleanly at 1, 2 and 3 columns. Five or seven leaves a ragged last row.
+- Cards stretch to the tallest in the row, so **one long description sets the row height**. Keep them within roughly a sentence of each other.
+- Icon colours rotate **emerald → purple → blue** (`primary` / `tertiary` / `secondary` tokens), repeating down the grid. Preserve the rotation when you reorder — it's positional, not per-card.
+- Icons come from `@phosphor-icons/react`. **Verify the export exists** before using it — a wrong guess is a build error:
+  ```bash
+  grep -qE "\bFolders\b" node_modules/@phosphor-icons/react/dist/index.d.ts && echo ✓
+  ```
+  **Alias any icon whose name shadows a JS global** — `Infinity as InfinityIcon`.
+
+### 6.3 Editorial rules (learned the hard way)
+
+- **Order the cards as the user's story, not a feature dump.** The current arc is: make a space → decide who's in it → put something in it → the transfer itself → how it travels → how it's protected. It closes on security, which is the strongest note.
+- **Sell, don't defend.** A card that reassures about a non-issue wastes a slot. "You Choose What to Keep" ("nothing syncs without your say-so") was cut for exactly this — users already assume it.
+- **One argument per card.** When "Zero Infrastructure" was removed, its no-cloud-bill claim moved into *Direct Device-to-Device* — and then collided with the new *No Limits, No Meter* card's "no per-GB bill". Two cards making the same point weakens both. Check for collisions after any reshuffle.
+- **Don't restate the section subhead.** `features.description` already opens with *"No accounts. No uploads to someone else's server."* A card repeating "no accounts, no sign-ups" is redundant two inches below it.
+- **Never claim a feature the app doesn't have** just because it sounds good in a list. There was never a "permissions dashboard" to not have.
+
+### 6.4 Verify every claim against the app — especially security
+
+Homepage copy is the easiest place to ship a lie, because nothing type-checks it. Two live examples:
+
+> **Mirall does NOT encrypt your files at rest. Never imply it.**
+> Files are served **in place from the originals**; downloads and mirrors land as ordinary files. Their protection against a stolen laptop is the user's **disk encryption**, not Mirall.
+> What v1.7.0 *does* encrypt at rest is **Mirall's own records** — which spaces you're in, who's in them, and what you share — plus the **identity key**, which lives in the system keychain. That is the honest device-theft claim, and it's the one the card makes.
+
+> **File size: there is no hard cap in the code.** The practical ceiling is ~1.1 TB (chunk-map paging; beyond that `files:add` throws `BAD_ARGUMENT`). "No size caps" is fair; a specific number above ~1 TB is not.
+
+Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1). If you cannot find it in the source, it does not go on the homepage.
+
+---
+
+## 7. Conventions & guardrails
 
 - **Light mode only** for screenshots; **real names + avatars**; re-shot every release.
 - **One Diátaxis mode per document**; re-home, don't duplicate.
 - **No version markers** ("New in 1.6") anywhere in the docs.
-- **Match the app exactly** — verify labels against `mirall-app/src/renderer` before writing them.
+- **Match the app exactly** — verify labels against `mirall-app/src/renderer` before writing them. This goes double for homepage claims (§6.4): no source, no claim.
+- **Homepage feature grid stays at 6 cards**, ordered as a story, one argument each (§6).
 - **No AI mentions** in content, commits, or PRs. No `Co-Authored-By`. Commit = `[type] Subject`, blank line, body.
 - **No time estimates** in plans. Use complexity language.
 - **Accessibility:** semantic headings in order, `alt` on every image, links with discernible text, tables with `<th scope>` (block components handle this). Don't regress it.
@@ -358,7 +414,7 @@ Confirm the images render, the chrome looks current, and the sidebar works. Spot
 
 ---
 
-## 7. Quick troubleshooting
+## 8. Quick troubleshooting
 
 | Symptom | Cause / fix |
 |---|---|
@@ -372,8 +428,12 @@ Confirm the images render, the chrome looks current, and the sidebar works. Spot
 | `sharp` not found | Run the processor from **inside the website repo**, not the scratch dir. |
 | Image 404s at runtime but build passed | Missing `images.ts` entry (§2.4). |
 | Docs describe a dialog that isn't in the app | You trusted the changelog / an orphaned i18n key instead of the components (§3.1). |
+| Feature grid has a ragged last row | Card count isn't 6 (§6.2). |
+| Lint fails after removing a feature card | The icon import is now unused — drop it from `Features.tsx` (§6.1). |
+| A card renders its raw i18n key | Copy exists in `Features.tsx` but not `en.json` (or vice versa) — both places, always (§6.1). |
+| Icon import blows up the build | The Phosphor export doesn't exist, or it shadows a JS global (`Infinity`) and needs aliasing (§6.2). |
 | Build fails on `react-refresh/only-export-components` | A `.tsx` exports a non-component — move helpers/types into a `.ts`. |
 
 ---
 
-*Keep this file in sync with `src/components/docs/*`, `src/components/docs/images.ts`, and the `docs`/`changelog` namespaces in `en.json`. If the content model or the capture mechanics change, update the relevant section here.*
+*Keep this file in sync with `src/components/docs/*`, `src/components/docs/images.ts`, `src/components/Features.tsx`, and the `docs` / `changelog` / `features` namespaces in `en.json`. If the content model, the capture mechanics, or the homepage grid change, update the relevant section here.*
