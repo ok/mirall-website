@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { List, X } from '@phosphor-icons/react'
+import { List, X, GithubLogo } from '@phosphor-icons/react'
 import BrandLogo from './BrandLogo'
+import { GITHUB_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -63,6 +64,18 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          {/* Muted and icon-only: Download is the page's one call to action, and a
+              second high-contrast control beside it would compete with it. */}
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t('nav.github')}
+            title={t('nav.github')}
+            className="hidden md:flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors"
+          >
+            <GithubLogo size={22} weight="regular" aria-hidden="true" />
+          </a>
           <Link
             to="/download"
             className="hero-gradient text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm ambient-shadow hover:scale-105 transition-transform"
@@ -100,6 +113,16 @@ export default function Navbar() {
             <Link className="py-3 text-slate-700 hover:text-emerald-500 transition-colors" to="/support">
               {t('support.title')}
             </Link>
+            {/* The header icon is desktop-only, so it would otherwise vanish here. */}
+            <a
+              className="py-3 flex items-center gap-2 text-slate-700 hover:text-emerald-500 transition-colors"
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubLogo size={20} weight="regular" aria-hidden="true" />
+              {t('nav.sourceCode')}
+            </a>
           </div>
         </div>
       )}

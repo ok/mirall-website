@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { GithubLogo } from '@phosphor-icons/react'
 import BrandLogo from './BrandLogo'
+import { GITHUB_URL, GITHUB_LICENSE_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -45,6 +47,11 @@ export default function Footer() {
           <ul className="space-y-3 font-body text-sm">
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/docs">{t('footer.resources.docs')}</Link></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/support">{t('footer.resources.support')}</Link></li>
+            <li>
+              <a className="text-slate-500 hover:text-emerald-600 transition-all" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                {t('footer.resources.source')}
+              </a>
+            </li>
           </ul>
         </div>
         <div>
@@ -52,11 +59,26 @@ export default function Footer() {
           <ul className="space-y-3 font-body text-sm">
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.privacy')}</a></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.terms')}</a></li>
+            <li>
+              <a className="text-slate-500 hover:text-emerald-600 transition-all" href={GITHUB_LICENSE_URL} target="_blank" rel="noopener noreferrer">
+                {t('footer.legal.license')}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
       <div className="max-w-7xl mx-auto mt-12 pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-slate-500 font-body text-sm">{t('footer.copyright')}</p>
+        <a
+          href={GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t('nav.github')}
+          title={t('nav.github')}
+          className="flex items-center justify-center w-10 h-10 rounded-lg text-slate-500 hover:text-emerald-600 hover:bg-surface-container-low transition-colors"
+        >
+          <GithubLogo size={22} weight="regular" aria-hidden="true" />
+        </a>
       </div>
     </footer>
   )

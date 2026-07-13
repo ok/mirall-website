@@ -5,7 +5,9 @@
     "spaces": "Spaces",
     "features": "Features",
     "security": "Security",
-    "download": "Download"
+    "download": "Download",
+    "github": "Mirall on GitHub",
+    "sourceCode": "Source code"
   },
   "hero": {
     "label": "Secure Data Transfer",
@@ -105,6 +107,10 @@
         "answer": "It carries on where it stopped. Mirall verifies each chunk as it arrives and keeps a record of your progress, so a dropped connection, a closed laptop, or the sender going offline costs you the interruption — not the transfer. You can pause and resume by hand, and when a file finishes, Mirall confirms its contents match the sender's original exactly."
       },
       {
+        "question": "Is Mirall open source?",
+        "answer": "Yes. Mirall is licensed under the AGPL-3.0 and the source is on [GitHub](https://github.com/ok/mirall-app). That's what makes the rest of this page checkable: you don't have to take our word for “no server ever sees your data” — you can read the code and see for yourself."
+      },
+      {
         "question": "Is Mirall free?",
         "answer": "Mirall is free for personal use, and we plan to offer additional paid services in the future."
       },
@@ -154,13 +160,14 @@
     "resources": {
       "title": "Resources",
       "docs": "Documentation",
-      "support": "Support"
+      "support": "Support",
+      "source": "Source code"
     },
     "legal": {
       "title": "Legal",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
-      "licenses": "Open Source Licenses"
+      "license": "License (AGPL-3.0)"
     },
 "copyright": "© 2026 Mirall. All rights reserved."
   },
