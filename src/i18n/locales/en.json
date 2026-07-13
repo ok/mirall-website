@@ -22,25 +22,25 @@
       "title": "Shared Spaces",
       "description": "Create topic-based spaces for your team, project, or group. Everyone in a space sees all available files and chooses what to download."
     },
-    "direct": {
-      "title": "Direct Device-to-Device",
-      "description": "Files move straight between your devices over encrypted connections. No server ever sees your data."
-    },
-    "encrypted": {
-      "title": "Encrypted by Default",
-      "description": "Every connection between devices is end-to-end encrypted. No keys to manage — it just works."
-    },
     "inviteOnly": {
-      "title": "You Approve Who Gets In",
-      "description": "Send an invite link, then approve each person who asks to join. Until you do, they can't read a thing. No accounts, no sign-ups, no permission dashboards."
+      "title": "Invite-Only Access",
+      "description": "A space is reachable only by invite link — and by default the link isn't enough on its own: each person asks to join and you approve them. Switch on auto-approve and anyone holding the link walks straight in."
+    },
+    "folders": {
+      "title": "Files or Whole Folders",
+      "description": "Share single files, or a whole folder that keeps itself in sync as you work. Others can browse it and take what they need, or mirror it to their own device as a live copy that follows every change."
     },
     "explicitDownload": {
       "title": "You Choose What to Keep",
-      "description": "See every file available in a space. Download only what you need — nothing syncs without your say-so."
+      "description": "See every file available in a space. Download only what you need — nothing lands on your device without your say-so."
     },
-    "zeroInfra": {
-      "title": "Zero Infrastructure",
-      "description": "No cloud storage fees. No server maintenance. Mirall is fully decentralized — files move directly between your devices."
+    "direct": {
+      "title": "Direct Device-to-Device",
+      "description": "Files move straight between devices over encrypted connections, served in place from the originals. No server ever sees your data — and there's no storage bill, because there's no cloud."
+    },
+    "encrypted": {
+      "title": "Encrypted by Default",
+      "description": "Every connection between devices is end-to-end encrypted, with no keys to manage. On your device, Mirall encrypts its own records — which spaces you're in, who's in them, and what you share — and keeps your identity key in the system keychain, so a stolen laptop reveals none of it."
     }
   },
   "howItWorks": {
@@ -94,19 +94,11 @@
       },
       {
         "question": "Is Mirall free?",
-        "answer": "Mirall is free to use for now, but we plan to charge for it in the future."
+        "answer": "Mirall is free to use for personal use, but we plan to offer additional payed services in the future."
       },
       {
         "question": "How do I keep Mirall up to date?",
         "answer": "You don't have to. Once installed, Mirall updates itself in the background and the new version is live the next time you launch — no reinstalls, no installer downloads."
-      },
-      {
-        "question": "How is Mirall different from Aspera, MASV, or WeTransfer?",
-        "answer": "Those services all route or store your files on their own infrastructure, which means per-GB fees, transfer ceilings, and a cloud vendor in the middle of your data. Mirall transfers files directly between devices with no servers in between — so there are no per-GB costs, no transfer caps, and nothing to breach."
-      },
-      {
-        "question": "Is Mirall suitable for GDPR, Schrems II, or HIPAA workflows?",
-        "answer": "Yes. Because Mirall never stores your files on a third-party server, there is no cross-border data transfer or cloud processor relationship to worry about — the jurisdictional question doesn't apply. Many regulated teams in healthcare, legal, and post-production use this as an architectural answer to GDPR, Schrems II, and HIPAA concerns."
       }
     ]
   },
