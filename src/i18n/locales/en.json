@@ -1271,6 +1271,7 @@
         "title": "Diensteanbieter · Service provider",
         "blocks": [
           { "type": "p", "text": "**Zsapping Software**" },
+          { "type": "p", "text": "Inhaber · Owner: **Oliver Kohl**" },
           { "type": "p", "text": "Eisenacher Straße 108" },
           { "type": "p", "text": "10777 Berlin" },
           { "type": "p", "text": "Deutschland · Germany" }
