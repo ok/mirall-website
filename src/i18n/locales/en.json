@@ -73,8 +73,12 @@
         "answer": "On your device, and only your device — right where they already are. Mirall shares your files in place and never keeps a second copy of them, so sharing doesn't cost you extra disk space. Other members download directly from you; there is no cloud server and no intermediary storage. Once someone downloads a file, they have their own local copy."
       },
       {
+        "question": "Do both of us need to be online at the same time?",
+        "answer": "Yes. Files move directly between devices, so the person sharing a file has to be online and running Mirall while you download it — there's no server holding a copy in the middle. You don't have to sit and watch it, though: if either of you drops off, the transfer pauses and picks up where it left off the next time you're both online."
+      },
+      {
         "question": "What happens when I'm offline?",
-        "answer": "Files you've downloaded stay on your device — they're yours. Other members can still see the file metadata, but they can't download files from you until you're back online. If another member who has the same file is online, they can download from them instead."
+        "answer": "Files you've already downloaded stay on your device — they're yours, and they work offline. Other members can still see what you've shared, but they can't download it from you until you're back. Downloading a file doesn't make you a second source for it either: the member who shared a file is the one who serves it, so while they're offline it's marked “Owner offline” and waits for them."
       },
       {
         "question": "Is it really encrypted?",
@@ -86,15 +90,19 @@
       },
       {
         "question": "What languages does Mirall support?",
-        "answer": "English, German, French, Spanish, and Italian. Mirall picks up your OS language on first launch; you can change it any time in Settings → Language."
+        "answer": "Five: English, German, French, Spanish, and Italian. Mirall picks up your OS language on first launch, and you can switch at any time."
       },
       {
         "question": "Are there file size limits?",
-        "answer": "No hard limits. Mirall streams files in chunks, so large files work fine. Transfer speed depends on your network connection and the sender's upload bandwidth."
+        "answer": "No. Mirall is built for the files that break everything else — hundreds of gigabytes, or a single file into the terabytes, transfer like any other. Content is streamed in chunks rather than uploaded as a whole, there are no size caps, and there's no per-GB bill. Speed depends on your network and the sender's upload bandwidth."
+      },
+      {
+        "question": "What happens if a large transfer is interrupted?",
+        "answer": "It carries on where it stopped. Mirall verifies each chunk as it arrives and keeps a record of your progress, so a dropped connection, a closed laptop, or the sender going offline costs you the interruption — not the transfer. You can pause and resume by hand, and when a file finishes, Mirall confirms its contents match the sender's original exactly."
       },
       {
         "question": "Is Mirall free?",
-        "answer": "Mirall is free to use for personal use, but we plan to offer additional payed services in the future."
+        "answer": "Mirall is free for personal use, and we plan to offer additional paid services in the future."
       },
       {
         "question": "How do I keep Mirall up to date?",
@@ -659,8 +667,8 @@
               ["Adding", "Blue", "A file you just added is being indexed so other members can fetch it."],
               ["Paused", "Yellow", "A download stopped — because you paused it, or because it was interrupted. Resume to continue."],
               ["Failed", "Red", "A transfer errored out. Retry to try again, or dismiss it."],
-              ["Available", "Grey", "Another member is sharing this file and at least one copy is online. Click download to pull it."],
-              ["Owner offline", "Grey", "Every member who has this file is currently offline. The download resumes on its own when one returns."],
+              ["Available", "Grey", "The member who shared this file is online, so you can pull it. Click download."],
+              ["Owner offline", "Grey", "The member who shared this file is offline. The download resumes on its own once they're back."],
               ["Not available", "Grey", "The file can't be obtained right now."]
             ]
           }
@@ -805,7 +813,7 @@
           "blocks": [
             { "type": "p", "text": "Mirall connects your devices directly. When you share a file, its contents stay on your device — right where they already are — and other members download it straight from you over an encrypted connection. There is no cloud server in the middle storing or relaying your files." },
             { "type": "p", "text": "What does travel ahead of time is lightweight **metadata** — names, sizes, and which member is offering what — so everyone can see what's available in a space. The actual bytes of a file move only when someone chooses to download it." },
-            { "type": "p", "text": "The corollary is that availability follows people, not servers. A file can only be downloaded while at least one member who has it is online, and the more members keep a copy, the more available it stays." }
+            { "type": "p", "text": "The corollary is that availability follows people, not servers. A file is downloadable only while the member who shared it is online. Downloading a file gives you your own copy to keep — but it doesn't turn you into a second source for it, so the person who shared it stays the one who serves it." }
           ]
         },
         {
@@ -836,8 +844,9 @@
           "id": "spaces-members-availability",
           "title": "Spaces, members & availability",
           "blocks": [
-            { "type": "p", "text": "A space is a private group with its own members and its own files. Because files live on members' devices rather than a server, a file is only downloadable while at least one member who has it is **online**." },
-            { "type": "p", "text": "If everyone offering a file goes offline, the file is marked accordingly until someone returns. If several members have the same file, you can download it from whoever is online — so the more members keep a copy, the more available it stays." }
+            { "type": "p", "text": "A space is a private group with its own members and its own files. Because files live on members' devices rather than a server, a file is downloadable only while the member who shared it is **online**." },
+            { "type": "p", "text": "That member is the file's single source. Downloading a file gives you a copy that's yours to keep and works offline, but it doesn't make you a second source others can pull from — so if the person who shared it goes offline, the file is marked **Owner offline** until they're back, and any download in flight picks up where it left off." },
+            { "type": "note", "text": "Plan around this for anything time-critical: the person sharing a file needs to be online and running Mirall while someone downloads it. Mirall doesn't hand a file off to the rest of the space to keep serving in their absence." }
           ]
         },
         {
