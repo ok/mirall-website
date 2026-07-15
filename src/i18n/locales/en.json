@@ -1157,7 +1157,7 @@
         "title": "1. Information we do not collect",
         "blocks": [
           { "type": "subheading", "text": "1.1 No telemetry, no analytics" },
-          { "type": "p", "text": "Mirall contains no analytics, no tracking, and no automatic crash reporting. We do not measure how you use the app, which features you open, or how often you run it. Nothing about your use of Mirall is transmitted anywhere." },
+          { "type": "p", "text": "Mirall contains no analytics, no tracking, and no automatic crash reporting. We do not measure how you use the app, which features you open, or how often you run it. Mirall sends us no report about what you do with it — not on a schedule, not on a crash, not at all." },
           { "type": "subheading", "text": "1.2 No accounts" },
           { "type": "p", "text": "There is no sign-up, no password, and no email address required to use Mirall. Your identity is a cryptographic key generated on your device the first time you open the app. We never see it." },
           { "type": "subheading", "text": "1.3 Your files" },
@@ -1176,8 +1176,10 @@
           { "type": "p", "text": "Your display name and, if you set one, your avatar are shared with the other members of the spaces you belong to. They are shared with nobody else." },
           { "type": "subheading", "text": "2.3 What a space knows" },
           { "type": "p", "text": "Inside a space, the names, sizes and origins of shared files are visible to its members, so that everyone can see what is available. This travels encrypted, and a space's contents can only be read once an existing member has approved you. It never reaches us." },
-          { "type": "subheading", "text": "2.4 Updates" },
-          { "type": "p", "text": "Mirall updates itself over the same peer-to-peer network it uses for everything else. There is no update server of ours recording that you checked, or when." }
+          { "type": "subheading", "text": "2.4 Software updates" },
+          { "type": "p", "text": "Mirall updates itself over the same peer-to-peer network it uses for everything else. A new version is simply a drive that your copy of Mirall follows and replicates, much as it replicates a shared folder." },
+          { "type": "p", "text": "So that an update is available even when no other user happens to be online, we run one always-on peer of our own that carries the release drive. We should be plain about what that means: it is a machine we control, and like any device you connect to directly, it sees the IP address of the copies of Mirall that replicate from it." },
+          { "type": "p", "text": "What it is not is an account system. It holds our published releases and nothing else — never your files, your spaces, or anything you share. It has no idea who you are, because Mirall never tells it: there is no identifier, no login, and no profile behind the connection. We do not use what it sees to build a picture of you, and we do not combine it with anything else." }
         ]
       },
       {
@@ -1228,10 +1230,12 @@
         "blocks": [
           { "type": "subheading", "text": "6.1 Hosting" },
           { "type": "p", "text": "mirall.app is hosted by Vercel. As any web host must, Vercel processes what is needed to serve you a page — your IP address, your browser's user agent, and the page you asked for — and holds it in short-lived operational logs. We don't combine it with anything else, and we don't use it to build a picture of you." },
-          { "type": "subheading", "text": "6.2 No analytics, no cookies" },
+          { "type": "subheading", "text": "6.2 Downloading the app" },
+          { "type": "p", "text": "The installers are not served from this site. A download button sends you to `dl.mirall.app`, our release storage at Cloudflare, which — as any file host must — sees your IP address in order to hand you the file. We keep nothing else about the download, and we don't tie it to anything." },
+          { "type": "subheading", "text": "6.3 No analytics, no cookies" },
           { "type": "p", "text": "This site runs no analytics, no tracking pixels, and no third-party scripts. Fonts, images and code are all served from this domain, so reading these pages causes your browser to contact nobody else. We set no cookies." },
           { "type": "p", "text": "Your browser does keep one value in its local storage, remembering which language you last read the site in. It never leaves your browser, and you can clear it from your browser's settings at any time." },
-          { "type": "subheading", "text": "6.3 Links to other sites" },
+          { "type": "subheading", "text": "6.4 Links to other sites" },
           { "type": "p", "text": "This site links to places we don't run — our source code on GitHub, for instance. Follow such a link and that site's privacy policy applies, not ours." }
         ]
       },
