@@ -1150,7 +1150,7 @@
   "privacy": {
     "label": "Legal",
     "title": "Privacy Policy",
-    "updated": "Last updated: PLACEHOLDER_DATE",
+    "updated": "Last updated: July 12, 2026",
     "intro": "Mirall is built so that we don't have your data — not as a promise, but as an architecture. Your files never pass through a server we control, because there is no such server. This policy sets out precisely what stays on your device, what necessarily leaves it, and the one case where you choose to send something to us.",
     "sections": [
       {
