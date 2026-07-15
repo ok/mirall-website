@@ -1295,8 +1295,8 @@
         "id": "umsatzsteuer",
         "title": "Umsatzsteuer-Identifikationsnummer · VAT ID",
         "blocks": [
-          { "type": "p", "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: **PLACEHOLDER_VAT_ID**" },
-          { "type": "p", "text": "VAT identification number pursuant to § 27 a of the German VAT Act: **PLACEHOLDER_VAT_ID**" }
+          { "type": "p", "text": "Eine Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz wurde bisher nicht erteilt und wird hier ergänzt, sobald sie vorliegt." },
+          { "type": "p", "text": "A VAT identification number pursuant to § 27 a of the German VAT Act has not yet been issued; it will be added here as soon as it is available." }
         ]
       },
       {
