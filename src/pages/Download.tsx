@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import Seo from '../components/Seo'
 import { breadcrumbSchema } from '../lib/schema'
 import { detectPlatform, type Platform } from '../lib/detectPlatform'
-import { AppleLogo, WindowsLogo, LinuxLogo, Info, Download as DownloadIcon, type Icon } from '@phosphor-icons/react'
+import { AppleLogo, WindowsLogo, LinuxLogo, Download as DownloadIcon, type Icon } from '@phosphor-icons/react'
 
 interface PlatformInfo {
   key: Platform
@@ -39,7 +39,7 @@ export default function Download() {
     <>
       <Seo
         title="Download Mirall for Mac, Windows, Linux"
-        description="Secure large file transfer app for desktop. End-to-end encrypted, runs on macOS, Windows, and Linux. Free beta — download now."
+        description="Secure large file transfer app for desktop. End-to-end encrypted, runs on macOS, Windows, and Linux. Free for personal use — download now."
         path="/download"
         jsonLd={breadcrumbSchema([
           { name: 'Home', path: '/' },
@@ -59,11 +59,6 @@ export default function Download() {
             <p className="text-xl text-on-surface-variant leading-relaxed mb-8 max-w-2xl mx-auto">
               {t('download.description')}
             </p>
-            <div className="mb-16 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-4 py-2 rounded-lg text-sm font-medium">
-              <Info size={18} weight="regular" />
-              {t('download.betaNotice')}
-            </div>
-
             {detectedPlatform && (() => {
               const DetectedIcon = detectedPlatform.Icon
               return (

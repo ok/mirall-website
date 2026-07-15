@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { List, X } from '@phosphor-icons/react'
 import BrandLogo from './BrandLogo'
+import GithubMark from './GithubMark'
+import { GITHUB_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -46,9 +48,6 @@ export default function Navbar() {
         <div className="flex items-center gap-12">
           <Link to="/" className="flex items-center gap-2">
             <BrandLogo />
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full leading-none">
-              {t('beta')}
-            </span>
           </Link>
           <div className="hidden md:flex items-center gap-8 font-body font-semibold tracking-tight">
             <HashLink className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/#features">
@@ -63,6 +62,18 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          {/* Muted and icon-only: Download is the page's one call to action, and a
+              second high-contrast control beside it would compete with it. */}
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t('nav.githubAria')}
+            title={t('nav.githubAria')}
+            className="hidden md:flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors"
+          >
+            <GithubMark size={22} />
+          </a>
           <Link
             to="/download"
             className="hero-gradient text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm ambient-shadow hover:scale-105 transition-transform"
@@ -100,6 +111,16 @@ export default function Navbar() {
             <Link className="py-3 text-slate-700 hover:text-emerald-500 transition-colors" to="/support">
               {t('support.title')}
             </Link>
+            {/* The header icon is desktop-only, so it would otherwise vanish here. */}
+            <a
+              className="py-3 flex items-center gap-2 text-slate-700 hover:text-emerald-500 transition-colors"
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubMark size={20} />
+              {t('nav.github')}
+            </a>
           </div>
         </div>
       )}

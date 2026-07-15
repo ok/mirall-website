@@ -1,3 +1,6 @@
+import { stripLinks } from './inline'
+import { GITHUB_URL } from './links'
+
 export const SITE_URL = 'https://mirall.app'
 export const SITE_NAME = 'Mirall'
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.webp`
@@ -41,6 +44,11 @@ export function softwareApplicationSchema(): JsonLd {
     operatingSystem: 'macOS, Windows, Linux',
     url: SITE_URL,
     downloadUrl: `${SITE_URL}/download`,
+    // Open-source signals: schema.org properties search engines use to recognise
+    // a project as such.
+    codeRepository: GITHUB_URL,
+    license: 'https://www.gnu.org/licenses/agpl-3.0.html',
+    isAccessibleForFree: true,
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -68,7 +76,9 @@ export function faqPageSchema(items: Array<{ question: string; answer: string }>
       name: item.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.answer,
+        // Answers may carry [label](url) markup for the on-page render; structured
+        // data takes the prose only.
+        text: stripLinks(item.answer),
       },
     })),
   }

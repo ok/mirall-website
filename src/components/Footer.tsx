@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import BrandLogo from './BrandLogo'
+import { GITHUB_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -45,18 +46,24 @@ export default function Footer() {
           <ul className="space-y-3 font-body text-sm">
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/docs">{t('footer.resources.docs')}</Link></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/support">{t('footer.resources.support')}</Link></li>
+            <li>
+              <a className="text-slate-500 hover:text-emerald-600 transition-all" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                {t('footer.resources.github')}
+              </a>
+            </li>
           </ul>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.legal.title')}</p>
           <ul className="space-y-3 font-body text-sm">
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.privacy')}</a></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/impressum">{t('footer.legal.impressum')}</Link></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/privacy">{t('footer.legal.privacy')}</Link></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.terms')}</a></li>
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto mt-12 pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="text-slate-500 font-body text-sm">{t('footer.copyright')}</p>
+      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-200">
+        <p className="text-slate-500 font-body text-sm">{t('footer.trademark')}</p>
       </div>
     </footer>
   )

@@ -18,7 +18,7 @@ export default function Explanation() {
       seo={
         <Seo
           title="Mirall Explained — How Peer-to-Peer File Transfer Works"
-          description="Understand how Mirall works: the peer-to-peer model, end-to-end encryption, mirroring, eager vs on-demand sharing, storage reclaim, and how it compares to cloud transfer services."
+          description="Understand how Mirall works: the peer-to-peer model, end-to-end encryption, membership approval, sharing without a second copy, mirroring, and how Mirall uses your disk."
           path="/docs/explanation"
           jsonLd={breadcrumbSchema([
             { name: 'Home', path: '/' },

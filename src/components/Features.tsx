@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next'
-import { SquaresFour, ArrowsLeftRight, Lock, IdentificationBadge, DownloadSimple, CloudSlash, type Icon } from '@phosphor-icons/react'
+// Infinity is aliased: the icon's export name shadows the JS global.
+import { SquaresFour, ArrowsLeftRight, Lock, IdentificationBadge, Infinity as InfinityIcon, Folders, type Icon } from '@phosphor-icons/react'
 
+// Ordered as the user's story: make a space, decide who's in it, put something in
+// it, take what you want out — then how it travels, and how it's protected.
 const featureCards: Array<{
   key: string
   Icon: Icon
@@ -9,11 +12,11 @@ const featureCards: Array<{
   hoverBg: string
 }> = [
   { key: 'spaces', Icon: SquaresFour, iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
+  { key: 'inviteOnly', Icon: IdentificationBadge, iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
+  { key: 'folders', Icon: Folders, iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
+  { key: 'noLimits', Icon: InfinityIcon, iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
   { key: 'direct', Icon: ArrowsLeftRight, iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
   { key: 'encrypted', Icon: Lock, iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
-  { key: 'inviteOnly', Icon: IdentificationBadge, iconBg: 'bg-emerald-50', iconColor: 'text-primary', hoverBg: 'group-hover:bg-primary' },
-  { key: 'explicitDownload', Icon: DownloadSimple, iconBg: 'bg-purple-50', iconColor: 'text-tertiary', hoverBg: 'group-hover:bg-tertiary' },
-  { key: 'zeroInfra', Icon: CloudSlash, iconBg: 'bg-blue-50', iconColor: 'text-secondary', hoverBg: 'group-hover:bg-secondary' },
 ]
 
 export default function Features() {

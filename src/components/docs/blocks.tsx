@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Check, Info, ArrowRight } from '@phosphor-icons/react'
 import type { Block, RelatedLink } from './content'
+import { DOC_IMAGES, DOC_IMAGE_SIZES } from './images'
 
 // Docs content lives in the i18n locale JSON as plain data (see ./content.ts for
 // the shape) and is rendered by the generic components below. Inline emphasis is
@@ -135,21 +136,24 @@ export function Note({ text }: { text: string }) {
 export function DocImage({
   src,
   alt,
-  width = 1600,
-  height = 1268,
+  width = 1344,
+  height = 1165,
 }: {
   src: string
   alt: string
   width?: number
   height?: number
 }) {
+  const resolved = DOC_IMAGES[src]
   return (
     <div className="my-8">
       <img
         className="w-full max-w-2xl mx-auto object-cover rounded-xl"
         style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
         alt={alt}
-        src={src}
+        src={resolved?.src ?? src}
+        srcSet={resolved?.srcSet}
+        sizes={resolved ? DOC_IMAGE_SIZES : undefined}
         width={width}
         height={height}
         loading="lazy"

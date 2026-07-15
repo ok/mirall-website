@@ -11,6 +11,8 @@ const Changelog = lazy(() => import('./pages/Changelog'))
 const Support = lazy(() => import('./pages/Support'))
 const Download = lazy(() => import('./pages/Download'))
 const Preview = lazy(() => import('./pages/Preview'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Impressum = lazy(() => import('./pages/Impressum'))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -36,6 +38,8 @@ export default function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/download" element={<Download />} />
           <Route path="/preview" element={<Preview />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/impressum" element={<Impressum />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

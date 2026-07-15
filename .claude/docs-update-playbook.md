@@ -1,22 +1,27 @@
 # Documentation Update Playbook (Mirall website)
 
-**Purpose.** When a new version of the Mirall desktop app ships, use this runbook to bring the website documentation up to date — re-home/extend the written content under the Diátaxis framework, refresh the changelog, and **capture or update the screenshots from the running app** using the persona data dirs. It encodes the exact procedure, conventions, and gotchas established when the docs were rebuilt for v1.6.0.
+**Purpose.** When a new version of the Mirall desktop app ships, use this runbook to bring the website documentation up to date — re-home/extend the written content under the Diátaxis framework, refresh the changelog, and **re-capture every screenshot from the running app**.
 
-Read this top to bottom once, then work the **Procedure** checklist. The **Screenshot Capture** section is the long one — it drives the real app through `agent-desktop`.
+Read this top to bottom once, then work the **Procedure** checklist. The **Screenshot Capture** section is the long one — it drives the real app.
+
+> **Rewritten after v1.7.0.** The capture mechanics changed completely: screenshots are now driven through the app's own **frontend test harness** rather than hand-rolled `agent-desktop` CLI calls, and images are served through `vite-imagetools` rather than as fixed files in `public/`. If you find advice here that contradicts the app, trust the app and fix this file.
 
 ---
 
 ## 0. TL;DR / non-negotiables
 
 - **Diátaxis**: every document is exactly one of *Tutorial · How-to · Reference · Explanation*. Never blend modes in one doc.
-- **Content lives in `src/i18n/locales/en.json`** under the `docs` and `changelog` namespaces — as structured data, rendered by generic components. You almost never write JSX; you edit JSON.
-- **All screenshots are taken in LIGHT mode.** No exceptions. Set Light theme on every persona before capturing.
-- **Never wipe a persona store.** Tear personas down with `pkill`/SIGTERM only. Do **not** use the test harness `Instance.kill()` (it `rm -rf`s the store). The five `doc-data/doc-user*` dirs are precious, reusable identities.
-- **agent-desktop must be `0.1.14`** (0.2.x breaks refs). The ref field in snapshots is `ref_id` (e.g. `@e7`), not `ref`.
-- **Work on a feature branch in a git worktree**, never on `main`. Don't commit unless explicitly asked.
-- **No mention of AI** anywhere in content, commits, or PRs. Keep PR/commit text terse.
-- **Re-shoot EVERY screenshot on every release — not just the new-feature ones.** Shared chrome (top navigation, buttons, status pills, avatars, badges, spacing, radii, theme) changes between versions and silently makes *every* older screenshot wrong, even for screens whose feature didn't change. Treat the entire image set as stale each release and regenerate all of it from the current build. **Never carry a screenshot over from a previous version.**
-- Target a **perfect Lighthouse score**: screenshots are 1600px-wide webp, ~60–80 KB.
+- **Content lives in `src/i18n/locales/en.json`** under the `docs` and `changelog` namespaces — structured data rendered by generic components. You almost never write JSX; you edit JSON.
+- **Features get REMOVED, not just added.** This is the single biggest trap — see §3.1. A release that deletes a feature silently makes whole guides and explanation topics *describe UI that no longer exists*. Budget as much time for deletions as additions.
+- **No version markers in the docs.** Never write "New in 1.6" / "now" / "previously". The docs describe how the app works *today*; the changelog is what records when things landed.
+- **All screenshots are LIGHT mode**, captured from the **current build**, every release, with **real names and avatars**.
+- **Re-shoot EVERY screenshot on every release — not just the new-feature ones.** Shared chrome (nav, buttons, status pills, badges, spacing, radii) changes between versions and silently makes *every* older screenshot wrong. **Never carry a screenshot over from a previous version.**
+- **Drive the app through the frontend test harness** (`mirall-app/test/frontend/`), not raw `agent-desktop` calls. §4.
+- **The homepage rots too.** Audit `features` / `howItWorks` / `faq` / `hero` every release — §6. And **never ship a capability claim you haven't found in the app source**; the homepage is the easiest place to publish a lie, because nothing type-checks it.
+- **agent-desktop must be ≥ 0.3.0** (0.4.4 verified). *An older version of this playbook demanded 0.1.14 — that is wrong now; the harness preflight rejects anything below 0.3.0.*
+- **Feature branch off `main`**, PR into `main`. Do **not** push to `main`. Do **not** branch from `stage` — it is stale (43 commits behind as of 2026-07-12 and predates the Diátaxis restructure).
+- **No mention of AI** anywhere in content, commits, or PRs. No `Co-Authored-By` trailer.
+- Target a **perfect Lighthouse score** — see §4.7 for the exact image spec.
 
 ---
 
@@ -25,24 +30,22 @@ Read this top to bottom once, then work the **Procedure** checklist. The **Scree
 | Thing | Path |
 |---|---|
 | **Website repo** (what you edit) | `/Users/oliver/Code/mirall/mirall-website` |
-| **App repo** (changelog + source-of-truth labels + screenshot harness) | `/Users/oliver/Code/mirall/mirall-app` |
+| **App repo** (changelog + source-of-truth labels + capture harness) | `/Users/oliver/Code/mirall/mirall-app` |
 | **Changelog** (user-facing release notes) | `mirall-app/CHANGELOG.md` |
-| **Persona data dirs** (5 pre-seeded identities) | `/Users/oliver/Projects/Mirall/documentation/doc-data/doc-user{1..5}` |
-| **Existing raw screenshots** (reference look) | `/Users/oliver/Projects/Mirall/documentation/screenshots` |
-| **Frontend test harness** (launch/flow reference) | `mirall-app/test/frontend/` |
+| **Capture harness** | `mirall-app/test/frontend/` (`instance.mjs`, `helpers.mjs`, `scenarios/`) |
+| **Avatars for personas** | `/Users/oliver/Projects/Mirall/test-data/anon-avatars/` |
+| **Pre-seeded persona stores** (alternative, see §4.2) | `/Users/oliver/Projects/Mirall/test-data/test-userstore/user{1..6}store` |
+| **Legacy persona dirs** (older approach) | `/Users/oliver/Projects/Mirall/documentation/doc-data/doc-user{1..5}` |
 
-**Prerequisites (verify before starting screenshots):**
+**Prerequisites:**
 
 ```bash
-agent-desktop version            # must report "version":"0.1.14"  (0.2.x WILL break — refs go STALE_REF)
-agent-desktop status             # {"permissions":{"granted":true}, ...}  Accessibility + Screen Recording
-ls /Users/oliver/Code/mirall/mirall-app/assets/dist   # app/renderer built (app.css, main.js). If missing: cd mirall-app && npm run build
+agent-desktop version                 # must be >= 0.3.0 (0.4.4 verified). NOT 0.1.14.
+agent-desktop status                  # Accessibility + Screen Recording granted
+cd /Users/oliver/Code/mirall/mirall-app && npm run build    # builds assets/dist (required before capture)
 ```
 
-If agent-desktop is the wrong version: `npm install -g agent-desktop@0.1.14`.
-If permissions aren't granted: `agent-desktop permissions --request` and tell the user to grant **Accessibility** and **Screen Recording** to the terminal/Claude process.
-
-The agent-desktop skill (`/Users/oliver/.claude/skills/agent-desktop`) documents the CLI — load it for command details.
+The app repo's `mirall-app` must be on the branch you're documenting (usually `staging`) and **up to date** — `git fetch && git log HEAD..origin/staging`. A stale local tree will make you document the wrong thing (v1.7.0: a late commit renamed the partial-download suffix to `.mirall.part`, which the docs had as `.partial`).
 
 ---
 
@@ -54,8 +57,8 @@ The agent-desktop skill (`/Users/oliver/.claude/skills/agent-desktop`) documents
 /docs                  Hub — explains the 4 doc types + popular links
 /docs/tutorials        Tutorials   (learning-oriented, guided, end-to-end)
 /docs/guides           How-to guides (task-oriented, grouped: Spaces/Files/Folders/Storage/Account/App)
-/docs/reference        Reference   (tables/lists: statuses, folder types, shortcuts, settings, app menu, …)
-/docs/explanation      Explanation (the "why": p2p, privacy, mirroring, eager-vs-on-demand, storage, …)
+/docs/reference        Reference   (tables/lists: statuses, badges, shortcuts, settings, app menu, …)
+/docs/explanation      Explanation (the "why": p2p, privacy & approval, sharing in place, mirroring, storage)
 /changelog             Release notes (mirrored from mirall-app/CHANGELOG.md)
 ```
 
@@ -63,7 +66,8 @@ Source files:
 - Routes: `src/App.tsx` (lazy-loaded).
 - Shared shell + sidebar: `src/components/docs/DocsLayout.tsx`.
 - Page components: `src/pages/docs/{Hub,Tutorials,Guides,Reference,Explanation}.tsx`, `src/pages/Changelog.tsx`.
-- Generic renderers: `src/components/docs/blocks.tsx` (components) + `content.ts` (types + `stepsFromDoc`). **Keep `blocks.tsx` exporting components only** (the repo enforces `react-refresh/only-export-components`); put helpers/types in `content.ts`.
+- Generic renderers: `src/components/docs/blocks.tsx` (components) + `content.ts` (types + `stepsFromDoc`). **Keep `blocks.tsx` exporting components only** (`react-refresh/only-export-components` is enforced); put helpers/types in `content.ts`.
+- **Screenshot source map: `src/components/docs/images.ts`** — see §2.4. New in v1.7.0.
 
 ### 2.2 Content model (`src/i18n/locales/en.json`)
 
@@ -72,7 +76,7 @@ All copy is data. Top-level relevant namespaces: `docs.*` and `changelog.*`.
 - `docs.hub` → `{ label, heading, intro, cards[], popular[] }`
 - `docs.tutorials` → `{ label, heading, intro, items: DocItem[] }`
 - `docs.guides` → `{ label, heading, intro, groups: [{ id, title, docs: DocItem[] }] }`
-- `docs.reference` → `{ label, heading, intro, sections: DocItem[] }` (each has a `table`, `list`, and/or `image`)
+- `docs.reference` → `{ label, heading, intro, sections: DocItem[] }`
 - `docs.explanation` → `{ label, heading, intro, topics: DocItem[] }`
 - `changelog` → `{ label, heading, intro, releases: [{ version, date, sections: [{ heading, items[] }] }] }`
 
@@ -81,340 +85,336 @@ All copy is data. Top-level relevant namespaces: `docs.*` and `changelog.*`.
 
 **`Block`** discriminated union (rendered by `DocBlocks`):
 ```
-{ type: "p",        text }
+{ type: "p",          text }
 { type: "subheading", text }
-{ type: "note",     text }                       // callout box
-{ type: "bullets",  items: string[] }
-{ type: "steps",    items: [{ title?, text }] }  // first steps block of a how-to → HowTo JSON-LD
-{ type: "table",    columns: string[], rows: string[][] }
-{ type: "image",    src, alt, width, height }
+{ type: "note",       text }                       // callout box
+{ type: "bullets",    items: string[] }
+{ type: "steps",      items: [{ title?, text }] }  // first steps block of a how-to → HowTo JSON-LD
+{ type: "table",      columns: string[], rows: string[][] }
+{ type: "image",      src, alt, width, height }
 ```
 
-**Inline markup** inside any string: `**bold**` and `` `code` `` only (a tiny renderer handles them; no full markdown). Escape JSON quotes as `\"`; prefer rephrasing to avoid heavy escaping.
+**Inline markup** inside any string: `**bold**` and `` `code` `` only. Escape JSON quotes as `\"`; prefer rephrasing over heavy escaping.
 
-**Where images render:** `image` blocks render anywhere `DocBlocks` runs (tutorials, explanation, guide `blocks`). Guides also render a top-level `doc.image` (after the blocks). Reference renders `section.image` (after table/list). The Hub does not take images.
+**Which pages render what — verify before you invent a field:**
 
-### 2.3 Diátaxis sorting rules (how to place new content)
+| Field | Tutorials | Guides | Reference | Explanation |
+|---|---|---|---|---|
+| `intro` | ✅ | ✅ | ✅ | ❌ |
+| `blocks` | ✅ | ✅ | ❌ | ✅ |
+| `table` / `list` | ❌ | ❌ | ✅ | ❌ |
+| top-level `image` | ❌ | ✅ | ✅ | ❌ |
+| `related` | ✅ | ✅ | ❌ | ❌ |
+
+`image` **blocks** render anywhere `DocBlocks` runs (tutorials, guides, explanation). Reference and Explanation do **not** render `related` — adding it there is dead data that silently does nothing. (Both mistakes were made and caught during v1.7.0.)
+
+### 2.3 Diátaxis sorting rules
 
 - **New end-to-end "learn it by doing" flow** → a Tutorial.
 - **"How do I do X"** (one goal, steps) → a How-to guide, in the right group.
 - **A new status / badge / shortcut / setting / menu** → a Reference table row or list item.
 - **A new concept or trade-off (the "why")** → an Explanation topic.
-- A single feature often touches several modes (e.g. "on-demand sharing" = a how-to step + a reference status + an explanation of the trade-off). Add to each as needed; never cram the explanation into the how-to.
+- One feature often touches several modes (e.g. membership approval = a tutorial step + a how-to + a reference row + an explanation of the trade-off). Add to each; never cram the explanation into the how-to.
 - **Re-home, don't duplicate.** If existing copy is in the wrong mode, move it.
+
+### 2.4 Screenshots are imported assets, not public/ files (v1.7.0+)
+
+Docs images live in **`src/assets/docs/<name>.webp`** and are resolved through **`src/components/docs/images.ts`**, which maps the stable key `/docs-<name>.webp` (what `en.json` references) to a `vite-imagetools` srcset. `DocImage` in `blocks.tsx` looks the key up and emits `srcset` + `sizes`.
+
+**To add a new screenshot you must touch three places:**
+1. Drop the file at `src/assets/docs/<name>.webp`.
+2. Add an import + a `SRCSETS` entry in `images.ts` keyed `/docs-<name>.webp`.
+3. Reference `/docs-<name>.webp` from `en.json` with `width`/`height` matching the file **exactly**.
+
+Forget step 2 and the image silently falls back to a bare `src` that 404s (nothing is in `public/` any more).
 
 ---
 
 ## 3. Procedure (per release)
 
-> For a **minor** release (a few new features + screenshots) just proceed. For a **major** restructure, write a short proposal of the IA changes to `.claude/tasks/plan.md` and check in with the user before authoring — historically the user asked for a proposal-first on big changes.
+> For a **minor** release just proceed. For a **major** restructure, write a short proposal and check in with the user before authoring — they consistently ask for proposal-first on big changes.
 
-1. **Research the release.**
-   - Read `mirall-app/CHANGELOG.md` (top entry = the new version) — it's already user-facing and is the spine of what to document.
-   - Optionally `git -C ../mirall-app log --oneline <prevTag>..HEAD` for anything user-visible the changelog missed.
-   - **Verify exact UI labels** against the renderer source (`mirall-app/src/renderer` + its locale JSON) — dialog titles, toggle labels, badge text, statuses. Don't trust paraphrases; the docs must match what the user sees.
+### 3.1 Research the release — additions AND removals
 
-2. **Branch in a worktree** (never edit `main` directly):
+1. Read `mirall-app/CHANGELOG.md` (top entry = the new version). Check there is no `## Unreleased` section — **never document unreleased features.**
+2. **Hunt for removals.** The changelog's *Changed* section is where features die, and it understates them. For every guide, reference row, and explanation topic already in the docs, ask *"does this still exist?"* Grep the app source for the UI you describe:
    ```bash
-   cd /Users/oliver/Code/mirall/mirall-website
-   git worktree add /Users/oliver/Code/mirall/mirall-website-worktrees/feat-docs-<version> -b feat-docs-<version> main
-   cd /Users/oliver/Code/mirall/mirall-website-worktrees/feat-docs-<version> && npm install
+   cd ../mirall-app
+   grep -rn "<the label you documented>" src/renderer --include=*.tsx
+   grep -rn "discontinued\|deprecated\|migrate" src/shared src/main
    ```
-   (Worktree lives **outside** the repo so `main` stays clean — `worktrees/` is not gitignored in this repo.)
+   In v1.7.0 this caught three whole features the docs still described in detail (eager/on-demand sharing, per-space cache clearing, per-space reclaim) — a bigger job than the additions.
+3. **Verify every UI label against the source**, not the changelog's paraphrase. The authoritative string table is `mirall-app/src/renderer/locales/en/common.json`; components reference it by key. Dialog titles, toggle labels, badge text, statuses, menu items, shortcut accelerators — all of it.
+   - Shortcuts: `src/renderer/keyboard/known-commands.ts`
+   - Statuses/badges: `src/renderer/statusBadge.js`
+   - App menu: `src/main/menu.js`
+   - Feature flags (is it actually on by default?): `feature-flags.json`
+4. **Beware orphaned i18n keys.** `common.json` keeps strings for removed UI. A key existing does **not** mean the UI does — grep the `.tsx` files for the key before documenting it.
+5. Also **audit the marketing pages** (`features`, `howItWorks`, `faq`, `hero` in `en.json`) — see **§6**. They drift too, and nobody notices because the docs get all the attention. v1.7.0 left a feature card, both "how it works" steps, and two FAQ answers describing an invite flow that no longer existed.
 
-3. **Update written content** in `src/i18n/locales/en.json`:
-   - Add new how-to guides / tutorial steps / reference rows / explanation topics per §2.3.
-   - Re-home anything now mis-filed.
-   - Keep prose tight, second person, present tense. Use `**bold**` for UI labels.
+### 3.2 Branch
 
-4. **Update the changelog** — mirror the new `CHANGELOG.md` entry into `changelog.releases[0]` (newest first), preserving the `Added/Changed/Fixed` structure and the `**bold lead.**` style.
+```bash
+cd /Users/oliver/Code/mirall/mirall-website
+git checkout -b feat-docs-<version> origin/main
+```
+Branch from **`main`**, PR into **`main`**. Not `stage` (stale). A worktree is fine but not required.
 
-5. **Capture / refresh screenshots** — see §4. Light mode, persona-driven, 1600px webp.
+> **Verify the branch actually took** before committing — `git branch --show-current`. A `checkout -B` that silently doesn't stick will land your commit on `main`.
 
-6. **Wire images** into the relevant docs (`image` blocks / `doc.image` / `section.image`) with **descriptive alt text**.
+### 3.3 Update written content
 
-7. **Verify** — see §5.
+In `src/i18n/locales/en.json`: add/remove/re-home per §2.3 and §3.1. Keep prose tight, second person, present tense. `**bold**` for UI labels. **No version markers.**
 
-8. **Hand off.** Do **not** commit/push unless asked. Summarize the change set and the screenshot inventory.
+### 3.4 Update the changelog
+
+Mirror the new `CHANGELOG.md` entry into `changelog.releases[0]` (newest first), preserving the `Added/Security/Changed/Fixed` structure and the `**bold lead.**` style. Section headings render generically, so any heading works.
+
+### 3.5 Capture screenshots — §4.
+
+### 3.6 Wire images — §2.4, with **descriptive alt text** on every one.
+
+### 3.7 Update the homepage — §6.
+
+### 3.8 Verify — §5.
+
+### 3.9 Hand off
+
+Commit and push **only when asked**. Feature branch → PR into `main`. No `Co-Authored-By`.
 
 ---
 
-## 4. Screenshot capture playbook
+## 4. Screenshot capture
 
-This is the part that drives the real app. It produced the v1.6.0 folder/mirror/storage screenshots.
+**Use the app's frontend test harness.** It already solves window management, AX-tree flakiness, cross-process refs, native pickers, and multi-peer setup. Hand-rolling `agent-desktop` CLI calls (what this playbook used to describe) is strictly worse.
 
-### 4.0 Re-capture the ENTIRE set every release (read first)
+### 4.1 The approach
 
-Do **not** only shoot the new features. Every screenshot the docs use must be **re-taken from the current build** each release, because cross-cutting UI changes (the top nav bar, button styles, status pills, avatars, badges, spacing) make older shots inconsistent or outright wrong — e.g. a redesigned top navigation will be visible in the new feature shots but stale in the older onboarding/settings shots, and the doc set looks broken.
-
-**Authoritative list of what to capture** = every image the docs reference. Get it from the content:
-```bash
-cd <worktree>
-grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u
-```
-Capture a fresh PNG for each, process to webp, and overwrite the file in `public/`. After the run, **delete any `public/docs-*.webp` that's no longer referenced** (don't ship stale assets from a prior version).
-
-**Full capture checklist** (the canonical set — adjust as the app/docs evolve). All in **light mode**, 1312×1040 window, processed to 1600px webp.
-
-| File | Screen / state | How to reach it | Store |
-|---|---|---|---|
-| `docs-onboarding` | "Welcome to Mirall" (name + avatar) | Launch against a **fresh empty store** (personas are already onboarded, so they skip it) — see note below | temp `--storage` dir |
-| `docs-space-list` | Shared Spaces home (list, All/Favorites) | Persona home, after dismissing "What's new" | doc-user1 |
-| `docs-space-view` | A space with files + members | Open a populated space (e.g. Project Fairlight) | doc-user1 |
-| `docs-space-folder` | A space showing a "Shared by you" folder card | The space after a folder is shared (Steve's Space) | doc-user1 |
-| `docs-sidebar-collapsible` | Sidebar with File Storage collapsed | In a space, click the **File Storage** panel header to collapse it | doc-user1 |
-| `docs-account` | Account page (Profile + Network) | Click your avatar (top-right) → Account | doc-user1 |
-| `docs-invite-to-space` | Invite dialog (Code / App link toggle) | Open a space → **Invite** | doc-user1 |
-| `docs-settings` | Settings home (sub-page list) | Top-nav gear → Settings | doc-user1 |
-| `docs-settings-appearance` | Appearance (theme / size / language) | Settings → Appearance | doc-user1 |
-| `docs-settings-notifications` | Notifications toggles | Settings → Notifications | doc-user1 |
-| `docs-storage-folders` | Storage settings — per-share usage | Space header **More → Manage Storage** (or Settings → Storage) | doc-user1 |
-| `docs-add-folder` | Add Folder dialog (Eager/On demand) | In a space, `cmd+shift+u` → pick a source folder | doc-user1 (owner) |
-| `docs-folder-browse` | Browsing a peer's shared folder | Peer opens the foreign folder card | doc-user2 (peer) |
-| `docs-folder-mirror` | Mirror to Disk dialog | Peer's folder view → **Mirror to Disk…** | doc-user2 (peer) |
-| `docs-folder-mirrored` | Mirrored folder (read-only, on-device) | Peer after mirroring completes | doc-user2 (peer) |
-
-> **Onboarding shot needs a fresh store.** Launch with a throwaway empty dir, e.g. `--storage /tmp/mirall-onboarding-$RANDOM` — it boots to "Welcome to Mirall". Capture it, then **delete that temp dir** (it's not a persona, safe to remove). Never point `--storage` at a persona expecting onboarding.
-
-Plan the run to minimize relaunches: do all **doc-user1 single-window** shots in one session (space list → space view → account → invite → settings/appearance/notifications/storage), then bring up **doc-user2** for the two-peer folder flow, then the **fresh-store** onboarding shot last.
-
-### 4.1 The personas
-
-Each `doc-data/doc-user*` dir is a full Electron `userData` store with a pre-seeded Mirall identity, spaces, members, and avatars. Launching the app against one boots straight past onboarding into that identity (it shows the "What's new" modal first — dismiss it).
-
-Known mapping (re-verify each run — open a space and read the Members panel):
-
-| Persona | Display name | Spaces (observed) |
-|---|---|---|
-| `doc-user1` | **Michael** | Steve's Space, Holiday Photos, Project Fairlight |
-| `doc-user2` | **Steve Mason** | Steve's Space |
-| `doc-user3/4/5` | (inspect) | (inspect) |
-
-- **`doc-user1` + `doc-user2` are co-members of "Steve's Space"** and **connect over real DHT** when both are running — this is the verified pair for **two-peer flows** (owner shares a folder → peer browses/mirrors). Steve's Space starts empty → clean backdrop.
-- **`doc-user1` (Michael)** is the rich single-user persona (avatars, multiple spaces) — used for single-window shots (dialogs, settings, sidebar). "Project Fairlight" is the space featured in the older screenshots.
-
-### 4.2 Launch a persona
-
-From `mirall-app`. One window per persona; tile them so each can be focused independently.
-
-```bash
-cd /Users/oliver/Code/mirall/mirall-app
-MIRALL_NO_DEVTOOLS=1 MIRALL_FORCE_A11Y=1 MIRALL_VERBOSE=1 \
-  MIRALL_WINDOW_BOUNDS='{"x":60,"y":80,"width":1312,"height":1040}' \
-  npx electron-forge start -- --no-updates --storage "/Users/oliver/Projects/Mirall/documentation/doc-data/doc-user1" \
-  > /tmp/mirall-shot-user1.log 2>&1 &
-```
-
-- `MIRALL_FORCE_A11Y=1` is **required** — without it a backgrounded renderer never builds its AX tree and snapshots come back empty.
-- `MIRALL_NO_DEVTOOLS=1` keeps DevTools from stealing the window.
-- `--storage <personaDir>` points Electron's `userData` at the persona (the app does `app.setPath('userData', customStorage)`).
-- `1312×1040` logical → **2848×2304** retina capture (the existing webp are 1600px wide; we downscale).
-- For a second persona, give it different bounds (e.g. `"x":720,"y":140`) and write to `/tmp/mirall-shot-user2.log`.
-
-Wait ~9s, then resolve the window:
-```bash
-agent-desktop wait 9000 >/dev/null 2>&1
-agent-desktop list-windows | python3 -c "import sys,json;[print(w['id'],'pid',w['pid'],repr(w.get('title'))) for w in json.load(sys.stdin)['data'] if w.get('app_name')=='Electron']"
-# windows report app_name 'Electron' (forge runs unbranded); title 'Mirall'. Native pickers show title 'Open'/'Save' (same pid).
-```
-
-### 4.3 agent-desktop driving conventions
-
-Drive the app with **snapshot → find ref_id → click**, re-snapshotting after every UI change (refs are snapshot-scoped). Use this helper (write it once):
-
-```bash
-cat > /tmp/ax.py <<'PY'
-import sys,json
-mode=sys.argv[1] if len(sys.argv)>1 else 'dump'
-want=sys.argv[2] if len(sys.argv)>2 else ''
-d=json.load(sys.stdin)
-if not d.get('ok'): print('ERR'); sys.exit(1)
-rows=[]
-def walk(n):
-    rows.append(n)
-    for c in n.get('children',[]) or []: walk(c)
-walk(d['data']['tree'])
-if mode=='ref':           # first element whose name/description == want → its ref_id
-    for n in rows:
-        nm=n.get('name') or n.get('description') or ''
-        if n.get('ref_id') and nm==want: print(n['ref_id']); break
-elif mode=='dump':        # ref_id, role, name for every interactive/named node
-    for n in rows:
-        nm=n.get('name') or n.get('description') or n.get('value') or ''
-        r=n.get('role','')
-        if n.get('ref_id') and (r in ('button','textfield','checkbox','tab','link','menuitem','radiobutton','combobox') or nm):
-            print(f"{n['ref_id']}\t{r}\t{nm[:55]}")
-PY
-```
-
-Click-by-name pattern (snapshot then click immediately so the ref is fresh):
-```bash
-WID=w-xxxxxx
-ref=$(agent-desktop snapshot --window-id $WID --max-depth 45 | python3 /tmp/ax.py ref "Create Space")
-agent-desktop click "$ref"
-agent-desktop wait 1500 >/dev/null 2>&1
-```
-
-**Gotchas (learned the hard way):**
-- The ref field is **`ref_id`** (`@e7`), *not* `ref`.
-- A window's AX id can be **reassigned on repaint** → a cached `WID` goes stale (empty/`WINDOW_NOT_FOUND`). Re-resolve by **pid**: list windows, pick the one with the same pid, use its new id.
-- **Focus the target window before acting/screenshotting** (`agent-desktop focus-window --window-id $WID`) — a backgrounded renderer may not be painted, and clicks on a background window misfire.
-- Menus (`More`) are role `combobox`/`menuitem`; match by name. After opening a menu, re-snapshot to get the item refs.
-- `set-value` is more reliable than `type` for the React inputs (type double-emits); verify by reading the value back.
-
-### 4.4 LIGHT MODE — do this on every persona first
-
-```bash
-WID=w-xxxxxx
-agent-desktop focus-window --window-id $WID
-sref=$(agent-desktop snapshot --window-id $WID --max-depth 40 | python3 /tmp/ax.py ref "Settings");    agent-desktop click "$sref"; agent-desktop wait 1500 >/dev/null
-aref=$(agent-desktop snapshot --window-id $WID --max-depth 45 | python3 /tmp/ax.py ref "Appearance");  agent-desktop click "$aref"; agent-desktop wait 1200 >/dev/null
-lref=$(agent-desktop snapshot --window-id $WID --max-depth 50 | python3 /tmp/ax.py ref "Light");       agent-desktop click "$lref"; agent-desktop wait 800  >/dev/null
-```
-Then **verify visually**: screenshot and Read it back — the UI must be the light/cream theme, not dark. (`Theme Mode` shows Light / System / Dark as a segmented control; "Light" must be the selected one.)
-
-### 4.5 Capturing a screenshot
-
-```bash
-agent-desktop focus-window --window-id $WID
-agent-desktop resize-window --window-id $WID --width 1312 --height 1040   # consistent framing
-agent-desktop wait 700 >/dev/null 2>&1
-agent-desktop screenshot /tmp/shots/<name>.png --window-id $WID
-```
-- `screenshot --window-id` captures the window's own image even if another window overlaps it (so overlapping personas are fine — just focus first so it's painted).
-- **Always Read the PNG back** to confirm it shows the right state, in light mode, with the intended content, before moving on.
-- Keep raw PNGs in `/tmp/shots/`.
-
-### 4.6 Native folder/file picker (for Add Folder / Mirror to Disk)
-
-Sharing a folder or mirroring opens an NSOpenPanel (window `app_name 'Electron'`, `title 'Open'`, same pid). Drive it via go-to-folder:
-
-```bash
-# trigger: cmd+shift+u = Add Folder ; or open the share card "More" → "Mirror to Disk…" then its "Browse…"
-agent-desktop press cmd+shift+u; agent-desktop wait 2500 >/dev/null
-OPEN=$(agent-desktop list-windows | python3 -c "import sys,json;ws=[w for w in json.load(sys.stdin)['data'] if w.get('app_name')=='Electron' and w.get('title')=='Open'];print(ws[0]['id'] if ws else '')")
-agent-desktop focus-window --window-id $OPEN; agent-desktop wait 500 >/dev/null
-agent-desktop press cmd+shift+g; agent-desktop wait 800 >/dev/null          # "Go to folder" sheet
-tf=$(agent-desktop snapshot --app Electron --surface sheet | python3 -c "import sys,json;d=json.load(sys.stdin);t=d.get('data',{});t=t.get('tree',t)
-def w(n):
-  if n.get('role')=='textfield' and n.get('ref_id'): return n['ref_id']
-  for c in n.get('children',[]) or []:
-    r=w(c)
-    if r: return r
-print(w(t) or '')")
-agent-desktop set-value "$tf" "/absolute/path/to/folder"
-agent-desktop press return; agent-desktop wait 700 >/dev/null               # fill path
-agent-desktop press return; agent-desktop wait 1500 >/dev/null              # confirm selection
-```
-
-- **Source folders the picker must reach must NOT live under `/private/var` / `os.tmpdir()`** (macOS blocks the panel there). Use a folder under the repo (`mirall-app/test/frontend/.work/...`) or under `~/Code` / `~/Projects`.
-- For realistic content, make a source folder with plausibly-named files of a few MB each (e.g. `Production Footage/` with `Scene_01_Take_03.mov`, an `Audio/` subfolder, a `.pdf`). Use `dd if=/dev/urandom ... bs=1m count=N`. Keep total small (~15–20 MB) so transfers/mirrors finish fast. **Delete these temp folders during teardown.**
-
-### 4.7 Two-peer flow (browse / mirror screenshots)
-
-1. On the **owner** (doc-user1, "Michael"): open the shared space (use **"Steve's Space"** — empty, both members online). `Share…` → **Add Folder** (or `cmd+shift+u`), pick the source folder. The **Add Folder** dialog opens at the edit step showing **Share name** + the **Folder Share: Eager / On demand** toggle → *screenshot here* (this is `docs-add-folder`). Then `Next: Preview` → confirm `Add Folder` (Eager, so peers can download immediately).
-2. On the **peer** (doc-user2, "Steve Mason"): open the same space → the foreign folder card appears (replication over DHT) → open it → **browse view** (files "Available" + Download buttons, "Mirror to Disk…" in the corner) → *screenshot* (`docs-folder-browse`).
-3. Peer clicks **Mirror to Disk…** → dialog with the read-only-revert note + location picker → *screenshot* (`docs-folder-mirror`). `Browse…` → pick an **empty** destination folder → `Next: Preview` → `Start Mirroring`.
-4. After mirroring, re-open the folder → **"MIRRORED · READ-ONLY"** badge, files now **"On your device"** → *screenshot* (`docs-folder-mirrored`).
-
-Verify mirroring actually happened by checking the destination dir filled with the files (and the `Audio/` subfolder).
-
-### 4.8 Single-user shots (owner side)
-
-In the shared space after the folder is shared:
-- **Collapsible sidebar** (`docs-sidebar-collapsible`): click the **File Storage** panel header to collapse it (leave **Members** expanded) → screenshot. Shows the fold affordance.
-- **Space with shared folder** (`docs-space-folder`): the space view with the folder card ("Shared by you") + sidebar panels.
-- **Storage / per-share usage** (`docs-storage-folders`): space header **More → Manage Storage** → the Storage screen lists **Active Spaces** with the new **per-share breakdown** ("<Folder> · <size> · N files"). *(Reclaimable space only appears after files in a shared folder are edited/replaced, creating superseded versions; induce churn only if you specifically need the "Reclaimable" line.)*
-
-### 4.9 Process PNGs → web-optimized webp
-
-Run from **inside the website worktree** (so Node resolves `sharp` from its `node_modules`). Map raw names → `docs-*.webp`, resize to 1600px, keep alpha (the rounded window corners are transparent — matches the existing assets).
+Write a **standalone script in a scratch dir** (never inside `mirall-app`, so you don't dirty that tree) that imports the harness by absolute path:
 
 ```js
-// save as <worktree>/_process-shots.mjs, run `node _process-shots.mjs`, then delete it
-import sharp from 'sharp'
-import { statSync } from 'node:fs'
-const SRC = '/tmp/shots'
-const OUT = '<worktree>/public'
-const map = {
-  'add-folder':'docs-add-folder', 'folder-browse':'docs-folder-browse',
-  'folder-mirror':'docs-folder-mirror', 'folder-mirrored':'docs-folder-mirrored',
-  'storage':'docs-storage-folders', 'sidebar-collapsible':'docs-sidebar-collapsible',
-  'space-folder':'docs-space-folder',
-}
-for (const [s,o] of Object.entries(map)) {
-  const p = `${OUT}/${o}.webp`
-  const i = await sharp(`${SRC}/${s}.png`).resize({ width:1600 }).webp({ quality:80, effort:6 }).toFile(p)
-  console.log(`${o}.webp  ${i.width}x${i.height}  ${(statSync(p).size/1024).toFixed(1)} KB`)
+const APP = '/Users/oliver/Code/mirall/mirall-app'
+const { Instance }     = await import(`${APP}/test/frontend/instance.mjs`)
+const { startTestnet } = await import(`${APP}/test/frontend/testnet.mjs`)
+const { joinPending }  = await import(`${APP}/test/frontend/helpers.mjs`)
+const { workDir }      = await import(`${APP}/test/frontend/paths.mjs`)
+```
+
+Run it with **cwd = `mirall-app`** (`node /path/to/scratch/shots.mjs`).
+
+Key harness API:
+- `new Instance({ name, bootstrap, slot, total })` — `name` becomes the display name at onboarding.
+- `.launch({ onboard })`, `.onboard()`, `.focus()`, `.moveCursorAway()`, `.shot(label, dir)`
+- `.click(sel)`, `.type(sel, text)`, `.press(combo)`, `.waitText(str, ms)`, `.has(sel)`, `.hasText(str)`, `.nodeValue(sel)`, `.back()`
+- `.openAccount()`, `.gotoSettings(section)`, `.openInviteModal()`, `.openFolder(name)`, `.addFile(path)`, `.openAddFolderModal(dir)`, `.mirrorShare(dir)`, `.nativeChoosePath(path)`, `._confirmPreview(label, text)`
+- `.quit()` — **use this, not `.kill()`** (`kill()` wipes the store).
+- Selectors: `{ role, name, contains, last }`. `role` is optional and sometimes *must* be omitted (§4.6).
+
+Read `test/frontend/scenarios/` for working examples of any flow — there is almost certainly one for what you need (`s54` approval, `s73` peer downloads, `s76` invite, `s103` folder tree).
+
+Wrap each shot in a `try/catch` step so one failure doesn't cost the whole run, and print a summary at the end. A full 3-peer run takes ~15 minutes.
+
+### 4.2 Personas: fresh identities + real avatars (recommended)
+
+The docs need **realistic names and avatar photos**. Onboard fresh instances and upload an avatar to each:
+
+- Names: **Michael, Sarah, Chris** (also Helen, Steve) — matching `test-data/anon-avatars/{michael.png,sarah.jpeg,chris.jpeg,helen.jpeg,steve.png}`.
+- Space: **Project Fairlight**. Folder: **Production Footage**. (Consistent with the established docs look.)
+
+```js
+// Account → avatar button opens a native file chooser (a hidden <input type=file>,
+// NOT an Electron dialog) and the app resizes the image itself — there is no crop step.
+async function setAvatar(I, file) {
+  await I.openAccount()
+  await I.click({ name: 'Change profile picture' })
+  await I.nativeChoosePath(path.join(AVATARS, file))
+  await sleep(2500)                                   // FileReader + resize
+  await I.click({ role: 'button', name: 'Save Changes' })
+  await I.press('cmd+shift+h')
 }
 ```
-Expect ~1600×1294, **~57–78 KB** each. (Don't `.trim()` — it removes the shadow padding and desyncs aspect ratios.)
 
-### 4.10 Teardown — SAFELY (never wipe a persona)
+**Why not the pre-seeded stores?** `test-data/test-userstore/user*store` are full Electron `userData` dirs with real identities (Michael, Sarah, Helen, Steve, Chris) and could be booted with `--storage`. But each carries **spaces from earlier sessions whose peers aren't on the local testnet** — they render as stale, owner-offline clutter in every frame. Fresh onboarding + the same avatars gives the same realism with a clean slate, and removes the "never wipe a persona" hazard entirely. Reach for the prepared stores only if you specifically need pre-existing rich content, and **copy them first — never point the app at the originals.**
 
+### 4.3 Light theme: seed it before launch
+
+Don't click through Settings — the **welcome screen appears before Settings is reachable**, so the onboarding shot would come out dark. Seed the store's `config.json` before `launch()`:
+
+```js
+function seedLightTheme(I) {
+  mkdirSync(I.store, { recursive: true })
+  writeFileSync(path.join(I.store, 'config.json'),
+    JSON.stringify({ version: 1, appearance: { theme: 'light', locale: null } }, null, 2))
+}
+```
+The app follows the OS theme by default, and the dev machine is dark — so without this **every** shot comes out dark and unusable.
+
+### 4.4 Window sizing (uniform aspect ratio)
+
+`Instance` sizes windows via `tile(slot, total)`. On the 3008×1667 dev display, `total: 2` yields an identical **1200×1040** window for slots 0, 1 **and** 2 — so pass `total: 2` even with three peers and every shot shares one aspect ratio. Verify after processing: all files should report the same intrinsic size.
+
+### 4.5 The capture set
+
+Get the authoritative list from the content itself:
 ```bash
-pkill -f "doc-data/doc-user1"      # SIGTERM the persona's Electron main; before-quit tears the worker down cleanly
-pkill -f "doc-data/doc-user2"
-agent-desktop wait 4000 >/dev/null 2>&1
-agent-desktop list-windows | python3 -c "import sys,json;print('Electron windows:',sum(1 for w in json.load(sys.stdin)['data'] if w.get('app_name')=='Electron'))"   # expect 0
-# CONFIRM the stores are intact (must still list items):
-ls "/Users/oliver/Projects/Mirall/documentation/doc-data/doc-user1/app-storage"
-rm -rf "/Users/oliver/Code/mirall/mirall-app/test/frontend/.work/<your temp source/dest folders>"   # clean temp only
+grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u
+```
+Capture a fresh PNG for each. Afterwards, **delete any `src/assets/docs/*.webp` no longer referenced, and its `images.ts` entry.**
+
+Current set (v1.7.0) — 16 images, all light mode, all 1344×1173:
+
+| File | Shows | Captured from |
+|---|---|---|
+| `onboarding` | "Welcome to Mirall" (name + avatar) | owner, `launch({onboard:false})` |
+| `invite-to-space` | Invite dialog — auto-approve + expiry | owner |
+| `join-waiting` | "Waiting to be let in" + Cancel request | pending peer |
+| `join-approval` | "<name> wants to join" banner + Approve/Deny | owner, 1 requester |
+| `approval-review` | "Requests to join" batch modal | owner, 2 requesters |
+| `space-view` | Space with loose files, drop zone, members | owner |
+| `peer-downloads` | Downloader facepile expanded — per-person speed/ETA | owner, 2 peers downloading |
+| `add-folder` | Add Folder dialog (path + share name) | owner |
+| `space-folder` | Space with a "Shared by you" folder card | owner |
+| `folder-browse` | Folder tree with per-folder stats + Expand all | browsing peer |
+| `folder-mirror` | Mirror to Disk dialog | peer |
+| `folder-mirrored` | Mirrored folder — "On your device" + verified shield | peer |
+| `mirrored-by` | "Mirrored by" facepile on an owned folder | owner, 2 mirrorers |
+| `sidebar-collapsible` | Sidebar with Space Storage collapsed | owner |
+| `settings-storage` | Settings → Storage (App Storage breakdown) | owner |
+| `account-security` | Account → Security (keychain status) | owner |
+
+**Not capturable on macOS:** the Windows/Linux application menu (it lives in the macOS menu bar). The Reference "Application menu" entry stays a table.
+
+### 4.6 Gotchas (all of these bit during v1.7.0)
+
+| Symptom | Cause / fix |
+|---|---|
+| **Theme click finds no element** (`{role:'button', name:'Light'}`) | Segmented controls (Theme Mode, Display Size) are `aria-pressed` and carry **no button role** in the AX tree. Match on **name only**: `{ name: 'Light' }`. Confirm with `nodeValue({name:'Light'}) === '1'`. |
+| **"Expand all" not found** in a folder | **Top-level folders are open by default**, so the toggle reads **"Collapse all"**. It's one button, not two. To get a good tree shot: click *Collapse all*, then re-open one folder — that shows the per-folder stat lines *and* file rows in one frame. |
+| **Peer-download indicator never appears** | Two separate causes. (a) The big file is still **indexing on the owner**, so the peer has no Download button yet — poll `has({role:'button',name:'Download'})` until it appears. (b) The transfer **finished before you shot it** — use a ~900 MB file, and clear the small files off the peers first so the only remaining Download button is the big one. |
+| Native picker can't reach the path | Source folders **must not** live under `/private/var` (where `os.tmpdir()` points) — macOS blocks the panel there. Use the harness `workDir()` (under `mirall-app/test/frontend/.work/`). |
+| Snapshot empty / `WINDOW_NOT_FOUND` | Focus the window first; the harness re-resolves stale AX ids by pid. Always `focus()` + `moveCursorAway()` before a shot so no hover state leaks in. |
+| Store gets wiped | You called `Instance.kill()`. Use `.quit()`. |
+| A dead feature flag re-enables old UI | `Instance` defaults `flags: { eagerTransferMode: true }` — a **dead flag**; it no longer exists in the app source and changes nothing. Don't cargo-cult it into meaning the eager UI is back. Check `feature-flags.json` for what's real. |
+
+### 4.7 Process PNGs → webp (the Lighthouse spec)
+
+Raw captures are 2× window screenshots on a transparent canvas (rounded corners + shadow). Run the processor from **inside the website repo** so Node resolves `sharp`.
+
+```js
+await sharp(rawPng)
+  .trim()                                          // drop the dead transparent border; the soft shadow survives
+  .resize({ width: 1344, withoutEnlargement: true })
+  .webp({ quality: 82, effort: 6 })
+  .toFile(`src/assets/docs/${name}.webp`)
 ```
 
-> **DANGER:** Do not reuse `mirall-app/test/frontend/instance.mjs`'s `Instance.kill()` — it `rmSync`s the store/download dirs. That's correct for ephemeral test instances but would **destroy a persona**. Always tear down personas by signalling the process and verifying the store still exists.
+- **1344px** = exactly 2× the 672px (`max-w-2xl`) the docs render at. The old 1600px was oversized and is what risks Lighthouse's *"properly size images"*.
+- Expect **~34–62 KB** each, ~800 KB for the set.
+- **`.trim()` is correct now** (an older version of this playbook said not to) — but you *must* then read back the real output dimensions and use them, because:
+- **`width`/`height` in `en.json` must match the file exactly.** The `<img>` has `object-cover`; a mismatch crops the image and risks a CLS/aspect-ratio flag. Print the intrinsic size from the processor and copy it in. (v1.7.0 shipped several off-by-one values from the previous set.)
+- Responsive variants (672/1008/1344) + `sizes` are generated by `vite-imagetools` via `images.ts` — a phone fetches a ~13 KB variant instead of the full 40 KB. Keep `loading="lazy"` and `decoding="async"`.
 
 ---
 
 ## 5. Verify
 
-From the worktree:
 ```bash
-node -e "JSON.parse(require('fs').readFileSync('src/i18n/locales/en.json','utf8'));console.log('en.json: valid')"
-# every referenced image exists:
-for img in $(grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u); do test -f "public$img" && echo "OK $img" || echo "MISSING $img"; done
-npm run build        # tsc -b + vite build must be clean
+python3 -c "import json;json.load(open('src/i18n/locales/en.json'));print('en.json valid')"
+npm run build          # tsc + vite must be clean
+npx tsc --noEmit -p tsconfig.app.json
 ```
-- **No stale screenshots:** every referenced image must have been regenerated *this* run. List them (`grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u`) and confirm each `public/docs-*.webp` mtime is from today's capture — a shot carried over from a prior version is a bug. Then delete any `public/docs-*.webp` that's no longer referenced.
-- **In-page render check (gold standard):** `npm run preview -- --port 4317`, then `open -a "Google Chrome" "http://localhost:4317/docs/guides"`, screenshot the Chrome window with agent-desktop, and Read it back — confirm the images render, the **top nav and chrome look current**, and the sidebar nav works. Spot-check a context page too (e.g. `/docs/tutorials`) so an older screen's chrome isn't stale. Stop the server (`pkill -f "vite preview"`) after.
-- **Lint baseline:** `npm run lint` currently reports **2 pre-existing errors** in `src/components/Navbar.tsx` (set-state-in-effect) and `src/components/Seo.tsx` (missing `react/no-danger` rule def). These are **not yours** — confirm they're identical on `main` and don't chase them. Your new files must add **zero** new lint problems.
-- SPA note: per-route `<title>`/meta are applied client-side (React 19 metadata) — view-source shows the base title; that's expected and matches the rest of the site.
+
+**Every referenced image resolves** (they're bundled now, so a missing one fails the build — but a missing `images.ts` entry does *not*, it silently 404s at runtime):
+```bash
+grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u   # every one must appear in images.ts
+```
+
+**Every internal anchor resolves** — cross-links break silently when you rename or delete a doc id. Walk the JSON: collect every `tutorials/guides/reference/explanation` `id`, collect every `related[].to` and `popular[].to`, and diff.
+
+**In-page render check (gold standard):**
+```bash
+npx vite preview --port 4317
+open -a "Google Chrome" "http://localhost:4317/docs/guides"
+# screenshot the Chrome window with agent-desktop and Read it back
+pkill -f "vite preview --port 4317"
+```
+Confirm the images render, the chrome looks current, and the sidebar works. Spot-check a second page.
+
+**Lint baseline:** `npm run lint` reports **2 pre-existing errors** — `src/components/Navbar.tsx` (set-state-in-effect) and `src/components/Seo.tsx` (missing `react/no-danger` rule def). They are **not yours**; confirm they're identical on `main` and don't chase them. Add **zero** new lint problems.
+
+**SPA note:** per-route `<title>`/meta are applied client-side (React 19 metadata) — view-source shows the base title. Expected.
 
 ---
 
-## 6. Screenshot inventory (current set → what it shows → home)
+## 6. The homepage (feature grid & marketing copy)
 
-**Every file in this set is re-shot each release** (§4.0) — none are carried over from a prior version. Update this table when you add/rename shots. All are 1600px-wide webp in `public/`, light mode.
+The docs get all the attention; the homepage silently rots. Audit it **every release** — `features`, `howItWorks`, `faq`, `hero` in `en.json`. In v1.7.0 a single change (invite codes → invite links + approval) falsified a feature card, **both** how-it-works steps, and two FAQ answers.
 
-| File | Shows | Wired into |
-|---|---|---|
-| `docs-add-folder.webp` | Add Folder dialog — share name + Eager/On demand toggle | guide `share-a-folder`; tutorial `share-a-folder-and-keep-it-synced` |
-| `docs-folder-browse.webp` | Browsing a shared folder — files "Available" + download | guide `browse-a-shared-folder` |
-| `docs-folder-mirror.webp` | Mirror to Disk dialog — read-only note + location | guide `mirror-a-folder-to-disk` |
-| `docs-folder-mirrored.webp` | Mirrored folder — "MIRRORED · READ-ONLY", "On your device" | guide `manage-a-mirror` |
-| `docs-storage-folders.webp` | Storage settings — per-share usage breakdown | guide `reclaim-disk-space` |
-| `docs-sidebar-collapsible.webp` | Space sidebar — File Storage collapsed, Members expanded | reference `space-sidebar` |
-| `docs-space-folder.webp` | A space with a "Shared by you" folder card | tutorial `share-a-folder-and-keep-it-synced` |
-| `docs-onboarding`, `docs-space-list`, `docs-space-view`, `docs-account`, `docs-invite-to-space`, `docs-settings`, `docs-settings-appearance`, `docs-settings-notifications` | onboarding / spaces / account / invite / settings screens | tutorials, guides, reference — **equally reshot every release** (see the §4.0 checklist for how to reach each) |
+### 6.1 Where it lives
 
-**Not capturable on macOS:** a Windows/Linux **application menu** screenshot — that menu lives in the macOS system menu bar here. The Reference "Application menu" entry stays a table (no image). Capture it only if you're running on Windows/Linux.
+A card is defined in **two places** — miss either and you get an orphan:
 
-**Alt text:** every screenshot needs descriptive alt text in its `image` block — describe what's on screen and the feature it demonstrates (see existing entries for tone).
+| | |
+|---|---|
+| **Layout** — key, icon, colours | `src/components/Features.tsx` (the `featureCards` array) |
+| **Copy** — title + description | `src/i18n/locales/en.json` → `features.<key>.{title,description}` |
+
+After removing a card, grep for the key **and** its icon import:
+```bash
+grep -rn "zeroInfra\|CloudSlash" src/     # must return nothing
+```
+An unused icon import is a lint error; a stale `features.*` key is dead weight nobody will ever find.
+
+### 6.2 Grid mechanics
+
+- The grid is `md:grid-cols-2 lg:grid-cols-3` → **keep the card count at 6**. It tiles cleanly at 1, 2 and 3 columns. Five or seven leaves a ragged last row.
+- Cards stretch to the tallest in the row, so **one long description sets the row height**. Keep them within roughly a sentence of each other.
+- Icon colours rotate **emerald → purple → blue** (`primary` / `tertiary` / `secondary` tokens), repeating down the grid. Preserve the rotation when you reorder — it's positional, not per-card.
+- Icons come from `@phosphor-icons/react`. **Verify the export exists** before using it — a wrong guess is a build error:
+  ```bash
+  grep -qE "\bFolders\b" node_modules/@phosphor-icons/react/dist/index.d.ts && echo ✓
+  ```
+  **Alias any icon whose name shadows a JS global** — `Infinity as InfinityIcon`.
+
+### 6.3 Editorial rules (learned the hard way)
+
+- **Order the cards as the user's story, not a feature dump.** The current arc is: make a space → decide who's in it → put something in it → the transfer itself → how it travels → how it's protected. It closes on security, which is the strongest note.
+- **Sell, don't defend.** A card that reassures about a non-issue wastes a slot. "You Choose What to Keep" ("nothing syncs without your say-so") was cut for exactly this — users already assume it.
+- **One argument per card.** When "Zero Infrastructure" was removed, its no-cloud-bill claim moved into *Direct Device-to-Device* — and then collided with the new *No Limits, No Meter* card's "no per-GB bill". Two cards making the same point weakens both. Check for collisions after any reshuffle.
+- **Don't restate the section subhead.** `features.description` already opens with *"No accounts. No uploads to someone else's server."* A card repeating "no accounts, no sign-ups" is redundant two inches below it.
+- **Never claim a feature the app doesn't have** just because it sounds good in a list. There was never a "permissions dashboard" to not have.
+
+### 6.4 Verify every claim against the app — especially security
+
+Homepage copy is the easiest place to ship a lie, because nothing type-checks it. Two live examples:
+
+> **Mirall does NOT encrypt your files at rest. Never imply it.**
+> Files are served **in place from the originals**; downloads and mirrors land as ordinary files. Their protection against a stolen laptop is the user's **disk encryption**, not Mirall.
+> What v1.7.0 *does* encrypt at rest is **Mirall's own records** — which spaces you're in, who's in them, and what you share — plus the **identity key**, which lives in the system keychain. That is the honest device-theft claim, and it's the one the card makes.
+
+> **File size: there is no hard cap, and terabyte-scale files are explicitly supported.** Mirall engineered *for* them: `§4.11` (chunk-map paging) and `§4.12` (chunk-hashes wire paging) in `src/shared/transfer/backends/overlay/vendor/` exist specifically so multi-TB files stop hitting Hypercore's 15 MiB block cap and the Noise transport's 16 MiB frame cap. "Hundreds of gigabytes or even terabytes" is accurate.
+
+**A cautionary tale about how to read that source, because it burned me.** Those two files discuss a "1.1 TB file" throwing `BAD_ARGUMENT` and a "1.25 TB file" dropping the connection — and I cited them as a *live ~1.1 TB ceiling* on the homepage. They are the opposite: they are **descriptions of upstream bugs that Mirall fixed**, and the TB figures are the illustrative file sizes that used to break. `PROVENANCE.md` is a changelog of divergences *from* upstream, so almost every limit it names is one that no longer applies.
+
+> **Read a limit's tense before you quote it.** A number in a comment or a provenance note is as likely to be a fixed bug as a live constraint. Find the code that *enforces* it — a real cap is a guard that throws, not a paragraph that explains why one used to.
+
+Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1). If you cannot find it in the source, it does not go on the homepage — and if you find it in a comment, confirm it's still true in the code.
 
 ---
 
 ## 7. Conventions & guardrails
 
-- **Light mode only** for screenshots (§4.4).
+- **Light mode only** for screenshots; **real names + avatars**; re-shot every release.
 - **One Diátaxis mode per document**; re-home, don't duplicate.
-- **Match the app exactly** — verify dialog titles, toggle labels, badges, statuses against `mirall-app/src/renderer` before writing them.
-- **No AI mentions** in content, commits, or PRs. PR bodies terse; commit = title, blank line, one unwrapped paragraph.
-- **No time estimates** in any plan ("X days"). Use complexity language.
-- **Accessibility:** semantic headings in order, `alt` on every image, links with discernible text, tables with `<th scope>` (the block components already do this). Don't regress it.
-- **SEO/perf:** screenshots stay ~60–80 KB webp; each route keeps its `<Seo>` (breadcrumb; `HowTo` JSON-LD on guides with steps). Add new routes to `public/sitemap.xml`.
-- **Worktree discipline:** code work on a feature branch in a sibling worktree; clean up with `git worktree remove` after merge/abandon. Never auto-clean.
-- **No commits/pushes** unless the user asks this turn.
-- **English-first.** Translations (DE/FR/ES/IT) are a separate, later effort; structure content so they can slot in.
+- **No version markers** ("New in 1.6") anywhere in the docs.
+- **Match the app exactly** — verify labels against `mirall-app/src/renderer` before writing them. This goes double for homepage claims (§6.4): no source, no claim.
+- **Homepage feature grid stays at 6 cards**, ordered as a story, one argument each (§6).
+- **No AI mentions** in content, commits, or PRs. No `Co-Authored-By`. Commit = `[type] Subject`, blank line, body.
+- **No time estimates** in plans. Use complexity language.
+- **Accessibility:** semantic headings in order, `alt` on every image, links with discernible text, tables with `<th scope>` (block components handle this). Don't regress it.
+- **SEO/perf:** §4.7 image spec; each route keeps its `<Seo>` (breadcrumb; `HowTo` JSON-LD on guides with steps). Add new routes to `public/sitemap.xml` (it has no `lastmod`, so nothing to bump).
+- **Never push to `main`.** Feature branch → PR. No commits/pushes unless asked this turn.
+- **English-first.** Translations (DE/FR/ES/IT) are a separate, later effort.
 
 ---
 
@@ -422,15 +422,22 @@ npm run build        # tsc -b + vite build must be clean
 
 | Symptom | Cause / fix |
 |---|---|
-| Snapshot returns empty tree | Window not focused/painted → `focus-window` first; or AX id stale → re-resolve by pid. Or `MIRALL_FORCE_A11Y=1` was missing on launch. |
-| All refs are `None` | You read `ref` — it's `ref_id`. |
-| Refs go `STALE_REF`, suite stalls | agent-desktop is 0.2.x → downgrade to `0.1.14`. |
-| Native picker won't open the path | Source under `/private/var`/tmp → move it under the repo or `~/Code`/`~/Projects`. |
-| Persona shows "Welcome to Mirall" | A store with no identity (not a persona) — you pointed `--storage` at the wrong dir. |
-| Two personas don't see each other's folders | Not co-members of the space, or one isn't online — use `doc-user1`+`doc-user2` in **Steve's Space**; check the Members panel shows the other as **Online**. |
-| `sharp` not found when processing | Run the script from **inside the website worktree**, not `/tmp`. |
-| Build fails on `react-refresh/only-export-components` | A `.tsx` exports a non-component — move helpers/types to a `.ts` (e.g. `content.ts`). |
+| Harness aborts on version | agent-desktop < 0.3.0. `npm install -g agent-desktop@latest`. |
+| Snapshot empty tree | Window not focused/painted, or a stale AX id → the harness re-resolves by pid; make sure you `focus()` first. |
+| `role`-qualified selector finds nothing | It's an `aria-pressed` segment — drop the `role`, match by name (§4.6). |
+| Native picker won't open the path | Source under `/private/var`/tmp → use `workDir()`. |
+| Screenshots all dark | You didn't seed `config.json` before launch (§4.3). |
+| Avatars are letter placeholders | `setAvatar()` didn't run or failed silently — check the step's catch output. |
+| Persona store destroyed | You used `Instance.kill()` instead of `.quit()`. |
+| `sharp` not found | Run the processor from **inside the website repo**, not the scratch dir. |
+| Image 404s at runtime but build passed | Missing `images.ts` entry (§2.4). |
+| Docs describe a dialog that isn't in the app | You trusted the changelog / an orphaned i18n key instead of the components (§3.1). |
+| Feature grid has a ragged last row | Card count isn't 6 (§6.2). |
+| Lint fails after removing a feature card | The icon import is now unused — drop it from `Features.tsx` (§6.1). |
+| A card renders its raw i18n key | Copy exists in `Features.tsx` but not `en.json` (or vice versa) — both places, always (§6.1). |
+| Icon import blows up the build | The Phosphor export doesn't exist, or it shadows a JS global (`Infinity`) and needs aliasing (§6.2). |
+| Build fails on `react-refresh/only-export-components` | A `.tsx` exports a non-component — move helpers/types into a `.ts`. |
 
 ---
 
-*Keep this file in sync with `src/components/docs/*` and the `docs`/`changelog` namespaces in `en.json`. If the content model or the launch/capture mechanics change, update the relevant section here.*
+*Keep this file in sync with `src/components/docs/*`, `src/components/docs/images.ts`, `src/components/Features.tsx`, and the `docs` / `changelog` / `features` namespaces in `en.json`. If the content model, the capture mechanics, or the homepage grid change, update the relevant section here.*
