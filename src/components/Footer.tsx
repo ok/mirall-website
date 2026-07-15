@@ -62,6 +62,9 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-200">
+        <p className="text-slate-500 font-body text-sm">{t('footer.trademark')}</p>
+      </div>
     </footer>
   )
 }
