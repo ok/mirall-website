@@ -52,14 +52,28 @@ jobs:
           # not something CI should work around by holding a credential. Fail
           # loudly so the gate is visibly absent rather than silently green.
           code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 "$PREVIEW/" || echo 000)
-          echo "preview / -> $code"
+          loc=$(curl -sS -o /dev/null -D - --max-time 30 "$PREVIEW/" 2>/dev/null \
+                | tr -d '\r' | awk 'tolower($1)=="location:"{print $2}')
+          echo "preview / -> $code ${loc:+(-> $loc)}"
+
+          # Deployment Protection answers with a 302 to vercel.com/sso-api, not a
+          # 401 — so a plain status check reads it as "unreachable" and reports
+          # the wrong cause. Match the redirect target, not just the code.
+          case "$loc" in
+            *vercel.com/sso*|*vercel.com/login*) code=protected ;;
+          esac
+
           case "$code" in
             200) ;;
-            401|403)
-              echo "::error::Preview deployment requires authentication ($code)."
-              echo "The gate cannot run. Either make preview deployments public for"
-              echo "this project, or accept that PRs are not gated. No credential"
-              echo "will be added to this workflow to bypass it."
+            protected|401|403)
+              echo "::error::Preview deployments are protected — the gate cannot read them."
+              echo ""
+              echo "Fix (repo owner): Vercel -> Project -> Settings -> Deployment Protection"
+              echo "  -> set Vercel Authentication to Disabled for Preview deployments."
+              echo ""
+              echo "A Protection Bypass token would also work and is deliberately NOT used:"
+              echo "it puts a credential in CI to defeat a security setting, which is the"
+              echo "owner's call to make in settings, not this workflow's to route around."
               exit 1 ;;
             *)
               echo "::error::Preview unreachable ($code). Gate could not run."
