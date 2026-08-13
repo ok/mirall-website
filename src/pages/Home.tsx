@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <Seo
         title="Mirall — Secure Large File Transfer, No Cloud"
-        description="Move hundreds of gigabytes or terabytes directly between devices — no size caps, no per-GB fees. End-to-end encrypted, GDPR-compliant by architecture, no cloud."
+        description="Move hundreds of gigabytes or terabytes directly between devices — no size caps, no per-GB fees. End-to-end encrypted. No cloud storage, no accounts, no telemetry."
         path="/"
         jsonLd={[
           softwareApplicationSchema(),

@@ -10,7 +10,7 @@
   },
   "hero": {
     "label": "Secure Data Transfer",
-    "title": "Move data <1>directly</1>.\nNo cloud.\nNo middleman.",
+    "title": "Move data <1>directly</1>.\nNo cloud.\nNo accounts.",
     "description": "Mirall is built for very large files. Move hundreds of gigabytes or even terabytes straight between devices: create a space, invite the people who need the data, and it travels device to device, encrypted end-to-end, with no cloud in the middle.",
     "cta": "Download for Desktop",
     "industries": "Designed for hundreds of gigabytes to terabytes. No size caps, no per-GB fees."
@@ -36,7 +36,7 @@
     },
     "direct": {
       "title": "Direct Device-to-Device",
-      "description": "Files move straight between devices over encrypted connections, served in place from the originals. No server ever sees your data, because there is no server."
+      "description": "Files move straight between devices over encrypted connections, served in place from the originals. No server stores your files, and anything that forwards traffic sees only ciphertext."
     },
     "encrypted": {
       "title": "Encrypted by Default",
@@ -55,7 +55,7 @@
       {
         "step": "2",
         "title": "Invite your people",
-        "description": "Create an invite link and send it. They ask to join, you approve — and they're connected directly to you, no server in between."
+        "description": "Create an invite link and send it. They ask to join, you approve — and they connect straight to you, with no account and no server storing your files."
       },
       {
         "step": "3",
@@ -140,7 +140,7 @@
     "warning": "Preview builds are pre-release and may be unstable. Don't install on a machine you depend on."
   },
   "cta": {
-    "title": "Your files. Your devices. No middleman.",
+    "title": "Your files. Your devices. No copies in between.",
     "description": "Join the movement that share files the way it should be — direct, encrypted, and free from cloud lock-in.",
     "primaryButton": "Download Mirall",
     "secondaryButton": "Read the Docs"
@@ -1180,7 +1180,9 @@
           { "type": "subheading", "text": "2.4 Software updates" },
           { "type": "p", "text": "Mirall updates itself over the same peer-to-peer network it uses for everything else. A new version is simply a drive that your copy of Mirall follows and replicates, much as it replicates a shared folder." },
           { "type": "p", "text": "So that an update is available even when no other user happens to be online, we run one always-on peer of our own that carries the release drive. We should be plain about what that means: it is a machine we control, and like any device you connect to directly, it sees the IP address of the copies of Mirall that replicate from it." },
-          { "type": "p", "text": "What it is not is an account system. It holds our published releases and nothing else — never your files, your spaces, or anything you share. It has no idea who you are, because Mirall never tells it: there is no identifier, no login, and no profile behind the connection. We do not use what it sees to build a picture of you, and we do not combine it with anything else." }
+          { "type": "p", "text": "What it is not is an account system. It holds our published releases and nothing else — never your files, your spaces, or anything you share. It has no idea who you are, because Mirall never tells it: there is no identifier, no login, and no profile behind the connection. We do not use what it sees to build a picture of you, and we do not combine it with anything else." },
+          { "type": "subheading", "text": "2.5 Connection relays" },
+          { "type": "p", "text": "Mirall never routes your connections through a relay. If a peer you connect to uses one, the network may still carry that connection through it — encrypted end to end, and unreadable to the relay. A relay cannot read your files, your file names, or your messages; it can observe that two devices are connected, when, and how much data passes. Mirall does not operate a connection relay and does not offer one on your behalf." }
         ]
       },
       {
