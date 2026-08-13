@@ -39,7 +39,7 @@ export function softwareApplicationSchema(): JsonLd {
     '@type': 'SoftwareApplication',
     name: SITE_NAME,
     description:
-      'Secure large file transfer for regulated industries. Move terabyte-scale files directly between devices. End-to-end encrypted, GDPR-compliant by architecture, no third-party servers.',
+      'Move hundreds of gigabytes or terabytes directly between devices — no size caps, no per-GB fees. End-to-end encrypted. No cloud storage, no accounts, no telemetry.',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'macOS, Windows, Linux',
     url: SITE_URL,
@@ -57,11 +57,11 @@ export function softwareApplicationSchema(): JsonLd {
     featureList: [
       'Direct device-to-device file transfer',
       'End-to-end encrypted',
-      'No cloud storage, no third-party servers',
+      'No cloud storage',
       'Supports files up to multi-terabyte',
       'Resumable transfers',
       'No accounts required',
-      'GDPR compliant by architecture',
+      'Local-first — works offline',
     ],
     publisher: { '@type': 'Organization', name: SITE_NAME },
   }
