@@ -10,8 +10,5 @@
     { "source": "/preview/win32-x64", "destination": "https://dl.mirall.app/desktop/channels/staging/win32-x64/signed/Mirall.msix", "statusCode": 302 },
     { "source": "/preview/linux-x64", "destination": "https://dl.mirall.app/desktop/channels/staging/linux-x64/Mirall.AppImage", "statusCode": 302 },
     { "source": "/preview/linux-arm64", "destination": "https://dl.mirall.app/desktop/channels/staging/linux-arm64/Mirall.AppImage", "statusCode": 302 }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

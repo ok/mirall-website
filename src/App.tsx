@@ -1,18 +1,9 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense, useEffect, createElement, type ComponentType } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import Home from './pages/Home'
+import { routes } from './routes'
 
-const DocsHub = lazy(() => import('./pages/docs/Hub'))
-const Tutorials = lazy(() => import('./pages/docs/Tutorials'))
-const Guides = lazy(() => import('./pages/docs/Guides'))
-const Reference = lazy(() => import('./pages/docs/Reference'))
-const Explanation = lazy(() => import('./pages/docs/Explanation'))
-const Changelog = lazy(() => import('./pages/Changelog'))
-const Support = lazy(() => import('./pages/Support'))
-const Download = lazy(() => import('./pages/Download'))
-const Preview = lazy(() => import('./pages/Preview'))
-const Privacy = lazy(() => import('./pages/Privacy'))
-const Impressum = lazy(() => import('./pages/Impressum'))
+/** Code-split on the client — one chunk per route, fetched on navigation. */
+const lazyComponents = new Map(routes.map((r) => [r.path, r.eager ?? lazy(r.load)]))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -22,26 +13,35 @@ function ScrollToTop() {
   return null
 }
 
-export default function App() {
+/**
+ * `components` is injectable because the prerender must pass *resolved*
+ * modules. `renderToString` does not wait on a suspended boundary, so rendering
+ * the lazy map on the server emits the `null` fallback — a full-size HTML file
+ * with an empty page inside it.
+ */
+export function AppRoutes({
+  components = lazyComponents,
+}: {
+  components?: Map<string, ComponentType>
+}) {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/docs" element={<DocsHub />} />
-          <Route path="/docs/tutorials" element={<Tutorials />} />
-          <Route path="/docs/guides" element={<Guides />} />
-          <Route path="/docs/reference" element={<Reference />} />
-          <Route path="/docs/explanation" element={<Explanation />} />
-          <Route path="/changelog" element={<Changelog />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/download" element={<Download />} />
-          <Route path="/preview" element={<Preview />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/impressum" element={<Impressum />} />
+          {routes.map((r) => (
+            <Route key={r.path} path={r.path} element={createElement(components.get(r.path)!)} />
+          ))}
         </Routes>
       </Suspense>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   )
 }
