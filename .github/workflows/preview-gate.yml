@@ -1,0 +1,114 @@
+name: Preview Gate
+
+# Runs the post-deploy gate against a PR's Vercel preview and blocks the merge on
+# regressions.
+#
+# Why this exists: deploy ordering used to be a rule someone had to remember. On
+# 2026-08-13 the prerender shipped before the claims correction, which promoted
+# three retired marketing claims from client-injected (read by nothing) to
+# structured data on the homepage. Nothing could have caught it — the two
+# branches touch disjoint files, so git had no reason to complain, and the gate
+# itself is post-deploy by construction, so it could only report the harm after
+# the fact. This moves the check in front of the merge button.
+#
+# It compares against main's live deployment rather than failing on any red,
+# because the gate tests the whole site, not the PR's diff. Blocking a footer
+# change for claims wording it never touched is how a useful check gets bypassed.
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    # Vercel posts a deployment_status per deployment; only successful previews
+    # are worth gating. Production deployments have already happened — too late
+    # to block, and that is the whole point of running here instead.
+    if: >
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment_status.environment != 'Production' &&
+      github.event.deployment_status.environment_url != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve URLs
+        id: urls
+        env:
+          PREVIEW: ${{ github.event.deployment_status.environment_url }}
+        run: |
+          echo "preview=$PREVIEW" >> "$GITHUB_OUTPUT"
+          echo "Baseline:  https://mirall.app"
+          echo "Candidate: $PREVIEW"
+
+      - name: Check the preview is reachable without credentials
+        env:
+          PREVIEW: ${{ steps.urls.outputs.preview }}
+        run: |
+          # Deliberately no Vercel token anywhere in this workflow. If previews are
+          # protected, that is a project setting for the repo owner to decide —
+          # not something CI should work around by holding a credential. Fail
+          # loudly so the gate is visibly absent rather than silently green.
+          code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 "$PREVIEW/" || echo 000)
+          echo "preview / -> $code"
+          case "$code" in
+            200) ;;
+            401|403)
+              echo "::error::Preview deployment requires authentication ($code)."
+              echo "The gate cannot run. Either make preview deployments public for"
+              echo "this project, or accept that PRs are not gated. No credential"
+              echo "will be added to this workflow to bypass it."
+              exit 1 ;;
+            *)
+              echo "::error::Preview unreachable ($code). Gate could not run."
+              exit 1 ;;
+          esac
+
+      # The two runs are independent on purpose: the baseline hits public
+      # production and needs no credential, so it is always available. Only the
+      # candidate can hit an auth wall. Reporting them separately means a
+      # protected preview degrades to "candidate unreachable" rather than an
+      # opaque failure.
+      - name: Gate — baseline (main, live)
+        continue-on-error: true
+        run: |
+          MIRALL_GATE_STRICT=1 MIRALL_GATE_JSON=1 \
+            ./scripts/postdeploy-gate.sh https://mirall.app | tee baseline.txt
+        # A red baseline is expected and fine — it is the comparison point, not a
+        # verdict. Only the candidate's regressions block.
+
+      - name: Gate — candidate (this PR's preview)
+        continue-on-error: true
+        env:
+          PREVIEW: ${{ steps.urls.outputs.preview }}
+        run: |
+          # STRICT makes a skipped check fail the run. "exit 0 with a SKIP" is a
+          # pass with a hole in it, and it has already produced one wrong summary.
+          MIRALL_GATE_STRICT=1 MIRALL_GATE_JSON=1 \
+            ./scripts/postdeploy-gate.sh "$PREVIEW" | tee candidate.txt
+
+      - name: Compare — block only on regressions
+        run: node scripts/gate-diff.mjs baseline.txt candidate.txt
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo '## Preview gate'
+            echo ''
+            echo "Baseline: \`https://mirall.app\` · Candidate: \`${{ steps.urls.outputs.preview }}\`"
+            echo ''
+            echo '```'
+            node scripts/gate-diff.mjs baseline.txt candidate.txt 2>&1 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preview-gate-runs
+          path: |
+            baseline.txt
+            candidate.txt
