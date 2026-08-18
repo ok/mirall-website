@@ -70,7 +70,7 @@
     "items": [
       {
         "question": "Where are my files stored?",
-        "answer": "On your device, and only your device — right where they already are. Sharing a file leaves it where it is on your disk; other members download it directly from you, and there is no cloud server and no intermediary storage in between. Once someone downloads a file, they have their own local copy."
+        "answer": "On your device, and only your device — right where they already are. Sharing a file leaves it where it is on your disk; other members download it directly from you, and no server stores your files along the way. Once someone downloads a file, they have their own local copy."
       },
       {
         "question": "Do both of us need to be online at the same time?",
@@ -78,7 +78,7 @@
       },
       {
         "question": "Will Mirall work on my network?",
-        "answer": "Almost always, and with no setup — Mirall finds its own way through home and office routers, so there are no ports to forward and nothing to configure. The exception is a network that blocks the traffic it needs to connect two devices directly, which some strict corporate firewalls and VPNs do. If a connection won't come up, the Network screen under Account tells you what Mirall can see about your setup, so you're not guessing."
+        "answer": "Almost always, and with no setup — Mirall finds its own way through home and office routers, so there are no ports to forward and nothing to configure. The exception is a network that blocks the traffic it needs to connect two devices directly, which some strict corporate firewalls and VPNs do. If a connection won't come up, the Connection row on your Profile page tells you what Mirall can see about your setup, so you're not guessing."
       },
       {
         "question": "What happens when I'm offline?",
@@ -98,7 +98,7 @@
       },
       {
         "question": "Are there file size limits?",
-        "answer": "No. Mirall is built for the files that break everything else — hundreds of gigabytes, or a single file into the terabytes, transfer like any other. Content is streamed in chunks rather than uploaded as a whole, there are no size caps, and there's no per-GB bill. Speed depends on your network and the sender's upload bandwidth."
+        "answer": "No. Mirall is built for the files that break everything else — hundreds of gigabytes, or a single file into the terabytes, transfer like any other. Content is streamed in chunks rather than uploaded as a whole, there are no size caps, and there's no per-GB bill. Speed depends on your network and the sender's upload bandwidth. File count is a different matter: a space holds up to 100 individual files, and a shared folder up to 5,000."
       },
       {
         "question": "What happens if a large transfer is interrupted?",
@@ -106,7 +106,7 @@
       },
       {
         "question": "Is Mirall open source?",
-        "answer": "Yes. Mirall is licensed under the AGPL-3.0 and the source is on [GitHub](https://github.com/ok/mirall-app). That's what makes the rest of this page checkable: you don't have to take our word for “no server ever sees your data” — you can read the code and see for yourself."
+        "answer": "Yes. Mirall is licensed under the AGPL-3.0 and the source is on [GitHub](https://github.com/ok/mirall-app). That's what makes the rest of this page checkable: you don't have to take our word for how your files are handled — you can read the code and see for yourself."
       },
       {
         "question": "Is Mirall free?",
@@ -234,6 +234,7 @@
         { "label": "Mirror a folder to disk", "to": "/docs/guides#mirror-a-folder-to-disk" },
         { "label": "File statuses", "to": "/docs/reference#file-statuses" },
         { "label": "Keyboard shortcuts", "to": "/docs/reference#keyboard-shortcuts" },
+        { "label": "Review what happened in your spaces", "to": "/docs/guides#review-your-activity" },
         { "label": "What's new", "to": "/changelog" }
       ]
     },
@@ -251,10 +252,10 @@
               { "title": "Install and open Mirall", "text": "Download Mirall for your platform from the download page and open it. The first time it launches, Mirall asks for a **display name** and an optional **avatar** — that's how other members will see you. Your OS language is detected automatically." },
               { "title": "Create a space", "text": "On the **Shared Spaces** screen, click **Create Space**, give it a name, pick an icon, and click **Initialize Space**. Mirall confirms with **Space Created** — click **Done**. A space is a private group where you and the people you approve share files." },
               { "title": "Create an invite link", "text": "Open the space and click **Invite**. Choose whether to **auto-approve** anyone who uses the link, pick how long it stays valid — **2 hours**, **2 days**, or **2 weeks** — and click **Create invite link**. Copy the link and send it however you like: chat, email, anything." },
-              { "title": "Let them join", "text": "The other person clicks **Join Space**, pastes the link, and confirms. Unless you turned auto-approve on, they now wait: their screen reads **Waiting to be let in**, and they can't see anything shared in the space yet." },
+              { "title": "Let them join", "text": "The other person clicks **Join Space**, pastes the link, and confirms. Unless you turned auto-approve on, they now wait: their screen reads **Waiting to be let into** the space, and they can't see anything shared in the space yet." },
               { "title": "Approve them", "text": "Back in your space, a banner appears reading **“<name> wants to join”**. Click **Approve**. They're admitted, the space contents open up to them, and you both appear in each other's **Members** panel." },
               { "title": "Share a file", "text": "Drag a file onto the **Drop to Share** zone in the sidebar, or use **Share…** to pick one. Mirall offers it to the space straight from the original on your disk — it never makes a second copy." },
-              { "title": "Download on the other side", "text": "On the other person's Mirall, the file appears with a download button. They click it and the file transfers directly from your device to theirs, with live progress, speed, and time remaining. When it lands, a green shield confirms the contents match your original exactly. No server ever touched the file." }
+              { "title": "Download on the other side", "text": "On the other person's Mirall, the file appears with a download button. They click it and the file transfers directly from your device to theirs, with live progress, speed, and time remaining. When it lands, a green shield confirms the contents match your original exactly. No server stored a copy along the way." }
             ] },
             { "type": "image", "src": "/docs-onboarding.webp", "alt": "Mirall's welcome screen asking for a display name and an optional avatar before first use", "width": 1344, "height": 1173 },
             { "type": "image", "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1173 },
@@ -328,11 +329,11 @@
                   { "text": "Optionally give the space a local name — only you will see it." },
                   { "text": "Click **Join Space**." }
                 ] },
-                { "type": "p", "text": "Unless the invite was set to auto-approve, joining is a **request**: your screen reads **Waiting to be let in** until an existing member approves you. You can leave the window open — you'll be admitted automatically as soon as a member is online, and you don't need to be online at the moment they approve. Until then the space's contents stay closed to you, and the only action available is **Cancel request**." },
+                { "type": "p", "text": "Unless the invite was set to auto-approve, joining is a **request**: your screen reads **Waiting to be let into** the space until an existing member approves you. You can leave the window open — you'll be admitted automatically as soon as a member is online, and you don't need to be online at the moment they approve. Until then the space's contents stay closed to you, and the only action available is **Cancel request**." },
                 { "type": "p", "text": "Once someone approves you, the space opens and its files appear. If the invite had **auto-approve** turned on, you skip the wait entirely and land straight in." },
                 { "type": "note", "text": "An invite link has an expiry. If yours has lapsed, Mirall tells you the link has expired — ask the person who sent it for a new one." }
               ],
-              "image": { "src": "/docs-join-waiting.webp", "alt": "Mirall showing “Waiting to be let in” after joining a space, with the existing members' avatars and a Cancel request button", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-join-waiting.webp", "alt": "Mirall showing it is waiting to be let into a space, with the existing members' avatars and a Cancel request button", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" }
               ]
@@ -533,7 +534,31 @@
               "id": "set-download-folder",
               "title": "Choose where downloads go",
               "blocks": [
-                { "type": "p", "text": "Open **Settings → Storage**. The **Download Folder** section at the top shows where downloads land; **Change…** lets you pick any folder via your OS picker. Every download from every space goes there from then on, and the choice persists across restarts. It defaults to your OS Downloads folder." }
+                { "type": "p", "text": "Open **Settings → Storage**. The **Download Folder** section at the top shows where downloads land; **Change…** opens your OS picker. This is the folder every space uses unless it has one of its own, and the choice persists across restarts. It defaults to your OS Downloads folder." },
+                { "type": "p", "text": "Not every folder can be used. If the one you pick sits inside — or contains — a folder you share or mirror, Mirall refuses it, because anything downloaded there would be published to your peers. A folder that doesn't exist, or that Mirall can't write to, is refused too. Mirall never creates the folder for you." },
+                { "type": "note", "text": "Changing this folder doesn't move files you've already downloaded, and it leaves spaces that have set their own download folder alone." }
+              ],
+              "related": [
+                { "label": "Give one space its own download folder", "to": "/docs/guides#set-a-space-download-folder" }
+              ]
+            },
+            {
+              "id": "set-a-space-download-folder",
+              "title": "Give one space its own download folder",
+              "intro": "A space can save its downloads somewhere other than your default — a scratch disk for the project you're cutting, say, while everything else lands in Downloads.",
+              "blocks": [
+                { "type": "steps", "items": [
+                  { "text": "Open the space, click **More** in the header, and choose **Edit Space**." },
+                  { "text": "Under **Download Folder**, click **Change…** and pick a folder." },
+                  { "text": "Click **Save Changes**. Closing the dialog without saving discards the change." }
+                ] },
+                { "type": "p", "text": "A space you leave alone keeps using the folder from **Settings → Storage**, and the dialog says so: **Using the default download folder**. Once a space has its own, a **Use default folder** button appears to put it back." },
+                { "type": "p", "text": "The same rule applies as for the default folder: a folder that sits inside — or contains — a folder you share or mirror is refused, since anything landing there would be published to your peers. Two spaces may happily share one folder." },
+                { "type": "note", "text": "Files you already downloaded are never moved. Ones now outside the space's folder simply read as **Available** again — point the space back at the old folder and they return to **On your device** without downloading anything twice. Let transfers finish or pause them before you switch." }
+              ],
+              "related": [
+                { "label": "Choose where downloads go", "to": "/docs/guides#set-download-folder" },
+                { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
               ]
             },
             {
@@ -564,27 +589,27 @@
         },
         {
           "id": "account",
-          "title": "Account & connection",
+          "title": "Profile & connection",
           "docs": [
             {
               "id": "edit-your-profile",
               "title": "Edit your profile",
               "blocks": [
-                { "type": "p", "text": "Click your avatar in the top-right to open the **Account** page. Under **Profile** you can change your display name and avatar, then click **Save Changes** — the update propagates to every space you're in. Your profile is only shared with the peers you connect with. Avatars must be under 16 MB." }
+                { "type": "p", "text": "Click your avatar in the top-right to open the **Profile** page. The card at the top holds your display name and picture — change either, then click **Save Changes**, which appears once there's something to save. The update propagates to every space you're in. Your profile is only shared with the peers you connect with, and a picture must be under 16 MB." }
               ]
             },
             {
               "id": "check-identity-protection",
               "title": "Check how your identity is protected",
               "blocks": [
-                { "type": "p", "text": "Your identity in Mirall is a signing key held on your device. The **Security** section of the **Account** page tells you how that key is being kept safe:" },
+                { "type": "p", "text": "Your identity in Mirall is a signing key held on your device. The **Identity protection** row under **This device** on your **Profile** page tells you how that key is being kept safe:" },
                 { "type": "bullets", "items": [
                   "**Your identity key is protected by the system keychain** — the normal case. The key is wrapped using your operating system's secure keychain, so copying Mirall's data folder doesn't hand anyone your identity.",
-                  "**No system keychain is available** — Mirall couldn't reach a keychain on this machine, so the key falls back on your disk encryption. Turning on full-disk encryption is worth doing here.",
+                  "**No system keychain is available** — Mirall couldn't reach a keychain on this machine, so your identity key relies on full-disk encryption instead. Turning that on is worth doing here.",
                   "**Identity-key protection is disabled** — protection isn't active on this install."
-                ] }
+                ] },
+                { "type": "note", "text": "This row is information, not a button — there's nothing to click and nothing to configure." }
               ],
-              "image": { "src": "/docs-account-security.webp", "alt": "Mirall's Account page showing the Security section confirming the identity key is protected by the system keychain", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "Privacy & security model", "to": "/docs/explanation#privacy-security" }
               ]
@@ -594,7 +619,42 @@
               "title": "Fix a connection problem",
               "blocks": [
                 { "type": "p", "text": "Your avatar gains a soft pulsing ring when something's wrong — red if you've lost internet, amber while Mirall is trying to recover. No ring means you're connected and ready. When a problem appears, a toast notification offers a **Show details** link." },
-                { "type": "p", "text": "Open **Account → Network** for a friendly diagnostics view — useful when a friend can't reach you or a transfer stalls. It explains what Mirall sees about your connection, points out things worth checking (router, VPN, firewall), and includes a **Reconnect** button to nudge things along." }
+                { "type": "p", "text": "Open your **Profile** page and click **Connection** for a friendly diagnostics view — useful when a friend can't reach you or a transfer stalls. It explains what Mirall sees about your connection, points out things worth checking (router, VPN, firewall), and includes a **Reconnect** button to nudge things along." },
+                { "type": "note", "text": "**Settings → Network** is a different screen — it sets bandwidth limits and shows no connection status." }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "activity",
+          "title": "Activity log",
+          "docs": [
+            {
+              "id": "review-your-activity",
+              "title": "Review what happened in your spaces",
+              "intro": "Mirall keeps a record on your device of who joined, left, or was approved, and what was shared and downloaded.",
+              "blocks": [
+                { "type": "p", "text": "Click your avatar to open **Profile**, then choose **Activity Log** under **This device**. The row itself tells you how many events are recorded." },
+                { "type": "p", "text": "Search across people, files and folders with the box at the top, and narrow the list with three menus — **All spaces**, **Anyone**, and **Any time** (last 7, 30, or 90 days). The **All / Members / Files / Folders / Security** buttons filter by kind, and you can press more than one. Every filter you apply becomes a chip you can remove individually, or clear in one go with **Clear all**." },
+                { "type": "p", "text": "Events are grouped by day, newest first, with your own actions attributed to **You**. A refused request or a failed transfer carries a **DENIED** or **FAILED** badge. Twenty events load at a time — **Load more** fetches the next page." },
+                { "type": "note", "text": "Spaces you have left still appear here, and stay filterable, until their events age out." }
+              ],
+              "related": [
+                { "label": "Choose what Mirall records", "to": "/docs/guides#configure-activity-recording" },
+                { "label": "What the activity log can tell you", "to": "/docs/explanation#activity-log-model" }
+              ]
+            },
+            {
+              "id": "configure-activity-recording",
+              "title": "Choose what Mirall records",
+              "blocks": [
+                { "type": "p", "text": "Open **Settings → Activity Log**. **Record activity** turns recording on and off — it's on to begin with. Turning it off stops new events being written; it doesn't delete anything already recorded, and those events stay searchable and exportable." },
+                { "type": "p", "text": "**Keep events for** sets how long they're retained — **30 days**, **90 days**, or **365 days**, with 90 the starting point. Anything older is deleted automatically." },
+                { "type": "p", "text": "**Export as JSON** saves every recorded event to a file called `mirall-activity-log.json`. **Delete the log** removes them all and asks you to confirm first; it can't be undone." },
+                { "type": "note", "text": "An export contains raw identifiers — public keys, file paths, and content hashes — rather than the readable sentences you see in the app. Treat the file as sensitive." }
+              ],
+              "related": [
+                { "label": "Review what happened in your spaces", "to": "/docs/guides#review-your-activity" }
               ]
             }
           ]
@@ -644,11 +704,25 @@
               ]
             },
             {
+              "id": "limit-bandwidth",
+              "title": "Limit how much bandwidth Mirall uses",
+              "intro": "Cap how fast Mirall transfers files, so a big download doesn't take the whole line with it.",
+              "blocks": [
+                { "type": "p", "text": "Open **Settings → Network**. Under **Transfer limits** there's a row for **Download** and one for **Upload**, each offering **Unlimited**, **1 MB/s**, **5 MB/s**, **25 MB/s**, or **Custom**. Both start out unlimited." },
+                { "type": "p", "text": "**Custom** reveals a box where you type a figure in kilobytes per second — a plain number, no units to pick. Enter `0` for no limit. Anything below 32 KB/s is rounded up to it, and Mirall tells you so." },
+                { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect." },
+                { "type": "note", "text": "A limit is a **total, not a figure per transfer**. Two downloads running under a 5 MB/s cap get roughly half each rather than 5 MB/s apiece, and serving several people at once splits one upload cap between them." }
+              ],
+              "related": [
+                { "label": "What bandwidth limits cover", "to": "/docs/explanation#bandwidth-limits" }
+              ]
+            },
+            {
               "id": "update-mirall",
               "title": "Update Mirall",
               "blocks": [
                 { "type": "p", "text": "You don't have to do anything — Mirall checks for new versions on its own and downloads them in the background. A staged update is applied the next time you quit and reopen Mirall, on your schedule." },
-                { "type": "p", "text": "When an update is waiting, a banner appears at the top of the window (you can dismiss it), and the pending version is also shown on the **Settings → About** screen so you can always check what's coming." }
+                { "type": "p", "text": "When an update is waiting, a banner appears at the top of the window (you can dismiss it), and the pending version is also shown under **App** on your **Profile** page so you can always check what's coming." }
               ]
             }
           ]
@@ -711,8 +785,13 @@
           "id": "file-folder-actions",
           "title": "File & folder actions",
           "list": [
+            "**Download** — pull a file another member is offering onto your device.",
             "**Reveal in Folder** — open a downloaded or shared file in your OS file browser.",
             "**Unshare from Space** — remove a file you added so it's no longer offered (files others already downloaded stay on their devices).",
+            "**Browse Files** — look inside a shared folder without mirroring it.",
+            "**Open Folder** — open a folder you share, or a mirror, in your OS file browser.",
+            "**Delete Folder** — stop sharing a folder you own and remove it from the space.",
+            "**Locate folder…** — point Mirall at a shared folder that's missing on disk, after moving or reconnecting it.",
             "**Pause Download** / **Resume** — stop a running download and continue it later from where it stopped.",
             "**Cancel** — stop a running download outright and throw away what's been received.",
             "**Discard Partial** — throw away a paused or stalled download and free the space it was using.",
@@ -758,28 +837,49 @@
         {
           "id": "settings",
           "title": "Settings",
-          "intro": "The gear icon opens Settings — everything about the app itself. Your profile, security status, and network connection live separately on the Account page (click your avatar).",
+          "intro": "The gear icon opens Settings — your preferences for the app itself. Your profile, this device, and the version you're running live separately on the Profile page (click your avatar).",
           "table": {
             "columns": ["Page", "What's there"],
             "rows": [
               ["General", "Background mode — “Show Mirall in the menu bar” on macOS, “Run in the background” on Windows and Linux — and Launch at login."],
               ["Appearance", "Theme Mode (Light / System / Dark), Display Size, Language, and — on Windows and Linux — auto-hide the menu bar."],
               ["Notifications", "Master switch, system sound, mute-when-focused, and five per-event toggles."],
+              ["Network", "Transfer limits — a download and an upload cap, each Unlimited, a preset, or a figure you type."],
               ["Storage", "Download folder, and Mirall's own App Storage — a shared-file index plus the app database — with a Free up space action."],
-              ["About", "Installed version, any pending update, keyboard shortcuts, documentation and feedback links, and What's new."]
+              ["Activity Log", "Whether activity is recorded, how long events are kept, and actions to export or delete the log."]
             ]
           }
         },
         {
-          "id": "account-page",
-          "title": "The Account page",
-          "intro": "Click your avatar in the top right.",
+          "id": "profile-page",
+          "title": "The Profile page",
+          "intro": "Click your avatar in the top right. Your name and picture sit in a card at the top; everything else is grouped under **This device** and **App**.",
           "table": {
-            "columns": ["Section", "What's there"],
+            "columns": ["Group", "Row", "What it's for"],
             "rows": [
-              ["Profile", "Your display name and avatar. Changes propagate to every space you're in."],
-              ["Security", "How your identity key is protected — normally by your operating system's keychain."],
-              ["Network", "Whether you're online and how many peers you're connected to. Opens a fuller diagnostics screen."]
+              ["Your profile", "Display name and picture", "Change either, then Save Changes — which appears once there's something to save. Propagates to every space you're in."],
+              ["This device", "Connection", "Whether you're online and how many peers you're connected to. Opens a fuller diagnostics screen."],
+              ["This device", "Identity protection", "How your identity key is protected, normally by your operating system's keychain. Information only — there's nothing to click."],
+              ["This device", "Activity Log", "Opens the record of what happened in your spaces, and shows how many events are held."],
+              ["App", "The version you're running", "Plus any pending update waiting to be applied."],
+              ["App", "What's new", "Recent changes in Mirall."],
+              ["App", "Keyboard shortcuts", "The full shortcut list."],
+              ["App", "Documentation", "Opens these docs in your browser."],
+              ["App", "Send Feedback", "Report a problem or share a suggestion."]
+            ]
+          }
+        },
+        {
+          "id": "activity-events",
+          "title": "What the activity log records",
+          "intro": "Events fall into four kinds, which are also the filter buttons on the log. Every event is recorded on your device only.",
+          "table": {
+            "columns": ["Kind", "What it covers"],
+            "rows": [
+              ["Members", "Spaces you created, joined, renamed, or left; invite links you created; join requests, and the ones you approved or declined; members joining and leaving."],
+              ["Files", "Files you shared or stopped sharing; downloads you finished or that failed; a file of yours someone else downloaded; files a member shared or stopped sharing."],
+              ["Folders", "Folder shares you created, deleted, or moved; folders you mirrored or stopped mirroring; the same actions by other members, including someone mirroring a folder of yours."],
+              ["Security", "File requests Mirall refused, and why; files that failed their integrity check; a space reporting a conflicting owner."]
             ]
           }
         },
@@ -790,10 +890,11 @@
           "table": {
             "columns": ["Menu", "Items"],
             "rows": [
-              ["Mirall (macOS)", "About Mirall; Preferences… (⌘,); Hide / Hide Others / Show All; Quit."],
-              ["File", "New Space (⌘/Ctrl-N); Join Space (⌘/Ctrl-J); Add Files… (⌘/Ctrl-U); Add Folder… (⌘/Ctrl-Shift-U); Invite People…. On Windows and Linux, also Preferences… (Ctrl-,) and Quit Mirall (Ctrl-Q)."],
+              ["Mirall (macOS)", "About Mirall — opens your Profile page; Preferences… (⌘,); Services; Hide / Hide Others / Show All; Quit."],
+              ["File", "New Space (⌘/Ctrl-N); Join Space (⌘/Ctrl-J); Add Files… (⌘/Ctrl-U); Add Folder… (⌘/Ctrl-Shift-U); Invite People…. On macOS, also Close. On Windows and Linux, also Preferences… (Ctrl-,) and Quit Mirall (Ctrl-Q)."],
               ["Edit", "The standard Undo, Redo, Cut, Copy, Paste, and Select All."],
               ["View", "Back; Home; Command Palette; Keyboard Shortcuts; zoom in, out, and reset; full screen."],
+              ["Window (macOS)", "The standard Minimize, Zoom, and window list."],
               ["Help", "What's New…; Documentation; Send Feedback…. On Windows and Linux, also About Mirall."]
             ]
           }
@@ -802,10 +903,11 @@
           "id": "platforms-languages",
           "title": "Platforms & languages",
           "list": [
-            "**Platforms** — macOS, Windows, and Linux (x64 and ARM64).",
+            "**Platforms** — macOS (Intel and Apple Silicon), Windows (x64), and Linux (x64 and ARM64).",
             "**Languages** — English, German, French, Spanish, and Italian, auto-detected from your OS on first launch.",
             "**Updates** — delivered automatically in the background and applied when you next quit and reopen.",
-            "**File sizes** — no limit. Files are streamed in chunks, so hundreds of gigabytes or a file into the terabytes transfer like any other."
+            "**File sizes** — no limit. Files are streamed in chunks, so hundreds of gigabytes or a file into the terabytes transfer like any other.",
+            "**File counts** — up to 100 individual files in a space, and up to 5,000 files in a shared folder."
           ]
         }
       ]
@@ -817,9 +919,9 @@
       "topics": [
         {
           "id": "how-mirall-works",
-          "title": "How Mirall works: peer-to-peer, no server",
+          "title": "How Mirall works: peer-to-peer, no cloud storage",
           "blocks": [
-            { "type": "p", "text": "Mirall connects your devices directly. When you share a file, its contents stay on your device — right where they already are — and other members download it straight from you over an encrypted connection. There is no cloud server in the middle storing or relaying your files." },
+            { "type": "p", "text": "Mirall connects your devices directly. When you share a file, its contents stay on your device — right where they already are — and other members download it straight from you over an encrypted connection. No server stores your files, and anything that forwards traffic on the way sees only ciphertext." },
             { "type": "p", "text": "What does travel ahead of time is lightweight **metadata** — names, sizes, and which member is offering what — so everyone can see what's available in a space. The actual bytes of a file move only when someone chooses to download it." },
             { "type": "p", "text": "The corollary is that availability follows people, not servers. A file is downloadable only while the member who shared it is online. Downloading a file gives you your own copy to keep — but it doesn't turn you into a second source for it, so the person who shared it stays the one who serves it." }
           ]
@@ -832,7 +934,8 @@
             { "type": "subheading", "text": "Getting in is not the same as being able to read" },
             { "type": "p", "text": "A space's contents are protected by a key of their own. That key is handed to you only once an existing member approves your request to join. Reaching a space, or holding a link to it, is therefore not the same as being able to read what's shared in it — a pending member is outside the door, not merely unlisted." },
             { "type": "subheading", "text": "Your device at rest" },
-            { "type": "p", "text": "Mirall's local bookkeeping — your list of spaces, mirrored folders, downloads, and similar details — is encrypted on your device with a key tied to your identity. Your identity itself is a signing key, wrapped using your operating system's secure keychain. Copying Mirall's data folder off your machine gives up neither your records nor your identity. The **Security** section of the Account page tells you which protection is in force." },
+            { "type": "p", "text": "Mirall's local bookkeeping — your list of spaces, mirrored folders, downloads, and similar details — is encrypted on your device with a key tied to your identity. Your identity itself is a signing key, wrapped using your operating system's secure keychain. Copying Mirall's data folder off your machine gives up neither your records nor your identity. The **Identity protection** row on your Profile page tells you which protection is in force." },
+            { "type": "p", "text": "The activity log is part of that bookkeeping: it's encrypted the same way, and it is never replicated to anyone. The only way an event leaves your device is if you export the log yourself." },
             { "type": "subheading", "text": "Unfriendly peers" },
             { "type": "p", "text": "Because peers talk to each other directly, Mirall assumes some of them may misbehave. Connection rate limits, size caps, and a firewall for badly-behaved peers keep a flood of requests or oversized data from exhausting your memory or CPU. Oversized avatars and over-long display names sent by a peer are rejected rather than rendered." },
             { "type": "p", "text": "Your profile — display name and avatar — is shared only with the peers you actually connect with." }
@@ -853,7 +956,7 @@
           "title": "Spaces, members & availability",
           "blocks": [
             { "type": "p", "text": "A space is a private group with its own members and its own files. Because files live on members' devices rather than a server, a file is downloadable only while the member who shared it is **online**." },
-            { "type": "p", "text": "That member is the file's single source. Downloading a file gives you a copy that's yours to keep and works offline, but it doesn't make you a second source others can pull from — so if the person who shared it goes offline, the file is marked **Owner offline** until they're back, and any download in flight picks up where it left off." },
+            { "type": "p", "text": "Whoever shared a file is the one who serves it. Downloading it gives you a copy that's yours to keep and works offline, but it doesn't make you a second source others can pull from — so if the person who shared it goes offline, the file is marked **Owner offline** until they're back, and any download in flight picks up where it left off. If another member happens to share the same file themselves, Mirall notes that it's **also shared by** them, and either copy can be downloaded." },
             { "type": "note", "text": "Plan around this for anything time-critical: the person sharing a file needs to be online and running Mirall while someone downloads it. Mirall doesn't hand a file off to the rest of the space to keep serving in their absence." }
           ]
         },
@@ -885,9 +988,35 @@
             { "type": "bullets", "items": [
               "**Your files** — the originals you share. Mirall reads them where they are and never copies them.",
               "**Files you've pulled** — downloads, and the contents of folders you mirror. These are ordinary files in ordinary folders that you chose. They're yours; Mirall doesn't reclaim them.",
-              "**Mirall's own data** — the shared-file index and the app database (your spaces, members, and sync history). This is the **App Storage** figure in Settings → Storage."
+              "**Mirall's own data** — the shared-file index, the app database (your spaces, members, and sync history), and the activity log. This is the **App Storage** figure in Settings → Storage."
             ] },
-            { "type": "p", "text": "Only the third is Mirall's to manage, and it stays small precisely because there's no second copy of your files inside it. Mirall tidies it as it goes; **Free up space** prompts it to compact things now and tells you what it recovered." }
+            { "type": "p", "text": "Only the third is Mirall's to manage, and it stays small precisely because there's no second copy of your files inside it. Mirall tidies it as it goes; **Free up space** prompts it to compact things now and tells you what it recovered." },
+            { "type": "subheading", "text": "Where downloads land" },
+            { "type": "p", "text": "Downloads go to the folder set in **Settings → Storage**, unless a space has been given one of its own — so there can be several download folders in play at once. Mirrors are separate again: each one lives at the location you chose when you set it up." },
+            { "type": "p", "text": "Whichever folder you pick, it can't overlap a folder you share or mirror, in either direction. The reason is worth understanding rather than working around: Mirall publishes what's inside a shared folder, so a download landing there would be offered to your peers without you asking for it." }
+          ]
+        },
+        {
+          "id": "activity-log-model",
+          "title": "What the activity log can tell you",
+          "blocks": [
+            { "type": "p", "text": "The activity log is a record of what **your** device saw. It notes what you did — spaces created and left, files shared and downloaded — alongside what the members you're connected to did in the spaces you share with them." },
+            { "type": "p", "text": "It stays on your device. It is stored with Mirall's other records, encrypted the same way, and it is never replicated to peers: nobody can ask your device for it. Exporting it yourself is the only way an event leaves the machine, and an export holds raw identifiers — keys, paths, hashes — rather than the readable sentences the app shows you." },
+            { "type": "subheading", "text": "What it can't tell you" },
+            { "type": "p", "text": "Because it records what you observed, it is not an audit of the space as a whole. A transfer between two other members never reaches your device, so it is never recorded. Neither is per-file activity inside a folder someone mirrors, nor anything a person does with a file once they have it. Events attributed to a peer carry the time that peer reported, and the name they had at the time — renaming themselves later doesn't rewrite old rows." },
+            { "type": "subheading", "text": "What sticks around" },
+            { "type": "p", "text": "Leaving a space doesn't erase its history — those events stay until they age out, which is why a space you've left still appears in the filters. Turning recording off stops new events without deleting old ones. Deleting the log removes the events; it isn't a way to reclaim disk space, and it isn't meant as one." }
+          ]
+        },
+        {
+          "id": "bandwidth-limits",
+          "title": "What bandwidth limits cover",
+          "blocks": [
+            { "type": "p", "text": "A transfer limit is a **ceiling on the total**, not an allowance handed to each transfer. Under a 5 MB/s download cap, one download may use the whole 5 MB/s; start a second and the two share it, roughly half each. The same holds when you're serving several people at once — they divide one upload cap between them rather than getting it each." },
+            { "type": "p", "text": "Mirall shares the cap out by bytes rather than by whoever asks most often, so a large transfer can't crowd out a small one. The limit is a single app-wide setting: there is no per-space cap." },
+            { "type": "subheading", "text": "What isn't limited" },
+            { "type": "p", "text": "The cap governs file transfers only. Keeping your spaces and members in sync — the catalogue of who's in a space and what's on offer — is deliberately left alone. It uses very little data, and throttling it would stop new files and folders from appearing while a transfer ran." },
+            { "type": "note", "text": "Treat the figure as close, not exact. Only the file data itself is counted; the encryption and protocol overhead that carries it sits on top, so actual use runs a little above the number you set." }
           ]
         },
         {
@@ -895,7 +1024,7 @@
           "title": "How updates work",
           "blocks": [
             { "type": "p", "text": "Mirall checks for new versions on its own and downloads them in the background while you keep working — no installer downloads, no reinstalls. Updates never restart the app on their own." },
-            { "type": "p", "text": "A staged update is applied the next time you quit and reopen Mirall, so restarts happen on your schedule. You can see a pending version on the Settings → About screen before you restart." }
+            { "type": "p", "text": "A staged update is applied the next time you quit and reopen Mirall, so restarts happen on your schedule. You can see a pending version under **App** on your Profile page before you restart." }
           ]
         }
       ]
@@ -906,6 +1035,45 @@
     "heading": "What's new",
     "intro": "Notable changes you'll notice as a user. Internal refactors and build-pipeline tweaks are intentionally left out.",
     "releases": [
+      {
+        "version": "1.8.0",
+        "date": "2026-08-18",
+        "sections": [
+          {
+            "heading": "Added",
+            "items": [
+              "**A record of what happened in your spaces.** The new Activity Log gathers who joined, left, or was approved, and what was shared and downloaded — kept on your device only. Open it from your Profile page, then search it or narrow it down by space, person, or date. Settings → Activity Log turns recording off, sets how long events are kept, or clears the log.",
+              "**Limit how much bandwidth Mirall uses.** A new Network page in Settings caps download and upload speed — pick a preset, type your own figure, or leave it unlimited. A change takes effect straight away, including on transfers already running. The cap covers file transfers only, so your spaces and members keep syncing normally.",
+              "**A download folder of its own for each space.** Each space can save its downloads wherever suits it — set Download Folder in Edit Space. Spaces you leave alone keep using the folder from Settings → Storage, and \"Use default folder\" puts a space back on it. Files you already downloaded aren't moved, and a folder you share or mirror can't be used, since anything landing there would be published to your peers."
+            ]
+          },
+          {
+            "heading": "Changed",
+            "items": [
+              "**A tidier way around your profile and settings.** The Account page is now Profile, and everything on it is grouped: \"This device\" for your connection, identity protection, and the Activity Log, \"App\" for the version you're running, What's New, keyboard shortcuts, documentation, and feedback. About has moved here out of Settings, which now holds your preferences only."
+            ]
+          },
+          {
+            "heading": "Fixed",
+            "items": [
+              "**A shared folder that comes back is no longer flagged as missing.** If the folder you shared went away and returned quickly — an external drive reconnecting, a network share remounting — the \"source missing\" warning on the folder and on its card stayed up even though everything was working again. The warning now clears as soon as the folder is back."
+            ]
+          }
+        ]
+      },
+      {
+        "version": "1.7.1",
+        "date": "2026-08-05",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "**A space keeps working when someone leaves.** When the person who created a space left it, the space quietly froze for everyone else — nobody new could join, join requests went unanswered, and the member list stopped updating. When any other member left, the people they had invited were dropped along with them. Now only the person who actually left is removed, and everyone else keeps their place.",
+              "**Invite links open instead of quitting the app on Windows and Linux.** Clicking a `mirall://join` invite link shut Mirall down on the spot — whether it was already running or started by the click — so the only way in was to copy the code out of the link and paste it into the Join dialog by hand. Invite links now open the Join dialog as intended, and a link with a trailing slash works as well as a bare code."
+            ]
+          }
+        ]
+      },
       {
         "version": "1.7.0",
         "date": "2026-07-12",
@@ -1210,7 +1378,7 @@
           { "type": "subheading", "text": "4.2 Mirall's own records" },
           { "type": "p", "text": "Mirall keeps a record of your spaces, their members, the folders you mirror, and your transfers. That record is encrypted at rest with a key tied to your identity, so copying Mirall's data folder off your machine doesn't reveal it." },
           { "type": "subheading", "text": "4.3 Your identity key" },
-          { "type": "p", "text": "Your signing key is wrapped using your operating system's secure keychain, and the plaintext is not kept in Mirall's storage. The **Account** screen tells you which protection is active on your machine." },
+          { "type": "p", "text": "Your signing key is wrapped using your operating system's secure keychain, and the plaintext is not kept in Mirall's storage. The **Profile** page tells you which protection is active on your machine." },
           { "type": "note", "text": "To be exact about the limits of this: Mirall encrypts its own records, not your files. Your files are ordinary files on your disk, and what protects them on a lost or stolen device is your operating system's disk encryption, not Mirall." }
         ]
       },
