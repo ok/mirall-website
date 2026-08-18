@@ -6,6 +6,7 @@
 // public/) means a phone fetches the 672px variant instead of the full 1344px one,
 // which is what keeps Lighthouse's "properly size images" audit clean.
 
+import activityLog from '../../assets/docs/activity-log.webp?w=672;1008;1344&format=webp&as=srcset'
 import addFolder from '../../assets/docs/add-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import approvalReview from '../../assets/docs/approval-review.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderBrowse from '../../assets/docs/folder-browse.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -17,8 +18,10 @@ import joinWaiting from '../../assets/docs/join-waiting.webp?w=672;1008;1344&for
 import mirroredBy from '../../assets/docs/mirrored-by.webp?w=672;1008;1344&format=webp&as=srcset'
 import onboarding from '../../assets/docs/onboarding.webp?w=672;1008;1344&format=webp&as=srcset'
 import peerDownloads from '../../assets/docs/peer-downloads.webp?w=672;1008;1344&format=webp&as=srcset'
+import settingsNetwork from '../../assets/docs/settings-network.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsStorage from '../../assets/docs/settings-storage.webp?w=672;1008;1344&format=webp&as=srcset'
 import sidebarCollapsible from '../../assets/docs/sidebar-collapsible.webp?w=672;1008;1344&format=webp&as=srcset'
+import spaceDownloadFolder from '../../assets/docs/space-download-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import spaceFolder from '../../assets/docs/space-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import spaceView from '../../assets/docs/space-view.webp?w=672;1008;1344&format=webp&as=srcset'
 
@@ -32,6 +35,7 @@ function widest(srcSet: string): string {
 }
 
 const SRCSETS: Record<string, string> = {
+  '/docs-activity-log.webp': activityLog,
   '/docs-add-folder.webp': addFolder,
   '/docs-approval-review.webp': approvalReview,
   '/docs-folder-browse.webp': folderBrowse,
@@ -43,8 +47,10 @@ const SRCSETS: Record<string, string> = {
   '/docs-mirrored-by.webp': mirroredBy,
   '/docs-onboarding.webp': onboarding,
   '/docs-peer-downloads.webp': peerDownloads,
+  '/docs-settings-network.webp': settingsNetwork,
   '/docs-settings-storage.webp': settingsStorage,
   '/docs-sidebar-collapsible.webp': sidebarCollapsible,
+  '/docs-space-download-folder.webp': spaceDownloadFolder,
   '/docs-space-folder.webp': spaceFolder,
   '/docs-space-view.webp': spaceView,
 }

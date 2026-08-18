@@ -556,6 +556,7 @@
                 { "type": "p", "text": "The same rule applies as for the default folder: a folder that sits inside — or contains — a folder you share or mirror is refused, since anything landing there would be published to your peers. Two spaces may happily share one folder." },
                 { "type": "note", "text": "Files you already downloaded are never moved. Ones now outside the space's folder simply read as **Available** again — point the space back at the old folder and they return to **On your device** without downloading anything twice. Let transfers finish or pause them before you switch." }
               ],
+              "image": { "src": "/docs-space-download-folder.webp", "alt": "Mirall's Edit Space dialog showing the Download Folder section with a Change button and a note that the space is using the default download folder", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "Choose where downloads go", "to": "/docs/guides#set-download-folder" },
                 { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
@@ -639,6 +640,7 @@
                 { "type": "p", "text": "Events are grouped by day, newest first, with your own actions attributed to **You**. A refused request or a failed transfer carries a **DENIED** or **FAILED** badge. Twenty events load at a time — **Load more** fetches the next page." },
                 { "type": "note", "text": "Spaces you have left still appear here, and stay filterable, until their events age out." }
               ],
+              "image": { "src": "/docs-activity-log.webp", "alt": "Mirall's Activity Log listing recent events \u2014 files shared and downloaded, a folder mirrored, and members joining and leaving \u2014 with a search box and space, person and date filters above", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "Choose what Mirall records", "to": "/docs/guides#configure-activity-recording" },
                 { "label": "What the activity log can tell you", "to": "/docs/explanation#activity-log-model" }
@@ -713,6 +715,7 @@
                 { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect." },
                 { "type": "note", "text": "A limit is a **total, not a figure per transfer**. Two downloads running under a 5 MB/s cap get roughly half each rather than 5 MB/s apiece, and serving several people at once splits one upload cap between them." }
               ],
+              "image": { "src": "/docs-settings-network.webp", "alt": "Mirall's Network settings showing Transfer limits, with separate Download and Upload rows offering Unlimited, 1 MB/s, 5 MB/s, 25 MB/s, or a custom figure", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "What bandwidth limits cover", "to": "/docs/explanation#bandwidth-limits" }
               ]
