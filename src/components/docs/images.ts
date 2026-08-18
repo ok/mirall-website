@@ -6,7 +6,6 @@
 // public/) means a phone fetches the 672px variant instead of the full 1344px one,
 // which is what keeps Lighthouse's "properly size images" audit clean.
 
-import accountSecurity from '../../assets/docs/account-security.webp?w=672;1008;1344&format=webp&as=srcset'
 import addFolder from '../../assets/docs/add-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import approvalReview from '../../assets/docs/approval-review.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderBrowse from '../../assets/docs/folder-browse.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -33,7 +32,6 @@ function widest(srcSet: string): string {
 }
 
 const SRCSETS: Record<string, string> = {
-  '/docs-account-security.webp': accountSecurity,
   '/docs-add-folder.webp': addFolder,
   '/docs-approval-review.webp': approvalReview,
   '/docs-folder-browse.webp': folderBrowse,
