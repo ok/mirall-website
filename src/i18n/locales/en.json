@@ -870,7 +870,8 @@
               ["App", "Documentation", "Opens these docs in your browser."],
               ["App", "Send Feedback", "Report a problem or share a suggestion."]
             ]
-          }
+          },
+          "image": { "src": "/docs-profile-page.webp", "alt": "Mirall's Profile page showing the display name and picture at the top, a This device group with Connection, Identity protection and Activity Log, and an App group with the installed version", "width": 1344, "height": 1173 }
         },
         {
           "id": "activity-events",

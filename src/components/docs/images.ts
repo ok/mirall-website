@@ -18,6 +18,7 @@ import joinWaiting from '../../assets/docs/join-waiting.webp?w=672;1008;1344&for
 import mirroredBy from '../../assets/docs/mirrored-by.webp?w=672;1008;1344&format=webp&as=srcset'
 import onboarding from '../../assets/docs/onboarding.webp?w=672;1008;1344&format=webp&as=srcset'
 import peerDownloads from '../../assets/docs/peer-downloads.webp?w=672;1008;1344&format=webp&as=srcset'
+import profilePage from '../../assets/docs/profile-page.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsNetwork from '../../assets/docs/settings-network.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsStorage from '../../assets/docs/settings-storage.webp?w=672;1008;1344&format=webp&as=srcset'
 import sidebarCollapsible from '../../assets/docs/sidebar-collapsible.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -47,6 +48,7 @@ const SRCSETS: Record<string, string> = {
   '/docs-mirrored-by.webp': mirroredBy,
   '/docs-onboarding.webp': onboarding,
   '/docs-peer-downloads.webp': peerDownloads,
+  '/docs-profile-page.webp': profilePage,
   '/docs-settings-network.webp': settingsNetwork,
   '/docs-settings-storage.webp': settingsStorage,
   '/docs-sidebar-collapsible.webp': sidebarCollapsible,
