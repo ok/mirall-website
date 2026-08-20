@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import Seo from '../../components/Seo'
 import DocsLayout, { DocsHeader } from '../../components/docs/DocsLayout'
-import { DocBlocks, RelatedLinks } from '../../components/docs/blocks'
-import { stepsFromDoc, type DocItem } from '../../components/docs/content'
+import { DocBlocks, RelatedLinks, RichText } from '../../components/docs/blocks'
+import { stepsFromDoc, stripInline, type DocItem } from '../../components/docs/content'
 import { breadcrumbSchema, howToSchema } from '../../lib/schema'
 
 export default function Tutorials() {
@@ -13,7 +13,7 @@ export default function Tutorials() {
   const howTos = items
     .map((item) => {
       const steps = stepsFromDoc(item)
-      return steps ? howToSchema(item.title, item.intro || item.title, steps) : null
+      return steps ? howToSchema(item.title, stripInline(item.intro || item.title), steps) : null
     })
     .filter((x): x is NonNullable<typeof x> => x !== null)
 
@@ -47,7 +47,9 @@ export default function Tutorials() {
         <section key={item.id} id={item.id} className="scroll-mt-28 mb-16">
           <h2 className="text-3xl font-black font-headline text-on-surface mb-4">{item.title}</h2>
           {item.intro && (
-            <p className="text-lg text-on-surface-variant leading-relaxed mb-8">{item.intro}</p>
+            <p className="text-lg text-on-surface-variant leading-relaxed mb-8">
+              <RichText text={item.intro} />
+            </p>
           )}
           {item.blocks && <DocBlocks blocks={item.blocks} />}
           {item.related && <RelatedLinks links={item.related} />}

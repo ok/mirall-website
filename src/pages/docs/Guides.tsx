@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import Seo from '../../components/Seo'
 import DocsLayout, { DocsHeader } from '../../components/docs/DocsLayout'
-import { DocBlocks, DocImage, RelatedLinks } from '../../components/docs/blocks'
-import { stepsFromDoc, type DocItem } from '../../components/docs/content'
+import { DocBlocks, DocImage, RelatedLinks, RichText } from '../../components/docs/blocks'
+import { stepsFromDoc, stripInline, type DocItem } from '../../components/docs/content'
 import { breadcrumbSchema, howToSchema } from '../../lib/schema'
 
 interface Group {
@@ -21,7 +21,7 @@ export default function Guides() {
     .flatMap((g) => g.docs)
     .map((doc) => {
       const steps = stepsFromDoc(doc)
-      return steps ? howToSchema(doc.title, doc.intro || doc.title, steps) : null
+      return steps ? howToSchema(doc.title, stripInline(doc.intro || doc.title), steps) : null
     })
     .filter((x): x is NonNullable<typeof x> => x !== null)
 
@@ -63,7 +63,9 @@ export default function Guides() {
                   {doc.title}
                 </h3>
                 {doc.intro && (
-                  <p className="text-lg text-on-surface-variant leading-relaxed mb-6">{doc.intro}</p>
+                  <p className="text-lg text-on-surface-variant leading-relaxed mb-6">
+                    <RichText text={doc.intro} />
+                  </p>
                 )}
                 {doc.blocks && <DocBlocks blocks={doc.blocks} />}
                 {doc.image && (

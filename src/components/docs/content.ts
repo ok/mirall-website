@@ -26,7 +26,9 @@ export interface DocItem {
   related?: RelatedLink[]
 }
 
-function stripInline(text: string): string {
+// Inline markup (**bold**, `code`) is display-only — strip it for any text-only
+// sink such as JSON-LD, or the raw asterisks end up in structured data.
+export function stripInline(text: string): string {
   return text.replace(/\*\*/g, '').replace(/`/g, '')
 }
 

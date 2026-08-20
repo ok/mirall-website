@@ -170,19 +170,74 @@
   },
   "support": {
     "title": "Support",
-    "heading": "Get help from inside the app",
-    "description": "Mirall has built-in support. Click the \"Send Feedback\" button in the top right corner of the app to report issues, request features, or ask questions. Add your email if you'd like a reply, and Mirall attaches version and platform diagnostics so we can debug faster. Your message goes directly to our team.",
+    "heading": "Get help with Mirall",
+    "description": "Mirall has built-in support. Click **Send Feedback** in the top right corner of the app to report a problem, request a feature, or ask a question. Add your email if you'd like a reply, and tick **Include a screenshot of the current view** when a picture explains it faster. Mirall attaches the version you're running and your platform, so we start from the same facts. Your message goes directly to our team.",
     "screenshotAlt": "Mirall app with the Send Feedback button highlighted",
     "steps": {
       "title": "How to reach us",
       "items": [
         "Open Mirall on your desktop",
-        "Click the \"Send Feedback\" button in the top right corner",
+        "Click **Send Feedback** in the top right corner",
         "Describe your issue or question — add your email if you want a reply",
         "Hit send — we'll get back to you"
       ]
     },
-    "note": "No external ticketing system, no email chains. Everything stays in the app."
+    "note": "No external ticketing system, no email chains. Everything stays in the app.",
+    "problems": {
+      "title": "Common problems",
+      "intro": "A handful of things come up often enough to be worth naming. Each one is covered in full in the documentation.",
+      "items": [
+        {
+          "symptom": "Someone you invited is stuck on “Waiting to be let into…”",
+          "check": "A member of the space has to be online and reachable before anyone can be let in. That includes **auto-approve**, which removes the approval step but not the hand-over — the link carries the address of the space, never the key to it.",
+          "linkLabel": "Fix a join that gets stuck",
+          "to": "/docs/guides#fix-a-stuck-join"
+        },
+        {
+          "symptom": "Your avatar has a coloured ring, or a transfer won't start",
+          "check": "Red means this device has lost its internet connection, amber that Mirall is trying to recover. **Profile → Connection** explains what Mirall can see about your setup and offers a **Reconnect** button.",
+          "linkLabel": "Fix a connection problem",
+          "to": "/docs/guides#fix-a-connection-problem"
+        },
+        {
+          "symptom": "A file reads “Owner offline” and won't download",
+          "check": "Files are served from the device that shared them, not from a server. The person who shared it has to be online and running Mirall while you download.",
+          "linkLabel": "Spaces, members & availability",
+          "to": "/docs/explanation#spaces-members-availability"
+        },
+        {
+          "symptom": "A large download stopped part-way",
+          "check": "Nothing is lost. A transfer picks up where it stopped as soon as you're both back online, and you can pause and resume it by hand.",
+          "linkLabel": "Pause, resume, cancel, or retry a transfer",
+          "to": "/docs/guides#manage-a-transfer"
+        },
+        {
+          "symptom": "An invite link is refused",
+          "check": "Every link carries an expiry — 2 hours, 2 days, or 2 weeks. Once it lapses Mirall turns it down, and you need a fresh one.",
+          "linkLabel": "Invite people to a space",
+          "to": "/docs/guides#invite-people"
+        },
+        {
+          "symptom": "Downloads fail because the download folder is unavailable",
+          "check": "Mirall can't reach the folder it saves into — usually an external drive or a network share that went away. Reconnect it, or choose another folder.",
+          "linkLabel": "Choose where downloads go",
+          "to": "/docs/guides#set-download-folder"
+        }
+      ]
+    },
+    "report": {
+      "title": "Before you report a problem",
+      "intro": "Anything you can tell us here saves a round trip. Most reports come down to what each device could see at the time.",
+      "items": [
+        "**What you did, and what happened instead.** The exact wording Mirall showed you is worth copying out.",
+        "**Whether both devices were running Mirall** at the moment it went wrong.",
+        "**What Profile → This device → Connection says** — the headline, and how many peers are connected.",
+        "**Which version each device is running.** Yours is on the Profile page, under **App**."
+      ],
+      "consoleTitle": "Sending us the network detail",
+      "consoleIntro": "If you're comfortable with it, the single most useful thing you can attach is Mirall's own view of the network. Press **F12** to open the developer tools — **Ctrl + Shift + I** also works, or **Cmd + Option + I** on macOS. Switch to the **Console** tab, type `mirall.status()`, and press Enter. Copy the result into your message.",
+      "consoleNote": "`mirall.help()` lists everything else it can report. These commands describe what Mirall is doing — they don't touch your files or your spaces."
+    }
   },
   "docs": {
     "title": "Documentation",
@@ -230,6 +285,7 @@
         { "label": "Send your first files", "to": "/docs/tutorials#send-your-first-files" },
         { "label": "Invite people to a space", "to": "/docs/guides#invite-people" },
         { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" },
+        { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" },
         { "label": "Share a whole folder", "to": "/docs/guides#share-a-folder" },
         { "label": "Mirror a folder to disk", "to": "/docs/guides#mirror-a-folder-to-disk" },
         { "label": "File statuses", "to": "/docs/reference#file-statuses" },
@@ -330,12 +386,13 @@
                   { "text": "Click **Join Space**." }
                 ] },
                 { "type": "p", "text": "Unless the invite was set to auto-approve, joining is a **request**: your screen reads **Waiting to be let into** the space until an existing member approves you. You can leave the window open — you'll be admitted automatically as soon as a member is online, and you don't need to be online at the moment they approve. Until then the space's contents stay closed to you, and the only action available is **Cancel request**." },
-                { "type": "p", "text": "Once someone approves you, the space opens and its files appear. If the invite had **auto-approve** turned on, you skip the wait entirely and land straight in." },
+                { "type": "p", "text": "Once someone approves you, the space opens and its files appear. If the invite had **auto-approve** turned on, nobody has to decide — you are let in as soon as your device reaches a member of the space." },
                 { "type": "note", "text": "An invite link has an expiry. If yours has lapsed, Mirall tells you the link has expired — ask the person who sent it for a new one." }
               ],
               "image": { "src": "/docs-join-waiting.webp", "alt": "Mirall showing it is waiting to be let into a space, with the existing members' avatars and a Cancel request button", "width": 1344, "height": 1173 },
               "related": [
-                { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" }
+                { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" },
+                { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
               ]
             },
             {
@@ -344,16 +401,17 @@
               "blocks": [
                 { "type": "p", "text": "Open the space and click **Invite**. The dialog asks you two things before it mints a link:" },
                 { "type": "bullets", "items": [
-                  "**Auto-approve** — off by default. Leave it off and everyone who uses the link asks to join, and you approve each one. Turn it on and anyone holding the link is admitted instantly.",
+                  "**Auto-approve** — off by default. Leave it off and everyone who uses the link asks to join, and you approve each one. Turn it on and nobody has to approve: anyone holding the link is let in as soon as their device reaches a member of the space.",
                   "**Link expires after** — **2 hours**, **2 days**, or **2 weeks**. After that the link stops working and Mirall refuses anyone who tries to use it."
                 ] },
                 { "type": "p", "text": "Click **Create invite link**. Mirall shows a single `mirall://join/…` link, tagged with the choices you made, and a **Copy** button. Send it however you like — chat, email, anything. The same link works for as many people as you want to admit, until it expires. **Change** takes you back to adjust the settings; **Done** closes the dialog." },
-                { "type": "note", "text": "The link carries the space name, so the person joining sees what they're joining." }
+                { "type": "note", "text": "The link carries the space name, so the person joining sees what they're joining. It does not carry the key to the space — that is handed over by a device that is already a member, so someone has to be online and reachable when the link is used, auto-approve or not." }
               ],
               "image": { "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" },
-                { "label": "Membership & approval", "to": "/docs/explanation#membership-approval" }
+                { "label": "Membership & approval", "to": "/docs/explanation#membership-approval" },
+                { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
               ]
             },
             {
@@ -363,10 +421,32 @@
               "blocks": [
                 { "type": "p", "text": "A banner appears at the top of the space reading **“<name> wants to join”**, with **Approve** and **Deny** beside it. Approving hands them the key to the space's contents; denying turns them away." },
                 { "type": "p", "text": "When several people are waiting, the banner collapses into a stack of avatars and a count — **“3 people want to join”** — with a **Review** button. That opens **Requests to join**, where you can tick individuals and **Approve selected**, take everyone at once with **Approve all**, or deny someone from their row." },
+                { "type": "p", "text": "Requests reach you in three places: the banner inside the space, a notice in the app with a **Review** button that takes you there, and a **“1 waiting”** pill on that space's tile in the Shared Spaces overview. The notice only appears while Mirall's window is open — there is no desktop notification for join requests, so one that arrives while the window is closed waits for you inside the space." },
                 { "type": "note", "text": "A request only needs handling once. As soon as any member approves or denies someone, the banner clears for everyone else in the space." }
               ],
               "image": { "src": "/docs-approval-review.webp", "alt": "Mirall's “Requests to join” dialog listing people waiting to join, with Approve selected and Approve all buttons", "width": 1344, "height": 1173 },
               "related": [
+                { "label": "Membership & approval", "to": "/docs/explanation#membership-approval" },
+                { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
+              ]
+            },
+            {
+              "id": "fix-a-stuck-join",
+              "title": "Fix a join that gets stuck",
+              "intro": "Someone follows your invite link, their screen reads **Waiting to be let into** the space, and nothing appears on yours. That almost always means the request never reached a member's device — not that you missed a button.",
+              "blocks": [
+                { "type": "steps", "items": [
+                  { "title": "Check both devices are running Mirall", "text": "A join request travels straight from one device to the other, so a member of the space has to be online and running Mirall at the moment the link is used. A closed app or a sleeping laptop on your side is enough to stall it. Running in the background counts — Mirall in the menu bar or the notification area is reachable." },
+                  { "title": "Look where the request actually appears", "text": "The banner is **inside the space**. From the Shared Spaces overview all you get is a **“1 waiting”** pill on that space's tile. Mirall also raises a notice with a **Review** button, but only while the window is open — there is no desktop notification for join requests." },
+                  { "title": "Check your own connection", "text": "Open your **Profile** page and click **Connection**. If the headline reads **Connecting to the Mirall network…** rather than **Network is healthy**, nothing can reach you yet. Open **Show advanced details** and read the **Suggestions** underneath — that is where **“Your router appears to be blocking inbound UDP”** and the warnings about your network type appear." },
+                  { "title": "Rule out a firewall or a VPN", "text": "Mirall connects over UDP, and a VPN, a company network, or a firewall that blocks it will stop two devices finding each other. On Windows, open **Windows Security → Firewall & network protection → Allow an app through firewall** and check that Mirall is ticked for both **Private** and **Public** — the prompt shown on first launch is easy to dismiss by accident. If you are on a VPN, try again with it off. Sharing a phone's connection has the same effect: both devices end up behind the carrier's network, where a direct connection often cannot be made." },
+                  { "title": "Leave both apps running", "text": "A device that is waiting keeps knocking on its own, so once you are reachable the request arrives without anyone having to paste the link again." }
+                ] },
+                { "type": "note", "text": "**Auto-approve** changes none of this. It removes the decision, not the hand-over: the link carries the address of the space, never the key to it, so a device that is already a member still has to be reachable to let someone in. Until one is, the person joining waits exactly as they would without it." }
+              ],
+              "related": [
+                { "label": "Fix a connection problem", "to": "/docs/guides#fix-a-connection-problem" },
+                { "label": "Network status", "to": "/docs/reference#network-status" },
                 { "label": "Membership & approval", "to": "/docs/explanation#membership-approval" }
               ]
             },
@@ -620,8 +700,26 @@
               "title": "Fix a connection problem",
               "blocks": [
                 { "type": "p", "text": "Your avatar gains a soft pulsing ring when something's wrong — red if you've lost internet, amber while Mirall is trying to recover. No ring means you're connected and ready. When a problem appears, a toast notification offers a **Show details** link." },
-                { "type": "p", "text": "Open your **Profile** page and click **Connection** for a friendly diagnostics view — useful when a friend can't reach you or a transfer stalls. It explains what Mirall sees about your connection, points out things worth checking (router, VPN, firewall), and includes a **Reconnect** button to nudge things along." },
+                { "type": "p", "text": "Open your **Profile** page and click **Connection** for a friendly diagnostics view — useful when a friend can't reach you or a transfer stalls. The headline tells you where you stand:" },
+                { "type": "bullets", "items": [
+                  "**Network is healthy** — you are on the Mirall network, with a count of the peers connected across your spaces, or a note that nobody else is online right now.",
+                  "**Connecting to the Mirall network…** — Mirall is still trying, and it is taking longer than it should. A firewall, a VPN, or your internet provider is the usual reason.",
+                  "**You're offline** — this device has no internet connection at all. Mirall pauses until it comes back."
+                ] },
+                { "type": "p", "text": "Whenever you are not healthy, a **Reconnect** button sits beside the headline — it makes Mirall try again straight away instead of waiting for the next automatic attempt. Underneath, **Suggestions** spell out whatever Mirall can see about your setup." },
+                { "type": "p", "text": "**Show advanced details** opens the technical view: the addresses and ports Mirall is using, what it can tell about your router, and the state of the directory it uses to find peers. Some of the most useful suggestions only appear once it is open — including **“Your router appears to be blocking inbound UDP”** and the two warnings about how your network hands out ports." },
+                { "type": "subheading", "text": "Things worth checking" },
+                { "type": "bullets", "items": [
+                  "**A VPN.** Many route or block the traffic Mirall needs. Try again with it off.",
+                  "**Your firewall.** On Windows, open **Windows Security → Firewall & network protection → Allow an app through firewall** and check that Mirall is ticked for both **Private** and **Public**. The prompt shown on first launch is easy to dismiss by accident.",
+                  "**A company or campus network.** Strict networks often block a direct connection between two devices outright.",
+                  "**A phone's shared connection.** Tethering puts both devices behind the carrier's network, where a direct connection frequently cannot be made."
+                ] },
                 { "type": "note", "text": "**Settings → Network** is a different screen — it sets bandwidth limits and shows no connection status." }
+              ],
+              "related": [
+                { "label": "Network status", "to": "/docs/reference#network-status" },
+                { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
               ]
             }
           ]
@@ -874,6 +972,40 @@
           "image": { "src": "/docs-profile-page.webp", "alt": "Mirall's Profile page showing the display name and picture at the top, a This device group with Connection, Identity protection and Activity Log, and an App group with the installed version", "width": 1344, "height": 1173 }
         },
         {
+          "id": "network-status",
+          "title": "Network status",
+          "intro": "**Profile → This device → Connection** opens Network status — what Mirall can see about this device's own connection. Nothing here is a setting; it is all diagnostics. The headline and any suggestions are always shown, and **Show advanced details** unfolds the rest.",
+          "table": {
+            "columns": ["Section", "Row", "What it tells you"],
+            "rows": [
+              ["Headline", "Network is healthy", "You are on the Mirall network. Reads out how many peers are connected across your spaces, or that nobody else is online right now."],
+              ["Headline", "Connecting to the Mirall network…", "Mirall has not got there yet, and it is taking longer than expected. A **Reconnect** button appears beside it."],
+              ["Headline", "You're offline", "No internet connection on this device. Mirall is paused until it returns."],
+              ["Connection", "Connected peers", "How many other devices you are connected to right now."],
+              ["Connection", "Spaces joined", "How many spaces this device is currently following."],
+              ["Connection", "Last connected", "How long ago the most recent connection was made."],
+              ["Address", "Public IP", "The address other devices see. Hidden until you reveal it, and copyable."],
+              ["Address", "Public UDP port", "The port your router presents to the outside."],
+              ["Address", "Local UDP port", "The port Mirall listens on locally."],
+              ["Address", "Port preservation", "**Yes** when those two ports match, which is the good case for direct connections."],
+              ["Address", "Your public key", "This device's identity. Hidden until you reveal it, and copyable."],
+              ["NAT", "Behind firewall", "Whether your router looks like it is blocking connections coming in."],
+              ["NAT", "Randomised port mapping", "Whether your network gives every connection a different port, which makes a direct link harder."],
+              ["NAT", "Ephemeral DHT node", "Whether this device takes part in the peer directory as a short-lived participant rather than a long-lived one."],
+              ["DHT", "Routing-table size", "How many peers Mirall knows in the directory it uses to find people. A very small number means it is still getting started."],
+              ["DHT", "HyperDHT version", "The version of the peer-discovery layer."],
+              ["DHT", "Bootstrap nodes", "The entry points Mirall used to join the network. Click the count to list them."],
+              ["Suggestions", "Your operating system reports no internet connection", "This device has no network at all — check Wi-Fi or Ethernet."],
+              ["Suggestions", "Couldn't determine your public IP", "Mirall cannot work out how it appears to the outside world."],
+              ["Suggestions", "Still joining the DHT", "Mirall is starting up and has not found any peers yet."],
+              ["Suggestions", "Few DHT peers known so far", "Mirall has reached only a handful of peers; it may still be getting started."],
+              ["Suggestions", "Your router appears to be blocking inbound UDP", "Other devices can reach you only indirectly. Appears under advanced details."],
+              ["Suggestions", "Your network randomises outbound ports", "Direct connections may fail. Appears under advanced details."],
+              ["Suggestions", "Symmetric NAT detected", "Your network type forces connections to be made indirectly. Appears under advanced details."]
+            ]
+          }
+        },
+        {
           "id": "activity-events",
           "title": "What the activity log records",
           "intro": "Events fall into four kinds, which are also the filter buttons on the log. Every event is recorded on your device only.",
@@ -950,8 +1082,9 @@
           "title": "Membership & approval",
           "blocks": [
             { "type": "p", "text": "Joining a space is a **request**, not an entitlement. Someone who follows your invite link becomes a pending member: they're visible to the space, but they hold none of its contents and can take no member-only action until an existing member approves them. Approving them is what hands over the key." },
+            { "type": "p", "text": "The link itself is not the key. An invite carries the address of the space and enough detail to show you what you are joining — never the key to its contents. That key is handed over by a device that is already a member, which is why joining needs one of them to be online and reachable, and why a link that gets forwarded lets someone knock rather than read." },
             { "type": "p", "text": "**Any** member can approve, not just whoever created the space — and a request only needs answering once. As soon as one member approves or denies someone, that decision propagates and the request clears for everyone else." },
-            { "type": "p", "text": "If you'd rather not gate-keep, turn on **auto-approve** when you create the invite link. Anyone holding that link is then admitted the moment they use it. Either way the link carries an expiry — 2 hours, 2 days, or 2 weeks — after which Mirall refuses it." },
+            { "type": "p", "text": "If you'd rather not gate-keep, turn on **auto-approve** when you create the invite link. Anyone holding that link is then admitted without a member having to decide, as soon as their device reaches one. Either way the link carries an expiry — 2 hours, 2 days, or 2 weeks — after which Mirall refuses it." },
             { "type": "note", "text": "The trade-off is deliberate. Auto-approve trades a moment of your attention for the risk that a forwarded link admits someone you didn't intend. Approval keeps that decision with the people already in the room." }
           ]
         },

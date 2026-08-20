@@ -334,11 +334,16 @@ grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u   # every one m
 **In-page render check (gold standard):**
 ```bash
 npx vite preview --port 4317
-open -a "Google Chrome" "http://localhost:4317/docs/guides"
-# screenshot the Chrome window with agent-desktop and Read it back
+# full-page render, then crop the region you care about
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
+  --hide-scrollbars --window-size=1400,12000 --screenshot=/tmp/page.png \
+  "http://localhost:4317/docs/guides"
+node -e "require('sharp')('/tmp/page.png').extract({left:0,top:4700,width:1400,height:1800}).resize({width:1000}).toFile('/tmp/crop.png')"
 pkill -f "vite preview --port 4317"
 ```
 Confirm the images render, the chrome looks current, and the sidebar works. Spot-check a second page.
+
+> **Don't drive the browser with agent-desktop.** Chrome doesn't expose its web content to the macOS AX tree unless assistive access is switched on for it, so `find` returns an empty tree and `press` / `mouse-wheel` never reach the page — you get the same above-the-fold screenshot every time and think the page didn't change. Old headless (`--headless`, not `--headless=new`) captures the **whole layout** in one PNG regardless of viewport, which is what makes the crop trick work. `--headless=new` only captures the viewport and does not honour a `#fragment` scroll.
 
 **Lint baseline:** `npm run lint` reports **2 pre-existing errors** — `src/components/Navbar.tsx` (set-state-in-effect) and `src/components/Seo.tsx` (missing `react/no-danger` rule def). They are **not yours**; confirm they're identical on `main` and don't chase them. Add **zero** new lint problems.
 
