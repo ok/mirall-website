@@ -28,7 +28,7 @@ export default function Footer() {
     <footer className="bg-slate-50 w-full py-12 px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         <div className="space-y-4">
-          <Link to="/" aria-label="Mirall home">
+          <Link to="/" aria-label="Mirall home" className="inline-block">
             <BrandLogo />
           </Link>
           <p className="text-slate-500 font-body text-sm leading-relaxed">{t('footer.tagline')}</p>

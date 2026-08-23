@@ -4,11 +4,9 @@ interface BrandLogoProps {
   className?: string
 }
 
-export default function BrandLogo({ className = 'text-2xl' }: BrandLogoProps) {
+export default function BrandLogo({ className = 'h-7' }: BrandLogoProps) {
   const { t } = useTranslation()
-  return (
-    <span className={`font-extrabold text-black tracking-tighter font-headline ${className}`}>
-      {t('brand')}<span className="text-[#fd9c42]">.</span>
-    </span>
-  )
+  // The SVG carries no width/height of its own, so the viewBox supplies the
+  // aspect ratio and callers size the mark by height alone.
+  return <img src="/logo.svg" alt={t('brand')} className={`block w-auto ${className}`} />
 }
