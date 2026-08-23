@@ -76,6 +76,8 @@ export async function detectPlatform(): Promise<Platform | null> {
 
   if (!arch) arch = 'x86'
 
+  // Per-arch macOS builds (no universal). arch is 'x86' when inconclusive
+  // (Rosetta-safe miss above), so an undetectable Mac gets the x64 build.
   if (isMac) return arch === 'arm' ? 'darwin-arm64' : 'darwin-x64'
   // Windows ARM users get the x64 build — runs via transparent emulation on Win11.
   if (isWin) return 'win32-x64'

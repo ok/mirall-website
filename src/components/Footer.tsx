@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import BrandLogo from './BrandLogo'
+import { GITHUB_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -25,34 +27,43 @@ export default function Footer() {
   return (
     <footer className="bg-slate-50 w-full py-12 px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-        <div className="space-y-6">
-          <img src="/logo.svg" alt={t('brand')} className="block h-7 w-auto" />
+        <div className="space-y-4">
+          <Link to="/" aria-label="Mirall home">
+            <BrandLogo />
+          </Link>
           <p className="text-slate-500 font-body text-sm leading-relaxed">{t('footer.tagline')}</p>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.product.title')}</p>
-          <ul className="space-y-4 font-body text-sm">
+          <ul className="space-y-3 font-body text-sm">
             <li><HashLink className="text-slate-500 hover:text-emerald-600 transition-all" to="/#features">{t('footer.product.features')}</HashLink></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/download">{t('footer.product.download')}</Link></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/changelog">{t('footer.product.changelog')}</Link></li>
           </ul>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.resources.title')}</p>
-          <ul className="space-y-4 font-body text-sm">
+          <ul className="space-y-3 font-body text-sm">
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/docs">{t('footer.resources.docs')}</Link></li>
             <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/support">{t('footer.resources.support')}</Link></li>
+            <li>
+              <a className="text-slate-500 hover:text-emerald-600 transition-all" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                {t('footer.resources.github')}
+              </a>
+            </li>
           </ul>
         </div>
         <div>
           <p className="font-bold mb-6 text-on-surface">{t('footer.legal.title')}</p>
-          <ul className="space-y-4 font-body text-sm">
-            <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.privacy')}</a></li>
+          <ul className="space-y-3 font-body text-sm">
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/impressum">{t('footer.legal.impressum')}</Link></li>
+            <li><Link className="text-slate-500 hover:text-emerald-600 transition-all" to="/privacy">{t('footer.legal.privacy')}</Link></li>
             <li><a className="text-slate-500 hover:text-emerald-600 transition-all" href="#">{t('footer.legal.terms')}</a></li>
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto mt-12 pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="text-slate-500 font-body text-sm">{t('footer.copyright')}</p>
+      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-200">
+        <p className="text-slate-500 font-body text-sm">{t('footer.trademark')}</p>
       </div>
     </footer>
   )

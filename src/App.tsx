@@ -1,22 +1,47 @@
-import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import { lazy, Suspense, useEffect, createElement, type ComponentType } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { routes } from './routes'
 
-const Docs = lazy(() => import('./pages/Docs'))
-const Support = lazy(() => import('./pages/Support'))
-const Download = lazy(() => import('./pages/Download'))
+/** Code-split on the client — one chunk per route, fetched on navigation. */
+const lazyComponents = new Map(routes.map((r) => [r.path, r.eager ?? lazy(r.load)]))
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation()
+  useEffect(() => {
+    if (!hash) window.scrollTo({ top: 0, left: 0 })
+  }, [pathname, hash])
+  return null
+}
+
+/**
+ * `components` is injectable because the prerender must pass *resolved*
+ * modules. `renderToString` does not wait on a suspended boundary, so rendering
+ * the lazy map on the server emits the `null` fallback — a full-size HTML file
+ * with an empty page inside it.
+ */
+export function AppRoutes({
+  components = lazyComponents,
+}: {
+  components?: Map<string, ComponentType>
+}) {
+  return (
+    <>
+      <ScrollToTop />
+      <Suspense fallback={null}>
+        <Routes>
+          {routes.map((r) => (
+            <Route key={r.path} path={r.path} element={createElement(components.get(r.path)!)} />
+          ))}
+        </Routes>
+      </Suspense>
+    </>
+  )
+}
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={null}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/docs" element={<Docs />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/download" element={<Download />} />
-        </Routes>
-      </Suspense>
+      <AppRoutes />
     </BrowserRouter>
   )
 }
