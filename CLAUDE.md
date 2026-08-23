@@ -4,13 +4,15 @@
 
 The **marketing site and documentation** for [Mirall](https://mirall.app), a serverless peer-to-peer desktop file-transfer app. This repo is the *website only* — the app itself lives in a sibling repo (see below).
 
-Vite 8 + React 19 SPA (no SSR), React Router 7, Tailwind 4, i18next, TypeScript. Deployed to Vercel. Node ≥ 20 (`.nvmrc` pins 22).
+Vite 8 + React 19 SPA, React Router 7, Tailwind 4, i18next, TypeScript. Deployed to Vercel. Node ≥ 20 (`.nvmrc` pins 22).
 
-Routes: `/` · `/download` · `/preview` · `/support` · `/changelog` · `/docs` (+ `/docs/{tutorials,guides,reference,explanation}`).
+There is no SSR server. Every route in `src/routes.ts` is rendered to a static HTML file at build time — `src/entry-server.tsx` renders it, `scripts/prerender.mjs` writes it, and Vercel serves the result. A route added to `routes.ts` is prerendered automatically; one added anywhere else ships as an empty shell.
+
+Routes: `/` · `/download` · `/preview` · `/support` · `/changelog` · `/privacy` · `/impressum` · `/docs` (+ `/docs/{tutorials,guides,reference,explanation}`).
 
 ```sh
 npm run dev      # dev server
-npm run build    # tsc + vite build — must be clean
+npm run build    # tsc + client build + SSR build + prerender — must be clean
 npm run lint     # see the known-baseline note below
 npm run preview  # serve the production build
 ```
