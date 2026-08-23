@@ -26,9 +26,7 @@ export default function Footer() {
     <footer className="bg-slate-50 w-full py-12 px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         <div className="space-y-6">
-          <span className="font-bold text-emerald-900 text-2xl font-headline tracking-tighter">
-            {t('brand')}
-          </span>
+          <img src="/logo.svg" alt={t('brand')} className="block h-7 w-auto" />
           <p className="text-slate-500 font-body text-sm leading-relaxed">{t('footer.tagline')}</p>
         </div>
         <div>
