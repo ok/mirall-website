@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Check, Info, ArrowRight } from '@phosphor-icons/react'
 import type { Block, RelatedLink } from './content'
@@ -5,11 +6,12 @@ import { DOC_IMAGES, DOC_IMAGE_SIZES } from './images'
 
 // Docs content lives in the i18n locale JSON as plain data (see ./content.ts for
 // the shape) and is rendered by the generic components below. Inline emphasis is
-// expressed with a minimal markdown subset: **bold** and `code`.
+// expressed with a minimal markdown subset: **bold**, `code` and [label](href).
 
-// ── Inline rich text (**bold**, `code`) ──────────────────────────────────────
+// ── Inline rich text (**bold**, `code`, [label](href)) ───────────────────────
 
-const INLINE = /(\*\*[^*]+\*\*|`[^`]+`)/g
+const INLINE = /(\[[^\]\n]+\]\([^)\s]+\)|\*\*[^*]+\*\*|`[^`]+`)/g
+const INLINE_LINK = /^\[([^\]]+)\]\(([^)]+)\)$/
 
 function renderInline(text: string): React.ReactNode[] {
   const nodes: React.ReactNode[] = []
@@ -20,7 +22,23 @@ function renderInline(text: string): React.ReactNode[] {
   while ((match = INLINE.exec(text)) !== null) {
     if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index))
     const token = match[0]
-    if (token.startsWith('**')) {
+    const link = INLINE_LINK.exec(token)
+    if (link) {
+      const [, label, href] = link
+      const className =
+        'text-primary font-semibold underline underline-offset-2 hover:text-emerald-500 transition-colors'
+      nodes.push(
+        href.startsWith('http') ? (
+          <a key={key++} href={href} target="_blank" rel="noopener noreferrer" className={className}>
+            {label}
+          </a>
+        ) : (
+          <Link key={key++} to={href} className={className}>
+            {label}
+          </Link>
+        ),
+      )
+    } else if (token.startsWith('**')) {
       nodes.push(
         <strong key={key++} className="font-semibold text-on-surface">
           {token.slice(2, -2)}
@@ -186,6 +204,41 @@ export function RelatedLinks({ links }: { links: RelatedLink[] }) {
   )
 }
 
+export function CodeBlock({ text, language }: { text: string; language?: string }) {
+  const [copied, setCopied] = useState(false)
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // Clipboard is unavailable over plain HTTP and in locked-down browsers; the
+      // command stays selectable by hand, so a failed copy is not worth surfacing.
+    }
+  }
+
+  return (
+    <div className="relative mb-6">
+      <pre className="overflow-x-auto rounded-xl bg-surface-container-low p-5 pr-20 text-sm leading-relaxed">
+        <code className="font-mono text-on-surface" data-language={language}>
+          {text}
+        </code>
+      </pre>
+      <button
+        type="button"
+        onClick={copy}
+        className="absolute top-3 right-3 rounded-lg px-2.5 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
+      >
+        {copied ? 'Copied' : 'Copy'}
+      </button>
+      <span role="status" aria-live="polite" className="sr-only">
+        {copied ? 'Command copied to clipboard' : ''}
+      </span>
+    </div>
+  )
+}
+
 export function DocBlocks({ blocks }: { blocks: Block[] }) {
   return (
     <>
@@ -211,6 +264,8 @@ export function DocBlocks({ blocks }: { blocks: Block[] }) {
             return <Steps key={i} items={block.items} />
           case 'table':
             return <RefTable key={i} columns={block.columns} rows={block.rows} />
+          case 'code':
+            return <CodeBlock key={i} text={block.text} language={block.language} />
           case 'image':
             return (
               <DocImage
