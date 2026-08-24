@@ -131,6 +131,11 @@
       "windows": "Windows (x64)",
       "linuxX64": "Linux (x64)",
       "linuxArm": "Linux (ARM64)"
+    },
+    "install": {
+      "mac": "Open the `.dmg` and drag Mirall to your **Applications** folder.",
+      "windows": "Double-click the `.msix` and choose **Install**. If Windows says the app package can't be opened, [install it from PowerShell instead](/docs/guides#install-on-windows).",
+      "linux": "The AppImage needs the executable bit before it will run: `chmod +x Mirall.AppImage && ./Mirall.AppImage`"
     }
   },
   "preview": {
@@ -187,6 +192,12 @@
       "title": "Common problems",
       "intro": "A handful of things come up often enough to be worth naming. Each one is covered in full in the documentation.",
       "items": [
+        {
+          "symptom": "On Windows, the installer says the app package can't be opened",
+          "check": "The error comes from **App Installer**, the Windows component behind a double-clicked `.msix` — not from Mirall, and not from the part of Windows that does the installing. One PowerShell command installs it directly and skips App Installer entirely.",
+          "linkLabel": "Install Mirall on Windows when the package won't open",
+          "to": "/docs/guides#install-on-windows"
+        },
         {
           "symptom": "Someone you invited is stuck on “Waiting to be let into…”",
           "check": "A member of the space has to be online and reachable before anyone can be let in. That includes **auto-approve**, which removes the approval step but not the hand-over — the link carries the address of the space, never the key to it.",
@@ -816,6 +827,35 @@
               "image": { "src": "/docs-settings-network.webp", "alt": "Mirall's Network settings showing Transfer limits, with separate Download and Upload rows offering Unlimited, 1 MB/s, 5 MB/s, 25 MB/s, or a custom figure", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "What bandwidth limits cover", "to": "/docs/explanation#bandwidth-limits" }
+              ]
+            },
+            {
+              "id": "install-on-windows",
+              "title": "Install Mirall on Windows when the package won't open",
+              "intro": "Double-clicking the `.msix` hands it to App Installer, a Windows component that can refuse a package the rest of Windows installs without complaint. When that happens, install it directly instead.",
+              "blocks": [
+                { "type": "note", "text": "Use a **normal** PowerShell window. **Do not** run it as administrator — the command installs for the current user, so an elevated window puts Mirall on the administrator account and it never appears in your Start menu." },
+                { "type": "steps", "items": [
+                  { "title": "Download the installer", "text": "Get `Mirall.msix` from the download page and note where your browser saved it — normally your **Downloads** folder." },
+                  { "title": "Open PowerShell", "text": "Press **Windows**, type `PowerShell`, and open it. A normal window — not \"Run as administrator\"." },
+                  { "title": "Install the package", "text": "Run `Add-AppxPackage`, giving it the path to the file. Adjust the path if you saved it somewhere other than Downloads." }
+                ] },
+                { "type": "code", "language": "powershell", "text": "Add-AppxPackage -Path \"$HOME\\Downloads\\Mirall.msix\"" },
+                { "type": "p", "text": "Mirall appears in the Start menu when the command finishes. On success it prints nothing at all." },
+                { "type": "subheading", "text": "Why this happens" },
+                { "type": "p", "text": "App Installer can fail while the part of Windows that actually installs packages is perfectly healthy. It updates through the Microsoft Store, so it goes stale on machines where Store or Windows Update traffic is blocked — and it deliberately turns down packages that declare certain restricted capabilities. Mirall declares one so it can keep your data at a real `%APPDATA%` path instead of inside a sandbox. The command above bypasses App Installer, so neither applies." },
+                { "type": "p", "text": "Machines with Windows updates deliberately frozen — by a blocking utility, on an LTSC image, air-gapped, or under a locked-down company policy — are the most likely to run into this." },
+                { "type": "subheading", "text": "If the command also fails" },
+                { "type": "p", "text": "Unlike App Installer, it prints a real error code. These are the ones worth acting on:" },
+                { "type": "table", "columns": ["Code", "What it means", "What to do"], "rows": [
+                  ["`0x800B0109`", "The signing certificate chain ends in a root this machine doesn't trust", "Import the **Certum Trusted Network CA 2** root into Local Computer → Trusted Root Certification Authorities. Windows normally fetches it on demand, which fails on a machine that can't reach Windows Update."],
+                  ["`0x80070005`", "Access denied", "You're in an elevated PowerShell window. Close it and use a normal one."]
+                ] },
+                { "type": "note", "text": "Still stuck? [install-windows.ps1](https://github.com/ok/mirall-app/blob/main/scripts/install-windows.ps1) in the Mirall repository collects what we need to diagnose it — Windows build, App Installer version, service states, the certificate chain as your machine sees it, and the last deployment events — and writes it to a text file. Download it, read it, then run it with `-Diagnose` and attach the file to your report." }
+              ],
+              "related": [
+                { "label": "Before you report a problem", "to": "/support" },
+                { "label": "Update Mirall", "to": "/docs/guides#update-mirall" }
               ]
             },
             {

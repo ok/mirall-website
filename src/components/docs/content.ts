@@ -9,6 +9,7 @@ export type Block =
   | { type: 'steps'; items: Array<{ title?: string; text: string }> }
   | { type: 'table'; columns: string[]; rows: string[][] }
   | { type: 'image'; src: string; alt: string; width?: number; height?: number }
+  | { type: 'code'; text: string; language?: string }
 
 export interface RelatedLink {
   label: string

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Seo from '../components/Seo'
+import { RichText } from '../components/docs/blocks'
 import { breadcrumbSchema } from '../lib/schema'
 import { detectPlatform, type Platform } from '../lib/detectPlatform'
 import { AppleLogo, WindowsLogo, LinuxLogo, Download as DownloadIcon, type Icon } from '@phosphor-icons/react'
@@ -12,14 +13,15 @@ interface PlatformInfo {
   Icon: Icon
   translationKey: string
   format: string
+  installKey: string
 }
 
 const platforms: PlatformInfo[] = [
-  { key: 'darwin-arm64', Icon: AppleLogo, translationKey: 'download.platforms.macArm', format: '.dmg' },
-  { key: 'darwin-x64', Icon: AppleLogo, translationKey: 'download.platforms.macIntel', format: '.dmg' },
-  { key: 'win32-x64', Icon: WindowsLogo, translationKey: 'download.platforms.windows', format: '.msix' },
-  { key: 'linux-x64', Icon: LinuxLogo, translationKey: 'download.platforms.linuxX64', format: '.AppImage.tar.gz' },
-  { key: 'linux-arm64', Icon: LinuxLogo, translationKey: 'download.platforms.linuxArm', format: '.AppImage.tar.gz' },
+  { key: 'darwin-arm64', Icon: AppleLogo, translationKey: 'download.platforms.macArm', format: '.dmg', installKey: 'download.install.mac' },
+  { key: 'darwin-x64', Icon: AppleLogo, translationKey: 'download.platforms.macIntel', format: '.dmg', installKey: 'download.install.mac' },
+  { key: 'win32-x64', Icon: WindowsLogo, translationKey: 'download.platforms.windows', format: '.msix', installKey: 'download.install.windows' },
+  { key: 'linux-x64', Icon: LinuxLogo, translationKey: 'download.platforms.linuxX64', format: '.AppImage', installKey: 'download.install.linux' },
+  { key: 'linux-arm64', Icon: LinuxLogo, translationKey: 'download.platforms.linuxArm', format: '.AppImage', installKey: 'download.install.linux' },
 ]
 
 export default function Download() {
@@ -70,6 +72,10 @@ export default function Download() {
                     <DetectedIcon size={32} weight="regular" />
                     {t('download.downloadFor', { platform: t(detectedPlatform.translationKey) })}
                   </a>
+                  <RichText
+                    text={t(detectedPlatform.installKey)}
+                    className="block text-sm text-on-surface-variant leading-relaxed mt-6 max-w-lg mx-auto"
+                  />
                 </div>
               )
             })()}
