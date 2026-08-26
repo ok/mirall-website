@@ -78,7 +78,7 @@
       },
       {
         "question": "Will Mirall work on my network?",
-        "answer": "Almost always, and with no setup — Mirall finds its own way through home and office routers, so there are no ports to forward and nothing to configure. The exception is a network that blocks the traffic it needs to connect two devices directly, which some strict corporate firewalls and VPNs do. If a connection won't come up, the Connection row on your Profile page tells you what Mirall can see about your setup, so you're not guessing."
+        "answer": "Almost always, and with no setup — Mirall finds its own way through home and office routers, so there are no ports to forward and nothing to configure. The exception is a network that blocks the traffic it needs to connect two devices directly, which some strict corporate firewalls, mobile routers and VPNs do. When that happens Mirall says so instead of leaving you guessing: it checks whether other people can actually reach you, names what's in the way, and lists what to try, in order. If that isn't enough, it can save a diagnostics file — with your identifying details left out — to send us."
       },
       {
         "question": "What happens when I'm offline?",
@@ -206,7 +206,7 @@
         },
         {
           "symptom": "Your avatar has a coloured ring, or a transfer won't start",
-          "check": "Red means this device has lost its internet connection, amber that Mirall is trying to recover. **Profile → Connection** explains what Mirall can see about your setup and offers a **Reconnect** button.",
+          "check": "Red means Mirall can't reach other people at all, amber that it can reach some but not others. The notification's **What can I do?** opens a page that names the likely cause and lists what to try, in order.",
           "linkLabel": "Fix a connection problem",
           "to": "/docs/guides#fix-a-connection-problem"
         },
@@ -242,12 +242,12 @@
       "items": [
         "**What you did, and what happened instead.** The exact wording Mirall showed you is worth copying out.",
         "**Whether both devices were running Mirall** at the moment it went wrong.",
-        "**What Profile → This device → Connection says** — the headline, and how many peers are connected.",
+        "**What Profile → This device → Connection says** — the headline, and the Connection summary underneath it.",
         "**Which version each device is running.** Yours is on the Profile page, under **App**."
       ],
       "consoleTitle": "Sending us the network detail",
-      "consoleIntro": "If you're comfortable with it, the single most useful thing you can attach is Mirall's own view of the network. Press **F12** to open the developer tools — **Ctrl + Shift + I** also works, or **Cmd + Option + I** on macOS. Switch to the **Console** tab, type `mirall.status()`, and press Enter. Copy the result into your message.",
-      "consoleNote": "`mirall.help()` lists everything else it can report. These commands describe what Mirall is doing — they don't touch your files or your spaces."
+      "consoleIntro": "For anything connection-related, the most useful thing you can attach is Mirall's own view of the network. Open **Profile → This device → Connection**, scroll to **Diagnostics**, and click **Save diagnostics**. Leave **Remove identifying details** switched on — your IP address, keys and space names are shortened or left out, and it is still enough for us to work from. **Preview what's included** shows you exactly what the file holds before you save it.",
+      "consoleNote": "The file describes how your network behaves — not what you share or who you share it with. If we ask you for **Include detailed logs**, switch it on, reproduce the problem, and save the file afterwards."
     }
   },
   "docs": {
@@ -297,6 +297,7 @@
         { "label": "Invite people to a space", "to": "/docs/guides#invite-people" },
         { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" },
         { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" },
+        { "label": "Fix a connection problem", "to": "/docs/guides#fix-a-connection-problem" },
         { "label": "Share a whole folder", "to": "/docs/guides#share-a-folder" },
         { "label": "Mirror a folder to disk", "to": "/docs/guides#mirror-a-folder-to-disk" },
         { "label": "File statuses", "to": "/docs/reference#file-statuses" },
@@ -465,7 +466,7 @@
               "id": "favorite-a-space",
               "title": "Favorite a space",
               "blocks": [
-                { "type": "p", "text": "Star any space to pin it to **Favorites**. On the Shared Spaces screen you can filter the list by **All Spaces** or **Favorites**. You can also add a space to Favorites from the **More** menu inside the space." }
+                { "type": "p", "text": "Open the space, open the **More** menu, and choose **Add to Favorites**. Back on the Shared Spaces screen you can then filter the list by **All Spaces** or **Favorites**. Once a space is pinned, the same menu entry reads **Remove from Favorites**." }
               ]
             },
             {
@@ -507,7 +508,7 @@
               "id": "manage-a-transfer",
               "title": "Pause, resume, cancel, or retry a transfer",
               "blocks": [
-                { "type": "p", "text": "If your network drops or the member you're downloading from goes offline, the transfer pauses on its own and picks back up from where it left off once that person is back. You can also take control by hand — the buttons on a file row change with its state:" },
+                { "type": "p", "text": "If your network drops or the member you're downloading from goes offline, the transfer pauses on its own and picks back up from where it left off once that person is back. A member who has set an upload limit is a different case — they are still there, just sending slowly — so the transfer waits its turn instead of failing, and an interrupted download keeps retrying on its own for as long as it makes progress. You can also take control by hand — the buttons on a file row change with its state:" },
                 { "type": "bullets", "items": [
                   "**Pause Download** — stop a running download. Its progress is kept, so resuming costs you nothing.",
                   "**Cancel** — stop a running download outright and throw away what's been received.",
@@ -627,10 +628,12 @@
               "blocks": [
                 { "type": "p", "text": "Open **Settings → Storage**. The **Download Folder** section at the top shows where downloads land; **Change…** opens your OS picker. This is the folder every space uses unless it has one of its own, and the choice persists across restarts. It defaults to your OS Downloads folder." },
                 { "type": "p", "text": "Not every folder can be used. If the one you pick sits inside — or contains — a folder you share or mirror, Mirall refuses it, because anything downloaded there would be published to your peers. A folder that doesn't exist, or that Mirall can't write to, is refused too. Mirall never creates the folder for you." },
+                { "type": "p", "text": "Mirall keeps checking that the folder is still reachable. If it goes away — an ejected drive, a network share that dropped, a folder you deleted or renamed — a warning appears here and downloads stop rather than failing one by one." },
                 { "type": "note", "text": "Changing this folder doesn't move files you've already downloaded, and it leaves spaces that have set their own download folder alone." }
               ],
               "related": [
-                { "label": "Give one space its own download folder", "to": "/docs/guides#set-a-space-download-folder" }
+                { "label": "Give one space its own download folder", "to": "/docs/guides#set-a-space-download-folder" },
+                { "label": "Fix a download folder Mirall can't reach", "to": "/docs/guides#fix-a-missing-download-folder" }
               ]
             },
             {
@@ -676,6 +679,21 @@
                 { "type": "p", "text": "Mirall tidies up after itself as it goes, but you can prompt it. In **Settings → Storage**, open **Show details** under App Storage and click **Free up space**. Mirall compacts its own bookkeeping and reports how much it recovered — or tells you storage is already optimized." },
                 { "type": "note", "text": "This only touches Mirall's own data. Your shared files, your downloads, and your mirrored folders are never removed." }
               ]
+            },
+            {
+              "id": "fix-a-missing-download-folder",
+              "title": "Fix a download folder Mirall can't reach",
+              "intro": "An ejected external drive, a network share that dropped, or a folder that was deleted or renamed leaves Mirall with nowhere to put a download.",
+              "blocks": [
+                { "type": "p", "text": "Rather than failing each download with a generic error, Mirall names the folder as the problem. A notification stays up for as long as the folder is unreachable and carries a **Change folder** action, and **Settings → Storage** shows the same warning under the download folder." },
+                { "type": "p", "text": "Reconnect the drive or remount the share and the warning clears on its own. If the folder is gone for good, use **Change folder** on the notification — or **Change…** in **Settings → Storage** — and pick another one." },
+                { "type": "p", "text": "Downloads heading for a folder that isn't there stop retrying instead of hammering it, and Mirall never quietly recreates a folder you deleted. Start them again once the folder is back." },
+                { "type": "note", "text": "A space with its own download folder is checked the same way, so the warning can name a folder other than the one in **Settings → Storage**." }
+              ],
+              "related": [
+                { "label": "Choose where downloads go", "to": "/docs/guides#set-download-folder" },
+                { "label": "Give one space its own download folder", "to": "/docs/guides#set-a-space-download-folder" }
+              ]
             }
           ]
         },
@@ -709,16 +727,20 @@
             {
               "id": "fix-a-connection-problem",
               "title": "Fix a connection problem",
+              "intro": "Mirall judges whether other people can actually reach this device, not just whether you have internet — so it can tell you your network is the problem instead of leaving you to guess.",
               "blocks": [
-                { "type": "p", "text": "Your avatar gains a soft pulsing ring when something's wrong — red if you've lost internet, amber while Mirall is trying to recover. No ring means you're connected and ready. When a problem appears, a toast notification offers a **Show details** link." },
-                { "type": "p", "text": "Open your **Profile** page and click **Connection** for a friendly diagnostics view — useful when a friend can't reach you or a transfer stalls. The headline tells you where you stand:" },
+                { "type": "p", "text": "Your avatar gains a soft pulsing ring when something is wrong — red when Mirall can't reach other people at all, amber when it can reach some but not others. No ring means you're connected and ready." },
+                { "type": "p", "text": "A problem also raises a notification that stays up until it clears. Its **What can I do?** action opens the **Connection problem** page. You land on that page directly if you open Mirall with no spaces yet and a connection that isn't working." },
+                { "type": "subheading", "text": "The Connection problem page" },
+                { "type": "p", "text": "It opens with a verdict in plain language and what that means for you:" },
                 { "type": "bullets", "items": [
-                  "**Network is healthy** — you are on the Mirall network, with a count of the peers connected across your spaces, or a note that nobody else is online right now.",
-                  "**Connecting to the Mirall network…** — Mirall is still trying, and it is taking longer than it should. A firewall, a VPN, or your internet provider is the usual reason.",
-                  "**You're offline** — this device has no internet connection at all. Mirall pauses until it comes back."
+                  "**Your network is blocking Mirall** — Mirall can find other people but can't connect to any of them. Invites you send won't arrive and spaces you join won't sync.",
+                  "**Limited connection** — connections to many people will fail, though sharing still works with some. A mobile router or phone tethering is the usual cause.",
+                  "**You're offline** — this device isn't connected to any network at all.",
+                  "**Can't reach the network** — every route out of this device goes through a VPN, and nothing is answering through it."
                 ] },
-                { "type": "p", "text": "Whenever you are not healthy, a **Reconnect** button sits beside the headline — it makes Mirall try again straight away instead of waiting for the next automatic attempt. Underneath, **Suggestions** spell out whatever Mirall can see about your setup." },
-                { "type": "p", "text": "**Show advanced details** opens the technical view: the addresses and ports Mirall is using, what it can tell about your router, and the state of the directory it uses to find peers. Some of the most useful suggestions only appear once it is open — including **“Your router appears to be blocking inbound UDP”** and the two warnings about how your network hands out ports." },
+                { "type": "p", "text": "Under **What helps, in this order**, Mirall lists numbered steps picked for the problem it actually found. Turning a VPN off comes first when the VPN is the likely culprit; when your network hands out a different port every time, it says so plainly, because no router setting fixes that one." },
+                { "type": "p", "text": "**Check again** re-runs the test on the spot instead of waiting for the next automatic one, with the time of the last check beside it. **Network details** opens the full diagnostics, and **Connection history** opens your activity log filtered to connection events. **Continue to Spaces** takes you on — you can still create and join spaces, and they start syncing once the connection works." },
                 { "type": "subheading", "text": "Things worth checking" },
                 { "type": "bullets", "items": [
                   "**A VPN.** Many route or block the traffic Mirall needs. Try again with it off.",
@@ -726,11 +748,34 @@
                   "**A company or campus network.** Strict networks often block a direct connection between two devices outright.",
                   "**A phone's shared connection.** Tethering puts both devices behind the carrier's network, where a direct connection frequently cannot be made."
                 ] },
-                { "type": "note", "text": "**Settings → Network** is a different screen — it sets bandwidth limits and shows no connection status." }
+                { "type": "note", "text": "**Settings → Network** is a different screen — it sets bandwidth limits and shows no connection status. The diagnostics live on **Network status**, which you reach from **Profile → This device → Connection**." }
               ],
+              "image": { "src": "/docs-connection-problem.webp", "alt": "Mirall's Connection problem page showing the verdict that the network is blocking Mirall, a numbered list of what helps in order, and Check again, Network details and Connection history buttons", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "Network status", "to": "/docs/reference#network-status" },
+                { "label": "Send us a diagnostics file", "to": "/docs/guides#save-diagnostics" },
+                { "label": "Why Mirall can tell your network is the problem", "to": "/docs/explanation#reachability" },
                 { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
+              ]
+            },
+            {
+              "id": "save-diagnostics",
+              "title": "Send us a diagnostics file",
+              "intro": "When a connection problem is hard to put into words, Mirall can write down what it sees about your network so you don't have to.",
+              "blocks": [
+                { "type": "steps", "items": [
+                  { "text": "Open **Profile → This device → Connection** to reach **Network status**." },
+                  { "text": "Scroll to **Diagnostics**. Leave **Remove identifying details** switched on — it is the recommended setting, and it is enough for us to work from." },
+                  { "text": "Click **Preview what's included** if you'd like to read the file first. It shows exactly what will be saved." },
+                  { "text": "Click **Save diagnostics**, then attach the file to your message." }
+                ] },
+                { "type": "p", "text": "The file describes how your network behaves — not what you share or who you share it with. With **Remove identifying details** on, your IP address, keys and space names are shortened or left out." },
+                { "type": "p", "text": "**Include detailed logs** is for a problem we can't reproduce. Switching it on turns detailed logging on straight away, so reproduce the problem first and save the file afterwards — otherwise the lines we need are the ones that were never recorded." },
+                { "type": "note", "text": "Turning **Remove identifying details** off saves the same file with nothing withheld, and the preview says so in as many words. Only do that if we've asked you to." }
+              ],
+              "related": [
+                { "label": "Fix a connection problem", "to": "/docs/guides#fix-a-connection-problem" },
+                { "label": "Network status", "to": "/docs/reference#network-status" }
               ]
             }
           ]
@@ -742,11 +787,14 @@
             {
               "id": "review-your-activity",
               "title": "Review what happened in your spaces",
-              "intro": "Mirall keeps a record on your device of who joined, left, or was approved, and what was shared and downloaded.",
+              "intro": "Mirall keeps a record on your device of who joined, left, or was approved, what was shared and downloaded, and when this device's connection went wrong.",
               "blocks": [
                 { "type": "p", "text": "Click your avatar to open **Profile**, then choose **Activity Log** under **This device**. The row itself tells you how many events are recorded." },
-                { "type": "p", "text": "Search across people, files and folders with the box at the top, and narrow the list with three menus — **All spaces**, **Anyone**, and **Any time** (last 7, 30, or 90 days). The **All / Members / Files / Folders / Security** buttons filter by kind, and you can press more than one. Every filter you apply becomes a chip you can remove individually, or clear in one go with **Clear all**." },
+                { "type": "p", "text": "Search across people, files and folders with the box at the top, and narrow the list with three menus — **All spaces**, **Anyone**, and **Any time** (last 7, 30, or 90 days). The **All / Members / Files / Folders / Security / Network** buttons filter by kind, and you can press more than one. Every filter you apply becomes a chip you can remove individually, or clear in one go with **Clear all**. Press **⌘F** (**Ctrl-F**) to jump to the search box." },
                 { "type": "p", "text": "Events are grouped by day, newest first, with your own actions attributed to **You**. A refused request or a failed transfer carries a **DENIED** or **FAILED** badge. Twenty events load at a time — **Load more** fetches the next page." },
+                { "type": "subheading", "text": "Connection history" },
+                { "type": "p", "text": "**Network** is the log's account of the stretches when nothing could happen. It records when this device went offline, when Mirall couldn't reach anyone, and when a connection was restored, along with members dropping out and coming back. A restored entry carries how long the gap lasted — **Offline for 20m** — and names the cause it settled on, such as **Your VPN is the only route out** or **Your router changes ports**." },
+                { "type": "p", "text": "That's what turns an unexplained quiet afternoon into a window you can point at. **Connection history** on the Connection problem and Network status screens opens the log already filtered this way. If nothing is there, Mirall says so: **No connection problems recorded**." },
                 { "type": "note", "text": "Spaces you have left still appear here, and stay filterable, until their events age out." }
               ],
               "image": { "src": "/docs-activity-log.webp", "alt": "Mirall's Activity Log listing recent events \u2014 files shared and downloaded, a folder mirrored, and members joining and leaving \u2014 with a search box and space, person and date filters above", "width": 1344, "height": 1173 },
@@ -759,9 +807,9 @@
               "id": "configure-activity-recording",
               "title": "Choose what Mirall records",
               "blocks": [
-                { "type": "p", "text": "Open **Settings → Activity Log**. **Record activity** turns recording on and off — it's on to begin with. Turning it off stops new events being written; it doesn't delete anything already recorded, and those events stay searchable and exportable." },
+                { "type": "p", "text": "Open **Settings → Activity Log**. **Record activity** turns recording on and off — it's on to begin with, and it covers connection problems as well as what happens in your spaces. Turning it off stops new events being written; it doesn't delete anything already recorded, and those events stay searchable and exportable." },
                 { "type": "p", "text": "**Keep events for** sets how long they're retained — **30 days**, **90 days**, or **365 days**, with 90 the starting point. Anything older is deleted automatically." },
-                { "type": "p", "text": "**Export as JSON** saves every recorded event to a file called `mirall-activity-log.json`. **Delete the log** removes them all and asks you to confirm first; it can't be undone." },
+                { "type": "p", "text": "**Export as JSON** saves every recorded event to a file called `mirall-activity-log.json`, including the stretches when this device was offline. **Delete the log** removes them all and asks you to confirm first; it can't be undone. Deleting hands back the disk space the events were using, and keeps your retention setting." },
                 { "type": "note", "text": "An export contains raw identifiers — public keys, file paths, and content hashes — rather than the readable sentences you see in the app. Treat the file as sensitive." }
               ],
               "related": [
@@ -774,6 +822,22 @@
           "id": "app",
           "title": "The app",
           "docs": [
+            {
+              "id": "use-the-keyboard",
+              "title": "Get around with the keyboard",
+              "intro": "Every screen in Mirall is reachable without the mouse. The ones you go to most often have a chord of their own; the rest live in the command palette.",
+              "blocks": [
+                { "type": "p", "text": "Press **⌘K** (**Ctrl-K** on Windows and Linux) to open the command palette, then start typing. It searches your spaces by name and every action Mirall can run — including the screens with no shortcut of their own: **Network status**, each of the Settings pages, **What's new**, **Send feedback**, and the documentation." },
+                { "type": "p", "text": "**⌘/** (**Ctrl-/**) shows the full list of shortcuts inside the app at any time, grouped the same way the palette is." },
+                { "type": "p", "text": "**⌘1** to **⌘9** jump straight to the first nine spaces in your list. On macOS that chord lives in the **View → Go to Space** menu, which is also where you can see which number belongs to which space." },
+                { "type": "p", "text": "Actions that act on a space — **Invite**, **Edit Space**, **Add to Favorites**, **Manage storage**, **Leave Space** — appear in the palette only while a space is open, and stay hidden while you're still waiting to be approved into it." },
+                { "type": "note", "text": "Shortcuts keep out of your way while you're typing: only **⌘K**, **⌘,**, **⌘/** and **⌘F** stay live inside a text field." }
+              ],
+              "related": [
+                { "label": "Keyboard shortcuts", "to": "/docs/reference#keyboard-shortcuts" },
+                { "label": "Getting around", "to": "/docs/reference#navigation" }
+              ]
+            },
             {
               "id": "background-mode",
               "title": "Run Mirall in the background",
@@ -919,7 +983,7 @@
         {
           "id": "space-sidebar",
           "title": "The space sidebar",
-          "intro": "Each space view has a sidebar with a Drop to Share zone plus two panels — Space Storage and Members — that you can collapse to fold away what you're not using.",
+          "intro": "Each space view has a sidebar with a Drop to Share zone plus two panels — Space Storage and Members — that you can collapse to fold away what you're not using. The Members panel also switches between a row of avatars and the full list, with **Show all** and **Show less**. Each space remembers its own arrangement for as long as Mirall is running, so folding a panel away in one space leaves the others as you had them. Quitting Mirall returns every space to the default — both panels open, members as avatars.",
           "image": { "src": "/docs-sidebar-collapsible.webp", "alt": "A Mirall space sidebar with the Space Storage panel collapsed and the Members panel expanded", "width": 1344, "height": 1173 }
         },
         {
@@ -947,7 +1011,7 @@
         {
           "id": "keyboard-shortcuts",
           "title": "Keyboard shortcuts",
-          "intro": "Press ⌘K / Ctrl-K to jump to any space or run any action; press ⌘/ / Ctrl-/ for this list inside the app.",
+          "intro": "Press ⌘K / Ctrl-K to jump to any space or run any action; press ⌘/ / Ctrl-/ for this list inside the app. Anything without a chord of its own is in the command palette.",
           "table": {
             "columns": ["macOS", "Windows / Linux", "Action"],
             "rows": [
@@ -955,9 +1019,13 @@
               ["⌘/", "Ctrl-/", "Show all keyboard shortcuts"],
               ["⌘←", "Ctrl-←", "Go back to the previous screen"],
               ["⌘⇧H", "Ctrl-H", "Jump to your Shared Spaces"],
+              ["⌘1 – ⌘9", "Ctrl-1 – Ctrl-9", "Jump to a space by number — the first nine in your list"],
               ["⌘,", "Ctrl-,", "Open Settings"],
+              ["⌘⇧P", "Ctrl-Shift-P", "Open your Profile"],
+              ["⌘⇧L", "Ctrl-Shift-L", "Open the Activity Log"],
               ["⌘N", "Ctrl-N", "Create a new space"],
               ["⌘J", "Ctrl-J", "Join a space with an invite"],
+              ["⌘F", "Ctrl-F", "Jump to the search box (Activity Log only)"],
               ["⌘U", "Ctrl-U", "Add files to the current space"],
               ["⌘⇧U", "Ctrl-Shift-U", "Share a folder in the current space"],
               ["⌘Q", "Ctrl-Q", "Quit Mirall (from the application menu)"]
@@ -967,12 +1035,15 @@
         {
           "id": "navigation",
           "title": "Getting around",
-          "intro": "Move through Mirall the way you would in a browser.",
+          "intro": "Move through Mirall the way you would in a browser. Every screen can be reached from the keyboard — see [Get around with the keyboard](/docs/guides#use-the-keyboard).",
           "list": [
             "**Back** — your mouse's back button, a two-finger swipe on macOS, `Cmd/Ctrl + ←`, or **View → Back**.",
             "**Home** — click the Mirall logo, or press `Ctrl-H` (`Cmd-Shift-H` on macOS) to return to your Shared Spaces.",
+            "**A space by number** — `Cmd/Ctrl + 1` to `9` for the first nine spaces in your list, also listed by name under **View → Go to Space**.",
             "**Command palette** — `Cmd/Ctrl + K` to search and jump to any space or run any action.",
-            "**Invite to this space** and **Leave this space** are reachable from the command palette while a space is open, and have no key of their own."
+            "**Profile** and the **Activity Log** have chords of their own — `Cmd/Ctrl + Shift + P` and `Cmd/Ctrl + Shift + L`.",
+            "**Network status**, the individual **Settings** pages, **What's new**, **Send feedback** and the documentation have no key of their own and are reached from the command palette.",
+            "**Invite to this space**, **Edit Space**, **Add to Favorites**, **Manage storage** and **Leave this space** are in the command palette while a space is open."
           ]
         },
         {
@@ -986,7 +1057,7 @@
               ["Appearance", "Theme Mode (Light / System / Dark), Display Size, Language, and — on Windows and Linux — auto-hide the menu bar."],
               ["Notifications", "Master switch, system sound, mute-when-focused, and five per-event toggles."],
               ["Network", "Transfer limits — a download and an upload cap, each Unlimited, a preset, or a figure you type."],
-              ["Storage", "Download folder, and Mirall's own App Storage — a shared-file index plus the app database — with a Free up space action."],
+              ["Storage", "Download folder — with a warning when Mirall can't reach it — and Mirall's own App Storage, a shared-file index plus the app database, with a Free up space action."],
               ["Activity Log", "Whether activity is recorded, how long events are kept, and actions to export or delete the log."]
             ]
           }
@@ -999,7 +1070,7 @@
             "columns": ["Group", "Row", "What it's for"],
             "rows": [
               ["Your profile", "Display name and picture", "Change either, then Save Changes — which appears once there's something to save. Propagates to every space you're in."],
-              ["This device", "Connection", "Whether you're online and how many peers you're connected to. Opens a fuller diagnostics screen."],
+              ["This device", "Connection", "Whether other people can reach you, and how many peers you're connected to. Opens Network status — the full diagnostics, and where you save a diagnostics file."],
               ["This device", "Identity protection", "How your identity key is protected, normally by your operating system's keychain. Information only — there's nothing to click."],
               ["This device", "Activity Log", "Opens the record of what happened in your spaces, and shows how many events are held."],
               ["App", "The version you're running", "Plus any pending update waiting to be applied."],
@@ -1014,20 +1085,37 @@
         {
           "id": "network-status",
           "title": "Network status",
-          "intro": "**Profile → This device → Connection** opens Network status — what Mirall can see about this device's own connection. Nothing here is a setting; it is all diagnostics. The headline and any suggestions are always shown, and **Show advanced details** unfolds the rest.",
+          "intro": "**Profile → This device → Connection** opens Network status — what Mirall can see about this device's own connection, and where you save a diagnostics file. Nothing here is a setting; it is all diagnostics. The headline, any suggestions, the connection summary and the diagnostics card are always shown, and **Show advanced details** unfolds the rest.",
           "table": {
             "columns": ["Section", "Row", "What it tells you"],
             "rows": [
-              ["Headline", "Network is healthy", "You are on the Mirall network. Reads out how many peers are connected across your spaces, or that nobody else is online right now."],
-              ["Headline", "Connecting to the Mirall network…", "Mirall has not got there yet, and it is taking longer than expected. A **Reconnect** button appears beside it."],
-              ["Headline", "You're offline", "No internet connection on this device. Mirall is paused until it returns."],
-              ["Connection", "Connected peers", "How many other devices you are connected to right now."],
-              ["Connection", "Spaces joined", "How many spaces this device is currently following."],
-              ["Connection", "Last connected", "How long ago the most recent connection was made."],
+              ["Headline", "Network is healthy", "Mirall can reach other people. Reads out how many peers are connected across your spaces, or that nobody else is online right now."],
+              ["Headline", "Checking your connection…", "Mirall is still working out how this network behaves. Normal for a few seconds after launch and after waking from sleep."],
+              ["Headline", "Limited connection", "Connections to many people will fail on this network. A mobile router or phone tethering is the usual cause."],
+              ["Headline", "Mirall can't reach other people", "Mirall found other people but couldn't connect to any of them. Invites and shares won't arrive while this is the case."],
+              ["Headline", "Reconnect", "Sits beside any headline other than healthy, and makes Mirall try again straight away instead of waiting for the next automatic attempt."],
+              ["Suggestions", "Your operating system reports no internet connection", "This device has no network at all. Shown on its own — nothing else applies."],
+              ["Suggestions", "Couldn't determine your public IP", "Mirall can't work out how it appears to the rest of the network, so other people have no way to reach you."],
+              ["Suggestions", "Your connection uses changing ports", "Your network hands out a different port every time Mirall reaches out, so connections to many people fail. No router setting fixes this one."],
+              ["Suggestions", "Your network keeps dropping traffic to the Mirall network", "Traffic is getting through unreliably, so transfers may stall."],
+              ["Suggestions", "Still working out how this network behaves", "Mirall hasn't settled on a verdict yet. Give it a moment."],
+              ["Connection summary", "Connection", "**Working**, **Limited**, **Blocked**, or **Checking…** — the headline verdict in one word."],
+              ["Connection summary", "Reachable from outside", "**Yes**, or the reason why not: your network uses changing ports, or Mirall can't tell how you appear to others."],
+              ["Connection summary", "Connection test", "Mirall's own check against a device it knows should answer: **Passed**, **Failed**, **Test server unavailable**, **Not run**, or **Running…**, with when it last ran. A failure alone is never taken as proof your network is at fault."],
+              ["Connection summary", "People", "How many other devices Mirall has found, and how many of those it is connected to."],
+              ["Connection summary", "Running for", "How long this copy of Mirall has been up."],
+              ["Connection summary", "Connection history", "Opens your activity log filtered to connection events."],
+              ["Diagnostics", "Remove identifying details", "On to begin with. Your IP address, keys and space names are shortened or left out — enough for us to diagnose a connection problem."],
+              ["Diagnostics", "Include detailed logs", "Turns detailed logging on straight away so you can reproduce the problem before saving the file."],
+              ["Diagnostics", "Preview what's included", "Shows exactly what will be saved, before you save it."],
+              ["Diagnostics", "Save diagnostics", "Writes the file so you can attach it to a message to us. It describes how your network behaves — not what you share or who with."],
+              ["Connection", "Connected peers", "How many other devices you are connected to right now. Under advanced details."],
+              ["Connection", "Spaces joined", "How many spaces this device is currently following. Under advanced details."],
+              ["Connection", "Last connected", "How long ago the most recent connection was made. Under advanced details."],
               ["Address", "Public IP", "The address other devices see. Hidden until you reveal it, and copyable."],
               ["Address", "Public UDP port", "The port your router presents to the outside."],
               ["Address", "Local UDP port", "The port Mirall listens on locally."],
-              ["Address", "Port preservation", "**Yes** when those two ports match, which is the good case for direct connections."],
+              ["Address", "Port preservation", "**Yes — good for direct connections** when those two ports match."],
               ["Address", "Your public key", "This device's identity. Hidden until you reveal it, and copyable."],
               ["NAT", "Behind firewall", "Whether your router looks like it is blocking connections coming in."],
               ["NAT", "Randomised port mapping", "Whether your network gives every connection a different port, which makes a direct link harder."],
@@ -1035,27 +1123,25 @@
               ["DHT", "Routing-table size", "How many peers Mirall knows in the directory it uses to find people. A very small number means it is still getting started."],
               ["DHT", "HyperDHT version", "The version of the peer-discovery layer."],
               ["DHT", "Bootstrap nodes", "The entry points Mirall used to join the network. Click the count to list them."],
-              ["Suggestions", "Your operating system reports no internet connection", "This device has no network at all — check Wi-Fi or Ethernet."],
-              ["Suggestions", "Couldn't determine your public IP", "Mirall cannot work out how it appears to the outside world."],
-              ["Suggestions", "Still joining the DHT", "Mirall is starting up and has not found any peers yet."],
-              ["Suggestions", "Few DHT peers known so far", "Mirall has reached only a handful of peers; it may still be getting started."],
-              ["Suggestions", "Your router appears to be blocking inbound UDP", "Other devices can reach you only indirectly. Appears under advanced details."],
-              ["Suggestions", "Your network randomises outbound ports", "Direct connections may fail. Appears under advanced details."],
-              ["Suggestions", "Symmetric NAT detected", "Your network type forces connections to be made indirectly. Appears under advanced details."]
+              ["Connection test", "Result", "The outcome of the last test, in the same words as the summary."],
+              ["Connection test", "Test servers found", "How many devices answered the lookup the test uses."],
+              ["Connection test", "Last checked", "When the test last ran."]
             ]
-          }
+          },
+          "image": { "src": "/docs-network-status.webp", "alt": "Mirall's Network status screen showing the healthy headline, a connection summary with reachability and connection-test rows, and the diagnostics card", "width": 1344, "height": 1173 }
         },
         {
           "id": "activity-events",
           "title": "What the activity log records",
-          "intro": "Events fall into four kinds, which are also the filter buttons on the log. Every event is recorded on your device only.",
+          "intro": "Events fall into five kinds, which are also the filter buttons on the log. Every event is recorded on your device only.",
           "table": {
             "columns": ["Kind", "What it covers"],
             "rows": [
               ["Members", "Spaces you created, joined, renamed, or left; invite links you created; join requests, and the ones you approved or declined; members joining and leaving."],
               ["Files", "Files you shared or stopped sharing; downloads you finished or that failed; a file of yours someone else downloaded; files a member shared or stopped sharing."],
               ["Folders", "Folder shares you created, deleted, or moved; folders you mirrored or stopped mirroring; the same actions by other members, including someone mirroring a folder of yours."],
-              ["Security", "File requests Mirall refused, and why; files that failed their integrity check; a space reporting a conflicting owner."]
+              ["Security", "File requests Mirall refused, and why; files that failed their integrity check; a space reporting a conflicting owner."],
+              ["Network", "Stretches when this device went offline, when Mirall couldn't reach anyone, and when a connection was limited — each closed by a restored entry carrying how long the gap lasted and the cause Mirall settled on. Also members dropping out and coming back, which is recorded only while your own connection is working."]
             ]
           }
         },
@@ -1069,7 +1155,7 @@
               ["Mirall (macOS)", "About Mirall — opens your Profile page; Preferences… (⌘,); Services; Hide / Hide Others / Show All; Quit."],
               ["File", "New Space (⌘/Ctrl-N); Join Space (⌘/Ctrl-J); Add Files… (⌘/Ctrl-U); Add Folder… (⌘/Ctrl-Shift-U); Invite People…. On macOS, also Close. On Windows and Linux, also Preferences… (Ctrl-,) and Quit Mirall (Ctrl-Q)."],
               ["Edit", "The standard Undo, Redo, Cut, Copy, Paste, and Select All."],
-              ["View", "Back; Home; Command Palette; Keyboard Shortcuts; zoom in, out, and reset; full screen."],
+              ["View", "Back; Home; Profile (⌘/Ctrl-Shift-P); Activity Log (⌘/Ctrl-Shift-L); Go to Space, listing your first nine spaces by name with ⌘/Ctrl-1 to 9; Command Palette; Keyboard Shortcuts; zoom in, out, and reset; full screen."],
               ["Window (macOS)", "The standard Minimize, Zoom, and window list."],
               ["Help", "What's New…; Documentation; Send Feedback…. On Windows and Linux, also About Mirall."]
             ]
@@ -1138,6 +1224,23 @@
           ]
         },
         {
+          "id": "reachability",
+          "title": "When Mirall says your network is the problem",
+          "blocks": [
+            { "type": "p", "text": "“I have internet” and “other people can reach me” are different questions, and only the second one matters to Mirall. A machine can load web pages perfectly while sitting behind a network that refuses every incoming connection — and on that machine, nothing you do in Mirall will work. Mirall therefore judges reachability rather than internet access, and tells you when the answer is no." },
+            { "type": "subheading", "text": "What it actually measures" },
+            { "type": "p", "text": "Two things: whether Mirall can find other people at all, and whether it can connect to any of the ones it finds. Finding nobody and finding plenty but reaching none of them are different failures with different remedies, so Mirall keeps them apart. A single live connection settles the question in your favour, whatever else the network looks like." },
+            { "type": "p", "text": "That is why the verdicts are worded the way they are. **You're offline** means this device has no network. **Mirall can't reach other people** means the network is there and is refusing the traffic. **Limited connection** means some connections will work and many won't — typically because your network hands out a different port every time, which is what mobile routers and phone tethering do." },
+            { "type": "subheading", "text": "Why the connection test can confirm but never accuse" },
+            { "type": "p", "text": "Mirall runs a check against a device that should always answer. When it passes, that is strong evidence your connection is fine. When it fails, it is not evidence of anything about you — a failure looks exactly the same whether your network is blocking the traffic or our own test device is down. So the test can promote a verdict to healthy, and it is never on its own the reason Mirall tells you something is wrong. Blaming your network for our outage would be worse than saying nothing." },
+            { "type": "subheading", "text": "Why a verdict takes a moment" },
+            { "type": "p", "text": "Networks flap. A Wi-Fi roam, a VPN reconnecting, a laptop waking up — each of those briefly looks like a failure and is over before you could act on it. Mirall waits these out before changing its mind, in both directions, so the log and the warnings carry real events rather than noise. The exception is losing the network outright: when the cable is pulled or the Wi-Fi is switched off, you can see that for yourself, and Mirall says so immediately rather than waiting." },
+            { "type": "subheading", "text": "The VPN it can't be sure about" },
+            { "type": "p", "text": "A VPN that has lost its own connection while keeping the only route off your device is indistinguishable, from the inside, from a network that blocks Mirall. There is no measurement that separates them. Mirall doesn't pretend otherwise — it says it can't reach the network rather than accusing your network of blocking it, and puts turning the VPN off at the top of what to try, because that is the likeliest explanation." },
+            { "type": "note", "text": "None of this tells you whether one particular person can reach you. It describes this device's own connection. If a specific member can't get to you and your connection is healthy, the problem is more likely on their side — or you are both on networks that can't be joined directly." }
+          ]
+        },
+        {
           "id": "sharing-in-place",
           "title": "Sharing without a second copy",
           "blocks": [
@@ -1179,10 +1282,13 @@
           "blocks": [
             { "type": "p", "text": "The activity log is a record of what **your** device saw. It notes what you did — spaces created and left, files shared and downloaded — alongside what the members you're connected to did in the spaces you share with them." },
             { "type": "p", "text": "It stays on your device. It is stored with Mirall's other records, encrypted the same way, and it is never replicated to peers: nobody can ask your device for it. Exporting it yourself is the only way an event leaves the machine, and an export holds raw identifiers — keys, paths, hashes — rather than the readable sentences the app shows you." },
+            { "type": "subheading", "text": "The stretches when nothing could happen" },
+            { "type": "p", "text": "Every other kind of event records something that happened. The questions people actually bring to a log are usually about something that didn't — a file that never arrived, a member who never appeared. Those produce no rows at all, so silence reads as though the other side simply did nothing." },
+            { "type": "p", "text": "The connection events are the log's answer to that. They mark the windows when this device was offline, or could reach nobody, and close them with how long the gap lasted and the cause Mirall settled on. An unexplained quiet afternoon becomes something you can point at. Members going quiet and coming back are recorded the same way — but only while your own connection is working, because a blocked device makes everyone look as though they left." },
             { "type": "subheading", "text": "What it can't tell you" },
             { "type": "p", "text": "Because it records what you observed, it is not an audit of the space as a whole. A transfer between two other members never reaches your device, so it is never recorded. Neither is per-file activity inside a folder someone mirrors, nor anything a person does with a file once they have it. Events attributed to a peer carry the time that peer reported, and the name they had at the time — renaming themselves later doesn't rewrite old rows." },
             { "type": "subheading", "text": "What sticks around" },
-            { "type": "p", "text": "Leaving a space doesn't erase its history — those events stay until they age out, which is why a space you've left still appears in the filters. Turning recording off stops new events without deleting old ones. Deleting the log removes the events; it isn't a way to reclaim disk space, and it isn't meant as one." }
+            { "type": "p", "text": "Leaving a space doesn't erase its history — those events stay until they age out, which is why a space you've left still appears in the filters. Turning recording off stops new events without deleting old ones. Deleting the log removes the events and hands back the disk space they were using, keeping the retention setting you chose." }
           ]
         },
         {
@@ -1212,6 +1318,37 @@
     "heading": "What's new",
     "intro": "Notable changes you'll notice as a user. Internal refactors and build-pipeline tweaks are intentionally left out.",
     "releases": [
+      {
+        "version": "1.9.0",
+        "date": "2026-08-26",
+        "sections": [
+          {
+            "heading": "Added",
+            "items": [
+              "**Mirall now tells you when your network is the problem.** It used to call a connection healthy on any network that let it out, so a machine nobody could reach still looked fine. It now judges whether people can actually reach you, says so when they can't, and offers a page with what to try. Network status can also save a diagnostics file with identifying details left out.",
+              "**The Activity Log records connection problems.** A new Network filter keeps when this device went offline, when Mirall couldn't reach anyone, and when members dropped out or came back — so the log explains a quiet stretch instead of falling silent through it.",
+              "**The cards beside a space remember how you left them.** Fold Space Storage away, or switch the member list between the avatar row and the full list, and each space keeps its own arrangement until you quit Mirall.",
+              "**Every screen can be reached from the keyboard.** Profile and the Activity Log have shortcuts of their own; Network status, the Settings pages, What's new and Send feedback are in the command palette (⌘K / Ctrl-K).",
+              "**The empty screens explain how Mirall works.** The spaces list, an empty space, and the wait for approval each carry a card that says what happens next and links to the documentation."
+            ]
+          },
+          {
+            "heading": "Changed",
+            "items": [
+              "**A new look for Mirall.** A refined logo and a redrawn app icon, carried across the app, this site, and GitHub."
+            ]
+          },
+          {
+            "heading": "Fixed",
+            "items": [
+              "**Downloads survive a peer's upload cap.** A transfer from a limited peer could stop with the file shown as paused, and Resume moved it only a little further. A capped peer now says it is still there, and interrupted downloads retry on their own.",
+              "**A download says when its folder is gone.** A deleted, renamed, or ejected download folder produced a generic \"Transfer failed\", and a deleted folder was quietly recreated mid-download. Mirall now names the folder as the problem, offers to change it, and stops retrying.",
+              "**Clearing the Activity Log frees its disk space.** Clearing emptied the log from view but left every entry on disk, so the store came out larger than before. It is now cleared properly and the space comes back, with your retention setting kept.",
+              "**Speed limits are shared out fairly.** With a bandwidth cap set, a transfer that started while nothing else was running could take more than its share and stall a transfer running alongside it. Both now draw from the cap evenly."
+            ]
+          }
+        ]
+      },
       {
         "version": "1.8.0",
         "date": "2026-08-18",
