@@ -13,6 +13,7 @@ Read this top to bottom once, then work the **Procedure** checklist. The **Scree
 - **Diátaxis**: every document is exactly one of *Tutorial · How-to · Reference · Explanation*. Never blend modes in one doc.
 - **Content lives in `src/i18n/locales/en.json`** under the `docs` and `changelog` namespaces — structured data rendered by generic components. You almost never write JSX; you edit JSON.
 - **Features get REMOVED, not just added.** This is the single biggest trap — see §3.1. A release that deletes a feature silently makes whole guides and explanation topics *describe UI that no longer exists*. Budget as much time for deletions as additions.
+- **Section `id`s are a public interface — the desktop app deep-links to them.** Renaming one does **not** 404: the SPA answers `200 text/html` on every path, so the link simply lands on the page with no scroll and no error, and nothing in either repo notices. §2.5 lists the pinned set.
 - **No version markers in the docs.** Never write "New in 1.6" / "now" / "previously". The docs describe how the app works *today*; the changelog is what records when things landed.
 - **All screenshots are LIGHT mode**, captured from the **current build**, every release, with **real names and avatars**.
 - **Re-shoot EVERY screenshot on every release — not just the new-feature ones.** Shared chrome (nav, buttons, status pills, badges, spacing, radii) changes between versions and silently makes *every* older screenshot wrong. **Never carry a screenshot over from a previous version.**
@@ -81,7 +82,7 @@ All copy is data. Top-level relevant namespaces: `docs.*` and `changelog.*`.
 - `changelog` → `{ label, heading, intro, releases: [{ version, date, sections: [{ heading, items[] }] }] }`
 
 **`DocItem`** = `{ id, title, intro?, blocks?: Block[], list?, table?, image?, related?: [{label,to}] }`.
-`id` becomes the in-page anchor (used by the sidebar and cross-page `#deep-links`).
+`id` becomes the in-page anchor (used by the sidebar, cross-page `#deep-links`, and the desktop app — §2.5).
 
 **`Block`** discriminated union (rendered by `DocBlocks`):
 ```
@@ -127,6 +128,35 @@ Docs images live in **`src/assets/docs/<name>.webp`** and are resolved through *
 3. Reference `/docs-<name>.webp` from `en.json` with `width`/`height` matching the file **exactly**.
 
 Forget step 2 and the image silently falls back to a bare `src` that 404s (nothing is in `public/` any more).
+
+
+### 2.5 Anchors the desktop app links to (do not rename)
+
+Mirall's empty states link straight into these sections, and the Help menu opens `/docs`.
+The links are built from a typed union in the app (`src/renderer/docs-links.js` +
+`docs-links.d.ts`), so a typo *there* is a compile error — but nothing on this side can see
+a rename *here*. The failure is silent in both directions: the reader lands on the right
+page, unscrolled, with no error anywhere.
+
+| Route | `id` |
+|---|---|
+| `/docs/tutorials` | `send-your-first-files` |
+| `/docs/guides` | `create-a-space` |
+| `/docs/guides` | `join-a-space` |
+| `/docs/guides` | `fix-a-stuck-join` |
+| `/docs/guides` | `share-files` |
+| `/docs/guides` | `share-a-folder` |
+| `/docs/explanation` | `membership-approval` |
+| `/docs/explanation` | `spaces-members-availability` |
+
+To rename or retire one, land the app change first (or in the same session): update the
+anchor union and the matching locale label in `mirall-app`, whose
+`test/unit/docs-links.test.js` fails if the declared set and the linked set diverge. Then
+update this table. Re-homing a doc between Diátaxis modes (§2.3) changes its **route** as
+well as possibly its `id` — both halves of the link move, so the same rule applies.
+
+Verify a link end-to-end by loading it and confirming the page scrolls to the section;
+a `200` proves nothing here.
 
 ---
 

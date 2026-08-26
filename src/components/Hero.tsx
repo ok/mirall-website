@@ -41,8 +41,8 @@ export default function Hero() {
             src={heroSrc}
             srcSet={heroSrcSet}
             sizes="(min-width: 1024px) 580px, calc(100vw - 64px)"
-            width={2624}
-            height={2078}
+            width={1600}
+            height={1396}
             fetchPriority="high"
             decoding="async"
           />
