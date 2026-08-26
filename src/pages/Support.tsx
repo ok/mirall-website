@@ -57,8 +57,8 @@ export default function Support() {
                 src={supportSrc}
                 srcSet={supportSrcSet}
                 sizes="(min-width: 896px) 832px, calc(100vw - 64px)"
-                width={2624}
-                height={2224}
+                width={1600}
+                height={1396}
                 fetchPriority="high"
                 decoding="async"
               />

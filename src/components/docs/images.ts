@@ -16,6 +16,7 @@ import inviteToSpace from '../../assets/docs/invite-to-space.webp?w=672;1008;134
 import joinApproval from '../../assets/docs/join-approval.webp?w=672;1008;1344&format=webp&as=srcset'
 import joinWaiting from '../../assets/docs/join-waiting.webp?w=672;1008;1344&format=webp&as=srcset'
 import mirroredBy from '../../assets/docs/mirrored-by.webp?w=672;1008;1344&format=webp&as=srcset'
+import networkStatus from '../../assets/docs/network-status.webp?w=672;1008;1344&format=webp&as=srcset'
 import onboarding from '../../assets/docs/onboarding.webp?w=672;1008;1344&format=webp&as=srcset'
 import peerDownloads from '../../assets/docs/peer-downloads.webp?w=672;1008;1344&format=webp&as=srcset'
 import profilePage from '../../assets/docs/profile-page.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -46,6 +47,7 @@ const SRCSETS: Record<string, string> = {
   '/docs-join-approval.webp': joinApproval,
   '/docs-join-waiting.webp': joinWaiting,
   '/docs-mirrored-by.webp': mirroredBy,
+  '/docs-network-status.webp': networkStatus,
   '/docs-onboarding.webp': onboarding,
   '/docs-peer-downloads.webp': peerDownloads,
   '/docs-profile-page.webp': profilePage,

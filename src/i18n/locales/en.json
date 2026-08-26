@@ -750,7 +750,6 @@
                 ] },
                 { "type": "note", "text": "**Settings → Network** is a different screen — it sets bandwidth limits and shows no connection status. The diagnostics live on **Network status**, which you reach from **Profile → This device → Connection**." }
               ],
-              "image": { "src": "/docs-connection-problem.webp", "alt": "Mirall's Connection problem page showing the verdict that the network is blocking Mirall, a numbered list of what helps in order, and Check again, Network details and Connection history buttons", "width": 1344, "height": 1173 },
               "related": [
                 { "label": "Network status", "to": "/docs/reference#network-status" },
                 { "label": "Send us a diagnostics file", "to": "/docs/guides#save-diagnostics" },
@@ -828,9 +827,9 @@
               "intro": "Every screen in Mirall is reachable without the mouse. The ones you go to most often have a chord of their own; the rest live in the command palette.",
               "blocks": [
                 { "type": "p", "text": "Press **⌘K** (**Ctrl-K** on Windows and Linux) to open the command palette, then start typing. It searches your spaces by name and every action Mirall can run — including the screens with no shortcut of their own: **Network status**, each of the Settings pages, **What's new**, **Send feedback**, and the documentation." },
-                { "type": "p", "text": "**⌘/** (**Ctrl-/**) shows the full list of shortcuts inside the app at any time, grouped the same way the palette is." },
+                { "type": "p", "text": "**⌘/** (**Ctrl-/**) shows the full list of shortcuts inside the app at any time." },
                 { "type": "p", "text": "**⌘1** to **⌘9** jump straight to the first nine spaces in your list. On macOS that chord lives in the **View → Go to Space** menu, which is also where you can see which number belongs to which space." },
-                { "type": "p", "text": "Actions that act on a space — **Invite**, **Edit Space**, **Add to Favorites**, **Manage storage**, **Leave Space** — appear in the palette only while a space is open, and stay hidden while you're still waiting to be approved into it." },
+                { "type": "p", "text": "Actions that act on a space — **Invite**, **Edit Space**, **Add to Favorites**, **Manage storage** — appear in the palette only while a space is open, and stay hidden while you're still waiting to be approved into one. Leaving is the exception: it stays available while you wait, because withdrawing the request is the thing you might want to do." },
                 { "type": "note", "text": "Shortcuts keep out of your way while you're typing: only **⌘K**, **⌘,**, **⌘/** and **⌘F** stay live inside a text field." }
               ],
               "related": [
