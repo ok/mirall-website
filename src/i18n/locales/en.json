@@ -325,10 +325,10 @@
               { "title": "Share a file", "text": "Drag a file onto the **Drop to Share** zone in the sidebar, or use **Share…** to pick one. Mirall offers it to the space straight from the original on your disk — it never makes a second copy." },
               { "title": "Download on the other side", "text": "On the other person's Mirall, the file appears with a download button. They click it and the file transfers directly from your device to theirs, with live progress, speed, and time remaining. When it lands, a green shield confirms the contents match your original exactly. No server stored a copy along the way." }
             ] },
-            { "type": "image", "src": "/docs-onboarding.webp", "alt": "Mirall's welcome screen asking for a display name and an optional avatar before first use", "width": 1344, "height": 1173 },
-            { "type": "image", "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1173 },
-            { "type": "image", "src": "/docs-join-approval.webp", "alt": "A Mirall space showing a “wants to join” banner with Approve and Deny buttons above the shared files", "width": 1344, "height": 1173 },
-            { "type": "image", "src": "/docs-space-view.webp", "alt": "A Mirall space with shared files, the Drop to Share zone, and the Members panel in the sidebar", "width": 1344, "height": 1173 },
+            { "type": "image", "src": "/docs-onboarding.webp", "alt": "Mirall's welcome screen asking for a display name and an optional avatar before first use", "width": 1344, "height": 1165 },
+            { "type": "image", "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1165 },
+            { "type": "image", "src": "/docs-join-approval.webp", "alt": "A Mirall space showing a “wants to join” banner with Approve and Deny buttons above the shared files", "width": 1344, "height": 1165 },
+            { "type": "image", "src": "/docs-space-view.webp", "alt": "A Mirall space with shared files, the Drop to Share zone, and the Members panel in the sidebar", "width": 1344, "height": 1165 },
             { "type": "note", "text": "Nothing downloads automatically. Members always see what's available and choose what to pull onto their own device." }
           ],
           "related": [
@@ -350,8 +350,8 @@
               { "title": "Have a member mirror it", "text": "Another member opens the shared folder. They can **browse** it — open subfolders and download individual files — or use **Mirror to Disk…** to keep a live, always-up-to-date copy in a folder of their choosing." },
               { "title": "Watch it stay in sync", "text": "Change a file in your shared folder. On the mirroring member's computer, the mirror updates to match. The mirror is **read-only**: if they edit a mirrored file, it's restored to your version on the next sync." }
             ] },
-            { "type": "image", "src": "/docs-add-folder.webp", "alt": "Mirall's Add Folder dialog with a folder path, a share name field, and a Next: Preview button", "width": 1344, "height": 1173 },
-            { "type": "image", "src": "/docs-space-folder.webp", "alt": "A Mirall space with a shared Production Footage folder card marked “Shared by you”", "width": 1344, "height": 1173 },
+            { "type": "image", "src": "/docs-add-folder.webp", "alt": "Mirall's Add Folder dialog with a folder path, a share name field, and a Next: Preview button", "width": 1344, "height": 1165 },
+            { "type": "image", "src": "/docs-space-folder.webp", "alt": "A Mirall space with a shared Production Footage folder card marked “Shared by you”", "width": 1344, "height": 1165 },
             { "type": "note", "text": "Sharing a folder never doubles its disk usage — Mirall serves the files in place, from the originals." }
           ],
           "related": [
@@ -401,7 +401,7 @@
                 { "type": "p", "text": "Once someone approves you, the space opens and its files appear. If the invite had **auto-approve** turned on, nobody has to decide — you are let in as soon as your device reaches a member of the space." },
                 { "type": "note", "text": "An invite link has an expiry. If yours has lapsed, Mirall tells you the link has expired — ask the person who sent it for a new one." }
               ],
-              "image": { "src": "/docs-join-waiting.webp", "alt": "Mirall showing it is waiting to be let into a space, with the existing members' avatars and a Cancel request button", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-join-waiting.webp", "alt": "Mirall showing it is waiting to be let into a space, with the existing members' avatars and a Cancel request button", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" },
                 { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
@@ -419,7 +419,7 @@
                 { "type": "p", "text": "Click **Create invite link**. Mirall shows a single `mirall://join/…` link, tagged with the choices you made, and a **Copy** button. Send it however you like — chat, email, anything. The same link works for as many people as you want to admit, until it expires. **Change** takes you back to adjust the settings; **Done** closes the dialog." },
                 { "type": "note", "text": "The link carries the space name, so the person joining sees what they're joining. It does not carry the key to the space — that is handed over by a device that is already a member, so someone has to be online and reachable when the link is used, auto-approve or not." }
               ],
-              "image": { "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" },
                 { "label": "Membership & approval", "to": "/docs/explanation#membership-approval" },
@@ -436,7 +436,7 @@
                 { "type": "p", "text": "Requests reach you in three places: the banner inside the space, a notice in the app with a **Review** button that takes you there, and a **“1 waiting”** pill on that space's tile in the Shared Spaces overview. The notice only appears while Mirall's window is open — there is no desktop notification for join requests, so one that arrives while the window is closed waits for you inside the space." },
                 { "type": "note", "text": "A request only needs handling once. As soon as any member approves or denies someone, the banner clears for everyone else in the space." }
               ],
-              "image": { "src": "/docs-approval-review.webp", "alt": "Mirall's “Requests to join” dialog listing people waiting to join, with Approve selected and Approve all buttons", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-approval-review.webp", "alt": "Mirall's “Requests to join” dialog listing people waiting to join, with Approve selected and Approve all buttons", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Membership & approval", "to": "/docs/explanation#membership-approval" },
                 { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
@@ -532,7 +532,7 @@
                 { "type": "p", "text": "Click the row's indicator to expand it. You'll see each person individually — their name, how far along they are, their own speed, and their own time remaining. Someone who has paused shows as **Paused**; someone who has dropped offline mid-transfer shows as **Waiting**." },
                 { "type": "note", "text": "This works for loose files in a space and for files inside a folder you share. It only appears on files you own — you don't see other people's downloads from other people." }
               ],
-              "image": { "src": "/docs-peer-downloads.webp", "alt": "A shared file in Mirall expanded to show each person downloading it, with their avatar, progress, speed, and time remaining", "width": 1344, "height": 1173 }
+              "image": { "src": "/docs-peer-downloads.webp", "alt": "A shared file in Mirall expanded to show each person downloading it, with their avatar, progress, speed, and time remaining", "width": 1344, "height": 1165 }
             },
             {
               "id": "unshare-a-file",
@@ -561,7 +561,7 @@
                 ] },
                 { "type": "note", "text": "Folders you share are marked **Shared by you**. Mirall serves the files straight from the originals, so sharing a folder never doubles its disk usage." }
               ],
-              "image": { "src": "/docs-add-folder.webp", "alt": "Mirall's Add Folder dialog with a folder path, a share name field, and a Next: Preview button", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-add-folder.webp", "alt": "Mirall's Add Folder dialog with a folder path, a share name field, and a Next: Preview button", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Sharing without a second copy", "to": "/docs/explanation#sharing-in-place" }
               ]
@@ -575,7 +575,7 @@
                 { "type": "p", "text": "Click **Download** on any individual file to save just that one, or use **Mirror to Disk…** to keep the whole folder synced instead." },
                 { "type": "note", "text": "Folders you leave open stay open as you move around the app. Restarting Mirall resets the tree to its default, with the top-level folders open." }
               ],
-              "image": { "src": "/docs-folder-browse.webp", "alt": "A shared folder in Mirall browsed as a tree, with subfolders showing file counts and sizes and an Expand all button", "width": 1344, "height": 1173 }
+              "image": { "src": "/docs-folder-browse.webp", "alt": "A shared folder in Mirall browsed as a tree, with subfolders showing file counts and sizes and an Expand all button", "width": 1344, "height": 1165 }
             },
             {
               "id": "mirror-a-folder-to-disk",
@@ -590,7 +590,7 @@
                 { "type": "note", "text": "A mirror is **read-only**. If you edit a file inside the mirror, Mirall restores it to the owner's version on the next sync. To keep your own edits, copy the file out of the mirror folder first." },
                 { "type": "p", "text": "A mirror can't be placed directly on a top-level personal folder such as Home, Desktop, Documents, or Downloads. If the mirror's folder already holds a file of your own with the same name as a shared one, your file is left alone and the mirrored copy lands under a different name." }
               ],
-              "image": { "src": "/docs-folder-mirror.webp", "alt": "Mirall's Mirror to Disk dialog, picking a location for a read-only copy that stays in sync with the owner's folder", "width": 1344, "height": 1173 }
+              "image": { "src": "/docs-folder-mirror.webp", "alt": "Mirall's Mirror to Disk dialog, picking a location for a read-only copy that stays in sync with the owner's folder", "width": 1344, "height": 1165 }
             },
             {
               "id": "manage-a-mirror",
@@ -604,7 +604,7 @@
                 ] },
                 { "type": "note", "text": "If a write fails — a full disk, or a destination that's become read-only — the mirror pauses rather than erroring, and resumes once there's room." }
               ],
-              "image": { "src": "/docs-folder-mirrored.webp", "alt": "A mirrored folder in Mirall with every file marked “On your device” and confirmed by a green verified shield", "width": 1344, "height": 1173 }
+              "image": { "src": "/docs-folder-mirrored.webp", "alt": "A mirrored folder in Mirall with every file marked “On your device” and confirmed by a green verified shield", "width": 1344, "height": 1165 }
             },
             {
               "id": "see-who-is-mirroring",
@@ -614,7 +614,7 @@
                 { "type": "p", "text": "Open a folder you share and look for **Mirrored by** in the sidebar. One person shows by name with their current state underneath. Several stack into a row of avatars with a summary beneath — for example **“2 Syncing… · 1 Synced”**." },
                 { "type": "p", "text": "Each person is in one of three states: **Synced** (their copy matches yours), **Syncing…** (they're still catching up), or **Paused** (they've paused their mirror). The states stay accurate even while those people are offline." }
               ],
-              "image": { "src": "/docs-mirrored-by.webp", "alt": "The Mirrored by panel on a shared folder in Mirall, showing the people keeping a live copy and whether each is synced, syncing, or paused", "width": 1344, "height": 1173 }
+              "image": { "src": "/docs-mirrored-by.webp", "alt": "The Mirrored by panel on a shared folder in Mirall, showing the people keeping a live copy and whether each is synced, syncing, or paused", "width": 1344, "height": 1165 }
             }
           ]
         },
@@ -650,7 +650,7 @@
                 { "type": "p", "text": "The same rule applies as for the default folder: a folder that sits inside — or contains — a folder you share or mirror is refused, since anything landing there would be published to your peers. Two spaces may happily share one folder." },
                 { "type": "note", "text": "Files you already downloaded are never moved. Ones now outside the space's folder simply read as **Available** again — point the space back at the old folder and they return to **On your device** without downloading anything twice. Let transfers finish or pause them before you switch." }
               ],
-              "image": { "src": "/docs-space-download-folder.webp", "alt": "Mirall's Edit Space dialog showing the Download Folder section with a Change button and a note that the space is using the default download folder", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-space-download-folder.webp", "alt": "Mirall's Edit Space dialog showing the Download Folder section with a Change button and a note that the space is using the default download folder", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Choose where downloads go", "to": "/docs/guides#set-download-folder" },
                 { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
@@ -667,7 +667,7 @@
                   "**App database** — your spaces, members, and sync history."
                 ] }
               ],
-              "image": { "src": "/docs-settings-storage.webp", "alt": "Mirall's Storage settings showing the download folder and the App Storage breakdown into a shared-file index and app database", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-settings-storage.webp", "alt": "Mirall's Storage settings showing the download folder and the App Storage breakdown into a shared-file index and app database", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
               ]
@@ -796,7 +796,7 @@
                 { "type": "p", "text": "That's what turns an unexplained quiet afternoon into a window you can point at. **Connection history** on the Connection problem and Network status screens opens the log already filtered this way. If nothing is there, Mirall says so: **No connection problems recorded**." },
                 { "type": "note", "text": "Spaces you have left still appear here, and stay filterable, until their events age out." }
               ],
-              "image": { "src": "/docs-activity-log.webp", "alt": "Mirall's Activity Log listing recent events \u2014 files shared and downloaded, a folder mirrored, and members joining and leaving \u2014 with a search box and space, person and date filters above", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-activity-log.webp", "alt": "Mirall's Activity Log listing recent events \u2014 files shared and downloaded, a folder mirrored, and members joining and leaving \u2014 with a search box and space, person and date filters above", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Choose what Mirall records", "to": "/docs/guides#configure-activity-recording" },
                 { "label": "What the activity log can tell you", "to": "/docs/explanation#activity-log-model" }
@@ -887,7 +887,7 @@
                 { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect." },
                 { "type": "note", "text": "A limit is a **total, not a figure per transfer**. Two downloads running under a 5 MB/s cap get roughly half each rather than 5 MB/s apiece, and serving several people at once splits one upload cap between them." }
               ],
-              "image": { "src": "/docs-settings-network.webp", "alt": "Mirall's Network settings showing Transfer limits, with separate Download and Upload rows offering Unlimited, 1 MB/s, 5 MB/s, 25 MB/s, or a custom figure", "width": 1344, "height": 1173 },
+              "image": { "src": "/docs-settings-network.webp", "alt": "Mirall's Network settings showing Transfer limits, with separate Download and Upload rows offering Unlimited, 1 MB/s, 5 MB/s, 25 MB/s, or a custom figure", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "What bandwidth limits cover", "to": "/docs/explanation#bandwidth-limits" }
               ]
@@ -983,7 +983,7 @@
           "id": "space-sidebar",
           "title": "The space sidebar",
           "intro": "Each space view has a sidebar with a Drop to Share zone plus two panels — Space Storage and Members — that you can collapse to fold away what you're not using. The Members panel also switches between a row of avatars and the full list, with **Show all** and **Show less**. Each space remembers its own arrangement for as long as Mirall is running, so folding a panel away in one space leaves the others as you had them. Quitting Mirall returns every space to the default — both panels open, members as avatars.",
-          "image": { "src": "/docs-sidebar-collapsible.webp", "alt": "A Mirall space sidebar with the Space Storage panel collapsed and the Members panel expanded", "width": 1344, "height": 1173 }
+          "image": { "src": "/docs-sidebar-collapsible.webp", "alt": "A Mirall space sidebar with the Space Storage panel collapsed and the Members panel expanded", "width": 1344, "height": 1165 }
         },
         {
           "id": "file-folder-actions",
@@ -1079,7 +1079,7 @@
               ["App", "Send Feedback", "Report a problem or share a suggestion."]
             ]
           },
-          "image": { "src": "/docs-profile-page.webp", "alt": "Mirall's Profile page showing the display name and picture at the top, a This device group with Connection, Identity protection and Activity Log, and an App group with the installed version", "width": 1344, "height": 1173 }
+          "image": { "src": "/docs-profile-page.webp", "alt": "Mirall's Profile page showing the display name and picture at the top, a This device group with Connection, Identity protection and Activity Log, and an App group with the installed version", "width": 1344, "height": 1165 }
         },
         {
           "id": "network-status",
@@ -1127,7 +1127,7 @@
               ["Connection test", "Last checked", "When the test last ran."]
             ]
           },
-          "image": { "src": "/docs-network-status.webp", "alt": "Mirall's Network status screen showing the healthy headline, a connection summary with reachability and connection-test rows, and the diagnostics card", "width": 1344, "height": 1173 }
+          "image": { "src": "/docs-network-status.webp", "alt": "Mirall's Network status screen showing the healthy headline, a connection summary with reachability and connection-test rows, and the diagnostics card", "width": 1344, "height": 1165 }
         },
         {
           "id": "activity-events",
