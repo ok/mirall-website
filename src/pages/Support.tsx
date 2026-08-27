@@ -52,13 +52,13 @@ export default function Support() {
             <div className="relative mb-16">
               <img
                 className="w-full object-cover"
-                style={{ filter: 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.04))' }}
+                style={{ filter: 'drop-shadow(0 1px 1.5px rgba(16, 24, 40, 0.12)) drop-shadow(0 5px 7px rgba(16, 24, 40, 0.22))' }}
                 alt={t('support.screenshotAlt')}
                 src={supportSrc}
                 srcSet={supportSrcSet}
                 sizes="(min-width: 896px) 832px, calc(100vw - 64px)"
                 width={1600}
-                height={1396}
+                height={1387}
                 fetchPriority="high"
                 decoding="async"
               />
