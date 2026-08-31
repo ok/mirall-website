@@ -33,6 +33,7 @@ Read this top to bottom once, then work the **Procedure** checklist. The **Scree
 | **Website repo** (what you edit) | `/Users/oliver/Code/mirall/mirall-website` |
 | **App repo** (changelog + source-of-truth labels + capture harness) | `/Users/oliver/Code/mirall/mirall-app` |
 | **Changelog** (user-facing release notes) | `mirall-app/CHANGELOG.md` |
+| **Brand assets** (app icon + wordmark) | `mirall-app/resources/brand/` — the site's `public/favicon.svg` and `public/logo.svg` are copies of these (§7) |
 | **Capture rig** (what you actually run) | `/Users/oliver/Code/mirall/mirall-docs-rig` — read its `docs/capture-rig.md` first |
 | **Capture harness** (what the rig drives) | `mirall-app/test/frontend/` (`instance.mjs`, `helpers.mjs`, `scenarios/`) |
 | **Avatars for personas** | `/Users/oliver/Projects/Mirall/test-data/anon-avatars/` |
@@ -470,6 +471,7 @@ Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1)
 - **No time estimates** in plans. Use complexity language.
 - **Accessibility:** semantic headings in order, `alt` on every image, links with discernible text, tables with `<th scope>` (block components handle this). Don't regress it.
 - **SEO/perf:** §4.7 image spec; each route keeps its `<Seo>` (breadcrumb; `HowTo` JSON-LD on guides with steps). Add new routes to `public/sitemap.xml` (it has no `lastmod`, so nothing to bump).
+- **Brand assets are copies, not links.** `public/favicon.svg` is `mirall-app/resources/brand/mirall-icon.svg` with its viewBox tightened to the artwork; `public/logo.svg` is `mirall-logo.svg` with `width`/`height` stripped so CSS sizes it. Nothing syncs them. When the app's brand changes, re-copy both and run `node scripts/generate-favicons.mjs` — it rebuilds the PNGs and the `.ico` from the SVG, and those are committed. Check the whole set: the site once carried the new wordmark and og-image while the favicon still showed the old mark.
 - **Never push to `main` or `stage`.** Feature branch → PR into `stage`. No commits/pushes unless asked this turn.
 - **English-first.** Translations (DE/FR/ES/IT) are a separate, later effort.
 
