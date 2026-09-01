@@ -10,6 +10,8 @@ import activityLog from '../../assets/docs/activity-log.webp?w=672;1008;1344&for
 import addFolder from '../../assets/docs/add-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import approvalReview from '../../assets/docs/approval-review.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderBrowse from '../../assets/docs/folder-browse.webp?w=672;1008;1344&format=webp&as=srcset'
+import folderIndexPaused from '../../assets/docs/folder-index-paused.webp?w=672;1008;1344&format=webp&as=srcset'
+import folderIndexing from '../../assets/docs/folder-indexing.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderMirror from '../../assets/docs/folder-mirror.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderMirrored from '../../assets/docs/folder-mirrored.webp?w=672;1008;1344&format=webp&as=srcset'
 import inviteToSpace from '../../assets/docs/invite-to-space.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -41,6 +43,8 @@ const SRCSETS: Record<string, string> = {
   '/docs-add-folder.webp': addFolder,
   '/docs-approval-review.webp': approvalReview,
   '/docs-folder-browse.webp': folderBrowse,
+  '/docs-folder-index-paused.webp': folderIndexPaused,
+  '/docs-folder-indexing.webp': folderIndexing,
   '/docs-folder-mirror.webp': folderMirror,
   '/docs-folder-mirrored.webp': folderMirrored,
   '/docs-invite-to-space.webp': inviteToSpace,
