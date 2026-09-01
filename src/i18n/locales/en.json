@@ -476,6 +476,26 @@
                 { "type": "p", "text": "Open the space, open the **More** menu, and choose **Leave Space**. Mirall cancels any in-flight transfers and drops the space's records from your device. Files you've already downloaded, and any folder you were mirroring, stay where they are — they're yours." },
                 { "type": "p", "text": "If you're waiting to be approved rather than already a member, the same button reads **Cancel request** and simply withdraws your request." }
               ]
+            },
+            {
+              "id": "replace-an-unsupported-space",
+              "title": "Replace a space marked Unsupported",
+              "intro": "A space made by a much older version of Mirall carries a red **Unsupported** badge beside its name and a banner saying it can no longer be used. It can't be converted, so move what you need into a new space.",
+              "blocks": [
+                { "type": "p", "text": "The space stays visible and you can still read what it holds, but the parts that would change it are closed off: **Invite** and **Edit Space** are greyed out, and the **Drop to Share** zone is gone, so nothing new can be shared into it." },
+                { "type": "steps", "items": [
+                  { "text": "Create a new space from the Shared Spaces screen." },
+                  { "text": "Invite the same people to it, and approve them as they ask to join." },
+                  { "text": "Share your folders and files into the new space." },
+                  { "text": "When everyone has moved across, open the old space's **More** menu and choose **Leave Space**." }
+                ] },
+                { "type": "note", "text": "**Manage Storage** still works on an unsupported space, so you can see what it takes up and reclaim it before you go. Anything you already downloaded from it is an ordinary file on your disk and stays there after you leave." }
+              ],
+              "related": [
+                { "label": "Create a space", "to": "/docs/guides#create-a-space" },
+                { "label": "Leave a space", "to": "/docs/guides#leave-a-space" },
+                { "label": "Privacy & security model", "to": "/docs/explanation#privacy-security" }
+              ]
             }
           ]
         },
@@ -563,7 +583,33 @@
               ],
               "image": { "src": "/docs-add-folder.webp", "alt": "Mirall's Add Folder dialog with a folder path, a share name field, and a Next: Preview button", "width": 1344, "height": 1165 },
               "related": [
-                { "label": "Sharing without a second copy", "to": "/docs/explanation#sharing-in-place" }
+                { "label": "Sharing without a second copy", "to": "/docs/explanation#sharing-in-place" },
+                { "label": "Pause or stop adding a folder", "to": "/docs/guides#pause-adding-a-folder" }
+              ]
+            },
+            {
+              "id": "pause-adding-a-folder",
+              "title": "Pause or stop adding a folder",
+              "intro": "Mirall reads through a folder you share before it can offer the contents to anyone. While that's under way the folder tells you how much is left, and lets you hold it or clear it.",
+              "blocks": [
+                { "type": "steps", "items": [
+                  { "text": "Open the folder from its card in the space." },
+                  { "text": "A notice above the file list reads **Adding 6 files to this folder**, followed by how much there is left to read. Before the count is known it reads **Looking for files to add…**." },
+                  { "text": "Click **Pause** to hold the queue where it is. The notice turns amber and reads **Adding files is paused**, and the folder's card in the space is badged **Paused**." },
+                  { "text": "Click **Resume** to carry on from where it stopped." }
+                ] },
+                { "type": "image", "src": "/docs-folder-indexing.webp", "alt": "A folder shared in Mirall with a notice reading “Adding 6 files to this folder · 805.3 MB to read” and Pause and Stop buttons", "width": 1344, "height": 1165 },
+                { "type": "subheading", "text": "Pause and Stop are not the same" },
+                { "type": "bullets", "items": [
+                  "**Pause** is remembered. The folder stays paused until you resume it — quitting Mirall and starting it again leaves it paused.",
+                  "**Stop** clears what's queued without recording a pause, so there's nothing to resume. Mirall picks the folder up again on its own the next time it looks over what you share."
+                ] },
+                { "type": "image", "src": "/docs-folder-index-paused.webp", "alt": "A paused folder in Mirall, with an amber notice reading “Adding files is paused. Resume to finish adding this folder.” and a Resume button", "width": 1344, "height": 1165 },
+                { "type": "note", "text": "Neither one unshares the folder, and neither withdraws the files already added — those stay available to the space. Only a folder you share carries these controls: open a folder someone else shares and the same notice tells you what the owner is still adding, with nothing for you to act on." }
+              ],
+              "related": [
+                { "label": "Share a whole folder", "to": "/docs/guides#share-a-folder" },
+                { "label": "Folder & share badges", "to": "/docs/reference#folder-types" }
               ]
             },
             {
@@ -572,6 +618,7 @@
               "blocks": [
                 { "type": "p", "text": "Open a folder another member shared to see what's inside without downloading everything. A folder you're only looking through is marked **Browse**." },
                 { "type": "p", "text": "Subfolders are rows you can open and close. Each one tells you what's inside before you open it: how many files it holds and their total size, how many are already on your device, how many are downloading right now, and how many subfolders it contains. **Expand all** opens the whole tree at once, and flips to **Collapse all** to fold it back up." },
+                { "type": "p", "text": "If the owner is still working through the folder, a notice above the list says so — **Michael is adding 6 files to this folder**, with how much is left to read. Those files appear as the owner gets to them, so a folder can keep growing while you look at it." },
                 { "type": "p", "text": "Click **Download** on any individual file to save just that one, or use **Mirror to Disk…** to keep the whole folder synced instead." },
                 { "type": "note", "text": "Folders you leave open stay open as you move around the app. Restarting Mirall resets the tree to its default, with the top-level folders open." }
               ],
@@ -974,7 +1021,7 @@
               ["Shared by you", "A folder on your computer that you share into the space. Your local changes sync to the space automatically."],
               ["Browse", "A folder another member shares that you're looking through. Download individual files, or mirror the whole folder."],
               ["Mirrored", "A folder another member shares that you keep as a live, read-only copy on your disk. It stays in sync as the owner changes it."],
-              ["Paused", "A mirror whose syncing you've paused. Files won't update until you resume it."],
+              ["Paused", "Work on this folder is held. Either a mirror whose syncing you've paused, or a folder you share whose adding you've paused. Nothing moves until you resume it."],
               ["Folder is missing on disk", "A folder you share whose source folder has been moved or deleted. Point Mirall at its new location to reconnect it."]
             ]
           }
@@ -1194,6 +1241,7 @@
             { "type": "p", "text": "Every connection between devices is end-to-end encrypted, so nobody can see your files or metadata in transit, and there's no central server that could be breached. There are no accounts and no tracking." },
             { "type": "subheading", "text": "Getting in is not the same as being able to read" },
             { "type": "p", "text": "A space's contents are protected by a key of their own. That key is handed to you only once an existing member approves your request to join. Reaching a space, or holding a link to it, is therefore not the same as being able to read what's shared in it — a pending member is outside the door, not merely unlisted." },
+            { "type": "p", "text": "Every space Mirall creates or joins works this way, without exception. A space made before that became true can't be brought up to it: the key would have to be minted by whoever created the space and handed out to every member again, which is a coordinated change across everyone's devices rather than something your own copy can do. Such a space is marked **Unsupported** rather than left half-working." },
             { "type": "subheading", "text": "Your device at rest" },
             { "type": "p", "text": "Mirall's local bookkeeping — your list of spaces, mirrored folders, downloads, and similar details — is encrypted on your device with a key tied to your identity. Your identity itself is a signing key, wrapped using your operating system's secure keychain. Copying Mirall's data folder off your machine gives up neither your records nor your identity. The **Identity protection** row on your Profile page tells you which protection is in force." },
             { "type": "p", "text": "The activity log is part of that bookkeeping: it's encrypted the same way, and it is never replicated to anyone. The only way an event leaves your device is if you export the log yourself." },
@@ -1246,6 +1294,7 @@
             { "type": "p", "text": "When you share a file or a folder, Mirall serves it **in place** — straight from the original on your disk. It doesn't import a private copy into its own storage." },
             { "type": "p", "text": "Two things follow from that. Sharing never doubles a file's disk usage, however large it is. And because there's no copy to fall out of date, an edit you make to a shared file is picked up where it lies, rather than needing to be re-imported." },
             { "type": "p", "text": "What Mirall does keep is an **index**: a compact map of a file's contents that lets it stream the right pieces to whoever asks. That index is small, it never contains the file's contents, and it's freed as soon as you stop sharing the file." },
+            { "type": "p", "text": "Building that map is the one part of sharing that takes real time, because it means reading the file through. Each space works its own queue and takes the smallest files first, so a file you drop in while a large folder is still being read doesn't wait behind it. A folder you share tells you what it has left to get through, and you can pause that work or clear it." },
             { "type": "note", "text": "The consequence to keep in mind: the original file is the shared file. Move it, rename it, or delete it, and there is no second copy standing behind it. A folder whose source has gone is flagged **Folder is missing on disk** until you point Mirall at its new location." }
           ]
         },
@@ -1317,6 +1366,36 @@
     "heading": "What's new",
     "intro": "Notable changes you'll notice as a user. Internal refactors and build-pipeline tweaks are intentionally left out.",
     "releases": [
+      {
+        "version": "1.10.0",
+        "date": "2026-09-01",
+        "sections": [
+          {
+            "heading": "Added",
+            "items": [
+              "**Pause or stop a folder that is still being read.** A folder you share now offers Pause and Stop beside the count of what is left to read, and a paused folder says so and offers Resume."
+            ]
+          },
+          {
+            "heading": "Changed",
+            "items": [
+              "**Spaces made before v1.7.0 are no longer supported.** Every space Mirall creates or joins is encrypted now, and a space older than that release cannot be upgraded to it. Such a space is marked unsupported rather than left half-working: it stays visible, but you cannot share into it or invite anyone to it."
+            ]
+          },
+          {
+            "heading": "Fixed",
+            "items": [
+              "**Some added files, renames and edits could go missing or double up.** A file added during an index, one the watcher missed, a rename that only changed case, and an edit that kept the file's size and date were each dropped, duplicated, or held back until the next six-hourly pass.",
+              "**A file you add while a big folder is indexing no longer waits for it.** Each space hashes its own queue, smallest files first, so a file you drop in starts at once even while an index is running.",
+              "**A space or file list that came up empty now loads.** Members you share many spaces with could be cut off after a reconnect, and a few offline members could stop the file list loading at all. Lists no longer flash \"nothing shared yet\" on the way in.",
+              "**What a folder is still adding is reported properly, on both sides.** Your own view could stay empty for minutes on a large file, and members saw only the two or three files being hashed at that moment; a folder now names all the files and bytes it still has to read, on both screens. Indexing is no longer counted or labelled as a download, the bar no longer sits at full as though the file had finished, and removing a folder no longer reports its files as being added.",
+              "**An action cut short leaves less behind, and a stall gets noticed.** A cancelled or finished transfer could come back to life, a file could sit on \"Adding\" for good, unsharing could leave the share offered, and transfers running at quit never reached the Activity Log, and the disk space a space you had left went on using was never reclaimed. An error behind the scenes could leave Mirall quietly stuck with everything still on screen, and a folder you mirror could stop syncing until the next restart. Both are now spotted and picked back up on their own.",
+              "**Mirall asks less of your computer during transfers and in big folders.** Sending a file and keeping a mirrored folder in sync did work that grew with the folder, a reconnect started every waiting download at once, a running transfer redrew the whole list every second, opening a large folder read the same records thousands of times, and a listing you had navigated away from still ran to the end. All are bounded now, your own downloads go first, and a file row keeps up with its own progress and errors.",
+              "**A session left running for days no longer gets heavier.** What Mirall held on to for the members it had met and the files it was serving kept growing, so a long session ended up slower than a fresh start."
+            ]
+          }
+        ]
+      },
       {
         "version": "1.9.0",
         "date": "2026-08-27",
