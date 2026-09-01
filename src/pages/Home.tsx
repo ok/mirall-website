@@ -10,7 +10,9 @@ import Seo from '../components/Seo'
 import {
   faqPageSchema,
   howToSchema,
+  organizationSchema,
   softwareApplicationSchema,
+  websiteSchema,
 } from '../lib/schema'
 
 export default function Home() {
@@ -33,6 +35,8 @@ export default function Home() {
         description="Move hundreds of gigabytes or terabytes directly between devices — no size caps, no per-GB fees. End-to-end encrypted. No cloud storage, no accounts, no telemetry."
         path="/"
         jsonLd={[
+          organizationSchema(),
+          websiteSchema(),
           softwareApplicationSchema(),
           faqPageSchema(faqItems),
           howToSchema(
