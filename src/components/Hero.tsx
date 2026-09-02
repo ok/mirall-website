@@ -43,7 +43,7 @@ export default function Hero() {
           <img
             className="w-full h-auto object-cover relative"
             style={{ filter: 'drop-shadow(0 1px 1.5px rgba(16, 24, 40, 0.12)) drop-shadow(0 5px 7px rgba(16, 24, 40, 0.22))' }}
-            alt="Mirall desktop app — Shared Spaces home with All Spaces and Favorites tabs, three example spaces with member avatars, and Create / Join Space actions"
+            alt="Mirall desktop app — the Project Fairlight space, with a shared Production Footage folder, three shared files, a Drop to Share zone, and Space Storage and Members panels"
             src={heroSrc}
             srcSet={heroSrcSet}
             sizes="(min-width: 1024px) 580px, calc(100vw - 64px)"
