@@ -26,30 +26,12 @@
     <meta name="twitter:description" content="Move hundreds of gigabytes or terabytes directly between devices — no size caps, no per-GB fees. End-to-end encrypted. No cloud storage, no accounts, no telemetry." />
     <meta name="twitter:image" content="https://mirall.app/og-image.webp" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Mirall",
-        "url": "https://mirall.app",
-        "logo": "https://mirall.app/favicon.svg",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Berlin",
-          "addressCountry": "DE"
-        }
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Mirall",
-        "url": "https://mirall.app",
-        "publisher": { "@type": "Organization", "name": "Mirall" },
-        "inLanguage": "en"
-      }
-    </script>
+    <!-- Organization and WebSite are NOT declared here. They live in
+         src/lib/schema.ts and are emitted on the home page only, which is where
+         Google expects a site to declare them once. Hardcoding them in this
+         template put a second, divergent copy on every route: these blocks
+         carried no sameAs and no @id, so they described a different anonymous
+         "Mirall" than the SoftwareApplication node on the home page. -->
   </head>
   <body class="bg-background font-body text-on-surface overflow-x-hidden">
     <div id="root"></div>

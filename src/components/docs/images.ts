@@ -9,13 +9,18 @@
 import activityLog from '../../assets/docs/activity-log.webp?w=672;1008;1344&format=webp&as=srcset'
 import addFolder from '../../assets/docs/add-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import approvalReview from '../../assets/docs/approval-review.webp?w=672;1008;1344&format=webp&as=srcset'
+import editFolderMirror from '../../assets/docs/edit-folder-mirror.webp?w=672;1008;1344&format=webp&as=srcset'
+import editFolder from '../../assets/docs/edit-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderBrowse from '../../assets/docs/folder-browse.webp?w=672;1008;1344&format=webp&as=srcset'
+import folderFilter from '../../assets/docs/folder-filter.webp?w=672;1008;1344&format=webp&as=srcset'
+import folderIndexPaused from '../../assets/docs/folder-index-paused.webp?w=672;1008;1344&format=webp&as=srcset'
+import folderIndexing from '../../assets/docs/folder-indexing.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderMirror from '../../assets/docs/folder-mirror.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderMirrored from '../../assets/docs/folder-mirrored.webp?w=672;1008;1344&format=webp&as=srcset'
+import folderPeople from '../../assets/docs/folder-people.webp?w=672;1008;1344&format=webp&as=srcset'
 import inviteToSpace from '../../assets/docs/invite-to-space.webp?w=672;1008;1344&format=webp&as=srcset'
 import joinApproval from '../../assets/docs/join-approval.webp?w=672;1008;1344&format=webp&as=srcset'
 import joinWaiting from '../../assets/docs/join-waiting.webp?w=672;1008;1344&format=webp&as=srcset'
-import mirroredBy from '../../assets/docs/mirrored-by.webp?w=672;1008;1344&format=webp&as=srcset'
 import networkStatus from '../../assets/docs/network-status.webp?w=672;1008;1344&format=webp&as=srcset'
 import onboarding from '../../assets/docs/onboarding.webp?w=672;1008;1344&format=webp&as=srcset'
 import peerDownloads from '../../assets/docs/peer-downloads.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -40,13 +45,18 @@ const SRCSETS: Record<string, string> = {
   '/docs-activity-log.webp': activityLog,
   '/docs-add-folder.webp': addFolder,
   '/docs-approval-review.webp': approvalReview,
+  '/docs-edit-folder-mirror.webp': editFolderMirror,
+  '/docs-edit-folder.webp': editFolder,
   '/docs-folder-browse.webp': folderBrowse,
+  '/docs-folder-filter.webp': folderFilter,
+  '/docs-folder-index-paused.webp': folderIndexPaused,
+  '/docs-folder-indexing.webp': folderIndexing,
   '/docs-folder-mirror.webp': folderMirror,
   '/docs-folder-mirrored.webp': folderMirrored,
+  '/docs-folder-people.webp': folderPeople,
   '/docs-invite-to-space.webp': inviteToSpace,
   '/docs-join-approval.webp': joinApproval,
   '/docs-join-waiting.webp': joinWaiting,
-  '/docs-mirrored-by.webp': mirroredBy,
   '/docs-network-status.webp': networkStatus,
   '/docs-onboarding.webp': onboarding,
   '/docs-peer-downloads.webp': peerDownloads,

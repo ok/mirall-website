@@ -17,10 +17,10 @@ Read this top to bottom once, then work the **Procedure** checklist. The **Scree
 - **No version markers in the docs.** Never write "New in 1.6" / "now" / "previously". The docs describe how the app works *today*; the changelog is what records when things landed.
 - **All screenshots are LIGHT mode**, captured from the **current build**, every release, with **real names and avatars**.
 - **Re-shoot EVERY screenshot on every release — not just the new-feature ones.** Shared chrome (nav, buttons, status pills, badges, spacing, radii) changes between versions and silently makes *every* older screenshot wrong. **Never carry a screenshot over from a previous version.**
-- **Drive the app through the frontend test harness** (`mirall-app/test/frontend/`), not raw `agent-desktop` calls. §4.
+- **Capture through the rig** (`mirall-docs-rig`), which drives the app's frontend test harness for you. Do not write a throwaway capture script — this playbook used to tell you to, and that is exactly why the screenshots kept falling behind. §4.
 - **The homepage rots too.** Audit `features` / `howItWorks` / `faq` / `hero` every release — §6. And **never ship a capability claim you haven't found in the app source**; the homepage is the easiest place to publish a lie, because nothing type-checks it.
 - **agent-desktop must be ≥ 0.3.0** (0.4.4 verified). *An older version of this playbook demanded 0.1.14 — that is wrong now; the harness preflight rejects anything below 0.3.0.*
-- **Feature branch off `main`**, PR into `main`. Do **not** push to `main`. Do **not** branch from `stage` — it is stale (43 commits behind as of 2026-07-12 and predates the Diátaxis restructure).
+- **Feature branch off `origin/stage`**, PR into `stage` — that is the branch Vercel builds a preview for, so it is where the work is reviewed. Never push to `main` or `stage` directly. *(Through v1.8.0 this said to branch from `main` and called `stage` stale; `stage` now leads `main`.)*
 - **No mention of AI** anywhere in content, commits, or PRs. No `Co-Authored-By` trailer.
 - Target a **perfect Lighthouse score** — see §4.7 for the exact image spec.
 
@@ -33,7 +33,9 @@ Read this top to bottom once, then work the **Procedure** checklist. The **Scree
 | **Website repo** (what you edit) | `/Users/oliver/Code/mirall/mirall-website` |
 | **App repo** (changelog + source-of-truth labels + capture harness) | `/Users/oliver/Code/mirall/mirall-app` |
 | **Changelog** (user-facing release notes) | `mirall-app/CHANGELOG.md` |
-| **Capture harness** | `mirall-app/test/frontend/` (`instance.mjs`, `helpers.mjs`, `scenarios/`) |
+| **Brand assets** (app icon + wordmark) | `mirall-app/resources/brand/` — the site's `public/favicon.svg` and `public/logo.svg` are copies of these (§7) |
+| **Capture rig** (what you actually run) | `/Users/oliver/Code/mirall/mirall-docs-rig` — read its `docs/capture-rig.md` first |
+| **Capture harness** (what the rig drives) | `mirall-app/test/frontend/` (`instance.mjs`, `helpers.mjs`, `scenarios/`) |
 | **Avatars for personas** | `/Users/oliver/Projects/Mirall/test-data/anon-avatars/` |
 | **Pre-seeded persona stores** (alternative, see §4.2) | `/Users/oliver/Projects/Mirall/test-data/test-userstore/user{1..6}store` |
 | **Legacy persona dirs** (older approach) | `/Users/oliver/Projects/Mirall/documentation/doc-data/doc-user{1..5}` |
@@ -186,11 +188,11 @@ a `200` proves nothing here.
 
 ```bash
 cd /Users/oliver/Code/mirall/mirall-website
-git checkout -b feat-docs-<version> origin/main
+git checkout -b feat-docs-<version> origin/stage
 ```
-Branch from **`main`**, PR into **`main`**. Not `stage` (stale). A worktree is fine but not required.
+Branch from **`origin/stage`**, PR into **`stage`** — Vercel previews `stage`, not feature branches. A worktree is fine but not required.
 
-> **Verify the branch actually took** before committing — `git branch --show-current`. A `checkout -B` that silently doesn't stick will land your commit on `main`.
+> **Verify the branch actually took** before committing — `git branch --show-current`. A `checkout -B` that silently doesn't stick will land your commit straight on `stage`.
 
 ### 3.3 Update written content
 
@@ -210,29 +212,39 @@ Mirror the new `CHANGELOG.md` entry into `changelog.releases[0]` (newest first),
 
 ### 3.9 Hand off
 
-Commit and push **only when asked**. Feature branch → PR into `main`. No `Co-Authored-By`.
+Commit and push **only when asked**. Feature branch → PR into `stage`. No `Co-Authored-By`.
 
 ---
 
 ## 4. Screenshot capture
 
-**Use the app's frontend test harness.** It already solves window management, AX-tree flakiness, cross-process refs, native pickers, and multi-peer setup. Hand-rolling `agent-desktop` CLI calls (what this playbook used to describe) is strictly worse.
+**Use the rig: `/Users/oliver/Code/mirall/mirall-docs-rig`.** Read its `docs/capture-rig.md` before running anything — it is the detailed procedure, and this section is only the orientation.
 
-### 4.1 The approach
-
-Write a **standalone script in a scratch dir** (never inside `mirall-app`, so you don't dirty that tree) that imports the harness by absolute path:
-
-```js
-const APP = '/Users/oliver/Code/mirall/mirall-app'
-const { Instance }     = await import(`${APP}/test/frontend/instance.mjs`)
-const { startTestnet } = await import(`${APP}/test/frontend/testnet.mjs`)
-const { joinPending }  = await import(`${APP}/test/frontend/helpers.mjs`)
-const { workDir }      = await import(`${APP}/test/frontend/paths.mjs`)
+```sh
+cd ../mirall-docs-rig
+npm install                                   # once
+node scripts/capture.mjs                      # all scenes  → out/<timestamp>/*.png
+node scripts/capture.mjs 01-solo              # one scene, for iteration
+node scripts/process-shots.mjs out/<timestamp>   # → processed/*.webp + the exact dimensions
 ```
 
-Run it with **cwd = `mirall-app`** (`node /path/to/scratch/shots.mjs`).
+The rig owns the personas (names, avatars, seeded light-mode config), the scenes, the
+determinism safeguards, and the PNG→webp step. It drives the app's own frontend test harness
+(`mirall-app/test/frontend/`), which already solves window management, AX-tree flakiness,
+cross-process refs, native pickers, and multi-peer setup.
 
-Key harness API:
+> **Do not write a throwaway capture script.** Earlier versions of this playbook instructed
+> exactly that — a standalone script in a scratch dir, deleted afterwards — and because
+> nothing was ever committed, every release started from zero and the screenshots fell
+> behind. The rig exists to make a release a re-run rather than a rebuild. If a shot is
+> missing, add a scene to the rig and commit it.
+
+New features usually need a new shot. Add it to whichever scene already has the right peers
+staged rather than starting a new one — each app launch costs ~40s, so scene count, not shot
+count, drives the run time. Some shots can only be taken from a particular peer or a
+particular app state; the rig's §5 records the ones that bit.
+
+Key harness API (what a scene calls):
 - `new Instance({ name, bootstrap, slot, total })` — `name` becomes the display name at onboarding.
 - `.launch({ onboard })`, `.onboard()`, `.focus()`, `.moveCursorAway()`, `.shot(label, dir)`
 - `.click(sel)`, `.type(sel, text)`, `.press(combo)`, `.waitText(str, ms)`, `.has(sel)`, `.hasText(str)`, `.nodeValue(sel)`, `.back()`
@@ -291,7 +303,10 @@ grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u
 ```
 Capture a fresh PNG for each. Afterwards, **delete any `src/assets/docs/*.webp` no longer referenced, and its `images.ts` entry.**
 
-Current set (v1.7.0) — 16 images, all light mode, all 1344×1173:
+The set at v1.10.0 is **25 doc images plus `hero` and `support`**, all light mode, docs at
+**1344×1165** and marketing at **1600×1387**. The rig's `docs/capture-rig.md` §3 is
+authoritative for which scene produces which shot; the table below describes the core frames
+but has not been extended for every shot added since v1.7.0.
 
 | File | Shows | Captured from |
 |---|---|---|
@@ -307,7 +322,10 @@ Current set (v1.7.0) — 16 images, all light mode, all 1344×1173:
 | `folder-browse` | Folder tree with per-folder stats + Expand all | browsing peer |
 | `folder-mirror` | Mirror to Disk dialog | peer |
 | `folder-mirrored` | Mirrored folder — "On your device" + verified shield | peer |
-| `mirrored-by` | "Mirrored by" facepile on an owned folder | owner, 2 mirrorers |
+| `folder-people` | People tile — owner + everyone mirroring, with sync state | owner, 1 mirrorer |
+| `folder-filter` | File list narrowed by the filter, with its "2 of 5" count | browsing peer |
+| `edit-folder` | Edit Folder — rename, source folder display-only | owner |
+| `edit-folder-mirror` | Edit Folder — name locked, mirror location changeable | peer |
 | `sidebar-collapsible` | Sidebar with Space Storage collapsed | owner |
 | `settings-storage` | Settings → Storage (App Storage breakdown) | owner |
 | `account-security` | Account → Security (keychain status) | owner |
@@ -328,20 +346,28 @@ Current set (v1.7.0) — 16 images, all light mode, all 1344×1173:
 
 ### 4.7 Process PNGs → webp (the Lighthouse spec)
 
-Raw captures are 2× window screenshots on a transparent canvas (rounded corners + shadow). Run the processor from **inside the website repo** so Node resolves `sharp`.
+`node scripts/process-shots.mjs out/<timestamp>` does this. Run it from the rig — it has its
+own `sharp`.
 
-```js
-await sharp(rawPng)
-  .trim()                                          // drop the dead transparent border; the soft shadow survives
-  .resize({ width: 1344, withoutEnlargement: true })
-  .webp({ quality: 82, effort: 6 })
-  .toFile(`src/assets/docs/${name}.webp`)
-```
+Raw captures are 2× window screenshots on a transparent canvas, with rounded corners **and
+the macOS drop shadow baked into the alpha**. The processor crops that shadow off entirely
+(`cropToWindow()`) and the website draws elevation in CSS instead.
 
+- **The frames ship without a shadow.** Do not reinstate a baked one. It caused two defects
+  that took until v1.9.0 to spot: `.trim()` cut while the shadow alpha was still ~11/255,
+  leaving a 4% grey haze that ended in a hard rectangular edge; and cropping to the window's
+  *bounding box* alone kept a dark blob in each corner, because the box corners lie outside
+  the rounded arc where the shadow is densest. The rig's `docs/capture-rig.md` has the
+  measurements and the fix (rounded-rect mask, inset 2px, radius measured not hardcoded).
+- **Elevation is CSS**, in `DocImage` (`blocks.tsx`), `Hero.tsx` and `Support.tsx`:
+  `drop-shadow(0 1px 1.5px rgba(16,24,40,0.12)) drop-shadow(0 5px 7px rgba(16,24,40,0.22))`.
+  `drop-shadow` renders outside the element box so it cannot be clipped, and follows the alpha
+  so the window's rounded corners stay right at any width. Tuning it needs no re-capture.
+- **No `rounded-*` class on a docs image.** The asset carries the window's own corners in its
+  alpha; `rounded-xl` (12px) clips harder than the real 5.6px radius and squares them off.
 - **1344px** = exactly 2× the 672px (`max-w-2xl`) the docs render at. The old 1600px was oversized and is what risks Lighthouse's *"properly size images"*.
-- Expect **~34–62 KB** each, ~800 KB for the set.
-- **`.trim()` is correct now** (an older version of this playbook said not to) — but you *must* then read back the real output dimensions and use them, because:
-- **`width`/`height` in `en.json` must match the file exactly.** The `<img>` has `object-cover`; a mismatch crops the image and risks a CLS/aspect-ratio flag. Print the intrinsic size from the processor and copy it in. (v1.7.0 shipped several off-by-one values from the previous set.)
+- Expect **~18–50 KB** each, ~700 KB for the set.
+- **`width`/`height` in `en.json` must match the file exactly.** The `<img>` has `object-cover`; a mismatch crops the image and risks a CLS/aspect-ratio flag. `process-shots.mjs` prints the intrinsic size of every output — copy those numbers, don't hand-guess them. (v1.7.0 shipped several off-by-one values from the previous set; the hero and support declarations were wrong from v1.5.0 until v1.9.0.)
 - Responsive variants (672/1008/1344) + `sizes` are generated by `vite-imagetools` via `images.ts` — a phone fetches a ~13 KB variant instead of the full 40 KB. Keep `loading="lazy"` and `decoding="async"`.
 
 ---
@@ -375,7 +401,7 @@ Confirm the images render, the chrome looks current, and the sidebar works. Spot
 
 > **Don't drive the browser with agent-desktop.** Chrome doesn't expose its web content to the macOS AX tree unless assistive access is switched on for it, so `find` returns an empty tree and `press` / `mouse-wheel` never reach the page — you get the same above-the-fold screenshot every time and think the page didn't change. Old headless (`--headless`, not `--headless=new`) captures the **whole layout** in one PNG regardless of viewport, which is what makes the crop trick work. `--headless=new` only captures the viewport and does not honour a `#fragment` scroll.
 
-**Lint baseline:** `npm run lint` reports **2 pre-existing errors** — `src/components/Navbar.tsx` (set-state-in-effect) and `src/components/Seo.tsx` (missing `react/no-danger` rule def). They are **not yours**; confirm they're identical on `main` and don't chase them. Add **zero** new lint problems.
+**Lint baseline:** `npm run lint` reports **2 pre-existing errors** — `src/components/Navbar.tsx` (set-state-in-effect) and `src/components/Seo.tsx` (missing `react/no-danger` rule def). They are **not yours**; confirm they're identical on `stage` and don't chase them. Add **zero** new lint problems.
 
 **SPA note:** per-route `<title>`/meta are applied client-side (React 19 metadata) — view-source shows the base title. Expected.
 
@@ -448,7 +474,8 @@ Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1)
 - **No time estimates** in plans. Use complexity language.
 - **Accessibility:** semantic headings in order, `alt` on every image, links with discernible text, tables with `<th scope>` (block components handle this). Don't regress it.
 - **SEO/perf:** §4.7 image spec; each route keeps its `<Seo>` (breadcrumb; `HowTo` JSON-LD on guides with steps). Add new routes to `public/sitemap.xml` (it has no `lastmod`, so nothing to bump).
-- **Never push to `main`.** Feature branch → PR. No commits/pushes unless asked this turn.
+- **Brand assets are copies, not links.** `public/favicon.svg` is `mirall-app/resources/brand/mirall-icon.svg` with its viewBox tightened to the artwork; `public/logo.svg` is `mirall-logo.svg` with `width`/`height` stripped so CSS sizes it. Nothing syncs them. When the app's brand changes, re-copy both and run `node scripts/generate-favicons.mjs` — it rebuilds the PNGs and the `.ico` from the SVG, and those are committed. Check the whole set: the site once carried the new wordmark and og-image while the favicon still showed the old mark.
+- **Never push to `main` or `stage`.** Feature branch → PR into `stage`. No commits/pushes unless asked this turn.
 - **English-first.** Translations (DE/FR/ES/IT) are a separate, later effort.
 
 ---
@@ -464,9 +491,12 @@ Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1)
 | Screenshots all dark | You didn't seed `config.json` before launch (§4.3). |
 | Avatars are letter placeholders | `setAvatar()` didn't run or failed silently — check the step's catch output. |
 | Persona store destroyed | You used `Instance.kill()` instead of `.quit()`. |
-| `sharp` not found | Run the processor from **inside the website repo**, not the scratch dir. |
+| `sharp` not found | Run `process-shots.mjs` from **inside the rig** (`npm install` there once). |
 | Image 404s at runtime but build passed | Missing `images.ts` entry (§2.4). |
+| Screenshots have a grey halo with a hard edge, or dark corners | A baked macOS shadow is back in the asset — `process-shots.mjs` must crop to the window (§4.7). |
 | Docs describe a dialog that isn't in the app | You trusted the changelog / an orphaned i18n key instead of the components (§3.1). |
+| A scene hangs on `waitText` and dies at its timeout | A heading the scene waited on was retired. Wait on what the app harness waits on (`openFolder()` settles on the People tile), not on a string you picked. |
+| `{ role: 'button', name: 'More' }` finds nothing | The ActionMenu trigger carries `aria-haspopup`, so macOS exposes a **pop-up button**. Match on the name alone. |
 | Feature grid has a ragged last row | Card count isn't 6 (§6.2). |
 | Lint fails after removing a feature card | The icon import is now unused — drop it from `Features.tsx` (§6.1). |
 | A card renders its raw i18n key | Copy exists in `Features.tsx` but not `en.json` (or vice versa) — both places, always (§6.1). |
