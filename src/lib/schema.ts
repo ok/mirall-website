@@ -3,7 +3,13 @@ import { GITHUB_URL } from './links'
 
 export const SITE_URL = 'https://mirall.app'
 export const SITE_NAME = 'Mirall'
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.webp`
+// The ?v token is a cache bust, not a filename. Slack, WhatsApp, iMessage, X and
+// LinkedIn all key their unfurl caches on the full URL and hold it for days to
+// weeks, with no public purge for most of them — so replacing the file in place
+// leaves everyone who has ever shared a link seeing the old card. Bump this
+// whenever scripts/generate-og-image.mjs produces a materially different image.
+// It must match the two tags in index.html, which is what a crawler reads.
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.webp?v=2026-09`
 
 // Stable node ids. Without them each schema block declares its own anonymous
 // "Mirall", and a search engine has three unrelated nodes that happen to share a
