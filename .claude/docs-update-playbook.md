@@ -303,7 +303,7 @@ grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u
 ```
 Capture a fresh PNG for each. Afterwards, **delete any `src/assets/docs/*.webp` no longer referenced, and its `images.ts` entry.**
 
-The set at v1.9.0 is **20 doc images plus `hero` and `support`**, all light mode, docs at
+The set at v1.10.0 is **25 doc images plus `hero` and `support`**, all light mode, docs at
 **1344×1165** and marketing at **1600×1387**. The rig's `docs/capture-rig.md` §3 is
 authoritative for which scene produces which shot; the table below describes the core frames
 but has not been extended for every shot added since v1.7.0.
@@ -322,7 +322,10 @@ but has not been extended for every shot added since v1.7.0.
 | `folder-browse` | Folder tree with per-folder stats + Expand all | browsing peer |
 | `folder-mirror` | Mirror to Disk dialog | peer |
 | `folder-mirrored` | Mirrored folder — "On your device" + verified shield | peer |
-| `mirrored-by` | "Mirrored by" facepile on an owned folder | owner, 2 mirrorers |
+| `folder-people` | People tile — owner + everyone mirroring, with sync state | owner, 1 mirrorer |
+| `folder-filter` | File list narrowed by the filter, with its "2 of 5" count | browsing peer |
+| `edit-folder` | Edit Folder — rename, source folder display-only | owner |
+| `edit-folder-mirror` | Edit Folder — name locked, mirror location changeable | peer |
 | `sidebar-collapsible` | Sidebar with Space Storage collapsed | owner |
 | `settings-storage` | Settings → Storage (App Storage breakdown) | owner |
 | `account-security` | Account → Security (keychain status) | owner |
@@ -492,6 +495,8 @@ Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1)
 | Image 404s at runtime but build passed | Missing `images.ts` entry (§2.4). |
 | Screenshots have a grey halo with a hard edge, or dark corners | A baked macOS shadow is back in the asset — `process-shots.mjs` must crop to the window (§4.7). |
 | Docs describe a dialog that isn't in the app | You trusted the changelog / an orphaned i18n key instead of the components (§3.1). |
+| A scene hangs on `waitText` and dies at its timeout | A heading the scene waited on was retired. Wait on what the app harness waits on (`openFolder()` settles on the People tile), not on a string you picked. |
+| `{ role: 'button', name: 'More' }` finds nothing | The ActionMenu trigger carries `aria-haspopup`, so macOS exposes a **pop-up button**. Match on the name alone. |
 | Feature grid has a ragged last row | Card count isn't 6 (§6.2). |
 | Lint fails after removing a feature card | The icon import is now unused — drop it from `Features.tsx` (§6.1). |
 | A card renders its raw i18n key | Copy exists in `Features.tsx` but not `en.json` (or vice versa) — both places, always (§6.1). |

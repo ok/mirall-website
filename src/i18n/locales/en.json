@@ -489,7 +489,7 @@
                   { "text": "Share your folders and files into the new space." },
                   { "text": "When everyone has moved across, open the old space's **More** menu and choose **Leave Space**." }
                 ] },
-                { "type": "note", "text": "**Manage Storage** still works on an unsupported space, so you can see what it takes up and reclaim it before you go. Anything you already downloaded from it is an ordinary file on your disk and stays there after you leave." }
+                { "type": "note", "text": "The **Space Storage** panel still works on an unsupported space, so you can see what it takes up before you go, and leaving reclaims it. Anything you already downloaded from it is an ordinary file on your disk and stays there after you leave." }
               ],
               "related": [
                 { "label": "Create a space", "to": "/docs/guides#create-a-space" },
@@ -537,7 +537,7 @@
                   "**Retry** — reattempt a download that ended in an error; **Dismiss** clears the failed row instead."
                 ] },
                 { "type": "note", "text": "In-progress downloads are written to a `.mirall.part` file and renamed to their real name only when the transfer completes — an interrupted transfer can't leave a half-written file under its final name." },
-                { "type": "p", "text": "A mirrored folder has no per-file download controls. To pause or stop everything a folder is pulling, use the mirror's own **Pause Mirror**, **Resume Mirror**, and **Unmount Mirror** actions." }
+                { "type": "p", "text": "A mirrored folder has no per-file download controls. To hold or stop everything a folder is pulling, use the mirror's own **Pause syncing**, **Resume syncing**, and **Unmount Mirror** actions, or the **Pause** in the band above its file list." }
               ],
               "related": [
                 { "label": "Pause, resume, move, or stop a mirror", "to": "/docs/guides#manage-a-mirror" }
@@ -584,32 +584,30 @@
               "image": { "src": "/docs-add-folder.webp", "alt": "Mirall's Add Folder dialog with a folder path, a share name field, and a Next: Preview button", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Sharing without a second copy", "to": "/docs/explanation#sharing-in-place" },
-                { "label": "Pause or stop adding a folder", "to": "/docs/guides#pause-adding-a-folder" }
+                { "label": "Pause adding a folder", "to": "/docs/guides#pause-adding-a-folder" }
               ]
             },
             {
               "id": "pause-adding-a-folder",
-              "title": "Pause or stop adding a folder",
-              "intro": "Mirall reads through a folder you share before it can offer the contents to anyone. While that's under way the folder tells you how much is left, and lets you hold it or clear it.",
+              "title": "Pause adding a folder",
+              "intro": "Mirall reads through a folder you share before it can offer the contents to anyone. While that's under way a band above the file list tells you how much is left, and lets you hold it.",
               "blocks": [
                 { "type": "steps", "items": [
                   { "text": "Open the folder from its card in the space." },
-                  { "text": "A notice above the file list reads **Adding 6 files to this folder**, followed by how much there is left to read. Before the count is known it reads **Looking for files to add…**." },
-                  { "text": "Click **Pause** to hold the queue where it is. The notice turns amber and reads **Adding files is paused**, and the folder's card in the space is badged **Paused**." },
+                  { "text": "The band reads **Adding 6 files to this folder**, followed by how much there is left to read. Before the count is known it reads **Looking for files to add…**." },
+                  { "text": "Click **Pause** in the band to hold the queue where it is. The band turns amber and reads **Adding files is paused**, the **Folder** tile beside the list reads **Paused**, and so does the folder's card in the space." },
                   { "text": "Click **Resume** to carry on from where it stopped." }
                 ] },
-                { "type": "image", "src": "/docs-folder-indexing.webp", "alt": "A folder shared in Mirall with a notice reading “Adding 6 files to this folder · 805.3 MB to read” and Pause and Stop buttons", "width": 1344, "height": 1165 },
-                { "type": "subheading", "text": "Pause and Stop are not the same" },
-                { "type": "bullets", "items": [
-                  "**Pause** is remembered. The folder stays paused until you resume it — quitting Mirall and starting it again leaves it paused.",
-                  "**Stop** clears what's queued without recording a pause, so there's nothing to resume. Mirall picks the folder up again on its own the next time it looks over what you share."
-                ] },
-                { "type": "image", "src": "/docs-folder-index-paused.webp", "alt": "A paused folder in Mirall, with an amber notice reading “Adding files is paused. Resume to finish adding this folder.” and a Resume button", "width": 1344, "height": 1165 },
-                { "type": "note", "text": "Neither one unshares the folder, and neither withdraws the files already added — those stay available to the space. Only a folder you share carries these controls: open a folder someone else shares and the same notice tells you what the owner is still adding, with nothing for you to act on." }
+                { "type": "image", "src": "/docs-folder-indexing.webp", "alt": "A folder shared in Mirall with a band reading “Adding 6 files to this folder · 805.3 MB to read” and a Pause button, and a Folder tile badged Adding", "width": 1344, "height": 1165 },
+                { "type": "p", "text": "A pause is remembered: the folder stays paused until you resume it, and quitting Mirall and starting it again leaves it paused. That is why the badge follows the folder onto its card in the space — without it, a folder you had held would look no different from one that had finished." },
+                { "type": "image", "src": "/docs-folder-index-paused.webp", "alt": "A paused folder in Mirall, with an amber band reading “Adding files is paused. Resume to finish adding this folder.”, a Resume button, and a Folder tile badged Paused", "width": 1344, "height": 1165 },
+                { "type": "note", "text": "Pausing doesn't unshare the folder, and it doesn't withdraw the files already added — those stay available to the space. **Pause** belongs to whoever owns the folder: open a folder someone else shares and the same band tells you what the owner is still adding, with nothing for you to act on." },
+                { "type": "p", "text": "A folder you mirror carries the same band and the same **Pause**, holding the download instead of the reading." }
               ],
               "related": [
                 { "label": "Share a whole folder", "to": "/docs/guides#share-a-folder" },
-                { "label": "Folder & share badges", "to": "/docs/reference#folder-types" }
+                { "label": "Pause, resume, move, or stop a mirror", "to": "/docs/guides#manage-a-mirror" },
+                { "label": "The folder screen", "to": "/docs/reference#folder-screen" }
               ]
             },
             {
@@ -617,12 +615,41 @@
               "title": "Browse a folder someone shared",
               "blocks": [
                 { "type": "p", "text": "Open a folder another member shared to see what's inside without downloading everything. A folder you're only looking through is marked **Browse**." },
-                { "type": "p", "text": "Subfolders are rows you can open and close. Each one tells you what's inside before you open it: how many files it holds and their total size, how many are already on your device, how many are downloading right now, and how many subfolders it contains. **Expand all** opens the whole tree at once, and flips to **Collapse all** to fold it back up." },
-                { "type": "p", "text": "If the owner is still working through the folder, a notice above the list says so — **Michael is adding 6 files to this folder**, with how much is left to read. Those files appear as the owner gets to them, so a folder can keep growing while you look at it." },
+                { "type": "p", "text": "Subfolders are rows you can open and close. Each one tells you what's inside before you open it: how many files it holds and their total size, how many are already on your device, how many are downloading right now, and how many subfolders it contains. A filter box sits above the list, with **Expand all** beside it — it opens the whole tree at once, and flips to **Collapse all** to fold it back up." },
+                { "type": "p", "text": "If the owner is still working through the folder, a band above the list says so — **Michael is adding 6 files to this folder**, with how much is left to read. Those files appear as the owner gets to them, so a folder can keep growing while you look at it." },
                 { "type": "p", "text": "Click **Download** on any individual file to save just that one, or use **Mirror to Disk…** to keep the whole folder synced instead." },
                 { "type": "note", "text": "Folders you leave open stay open as you move around the app. Restarting Mirall resets the tree to its default, with the top-level folders open." }
               ],
-              "image": { "src": "/docs-folder-browse.webp", "alt": "A shared folder in Mirall browsed as a tree, with subfolders showing file counts and sizes and an Expand all button", "width": 1344, "height": 1165 }
+              "image": { "src": "/docs-folder-browse.webp", "alt": "A shared folder in Mirall browsed as a tree, with a filter box and Collapse all above the list and the People and Folder tiles beside it", "width": 1344, "height": 1165 },
+              "related": [
+                { "label": "Find a file in a big folder", "to": "/docs/guides#find-a-file-in-a-folder" },
+                { "label": "Mirror a folder to disk", "to": "/docs/guides#mirror-a-folder-to-disk" }
+              ]
+            },
+            {
+              "id": "find-a-file-in-a-folder",
+              "title": "Find a file in a big folder",
+              "intro": "A shared folder can hold thousands of files. The filter above the list narrows it as you type — on your screen only, and without touching what anyone else sees.",
+              "blocks": [
+                { "type": "steps", "items": [
+                  { "text": "Open the folder and click the **Filter files…** box above the file list." },
+                  { "text": "Type any part of a name. The list narrows as you type, and the count inside the box — **2 of 5** — says how many of the folder's files matched." },
+                  { "text": "Click the **×** at the end of the box to clear the filter and put the whole folder back." }
+                ] },
+                { "type": "image", "src": "/docs-folder-filter.webp", "alt": "A folder in Mirall narrowed by the filter “day”, with “2 of 5” and a clear button inside the filter box and only the matching clips listed", "width": 1344, "height": 1165 },
+                { "type": "bullets", "items": [
+                  "Matching is on names, and capitals don't matter.",
+                  "A subfolder whose own name matches keeps everything inside it. One that doesn't match survives only through what's inside it, so a match buried deep in the tree still reaches you.",
+                  "Branches open on their own to show what matched, up to a couple of hundred files. Past that they stay folded, because a term matching nearly everything is only readable closed.",
+                  "A subfolder row under a filter counts what's showing beneath it, not what the folder holds — so its file count and size always describe the rows you can see."
+                ] },
+                { "type": "p", "text": "If nothing matches, the list says **No files match** and suggests fewer characters or clearing the filter. The **People** and **Folder** tiles beside it go on describing the whole folder either way." },
+                { "type": "note", "text": "The filter never leaves your screen: it shares nothing, unshares nothing, and members see the folder in full. Clearing it restores exactly the subfolders you had open before you started typing." }
+              ],
+              "related": [
+                { "label": "Browse a folder someone shared", "to": "/docs/guides#browse-a-shared-folder" },
+                { "label": "The folder screen", "to": "/docs/reference#folder-screen" }
+              ]
             },
             {
               "id": "mirror-a-folder-to-disk",
@@ -642,26 +669,68 @@
             {
               "id": "manage-a-mirror",
               "title": "Pause, resume, move, or stop a mirror",
+              "intro": "A mirror's controls sit in the **More** menu — in the folder's own header, and on the folder's card in the space.",
               "blocks": [
                 { "type": "bullets", "items": [
-                  "**Pause Mirror** — stop syncing for now; the folder stays where it is and won't update until you resume.",
-                  "**Resume Mirror** — start syncing again from wherever the owner's copy is now.",
-                  "**Change Mirror Location…** — move the mirror to a different folder on your computer. This one lives on the folder's card in the space view.",
+                  "**Pause syncing** — stop syncing for now; the folder stays where it is and won't update until you resume. The pause is remembered across restarts, and the folder is badged **Paused**.",
+                  "**Resume syncing** — start syncing again from wherever the owner's copy is now.",
+                  "**Edit Folder…** — move the mirror to a different folder on your computer. This one is in the folder's own header menu.",
                   "**Unmount Mirror** — stop mirroring entirely and remove the mirrored copy. The folder reverts to **Browse**."
                 ] },
+                { "type": "p", "text": "While the mirror is fetching, a band above the file list says what's left — **Syncing 4 files from Michael · 460 MB to fetch** — and carries the same **Pause**. The **Folder** tile reads **Syncing** until the last file lands, then **Up to date**." },
                 { "type": "note", "text": "If a write fails — a full disk, or a destination that's become read-only — the mirror pauses rather than erroring, and resumes once there's room." }
               ],
-              "image": { "src": "/docs-folder-mirrored.webp", "alt": "A mirrored folder in Mirall with every file marked “On your device” and confirmed by a green verified shield", "width": 1344, "height": 1165 }
+              "image": { "src": "/docs-folder-mirrored.webp", "alt": "A mirrored folder in Mirall with every file marked “On your device” and confirmed by a green verified shield, and a Folder tile reading Up to date", "width": 1344, "height": 1165 },
+              "related": [
+                { "label": "Rename a folder, or move it on disk", "to": "/docs/guides#edit-a-folder" },
+                { "label": "Mirroring & the read-only model", "to": "/docs/explanation#mirroring-read-only" }
+              ]
+            },
+            {
+              "id": "edit-a-folder",
+              "title": "Rename a folder, or move it on disk",
+              "intro": "**Edit Folder…**, in a folder's **More** menu, changes the two things about it that aren't its contents: what it's called, and where it lives on your disk. Which of the two you can change depends on whether the folder is yours.",
+              "blocks": [
+                { "type": "subheading", "text": "Rename a folder you share" },
+                { "type": "steps", "items": [
+                  { "text": "Open the folder and choose **Edit Folder…** from **More**." },
+                  { "text": "Type a new **Folder name**." },
+                  { "text": "Click **Save Changes**." }
+                ] },
+                { "type": "p", "text": "Everyone in the space sees the new name. The folder on your own disk is untouched — it keeps whatever you called it there — and so is every file members have already taken from it." },
+                { "type": "image", "src": "/docs-edit-folder.webp", "alt": "Mirall's Edit Folder dialog on a folder you share, with an editable folder name above the read-only location of its source folder", "width": 1344, "height": 1165 },
+                { "type": "note", "text": "A name has to be unique within the space and can't contain slashes. Mirall refuses the save and says which of the two it was, rather than quietly changing what you typed." },
+                { "type": "p", "text": "The **Source folder** is shown here as well, but you can't re-point a healthy one. That control belongs to the folder that has gone missing: if you move or rename the source on disk, the folder is badged **Folder is missing on disk** and offers **Locate folder…** instead." },
+                { "type": "subheading", "text": "Move a folder you mirror" },
+                { "type": "steps", "items": [
+                  { "text": "Open the mirror and choose **Edit Folder…** from **More**." },
+                  { "text": "Click **Change** beside **Mirror location** and pick a new folder — another drive, say." },
+                  { "text": "Click **Save Changes**." }
+                ] },
+                { "type": "p", "text": "Files already sitting at the new location are recognised for what they are and aren't downloaded a second time; only what's missing is fetched. A mirror you had paused stays paused after the move." },
+                { "type": "image", "src": "/docs-edit-folder-mirror.webp", "alt": "Mirall's Edit Folder dialog on a mirror, with the owner's folder name greyed out and a Change button beside the mirror location", "width": 1344, "height": 1165 },
+                { "type": "note", "text": "Mirall moves where the mirror points, not the files already in it. What's in the old folder stays there as ordinary files — copy them across before you switch to save the download, or delete them afterwards." },
+                { "type": "p", "text": "The name belongs to whoever owns the folder, so on a mirror it's shown but not editable: **Michael owns this folder, so only they can rename it.**" }
+              ],
+              "related": [
+                { "label": "Pause, resume, move, or stop a mirror", "to": "/docs/guides#manage-a-mirror" },
+                { "label": "What the activity log records", "to": "/docs/reference#activity-events" }
+              ]
             },
             {
               "id": "see-who-is-mirroring",
-              "title": "See who's mirroring a folder you shared",
-              "intro": "A folder you own shows you the people keeping a live copy of it.",
+              "title": "See who has a folder, and how they're doing",
+              "intro": "Every folder names the people who have it. The **People** tile beside the file list shows the owner first, then everyone keeping a live copy — and it reads the same whether the folder is yours or someone else's.",
               "blocks": [
-                { "type": "p", "text": "Open a folder you share and look for **Mirrored by** in the sidebar. One person shows by name with their current state underneath. Several stack into a row of avatars with a summary beneath — for example **“2 Syncing… · 1 Synced”**." },
-                { "type": "p", "text": "Each person is in one of three states: **Synced** (their copy matches yours), **Syncing…** (they're still catching up), or **Paused** (they've paused their mirror). The states stay accurate even while those people are offline." }
+                { "type": "p", "text": "Under **Owner** is the person the folder belongs to, with a dot for whether they're online. Under **Mirroring · 3** is everyone mirroring it. One person shows by name with their state underneath; several stack into a row of faces with a summary beneath — **1 Syncing… · 2 Synced** — and **Show all** opens the full list." },
+                { "type": "p", "text": "Each person is in one of three states, drawn as a ring around their face and written out beside it: **Synced** (their copy matches the owner's), **Syncing…** (they're still catching up), or **Paused** (they've paused their mirror)." },
+                { "type": "note", "text": "The list records who took the folder on, not who is connected right now. Someone who mirrored the folder and then went offline still appears, in the state they left in." }
               ],
-              "image": { "src": "/docs-mirrored-by.webp", "alt": "The Mirrored by panel on a shared folder in Mirall, showing the people keeping a live copy and whether each is synced, syncing, or paused", "width": 1344, "height": 1165 }
+              "image": { "src": "/docs-folder-people.webp", "alt": "The People tile on a shared folder in Mirall, naming the folder's owner and the one person mirroring it with their sync state beneath", "width": 1344, "height": 1165 },
+              "related": [
+                { "label": "Mirroring & the read-only model", "to": "/docs/explanation#mirroring-read-only" },
+                { "label": "The folder screen", "to": "/docs/reference#folder-screen" }
+              ]
             }
           ]
         },
@@ -712,19 +781,12 @@
                 { "type": "bullets", "items": [
                   "**Shared-file index** — compact maps of the files you share, never their contents. Freed automatically when you stop sharing a file.",
                   "**App database** — your spaces, members, and sync history."
-                ] }
+                ] },
+                { "type": "note", "text": "There's nothing here to run. Mirall compacts its own records on a schedule of its own, drops what a member left behind when they leave a space, and sweeps up what it no longer needs each time it starts." }
               ],
               "image": { "src": "/docs-settings-storage.webp", "alt": "Mirall's Storage settings showing the download folder and the App Storage breakdown into a shared-file index and app database", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
-              ]
-            },
-            {
-              "id": "free-up-space",
-              "title": "Free up disk space",
-              "blocks": [
-                { "type": "p", "text": "Mirall tidies up after itself as it goes, but you can prompt it. In **Settings → Storage**, open **Show details** under App Storage and click **Free up space**. Mirall compacts its own bookkeeping and reports how much it recovered — or tells you storage is already optimized." },
-                { "type": "note", "text": "This only touches Mirall's own data. Your shared files, your downloads, and your mirrored folders are never removed." }
               ]
             },
             {
@@ -1027,6 +1089,23 @@
           }
         },
         {
+          "id": "folder-screen",
+          "title": "The folder screen",
+          "intro": "Open a folder and you get one screen whatever your relationship to it — only what you can do with it changes. The header carries the folder's name, who owns it and which space it's in, then one main button (**Open Folder**, or **Mirror to Disk…** on a folder you're only browsing) and a **More** menu. Under that, a band appears whenever the folder is doing something and carries the one control that helps: **Pause**, **Resume**, or **Locate folder…**. Then the file list, with a filter and an **Expand all** / **Collapse all** toggle pinned above it, and two tiles beside it. **People** names the owner and everyone mirroring the folder, and closes with a line on what your own role lets you do. **Folder** gives its size, its file count, how many of those are on your device, and its status.",
+          "table": {
+            "columns": ["Folder status", "Colour", "Meaning"],
+            "rows": [
+              ["Up to date", "Green", "Nothing outstanding — everything the folder holds is where it should be."],
+              ["Adding", "Blue", "A folder you share is still being read, so part of it isn't offered to the space yet."],
+              ["Syncing", "Blue", "A folder you mirror is still fetching files from its owner."],
+              ["Paused", "Yellow", "You've held the folder's work — the reading, on one you share; the fetching, on one you mirror."],
+              ["Missing", "Yellow", "A folder you share whose source has moved or gone. Members still see the last synced version."],
+              ["Browse only", "Grey", "A folder someone else shares that you haven't mirrored. Download individual files, or mirror the whole thing."]
+            ]
+          },
+          "image": { "src": "/docs-folder-people.webp", "alt": "The People tile on a shared folder in Mirall, naming the folder's owner and the one person mirroring it with their sync state beneath", "width": 1344, "height": 1165 }
+        },
+        {
           "id": "space-sidebar",
           "title": "The space sidebar",
           "intro": "Each space view has a sidebar with a Drop to Share zone plus two panels — Space Storage and Members — that you can collapse to fold away what you're not using. The Members panel also switches between a row of avatars and the full list, with **Show all** and **Show less**. Each space remembers its own arrangement for as long as Mirall is running, so folding a panel away in one space leaves the others as you had them. Quitting Mirall returns every space to the default — both panels open, members as avatars.",
@@ -1048,10 +1127,10 @@
             "**Discard Partial** — throw away a paused or stalled download and free the space it was using.",
             "**Retry** / **Dismiss** — reattempt a download that ended in an error, or clear the failed row.",
             "**Mirror to Disk…** — keep a live, read-only copy of a shared folder on your computer.",
-            "**Pause Mirror** / **Resume Mirror** — stop or restart a mirror's syncing.",
-            "**Change Mirror Location…** — move a mirror to a different folder.",
+            "**Pause syncing** / **Resume syncing** — hold a folder's work and pick it back up: the reading, on a folder you share; the fetching, on one you mirror.",
+            "**Edit Folder…** — rename a folder you share, or move a mirror to a different folder.",
             "**Unmount Mirror** — stop mirroring and remove the mirrored copy; the folder reverts to Browse.",
-            "**Free up space** — compact Mirall's own bookkeeping, in Settings → Storage."
+            "**Clear filter** — drop the filter above a folder's file list and put every row back."
           ]
         },
         {
@@ -1103,7 +1182,7 @@
               ["Appearance", "Theme Mode (Light / System / Dark), Display Size, Language, and — on Windows and Linux — auto-hide the menu bar."],
               ["Notifications", "Master switch, system sound, mute-when-focused, and five per-event toggles."],
               ["Network", "Transfer limits — a download and an upload cap, each Unlimited, a preset, or a figure you type."],
-              ["Storage", "Download folder — with a warning when Mirall can't reach it — and Mirall's own App Storage, a shared-file index plus the app database, with a Free up space action."],
+              ["Storage", "Download folder — with a warning when Mirall can't reach it — and Mirall's own App Storage, a shared-file index plus the app database. Nothing to run: Mirall keeps it in order itself."],
               ["Activity Log", "Whether activity is recorded, how long events are kept, and actions to export or delete the log."]
             ]
           }
@@ -1185,7 +1264,7 @@
             "rows": [
               ["Members", "Spaces you created, joined, renamed, or left; invite links you created; join requests, and the ones you approved or declined; members joining and leaving."],
               ["Files", "Files you shared or stopped sharing; downloads you finished or that failed; a file of yours someone else downloaded; files a member shared or stopped sharing."],
-              ["Folders", "Folder shares you created, deleted, or moved; folders you mirrored or stopped mirroring; the same actions by other members, including someone mirroring a folder of yours."],
+              ["Folders", "Folder shares you created, renamed, deleted, or moved; folders you mirrored, moved, or stopped mirroring; the same actions by other members, including someone mirroring a folder of yours."],
               ["Security", "File requests Mirall refused, and why; files that failed their integrity check; a space reporting a conflicting owner."],
               ["Network", "Stretches when this device went offline, when Mirall couldn't reach anyone, and when a connection was limited — each closed by a restored entry carrying how long the gap lasted and the cause Mirall settled on. Also members dropping out and coming back, which is recorded only while your own connection is working."]
             ]
@@ -1294,7 +1373,7 @@
             { "type": "p", "text": "When you share a file or a folder, Mirall serves it **in place** — straight from the original on your disk. It doesn't import a private copy into its own storage." },
             { "type": "p", "text": "Two things follow from that. Sharing never doubles a file's disk usage, however large it is. And because there's no copy to fall out of date, an edit you make to a shared file is picked up where it lies, rather than needing to be re-imported." },
             { "type": "p", "text": "What Mirall does keep is an **index**: a compact map of a file's contents that lets it stream the right pieces to whoever asks. That index is small, it never contains the file's contents, and it's freed as soon as you stop sharing the file." },
-            { "type": "p", "text": "Building that map is the one part of sharing that takes real time, because it means reading the file through. Each space works its own queue and takes the smallest files first, so a file you drop in while a large folder is still being read doesn't wait behind it. A folder you share tells you what it has left to get through, and you can pause that work or clear it." },
+            { "type": "p", "text": "Building that map is the one part of sharing that takes real time, because it means reading the file through. Each space works its own queue and takes the smallest files first, so a file you drop in while a large folder is still being read doesn't wait behind it. A folder you share tells you what it has left to get through, and you can pause that work." },
             { "type": "note", "text": "The consequence to keep in mind: the original file is the shared file. Move it, rename it, or delete it, and there is no second copy standing behind it. A folder whose source has gone is flagged **Folder is missing on disk** until you point Mirall at its new location." }
           ]
         },
@@ -1305,7 +1384,7 @@
             { "type": "p", "text": "When you mirror a shared folder to disk, you get a live copy that tracks the owner's folder. The owner is the single source of truth, which is why a mirror is **read-only**." },
             { "type": "p", "text": "If you change a file inside a mirror, the next sync restores it to the owner's version — your edit is discarded. This keeps every mirror faithful to the original. To work on a file, copy it out of the mirror folder first; to propose changes back, share them with the owner separately." },
             { "type": "p", "text": "A mirror only ever manages the files it put there. A file of your own that happens to sit in the same folder is left alone — including when the owner deletes the shared file it collided with. For the same reason, a mirror can't be placed directly on a top-level personal folder like Home, Desktop, Documents, or Downloads." },
-            { "type": "p", "text": "From the other side, a folder you own shows you who is mirroring it and whether each person is synced, still catching up, or paused — so you can tell whether the people who need your files actually have them." }
+            { "type": "p", "text": "Who has a folder is not a private fact about the owner's screen. Every folder names its owner and everyone keeping a live copy of it, each with whether they're synced, still catching up, or paused, and anyone in the folder can read it — so the owner can tell whether the people who need the files have them, and a mirrorer can tell whether they're the only one." }
           ]
         },
         {
@@ -1318,7 +1397,7 @@
               "**Files you've pulled** — downloads, and the contents of folders you mirror. These are ordinary files in ordinary folders that you chose. They're yours; Mirall doesn't reclaim them.",
               "**Mirall's own data** — the shared-file index, the app database (your spaces, members, and sync history), and the activity log. This is the **App Storage** figure in Settings → Storage."
             ] },
-            { "type": "p", "text": "Only the third is Mirall's to manage, and it stays small precisely because there's no second copy of your files inside it. Mirall tidies it as it goes; **Free up space** prompts it to compact things now and tells you what it recovered." },
+            { "type": "p", "text": "Only the third is Mirall's to manage, and it stays small precisely because there's no second copy of your files inside it. There is nothing to run and nothing to schedule: Mirall compacts its own records on a cadence it keeps across restarts, drops what a member left behind when they leave a space, and sweeps up what it no longer needs each time it starts." },
             { "type": "subheading", "text": "Where downloads land" },
             { "type": "p", "text": "Downloads go to the folder set in **Settings → Storage**, unless a space has been given one of its own — so there can be several download folders in play at once. Mirrors are separate again: each one lives at the location you chose when you set it up." },
             { "type": "p", "text": "Whichever folder you pick, it can't overlap a folder you share or mirror, in either direction. The reason is worth understanding rather than working around: Mirall publishes what's inside a shared folder, so a download landing there would be offered to your peers without you asking for it." }
@@ -1368,17 +1447,24 @@
     "releases": [
       {
         "version": "1.10.0",
-        "date": "2026-09-01",
+        "date": "2026-09-02",
         "sections": [
           {
             "heading": "Added",
             "items": [
-              "**Pause or stop a folder that is still being read.** A folder you share now offers Pause and Stop beside the count of what is left to read, and a paused folder says so and offers Resume."
+              "**One folder screen, whether you share the folder or mirror it.** The two used to show different things in different places. They are now the same screen — same tiles, same file list, same buttons where you left them — and only what you are allowed to do changes with your role.",
+              "**See who has the folder, and how each of them is doing.** A People tile names the owner and everyone mirroring the folder, with a ring around each face for in sync, still syncing, or paused, and the same thing spelled out in text beside it. Until now only a folder's owner could see any of this; now everyone does.",
+              "**The folder itself, at a glance.** Its size, how many files, how many of them are on your device, and a badge for what it is doing right now: up to date, adding, syncing, paused, missing, or browse-only.",
+              "**Filter a long folder.** A box above the file list narrows it as you type, says how many of the total matched, and clears in one click. It stays put while the folder works, so what you typed is never pushed off the screen.",
+              "**One band tells you what the folder is doing.** Adding files, syncing, paused, owner offline, source missing — it says which, counts down what is left, and carries the one button that helps: Pause, Resume or Locate.",
+              "**Rename a folder you share.** Edit Folder, in the header menu, gives it a new name for everyone who has it, while the folder on your own disk keeps the name you gave it there.",
+              "**Keep a mirrored folder somewhere else on your disk.** Edit Folder on a folder you mirror moves it — onto another drive, say. Files already at the new location are recognised and not downloaded a second time; only what is missing is fetched."
             ]
           },
           {
             "heading": "Changed",
             "items": [
+              "**Free up space is gone; Mirall keeps its own storage in order.** The action had little left to reclaim, and it could remove a file list it should have kept. What it did that still mattered happens on its own now: a member who leaves takes their leftovers with them, and Mirall tidies up as it starts. The Storage screen still shows what is using space.",
               "**Spaces made before v1.7.0 are no longer supported.** Every space Mirall creates or joins is encrypted now, and a space older than that release cannot be upgraded to it. Such a space is marked unsupported rather than left half-working: it stays visible, but you cannot share into it or invite anyone to it."
             ]
           },
@@ -1389,7 +1475,7 @@
               "**A file you add while a big folder is indexing no longer waits for it.** Each space hashes its own queue, smallest files first, so a file you drop in starts at once even while an index is running.",
               "**A space or file list that came up empty now loads.** Members you share many spaces with could be cut off after a reconnect, and a few offline members could stop the file list loading at all. Lists no longer flash \"nothing shared yet\" on the way in.",
               "**What a folder is still adding is reported properly, on both sides.** Your own view could stay empty for minutes on a large file, and members saw only the two or three files being hashed at that moment; a folder now names all the files and bytes it still has to read, on both screens. Indexing is no longer counted or labelled as a download, the bar no longer sits at full as though the file had finished, and removing a folder no longer reports its files as being added.",
-              "**An action cut short leaves less behind, and a stall gets noticed.** A cancelled or finished transfer could come back to life, a file could sit on \"Adding\" for good, unsharing could leave the share offered, and transfers running at quit never reached the Activity Log, and the disk space a space you had left went on using was never reclaimed. An error behind the scenes could leave Mirall quietly stuck with everything still on screen, and a folder you mirror could stop syncing until the next restart. Both are now spotted and picked back up on their own.",
+              "**An action cut short leaves less behind, and a stall gets noticed.** A cancelled or finished transfer could come back to life, a file could sit on \"Adding\" for good, unsharing could leave the share offered, transfers running at quit never reached the Activity Log, and the disk space a space you had left went on using was never reclaimed. An error behind the scenes could leave Mirall quietly stuck with everything still on screen, and a folder you mirror could stop syncing until the next restart. Both are now spotted and picked back up on their own.",
               "**Mirall asks less of your computer during transfers and in big folders.** Sending a file and keeping a mirrored folder in sync did work that grew with the folder, a reconnect started every waiting download at once, a running transfer redrew the whole list every second, opening a large folder read the same records thousands of times, and a listing you had navigated away from still ran to the end. All are bounded now, your own downloads go first, and a file row keeps up with its own progress and errors.",
               "**A session left running for days no longer gets heavier.** What Mirall held on to for the members it had met and the files it was serving kept growing, so a long session ended up slower than a fresh start."
             ]
