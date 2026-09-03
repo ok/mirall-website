@@ -1168,7 +1168,9 @@
             "**Command palette** — `Cmd/Ctrl + K` to search and jump to any space or run any action.",
             "**Profile** and the **Activity Log** have chords of their own — `Cmd/Ctrl + Shift + P` and `Cmd/Ctrl + Shift + L`.",
             "**Network status**, the individual **Settings** pages, **What's new**, **Send feedback** and the documentation have no key of their own and are reached from the command palette.",
-            "**Invite to this space**, **Edit Space**, **Add to Favorites**, **Manage storage** and **Leave this space** are in the command palette while a space is open."
+            "**Invite to this space**, **Edit Space**, **Add to Favorites**, **Manage storage** and **Leave this space** are in the command palette while a space is open.",
+            "**Open folder**, **Pause syncing** / **Resume syncing** and **Edit folder** are in the command palette while a folder is open, on a folder you share and one you mirror alike. Each entry names the folder it acts on, so the folder's own name finds it.",
+            "**Locate folder** replaces **Open folder** when a folder you share has lost its source, and a folder you're only browsing offers the one entry, **Mirror … to disk**. **Delete Folder** and **Unmount Mirror** are kept out of the palette — they stay in the folder's own header menu."
           ]
         },
         {
