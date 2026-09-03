@@ -29,6 +29,8 @@ It is not optional background — it encodes procedure and hard-won gotchas that
 - **Releases remove features, not just add them.** The single biggest trap: a release that deletes a feature silently leaves whole guides describing UI that no longer exists. Budget for deletions.
 - **Never ship a capability claim you haven't found in the app source.** Especially security claims. The playbook records the ones that were wrong.
 
+**Before changing visual design, read [`.claude/design-system.md`](.claude/design-system.md).** It is the spec the site was built to and still follows — the palette in it is the one live in `src/index.css`. The tokens are in the code; the rules that govern them are only here, and the load-bearing one is that boundaries are drawn with tonal shifts, never 1px borders.
+
 ## The app repo
 
 The source of truth for anything the docs assert is the app, at `/Users/oliver/Code/mirall/mirall-app`:
