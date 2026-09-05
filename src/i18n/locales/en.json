@@ -661,7 +661,7 @@
                   { "text": "Pick a location on your computer with **Browse…**, then click **Next: Preview** to see what will be downloaded." },
                   { "text": "Click **Start Mirroring**. Mirall downloads the contents and keeps them in sync as the owner makes changes." }
                 ] },
-                { "type": "note", "text": "A mirror is **read-only**. If you edit a file inside the mirror, Mirall restores it to the owner's version on the next sync. To keep your own edits, copy the file out of the mirror folder first." },
+                { "type": "note", "text": "A mirror is **read-only**. If you edit a file inside the mirror, the owner's version comes back at its own name on the next sync — and your edit is kept beside it, renamed to `name (conflicted copy).ext`. To work on a file without leaving a second copy in the folder, copy it out of the mirror first." },
                 { "type": "p", "text": "A mirror can't be placed directly on a top-level personal folder such as Home, Desktop, Documents, or Downloads. If the mirror's folder already holds a file of your own with the same name as a shared one, your file is left alone and the mirrored copy lands under a different name." }
               ],
               "image": { "src": "/docs-folder-mirror.webp", "alt": "Mirall's Mirror to Disk dialog, picking a location for a read-only copy that stays in sync with the owner's folder", "width": 1344, "height": 1165 }
@@ -678,7 +678,7 @@
                   "**Unmount Mirror** — stop mirroring entirely and remove the mirrored copy. The folder reverts to **Browse**."
                 ] },
                 { "type": "p", "text": "While the mirror is fetching, a band above the file list says what's left — **Syncing 4 files from Michael · 460 MB to fetch** — and carries the same **Pause**. The **Folder** tile reads **Syncing** until the last file lands, then **Up to date**." },
-                { "type": "note", "text": "If a write fails — a full disk, or a destination that's become read-only — the mirror pauses rather than erroring, and resumes once there's room." }
+                { "type": "note", "text": "If a write fails — a full disk, no permission, or a destination that's gone — the mirror stops instead of pressing on. It's badged **Problem**, the band above the file list reads **Syncing stopped** with the reason and a **Try again**, and it picks up on its own once the cause is fixed." }
               ],
               "image": { "src": "/docs-folder-mirrored.webp", "alt": "A mirrored folder in Mirall with every file marked “On your device” and confirmed by a green verified shield, and a Folder tile reading Up to date", "width": 1344, "height": 1165 },
               "related": [
@@ -1084,14 +1084,15 @@
               ["Browse", "A folder another member shares that you're looking through. Download individual files, or mirror the whole folder."],
               ["Mirrored", "A folder another member shares that you keep as a live, read-only copy on your disk. It stays in sync as the owner changes it."],
               ["Paused", "Work on this folder is held. Either a mirror whose syncing you've paused, or a folder you share whose adding you've paused. Nothing moves until you resume it."],
-              ["Folder is missing on disk", "A folder you share whose source folder has been moved or deleted. Point Mirall at its new location to reconnect it."]
+              ["Folder is missing on disk", "A folder you share whose source folder has been moved or deleted. Point Mirall at its new location to reconnect it."],
+              ["Problem", "Mirall can't get past something on this folder — no permission to read it, a full disk, or a destination that's gone. Open the folder for the reason and a **Try again**."]
             ]
           }
         },
         {
           "id": "folder-screen",
           "title": "The folder screen",
-          "intro": "Open a folder and you get one screen whatever your relationship to it — only what you can do with it changes. The header carries the folder's name, who owns it and which space it's in, then one main button (**Open Folder**, or **Mirror to Disk…** on a folder you're only browsing) and a **More** menu. Under that, a band appears whenever the folder is doing something and carries the one control that helps: **Pause**, **Resume**, or **Locate folder…**. Then the file list, with a filter and an **Expand all** / **Collapse all** toggle pinned above it, and two tiles beside it. **People** names the owner and everyone mirroring the folder, and closes with a line on what your own role lets you do. **Folder** gives its size, its file count, how many of those are on your device, and its status.",
+          "intro": "Open a folder and you get one screen whatever your relationship to it — only what you can do with it changes. The header carries the folder's name, who owns it and which space it's in, then one main button (**Open Folder**, or **Mirror to Disk…** on a folder you're only browsing) and a **More** menu. Under that, a band appears whenever the folder is doing something and carries the one control that helps: **Pause**, **Resume**, **Locate folder…**, or **Try again**. Then the file list, with a filter and an **Expand all** / **Collapse all** toggle pinned above it, and two tiles beside it. **People** names the owner and everyone mirroring the folder, carries the count of both in its heading, and folds away when you don't need it. **Folder** gives its size, its file count, how many of those are on your device, and its status.",
           "table": {
             "columns": ["Folder status", "Colour", "Meaning"],
             "rows": [
@@ -1100,6 +1101,7 @@
               ["Syncing", "Blue", "A folder you mirror is still fetching files from its owner."],
               ["Paused", "Yellow", "You've held the folder's work — the reading, on one you share; the fetching, on one you mirror."],
               ["Missing", "Yellow", "A folder you share whose source has moved or gone. Members still see the last synced version."],
+              ["Problem", "Red", "Mirall hit something it can't get past — no permission, a full disk, or a destination that's gone. The band names the reason and offers **Try again**. Owner and mirrorers both see it, and it clears once the cause is fixed."],
               ["Browse only", "Grey", "A folder someone else shares that you haven't mirrored. Download individual files, or mirror the whole thing."]
             ]
           },
@@ -1108,8 +1110,8 @@
         {
           "id": "space-sidebar",
           "title": "The space sidebar",
-          "intro": "Each space view has a sidebar with a Drop to Share zone plus two panels — Space Storage and Members — that you can collapse to fold away what you're not using. The Members panel also switches between a row of avatars and the full list, with **Show all** and **Show less**. Each space remembers its own arrangement for as long as Mirall is running, so folding a panel away in one space leaves the others as you had them. Quitting Mirall returns every space to the default — both panels open, members as avatars.",
-          "image": { "src": "/docs-sidebar-collapsible.webp", "alt": "A Mirall space sidebar with the Space Storage panel collapsed and the Members panel expanded", "width": 1344, "height": 1165 }
+          "intro": "Each space view has a sidebar with a Drop to Share zone and two panels. **Members** comes first, with a count beside its heading, and folds away when you don't need it; it also switches between a row of avatars and the full list, with **Show all** and **Show less**. **Space Storage** sits under it and always states its size. Each space remembers its own arrangement for as long as Mirall is running, so folding Members away in one space leaves the others as you had them. Quitting Mirall returns every space to the default — Members open, as avatars.",
+          "image": { "src": "/docs-sidebar-collapsible.webp", "alt": "A Mirall space sidebar with the Members panel folded to its heading and count, and the Space Storage panel below it stating the space's size", "width": 1344, "height": 1165 }
         },
         {
           "id": "file-folder-actions",
@@ -1384,7 +1386,7 @@
           "title": "Mirroring & the read-only model",
           "blocks": [
             { "type": "p", "text": "When you mirror a shared folder to disk, you get a live copy that tracks the owner's folder. The owner is the single source of truth, which is why a mirror is **read-only**." },
-            { "type": "p", "text": "If you change a file inside a mirror, the next sync restores it to the owner's version — your edit is discarded. This keeps every mirror faithful to the original. To work on a file, copy it out of the mirror folder first; to propose changes back, share them with the owner separately." },
+            { "type": "p", "text": "If you change a file inside a mirror, the next sync puts the owner's version back at its own name — that is what keeps every mirror faithful to the original. Your edit isn't destroyed to get there, though: Mirall moves it aside first, into the same folder as `name (conflicted copy).ext`. To work on a file without leaving a second copy behind, copy it out of the mirror first; to propose changes back, share them with the owner separately." },
             { "type": "p", "text": "A mirror only ever manages the files it put there. A file of your own that happens to sit in the same folder is left alone — including when the owner deletes the shared file it collided with. For the same reason, a mirror can't be placed directly on a top-level personal folder like Home, Desktop, Documents, or Downloads." },
             { "type": "p", "text": "Who has a folder is not a private fact about the owner's screen. Every folder names its owner and everyone keeping a live copy of it, each with whether they're synced, still catching up, or paused, and anyone in the folder can read it — so the owner can tell whether the people who need the files have them, and a mirrorer can tell whether they're the only one." }
           ]
@@ -1447,6 +1449,37 @@
     "heading": "What's new",
     "intro": "Notable changes you'll notice as a user. Internal refactors and build-pipeline tweaks are intentionally left out.",
     "releases": [
+      {
+        "version": "1.10.1",
+        "date": "2026-09-05",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "**Your edits inside a mirrored folder are kept.** Changing a file in a folder you mirror used to overwrite your version without warning. Mirall now saves it beside the owner's as a \"conflicted copy\".",
+              "**A folder that seems to have lost its files no longer deletes yours.** An incomplete file list from the owner could remove hundreds of files from your disk. A single pass may now never delete more than half of what you hold.",
+              "**A file shared from a network drive notices your edits again.** Files on a mounted network volume went on serving their old contents to everyone, with no error and no sign anything was wrong.",
+              "**Error messages say what went wrong, in your language.** Different problems shared one misleading message, and some appeared in English whichever language you use. Every error now has its own wording in all five.",
+              "**Two actions that failed silently.** Creating an invite could leave the button stuck on \"Creating…\" or hand you no link and no reason, and revealing a shared folder that has moved blamed a missing file instead.",
+              "**The Activity Log covers shared folders, and gets its details right.** Downloads from a shared folder were missing from it entirely, the \"granted access\" entry named nobody, and its file sizes read too low.",
+              "**Mirall tells you when it can't read a folder on your disk.** A permission problem, a full disk or a folder that has moved now shows on the folder itself — for its owner and for everyone mirroring it — and clears as soon as you fix the cause.",
+              "**A folder download that stalls now says so.** The progress bar simply stopped moving before, with no notification; only files shared on their own ever raised one.",
+              "**A space that freezes picks itself back up.** With members Mirall couldn't reach, the member list, join requests and folder list could all stop updating. It now notices and restarts just the part that stopped.",
+              "**Quitting mid-task no longer leaves a folder broken.** Closing Mirall while a shared folder was being created left one others could see but you couldn't remove; closing it while moving a mirrored folder made every member download the whole thing again.",
+              "**No screen invents a number it failed to read.** A failed read showed \"0 files\", or the default speed limit, instead of saying it couldn't load — and a speed limit that didn't save was never put back.",
+              "**Three mirroring annoyances.** A file saved under a second name was listed as missing, a change arriving during a folder's first scan was ignored until the next check, and downloading a file already on its way did nothing at all.",
+              "**Lighter while running, cleaner on quit.** Mirrored folders no longer start an unlimited number of downloads at once, spaces stop rebuilding their member list on unrelated traffic, and background work now stops when you do.",
+              "**Easier to read, and to hear.** The path under a folder was too faint to read in both themes, Storage settings showed \"Calculating storage…\" where a path belongs, and a file's status is now announced together with its name."
+            ]
+          },
+          {
+            "heading": "Security",
+            "items": [
+              "**Mirall's internal parts check what they send each other.** Messages between the window, the background process and the app's core could be corrupted without anything noticing, unknown commands were ignored rather than refused, and an unused internal route could set a watcher on any folder on your disk."
+            ]
+          }
+        ]
+      },
       {
         "version": "1.10.0",
         "date": "2026-09-02",
@@ -1608,6 +1641,33 @@
         ]
       },
       {
+        "version": "1.6.1",
+        "date": "2026-06-03",
+        "sections": [
+          {
+            "heading": "Added",
+            "items": [
+              "**Set how much space on-demand sharing keeps ready.** A new control in Storage settings caps the cache that \"on demand\" folders use to keep recently opened files instantly available — anywhere from 512 MB to 3 GB, with 1 GB as the default."
+            ]
+          },
+          {
+            "heading": "Changed",
+            "items": [
+              "**Sharing a large folder is now instant.** Previewing a folder before you share it no longer reads through every file first, so a folder with tens of gigabytes opens right away instead of stalling. The scan runs in the background with live progress and a cancel button, and very large folders show a summary instead of an endless file list."
+            ]
+          },
+          {
+            "heading": "Fixed",
+            "items": [
+              "**No more flickering scrollbar while a mirrored folder downloads.** A folder syncing in the background could briefly show a stray scrollbar over empty space that flickered as files arrived. The folder view now stays put.",
+              "**Smoother \"on demand\" sharing.** Serving a file on demand no longer freezes while someone is mirroring a large folder from you — recently served files are kept ready and disk is tidied up quietly in the background instead of all at once.",
+              "**Folders shared from Windows now sync reliably.** On some Windows drives, a shared folder recorded its internal file paths in a malformed form that broke revealing files on disk, on-demand serving, and mirror file counts — and could expose the owner's local folder path to other members. Paths are now stored correctly, and existing shares repair themselves automatically the next time they sync.",
+              "**Clearer wording in the Add Folder dialog.** When sharing your own folder, the preview no longer shows a confusing \"already at the destination\" count or a \"file list hidden\" note that didn't apply."
+            ]
+          }
+        ]
+      },
+      {
         "version": "1.6.0",
         "date": "2026-05-31",
         "sections": [
@@ -1749,6 +1809,56 @@
         ]
       },
       {
+        "version": "1.1.4",
+        "date": "2026-05-05",
+        "sections": [
+          {
+            "heading": "Changed",
+            "items": [
+              "Updates no longer restart the app on their own. A staged update is applied the next time you quit Mirall yourself, so restarts happen on your schedule."
+            ]
+          }
+        ]
+      },
+      {
+        "version": "1.1.3",
+        "date": "2026-05-04",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "A flapping connection no longer fires a stream of online/offline toasts — notifications are now deduplicated per peer."
+            ]
+          }
+        ]
+      },
+      {
+        "version": "1.1.2",
+        "date": "2026-05-04",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "Leaving a space now propagates to the rest of the mesh, so other members see the change without having to restart their app."
+            ]
+          }
+        ]
+      },
+      {
+        "version": "1.1.1",
+        "date": "2026-05-03",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "Windows: Mirall relaunches automatically after an update. Previously you had to reopen it from the Start menu after every update.",
+              "macOS: fixed a blank screen that could appear after an update was applied.",
+              "About screen: the build identifier next to the version no longer always reads \"(0.0)\" — it reflects the live update channel."
+            ]
+          }
+        ]
+      },
+      {
         "version": "1.1.0",
         "date": "2026-05-03",
         "sections": [
@@ -1763,6 +1873,42 @@
           { "heading": "Fixed", "items": [
             "**Screen reader support** — icon-only buttons and clickable rows now expose proper accessible names."
           ] }
+        ]
+      },
+      {
+        "version": "1.0.4",
+        "date": "2026-05-02",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "Windows: removed the blue accent ring Windows draws around Mirall's taskbar icon when the window is active."
+            ]
+          }
+        ]
+      },
+      {
+        "version": "1.0.3",
+        "date": "2026-05-02",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "Windows: refreshed app icon (no more generic default icon); icon refresh across all platforms."
+            ]
+          }
+        ]
+      },
+      {
+        "version": "1.0.2",
+        "date": "2026-05-01",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "Linux: the AppImage now integrates correctly with your desktop on first launch — entry in the app menu, icons in the system tray."
+            ]
+          }
         ]
       },
       {
