@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Check, Info, ArrowRight } from '@phosphor-icons/react'
-import type { Block, RelatedLink } from './content'
+import { Check, GithubLogo, Info, ArrowRight } from '@phosphor-icons/react'
+import type { Block, BulletIcon, RelatedLink } from './content'
 import { DOC_IMAGES, DOC_IMAGE_SIZES } from './images'
 
 // Docs content lives in the i18n locale JSON as plain data (see ./content.ts for
@@ -86,12 +86,16 @@ export function Steps({ items }: { items: Array<{ title?: string; text: string }
   )
 }
 
-export function Bullets({ items }: { items: string[] }) {
+export function Bullets({ items, icon }: { items: string[]; icon?: BulletIcon }) {
+  // `fill` rather than the check's `bold`: the mark is a logo, and at 20px a stroked version
+  // of it closes up into a blob.
+  const Marker = icon === 'github' ? GithubLogo : Check
+  const weight = icon === 'github' ? 'fill' : 'bold'
   return (
     <ul className="space-y-2 mb-6">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-3">
-          <Check size={20} weight="bold" className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
+          <Marker size={20} weight={weight} className="text-primary mt-0.5 shrink-0" aria-hidden="true" />
           <span className="text-on-surface-variant leading-relaxed">{renderInline(item)}</span>
         </li>
       ))}
@@ -263,7 +267,7 @@ export function DocBlocks({ blocks }: { blocks: Block[] }) {
           case 'note':
             return <Note key={i} text={block.text} />
           case 'bullets':
-            return <Bullets key={i} items={block.items} />
+            return <Bullets key={i} items={block.items} icon={block.icon} />
           case 'steps':
             return <Steps key={i} items={block.items} />
           case 'table':

@@ -91,7 +91,7 @@ All copy is data. Top-level relevant namespaces: `docs.*` and `changelog.*`.
 { type: "p",          text }
 { type: "subheading", text }
 { type: "note",       text }                       // callout box
-{ type: "bullets",    items: string[] }
+{ type: "bullets",    items: string[], icon?: "github" }  // `github` marks a list of repo links
 { type: "steps",      items: [{ title?, text }] }  // first steps block of a how-to → HowTo JSON-LD
 { type: "table",      columns: string[], rows: string[][] }
 { type: "image",      src, alt, width, height }
