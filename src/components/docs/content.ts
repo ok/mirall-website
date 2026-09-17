@@ -1,11 +1,16 @@
 // Shared docs content types + pure helpers. Kept free of JSX so component files
 // can stay component-only (react-refresh/only-export-components).
 
+// A bullet list's marker. The default check reads as "these are points"; `github` is for a
+// list whose every item leads to a repository, where the marker is the signal that clicking
+// leaves the documentation.
+export type BulletIcon = 'github'
+
 export type Block =
   | { type: 'p'; text: string }
   | { type: 'subheading'; text: string }
   | { type: 'note'; text: string }
-  | { type: 'bullets'; items: string[] }
+  | { type: 'bullets'; items: string[]; icon?: BulletIcon }
   | { type: 'steps'; items: Array<{ title?: string; text: string }> }
   | { type: 'table'; columns: string[]; rows: string[][] }
   | { type: 'image'; src: string; alt: string; width?: number; height?: number }
