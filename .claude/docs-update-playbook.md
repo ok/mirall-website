@@ -95,9 +95,10 @@ All copy is data. Top-level relevant namespaces: `docs.*` and `changelog.*`.
 { type: "steps",      items: [{ title?, text }] }  // first steps block of a how-to → HowTo JSON-LD
 { type: "table",      columns: string[], rows: string[][] }
 { type: "image",      src, alt, width, height }
+{ type: "code",       text, language? }            // copyable block, mono, no highlighting
 ```
 
-**Inline markup** inside any string: `**bold**` and `` `code` `` only. Escape JSON quotes as `\"`; prefer rephrasing over heavy escaping.
+**Inline markup** inside any string: `**bold**`, `` `code` `` and `[label](href)` — that is the whole set. A bare `http` href opens in a new tab; anything else routes through React Router. There is **no italic**: a single `*` renders as a literal asterisk. And **do not wrap a link in `**`** — the bold alternative wins the match and the whole `[label](href)` prints raw; a link already renders bold, so it needs nothing. Escape JSON quotes as `\"`; prefer rephrasing over heavy escaping.
 
 **Which pages render what — verify before you invent a field:**
 
@@ -148,6 +149,7 @@ page, unscrolled, with no error anywhere.
 | `/docs/guides` | `fix-a-stuck-join` |
 | `/docs/guides` | `share-files` |
 | `/docs/guides` | `share-a-folder` |
+| `/docs/guides` | `run-your-own-relay` |
 | `/docs/explanation` | `membership-approval` |
 | `/docs/explanation` | `spaces-members-availability` |
 
