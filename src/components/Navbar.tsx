@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { List, X } from '@phosphor-icons/react'
 import BrandLogo from './BrandLogo'
-import GithubMark from './GithubMark'
-import { GITHUB_URL } from '../lib/links'
+import SocialLinks from './SocialLinks'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -49,7 +48,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-2">
             <BrandLogo />
           </Link>
-          <div className="hidden md:flex items-center gap-8 font-body font-semibold tracking-tight">
+          <div className="hidden lg:flex items-center gap-8 font-body font-semibold tracking-tight">
             <HashLink className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/#features">
               {t('nav.features')}
             </HashLink>
@@ -59,21 +58,15 @@ export default function Navbar() {
             <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/docs">
               {t('docs.title')}
             </Link>
+            <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/support">
+              {t('support.title')}
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-3">
           {/* Muted and icon-only: Download is the page's one call to action, and a
               second high-contrast control beside it would compete with it. */}
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t('nav.githubAria')}
-            title={t('nav.githubAria')}
-            className="hidden md:flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors"
-          >
-            <GithubMark size={22} />
-          </a>
+          <SocialLinks className="hidden lg:flex items-center gap-1" />
           <Link
             to="/download"
             className="hero-gradient text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm ambient-shadow hover:scale-105 transition-transform"
@@ -82,7 +75,7 @@ export default function Navbar() {
           </Link>
           <button
             type="button"
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors"
+            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors"
             onClick={() => setMobileOpen(o => !o)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
@@ -95,7 +88,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="md:hidden border-t border-outline-variant/10"
+          className="lg:hidden border-t border-outline-variant/10"
           onClick={() => setMobileOpen(false)}
         >
           <div className="flex flex-col px-8 py-2 font-body font-semibold text-base">
@@ -111,17 +104,9 @@ export default function Navbar() {
             <Link className="py-3 text-slate-700 hover:text-emerald-500 transition-colors" to="/support">
               {t('support.title')}
             </Link>
-            {/* The header icon is desktop-only, so it would otherwise vanish here. */}
-            <a
-              className="py-3 flex items-center gap-2 text-slate-700 hover:text-emerald-500 transition-colors"
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GithubMark size={20} />
-              {t('nav.github')}
-            </a>
           </div>
+          {/* The header icons are desktop-only, so they would otherwise vanish here. */}
+          <SocialLinks className="flex justify-center gap-4 px-8 pt-2 pb-6" />
         </div>
       )}
     </header>
