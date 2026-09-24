@@ -2143,7 +2143,7 @@
   "privacy": {
     "label": "Legal",
     "title": "Privacy Policy",
-    "updated": "Last updated: July 12, 2026",
+    "updated": "Last updated: September 24, 2026",
     "intro": "Mirall is built so that we don't have your data — not as a promise, but as an architecture. Your files never pass through a server we control, because there is no such server. This policy sets out precisely what stays on your device, what necessarily leaves it, and the one case where you choose to send something to us.",
     "sections": [
       {
@@ -2175,7 +2175,7 @@
           { "type": "p", "text": "So that an update is available even when no other user happens to be online, we run one always-on peer of our own that carries the release drive. We should be plain about what that means: it is a machine we control, and like any device you connect to directly, it sees the IP address of the copies of Mirall that replicate from it." },
           { "type": "p", "text": "What it is not is an account system. It holds our published releases and nothing else — never your files, your spaces, or anything you share. It has no idea who you are, because Mirall never tells it: there is no identifier, no login, and no profile behind the connection. We do not use what it sees to build a picture of you, and we do not combine it with anything else." },
           { "type": "subheading", "text": "2.5 Connection relays" },
-          { "type": "p", "text": "Mirall never routes your connections through a relay. If a peer you connect to uses one, the network may still carry that connection through it — encrypted end to end, and unreadable to the relay. A relay cannot read your files, your file names, or your messages; it can observe that two devices are connected, when, and how much data passes. Mirall does not operate a connection relay and does not offer one on your behalf." }
+          { "type": "p", "text": "Mirall connects devices directly. A relay is entirely optional: Mirall uses one of yours only if you add it in Settings, and then normally only when a direct connection can't be made. Members you share with who have no relay of their own may use yours, and if a peer you connect to uses one, the network may carry that connection through it. Either way the connection is encrypted end to end, and unreadable to the relay. A relay cannot read your files, your file names, or your messages; it can observe that two devices are connected, when, and how much data passes. Mirall does not operate a connection relay and does not offer one on your behalf." }
         ]
       },
       {
@@ -2202,9 +2202,12 @@
           { "type": "p", "text": "They stay exactly where they are. Sharing a file doesn't move it, copy it, or import it into Mirall. Files you download from others are ordinary files, in the download folder you chose." },
           { "type": "subheading", "text": "4.2 Mirall's own records" },
           { "type": "p", "text": "Mirall keeps a record of your spaces, their members, the folders you mirror, and your transfers. That record is encrypted at rest with a key tied to your identity, so copying Mirall's data folder off your machine doesn't reveal it." },
-          { "type": "subheading", "text": "4.3 Your identity key" },
+          { "type": "subheading", "text": "4.3 The Activity Log" },
+          { "type": "p", "text": "Mirall keeps a log of what happens in your spaces and on this device's connection: who joined, left or was approved; which files and folders were shared, downloaded or mirrored, and by whom; requests Mirall refused; and when this device or a member went offline, came back, or connected through a relay. Each entry records the people involved, by name and identity key, the names of the space, file or folder, and when it happened." },
+          { "type": "p", "text": "The log stays on this device. It is never sent to other members or to us, and it is encrypted at rest along with Mirall's other records. Recording is on by default, and entries are deleted automatically after 90 days. **Settings → Activity Log** lets you turn recording off, keep entries for a different length of time, export the log to a file, or delete it." },
+          { "type": "subheading", "text": "4.4 Your identity key" },
           { "type": "p", "text": "Your signing key is wrapped using your operating system's secure keychain, and the plaintext is not kept in Mirall's storage. The **Profile** page tells you which protection is active on your machine." },
-          { "type": "note", "text": "To be exact about the limits of this: Mirall encrypts its own records, not your files. Your files are ordinary files on your disk, and what protects them on a lost or stolen device is your operating system's disk encryption, not Mirall." }
+          { "type": "note", "text": "To be exact about the limits of this: Mirall encrypts its own records, not your files. Your files are ordinary files on your disk, and what protects them on a lost or stolen device is your operating system's disk encryption, not Mirall. An exported Activity Log is an ordinary file too." }
         ]
       },
       {
@@ -2213,7 +2216,8 @@
         "blocks": [
           { "type": "p", "text": "Because your data is on your device, you don't have to ask us to delete it:" },
           { "type": "bullets", "items": [
-            "**Leave a space** and Mirall drops its records from your device.",
+            "**Leave a space** and Mirall drops its records from your device. Its entries in the Activity Log stay until they expire, or until you delete the log.",
+            "**Delete the Activity Log**, or stop recording it, from **Settings → Activity Log**.",
             "**Uninstall Mirall**, or delete its data folder, and everything it stored is gone. Your own files, your downloads, and any folder you mirrored are untouched — they're yours.",
             "**Stop sharing a file** whenever you like. Copies other members already downloaded stay on their devices; we have no way to reach into them, and neither do you."
           ] },
