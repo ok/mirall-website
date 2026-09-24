@@ -59,6 +59,9 @@ export default function Navbar() {
             <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/docs">
               {t('docs.title')}
             </Link>
+            <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/support">
+              {t('support.title')}
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-3">
