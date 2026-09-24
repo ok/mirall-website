@@ -5,8 +5,9 @@
     "features": "Features",
     "security": "Security",
     "download": "Download",
-    "github": "Mirall on GitHub",
-    "githubAria": "Mirall on GitHub"
+    "githubAria": "Mirall on GitHub",
+    "instagramAria": "Mirall on Instagram",
+    "xAria": "Mirall on X"
   },
   "hero": {
     "label": "Secure Data Transfer",
