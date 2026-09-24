@@ -1574,6 +1574,41 @@
     "intro": "Notable changes you'll notice as a user. Internal refactors and build-pipeline tweaks are intentionally left out.",
     "releases": [
       {
+        "version": "1.11.1",
+        "date": "2026-09-24",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "**Turning off \"Prefer the relay for every connection\" now takes effect straight away.** Connections already going through the relay stayed on it until you restarted Mirall. They now switch to a direct connection where one works, after any transfer in progress finishes.",
+              "**Replacing your relay moves existing connections to the new one.** Connections made through the old relay kept using it, with no notice.",
+              "**With your relay turned off, another member's relay is no longer shown as yours.** Network Status and the Activity Log called it \"your relay\", and every change to your relay settings reconnected it, only for it to come straight back. Relay settings now name the members whose own relay still connects you, since turning yours off does not end theirs.",
+              "**Notices that wait for you no longer disappear when others arrive.** A notice that stays until you act on it — someone asking to join your space, a declined request, being offline, or a missing download folder — could be pushed off the screen by a few newer notices in a row. It now stays until you close it or it no longer applies.",
+              "**Downloads into a folder Mirall can't write to no longer retry endlessly.** A download into a read-only folder or drive used to fail again every time the sharer reconnected. It now shows \"Permission denied\" until you fix the folder; then it resumes on its own, or you can press Retry.",
+              "**A download stopped by a full disk or a missing drive picks up again by itself.** Freeing space, reconnecting the drive or choosing another download folder for the space did nothing until you pressed Retry. The download now resumes on its own while the sharer is online. A download that stopped on a full disk before this update still needs one Retry.",
+              "**A partly downloaded file keeps its Discard button when the sharer goes offline.** If the sharer edited the file and went offline before Mirall had re-checked it, the row read \"Not available\" with no actions, and the partial download stayed on disk. It now reads \"Owner offline\" with Discard Partial, like files in a folder.",
+              "**Files two people share under the same name no longer borrow each other's status.** Your paused download of one person's copy also showed on the other person's copy, with its own Resume and Discard.",
+              "**One damaged folder share no longer stops your other shares from being served after a restart.** Everyone could still see the files, but their downloads stalled.",
+              "**A file you edit inside a mirrored folder is marked \"Edited locally\".** An edit that didn't change the file's size still showed as synced, with a \"content hash matches\" badge that nothing had actually checked. Edited files now say so, and explain that the shared version will be restored and your edit kept as a conflicted copy.",
+              "**An edit inside a mirrored folder is undone promptly.** Mirall promises to restore the owner's version, but it could take up to five minutes. It now notices within seconds. A file you delete from a mirror comes back the same way.",
+              "**A mirror you pause stays paused.** Pausing one while it was still scanning could leave it running but showing \"Active\", and it could start itself again later. Moving a mirror's folder while it was working could also leave stray duplicate copies behind.",
+              "**A file deleted from a mirror while the owner was offline is restored** when they come back, instead of staying missing.",
+              "**A file you are still indexing no longer hides the people waiting for it.** Mirall lists a large file or folder before it has finished indexing it, and anyone who clicks it waits — but nothing on your side showed that, in exactly the window where quitting strands them. The row now shows their avatars and \"N waiting\" while it indexes.",
+              "**A burst of download problems is now one notification, not one per file.** A folder downloading into a full disk, a read-only folder or a missing download folder raised a separate system notification for every file in it, and completed or paused folder downloads did the same. Mirall now sends a single notification that counts the files.",
+              "**Denying someone who has already been approved says what happened.** The button silently cleared the request, leaving you to believe you had removed someone who still had access. It now tells you they have already been approved.",
+              "**Joining a space no longer stalls on members who are offline.** Each unreachable member was checked in turn, adding several seconds each, so a space with a few offline members could leave you waiting. They are now checked at once.",
+              "**The Activity Log stops losing entries.** Someone joining, \"downloaded from you\", a withdrawn approval and a join request could all go missing if Mirall couldn't write the entry on the first try. Entries are now retried, and entries still being written when you quit are finished first.",
+              "**Starting to use a relay from an invite no longer reloads the window.** Pressing Reconnect now after adding or replacing a relay with an invite reloaded the whole of Mirall's window. It now reconnects while you stay where you are.",
+              "**Failed actions now say so.** If saving your profile, deleting the Activity Log or turning on detailed logging didn't work, Mirall could stay stuck on \"Saving…\", close the dialog as if it had worked, or say logging was on when it wasn't. Copy buttons could also say \"Copied!\" when nothing was copied, and picking a picture Mirall couldn't read as your avatar did nothing. Mirall now tells you what went wrong and lets you try again.",
+              "**Settings no longer show a change that wasn't saved.** The theme, language, zoom, tray, login, notification and Activity Log switches were set without checking the result, so a refused save left the switch showing the new value. They now revert and tell you.",
+              "**Deleting a folder share that fails keeps the dialog open** instead of closing as though the folder were gone.",
+              "**Reconnecting too soon says so.** Pressing Reconnect within the cool-down quietly did nothing, and made a pending relay change look applied. It now explains, and keeps the change pending.",
+              "**A transfer limit that can't take effect until restart says so**, instead of showing the new limit while Mirall kept using the old one."
+            ]
+          }
+        ]
+      },
+      {
         "version": "1.11.0",
         "date": "2026-09-17",
         "sections": [
