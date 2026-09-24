@@ -86,7 +86,7 @@
       },
       {
         "question": "Is it really encrypted?",
-        "answer": "Yes. Every connection between devices is end-to-end encrypted, so nobody can see your files or metadata in transit, and there's no central server that could be breached. On your own device, Mirall's records are encrypted at rest and your identity key is wrapped using your operating system's keychain, so copying Mirall's data folder gives up neither."
+        "answer": "Yes. Every connection between devices is end-to-end encrypted, so nobody in between can see your files, their names, or what's in your spaces, and there's no central server that could be breached. On your own device, Mirall's records are encrypted at rest and your identity key is wrapped using your operating system's keychain, so copying Mirall's data folder gives up neither."
       },
       {
         "question": "How do I invite someone to a space?",
@@ -218,7 +218,7 @@
         },
         {
           "symptom": "A large download stopped part-way",
-          "check": "Nothing is lost. A transfer picks up where it stopped as soon as you're both back online, and you can pause and resume it by hand.",
+          "check": "Nothing is lost. A transfer picks up where it stopped as soon as you're both back online, and you can pause and resume it by hand. If the row names a local problem — **Disk full**, **Permission denied**, or **Download folder unavailable** — fix that and the download usually starts again on its own.",
           "linkLabel": "Pause, resume, cancel, or retry a transfer",
           "to": "/docs/guides#manage-a-transfer"
         },
@@ -230,9 +230,15 @@
         },
         {
           "symptom": "Downloads fail because the download folder is unavailable",
-          "check": "Mirall can't reach the folder it saves into — usually an external drive or a network share that went away. Reconnect it, or choose another folder.",
+          "check": "Mirall can't reach the folder it saves into — usually an external drive or a network share that went away. Reconnect it, or choose another folder, and the waiting downloads resume on their own while the sharer is online.",
           "linkLabel": "Choose where downloads go",
           "to": "/docs/guides#set-download-folder"
+        },
+        {
+          "symptom": "Mirall shows “Mirall needs to be restarted” or “Mirall's background service stopped”",
+          "check": "The part of Mirall that runs in the background couldn't keep going. Quit Mirall completely and open it again. If “needs to be restarted” keeps coming back, reinstall the latest version.",
+          "linkLabel": "Update Mirall",
+          "to": "/docs/guides#update-mirall"
         }
       ]
     },
@@ -349,7 +355,7 @@
               { "title": "Check the preview", "text": "Click **Next: Preview**. Mirall scans the folder in the background and shows you what it's about to share — how many files and how large. Click **Add Folder** to confirm." },
               { "title": "Watch it publish", "text": "Mirall starts offering the folder's files to the space, serving them straight from the originals on your disk. From now on, when you add, edit, or remove files in that folder on your computer, the change syncs to the space on its own." },
               { "title": "Have a member mirror it", "text": "Another member opens the shared folder. They can **browse** it — open subfolders and download individual files — or use **Mirror to Disk…** to keep a live, always-up-to-date copy in a folder of their choosing." },
-              { "title": "Watch it stay in sync", "text": "Change a file in your shared folder. On the mirroring member's computer, the mirror updates to match. The mirror is **read-only**: if they edit a mirrored file, it's restored to your version on the next sync." }
+              { "title": "Watch it stay in sync", "text": "Change a file in your shared folder. On the mirroring member's computer, the mirror updates to match. The mirror is **read-only**: if they edit a mirrored file, it's restored to your version within seconds, and their edit is kept beside it as a conflicted copy." }
             ] },
             { "type": "image", "src": "/docs-add-folder.webp", "alt": "Mirall's Add Folder dialog with a folder path, a share name field, and a Next: Preview button", "width": 1344, "height": 1165 },
             { "type": "image", "src": "/docs-space-folder.webp", "alt": "A Mirall space with a shared Production Footage folder card marked “Shared by you”", "width": 1344, "height": 1165 },
@@ -399,6 +405,7 @@
                   { "text": "Click **Join Space**." }
                 ] },
                 { "type": "p", "text": "Unless the invite was set to auto-approve, joining is a **request**: your screen reads **Waiting to be let into** the space until an existing member approves you. You can leave the window open — you'll be admitted automatically as soon as a member is online, and you don't need to be online at the moment they approve. Until then the space's contents stay closed to you, and the only action available is **Cancel request**." },
+                { "type": "p", "text": "If a member turns you away, a notice reads **Your request to join <space> was declined**, and it stays until you close it." },
                 { "type": "p", "text": "Once someone approves you, the space opens and its files appear. If the invite had **auto-approve** turned on, nobody has to decide — you are let in as soon as your device reaches a member of the space." },
                 { "type": "note", "text": "An invite link has an expiry. If yours has lapsed, Mirall tells you the link has expired — ask the person who sent it for a new one." }
               ],
@@ -435,7 +442,8 @@
                 { "type": "p", "text": "A banner appears at the top of the space reading **“<name> wants to join”**, with **Approve** and **Deny** beside it. Approving hands them the key to the space's contents; denying turns them away." },
                 { "type": "p", "text": "When several people are waiting, the banner collapses into a stack of avatars and a count — **“3 people want to join”** — with a **Review** button. That opens **Requests to join**, where you can tick individuals and **Approve selected**, take everyone at once with **Approve all**, or deny someone from their row." },
                 { "type": "p", "text": "Requests reach you in three places: the banner inside the space, a notice in the app with a **Review** button that takes you there, and a **“1 waiting”** pill on that space's tile in the Shared Spaces overview. The notice only appears while Mirall's window is open — there is no desktop notification for join requests, so one that arrives while the window is closed waits for you inside the space." },
-                { "type": "note", "text": "A request only needs handling once. As soon as any member approves or denies someone, the banner clears for everyone else in the space." }
+                { "type": "p", "text": "The notice for a request stays up until you close it or the request is settled — newer notices don't push it off the screen." },
+                { "type": "note", "text": "A request only needs handling once. As soon as any member approves or denies someone, the banner clears for everyone else in the space. An approval can't be taken back: if you deny someone another member has already let in, Mirall tells you **<name> has already been approved** and they keep their access." }
               ],
               "image": { "src": "/docs-approval-review.webp", "alt": "Mirall's “Requests to join” dialog listing people waiting to join, with Approve selected and Approve all buttons", "width": 1344, "height": 1165 },
               "related": [
@@ -534,9 +542,10 @@
                   "**Pause Download** — stop a running download. Its progress is kept, so resuming costs you nothing.",
                   "**Cancel** — stop a running download outright and throw away what's been received.",
                   "**Resume** — continue a paused download from where it stopped.",
-                  "**Discard Partial** — throw away a download that's paused or stalled and free the space it was using.",
+                  "**Discard Partial** — throw away a download that's paused or stalled and free the space it was using. A partly downloaded file whose owner is offline keeps this button.",
                   "**Retry** — reattempt a download that ended in an error; **Dismiss** clears the failed row instead."
                 ] },
+                { "type": "p", "text": "Some failures are on your side, and the row names them: **Disk full**, **Permission denied** when Mirall can't write to the download folder, or **Download folder unavailable**. Mirall stops retrying those until you fix the cause, then starts the download again on its own while the sharer is online. A full disk is the one exception: if the disk filled up partway through writing, free some space and press **Retry**." },
                 { "type": "note", "text": "In-progress downloads are written to a `.mirall.part` file and renamed to their real name only when the transfer completes — an interrupted transfer can't leave a half-written file under its final name." },
                 { "type": "p", "text": "A mirrored folder has no per-file download controls. To hold or stop everything a folder is pulling, use the mirror's own **Pause syncing**, **Resume syncing**, and **Unmount Mirror** actions, or the **Pause** in the band above its file list." }
               ],
@@ -551,6 +560,7 @@
               "blocks": [
                 { "type": "p", "text": "While someone downloads a file you've shared, their avatar appears on that file's row, along with a combined progress bar, the transfer speed, and an estimate of the time remaining. If several people are downloading at once, their avatars stack up with a count." },
                 { "type": "p", "text": "Click the row's indicator to expand it. You'll see each person individually — their name, how far along they are, their own speed, and their own time remaining. Someone who has paused shows as **Paused**; someone who has dropped offline mid-transfer shows as **Waiting**." },
+                { "type": "p", "text": "People can ask for a file before you've finished indexing it. While the indexing bar is showing, their avatars sit beside it with a count — **2 waiting** — and each of them reads **Waiting for indexing** in the expanded list. Quitting Mirall at that point leaves them waiting until you're back." },
                 { "type": "note", "text": "This works for loose files in a space and for files inside a folder you share. It only appears on files you own — you don't see other people's downloads from other people." }
               ],
               "image": { "src": "/docs-peer-downloads.webp", "alt": "A shared file in Mirall expanded to show each person downloading it, with their avatar, progress, speed, and time remaining", "width": 1344, "height": 1165 }
@@ -662,7 +672,7 @@
                   { "text": "Pick a location on your computer with **Browse…**, then click **Next: Preview** to see what will be downloaded. The preview gives the folder's file count and size, what will land on your disk, and anything already at the destination." },
                   { "text": "Click **Start Mirroring**. Mirall downloads the contents and keeps them in sync as the owner makes changes." }
                 ] },
-                { "type": "note", "text": "A mirror is **read-only**. If you edit a file inside the mirror, the owner's version comes back at its own name on the next sync — and your edit is kept beside it, renamed to `name (conflicted copy).ext`. To work on a file without leaving a second copy in the folder, copy it out of the mirror first." },
+                { "type": "note", "text": "A mirror is **read-only**. If you edit a file inside the mirror, it reads **Edited locally** and the owner's version comes back at its own name within seconds — your edit is kept beside it, renamed to `name (conflicted copy).ext`. A file you delete from a mirror is fetched back the same way. To work on a file without leaving a second copy in the folder, copy it out of the mirror first." },
                 { "type": "p", "text": "A mirror can't be placed directly on a top-level personal folder such as Home, Desktop, Documents, or Downloads. If the mirror's folder already holds a file of your own with the same name as a shared one, your file is left alone and the mirrored copy lands under a different name." },
                 { "type": "note", "text": "If the owner's folder holds more than 5,000 files, the preview says so before you commit — **This folder has 6,200 files, above the 5,000-file limit**. You can still go ahead: mirroring works and every file syncs, but the file list only ever shows the first 5,000. The same line appears above the file list afterwards." }
               ],
@@ -745,7 +755,7 @@
               "id": "set-download-folder",
               "title": "Choose where downloads go",
               "blocks": [
-                { "type": "p", "text": "Open **Settings → Storage**. The **Download Folder** section at the top shows where downloads land; **Change…** opens your OS picker. This is the folder every space uses unless it has one of its own, and the choice persists across restarts. It defaults to your OS Downloads folder." },
+                { "type": "p", "text": "Open **Settings → Storage**. The **Download Folder** section at the top shows where downloads land; **Change** opens your OS picker. This is the folder every space uses unless it has one of its own, and the choice persists across restarts. It defaults to your OS Downloads folder." },
                 { "type": "p", "text": "Not every folder can be used. If the one you pick sits inside — or contains — a folder you share or mirror, Mirall refuses it, because anything downloaded there would be published to your peers. A folder that doesn't exist, or that Mirall can't write to, is refused too. Mirall never creates the folder for you." },
                 { "type": "p", "text": "Mirall keeps checking that the folder is still reachable. If it goes away — an ejected drive, a network share that dropped, a folder you deleted or renamed — a warning appears here and downloads stop rather than failing one by one." },
                 { "type": "note", "text": "Changing this folder doesn't move files you've already downloaded, and it leaves spaces that have set their own download folder alone." }
@@ -762,7 +772,7 @@
               "blocks": [
                 { "type": "steps", "items": [
                   { "text": "Open the space, click **More** in the header, and choose **Edit Space**." },
-                  { "text": "Under **Download Folder**, click **Change…** and pick a folder." },
+                  { "text": "Under **Download Folder**, click **Change** and pick a folder." },
                   { "text": "Click **Save Changes**. Closing the dialog without saving discards the change." }
                 ] },
                 { "type": "p", "text": "A space you leave alone keeps using the folder from **Settings → Storage**, and the dialog says so: **Using the default download folder**. Once a space has its own, a **Use default folder** button appears to put it back." },
@@ -798,8 +808,8 @@
               "intro": "An ejected external drive, a network share that dropped, or a folder that was deleted or renamed leaves Mirall with nowhere to put a download.",
               "blocks": [
                 { "type": "p", "text": "Rather than failing each download with a generic error, Mirall names the folder as the problem. A notification stays up for as long as the folder is unreachable and carries a **Change folder** action, and **Settings → Storage** shows the same warning under the download folder." },
-                { "type": "p", "text": "Reconnect the drive or remount the share and the warning clears on its own. If the folder is gone for good, use **Change folder** on the notification — or **Change…** in **Settings → Storage** — and pick another one." },
-                { "type": "p", "text": "Downloads heading for a folder that isn't there stop retrying instead of hammering it, and Mirall never quietly recreates a folder you deleted. Start them again once the folder is back." },
+                { "type": "p", "text": "Reconnect the drive or remount the share and the warning clears on its own. If the folder is gone for good, use **Change folder** on the notification — or **Change** in **Settings → Storage** — and pick another one." },
+                { "type": "p", "text": "Downloads heading for a folder that isn't there stop retrying instead of hammering it, and Mirall never quietly recreates a folder you deleted. Once the folder is back, or you choose another one, they resume on their own while the sharer is online — or press **Retry** to start one straight away." },
                 { "type": "note", "text": "A space with its own download folder is checked the same way, so the warning can name a folder other than the one in **Settings → Storage**." }
               ],
               "related": [
@@ -889,13 +899,15 @@
                 { "type": "subheading", "text": "When the relay is used" },
                 { "type": "bullets", "items": [
                   "**Use a relay** — switched on when you add one. Mirall reaches for the relay only when a direct connection cannot be made, so on a network that already works it costs nothing.",
-                  "**Route everything through the relay** — every connection goes through it, even when a direct one would work. It is there to prove a relay works; leave it off for everyday use, because it is slower."
+                  "**Prefer the relay for every connection** — asks for the relay on every connection, not only when a direct one fails. A direct path can still win, because Mirall keeps looking for one underneath. It is there to prove a relay works; leave it off for everyday use, because it is slower."
                 ] },
-                { "type": "p", "text": "Turning **Use a relay** off leaves the relay configured but out of use. The row dims and is badged **Disabled**, and its menu stays live so you can still test, replace or remove it." },
+                { "type": "p", "text": "Turning **Use a relay** off leaves the relay configured but out of use. The row dims and is badged **Disabled**; **Test** is unavailable until you turn it back on, but you can still replace or remove it." },
+                { "type": "p", "text": "Turning yours off doesn't stop another member's relay. If someone with an open relay of their own is still connected to you through it, the section names them — that is their setting, and yours doesn't change it." },
+                { "type": "p", "text": "A change to your relay applies to new connections straight away, and Mirall moves the existing ones over itself when nothing is transferring. If a transfer is running, a notice in **Settings → Network** and on **Network status** says which connections are still on the old path, with a **Reconnect now** button to move them." },
                 { "type": "subheading", "text": "Test, replace, remove" },
                 { "type": "p", "text": "The row's **⋮** menu holds **Test**, **Replace** and **Remove**. **Test** dials the relay and waits for it to answer **as a relay** — reaching the machine is not enough to pass." },
                 { "type": "note", "text": "An invite to a private relay is stored **only on this device**, and removing or replacing one erases it. Going back to that relay then needs a fresh invite from whoever runs it, which is why both acts ask you to confirm. An open relay's key can simply be pasted again, so **Remove** on one of those just removes it." },
-                { "type": "p", "text": "A private-relay invite takes effect only once Mirall reconnects: it changes the identity this device presents, and that is fixed while the app is running. Until then the section carries a notice with a **Reconnect now** button, and the relay honestly reads **Unreachable** — because it really will not admit you yet." },
+                { "type": "p", "text": "A private-relay invite takes effect only once Mirall reconnects: it changes the identity this device presents, and that is fixed while the app is running. Until then the section carries a notice with a **Reconnect now** button, and **Test** is unavailable, because the relay will not admit you yet." },
                 { "type": "subheading", "text": "What the operator can see" },
                 { "type": "p", "text": "Your files stay encrypted end to end; the relay forwards them and cannot read them. What whoever runs it can see is that you are online and which keys you are connected to — never what you send. Use a relay run by someone you have reason to trust, or run your own." }
               ],
@@ -1071,8 +1083,9 @@
                   "**Someone goes offline** — a member of one of your spaces disconnects.",
                   "**Download finished** — a file you're receiving has finished downloading.",
                   "**Download failed** — a download could not be completed.",
-                  "**Download paused** — a download paused because the sender went offline."
+                  "**Download paused** — a download paused because the sender went offline or the transfer was interrupted."
                 ] },
+                { "type": "p", "text": "A burst of downloads finishing, failing or pausing in one space arrives as a single notification that counts the files — **3 files — Disk full** — rather than one per file." },
                 { "type": "note", "text": "Requests to join a space always surface in the app itself, as a banner on the space and a notice you can act on. They don't depend on these settings." }
               ]
             },
@@ -1083,7 +1096,7 @@
               "blocks": [
                 { "type": "p", "text": "Open **Settings → Network**. Under **Transfer limits** there's a row for **Download** and one for **Upload**, each offering **Unlimited**, **1 MB/s**, **5 MB/s**, **25 MB/s**, or **Custom**. Both start out unlimited." },
                 { "type": "p", "text": "**Custom** reveals a box where you type a figure in kilobytes per second — a plain number, no units to pick. Enter `0` for no limit. Anything below 32 KB/s is rounded up to it, and Mirall tells you so." },
-                { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect." },
+                { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect. If Mirall can't apply it straight away, it keeps the new limit and says **Saved. The new limit takes effect after Mirall restarts.**" },
                 { "type": "note", "text": "A limit is a **total, not a figure per transfer**. Two downloads running under a 5 MB/s cap get roughly half each rather than 5 MB/s apiece, and serving several people at once splits one upload cap between them." }
               ],
               "image": { "src": "/docs-settings-network.webp", "alt": "Mirall's Network settings showing Transfer limits at the top, with separate Download and Upload rows offering Unlimited, 1 MB/s, 5 MB/s, 25 MB/s, or a custom figure", "width": 1344, "height": 1165 },
@@ -1151,9 +1164,10 @@
               ["Preparing…", "Blue", "The owner is still indexing this file. You can watch their progress while you wait."],
               ["Adding", "Blue", "A file you just added is being indexed so other members can fetch it."],
               ["Paused", "Yellow", "A download stopped — because you paused it, or because it was interrupted. Resume to continue."],
-              ["Failed", "Red", "A transfer errored out. Retry to try again, or dismiss it."],
+              ["Edited locally", "Yellow", "The copy on your device changed after it was downloaded and verified. In a mirror, the owner's version is restored and your edit kept as a conflicted copy."],
+              ["Failed", "Red", "A transfer errored out, and the row says why. **Disk full**, **Permission denied** and **Download folder unavailable** clear on their own once you fix the cause; otherwise Retry to try again, or dismiss it."],
               ["Available", "Grey", "The member who shared this file is online, so you can pull it. Click download."],
-              ["Owner offline", "Grey", "The member who shared this file is offline. The download resumes on its own once they're back."],
+              ["Owner offline", "Grey", "The member who shared this file is offline. The download resumes on its own once they're back, and a partly downloaded file keeps **Discard Partial**."],
               ["Not available", "Grey", "The file can't be obtained right now."]
             ]
           }
@@ -1161,7 +1175,7 @@
         {
           "id": "verified-files",
           "title": "The verified shield",
-          "intro": "A green shield next to a finished download means Mirall checked the file's contents against the owner's original and they match exactly. It appears only on a completed download, never on a file you shared yourself."
+          "intro": "A green shield next to a finished download means Mirall checked the file's contents against the owner's original and they match exactly. It appears only on a completed download, never on a file you shared yourself, and it comes off once the copy on your device changes — the file then reads **Edited locally**."
         },
         {
           "id": "folder-types",
@@ -1201,7 +1215,7 @@
         {
           "id": "space-sidebar",
           "title": "The space sidebar",
-          "intro": "Each space view has a sidebar with a Drop to Share zone and two panels. **Members** comes first, with a count beside its heading, and folds away when you don't need it; it also switches between a row of avatars and the full list, with **Show all** and **Show less**. **Space Storage** sits under it and always states its size. Each space remembers its own arrangement for as long as Mirall is running, so folding Members away in one space leaves the others as you had them. Quitting Mirall returns every space to the default — Members open, as avatars.",
+          "intro": "Each space view has a sidebar with a Drop to Share zone and two panels. **Members** comes first, with a count beside its heading, and folds away when you don't need it; it also switches between a row of avatars and the full list, with **Show all** and **Show less**. Each member reads **Online**, **Online · via relay** when you reach them through a relay, or **Offline**. **Space Storage** sits under it and always states its size. Each space remembers its own arrangement for as long as Mirall is running, so folding Members away in one space leaves the others as you had them. Quitting Mirall returns every space to the default — Members open, as avatars.",
           "image": { "src": "/docs-sidebar-collapsible.webp", "alt": "A Mirall space sidebar with the Members panel folded to its heading and count, and the Space Storage panel below it stating the space's size", "width": 1344, "height": 1165 }
         },
         {
@@ -1235,6 +1249,9 @@
             "rows": [
               ["⌘K", "Ctrl-K", "Open the command palette"],
               ["⌘/", "Ctrl-/", "Show all keyboard shortcuts"],
+              ["Enter", "Enter", "Confirm a dialog"],
+              ["⌘Enter", "Ctrl-Enter", "Confirm from a text box"],
+              ["Esc", "Esc", "Dismiss a dialog"],
               ["⌘←", "Ctrl-←", "Go back to the previous screen"],
               ["⌘⇧H", "Ctrl-H", "Jump to your Shared Spaces"],
               ["⌘1 – ⌘9", "Ctrl-1 – Ctrl-9", "Jump to a space by number — the first nine in your list"],
@@ -1313,7 +1330,8 @@
               ["Headline", "Checking your connection…", "Mirall is still working out how this network behaves. Normal for a few seconds after launch and after waking from sleep."],
               ["Headline", "Limited connection", "Connections to many people will fail on this network. A mobile router or phone tethering is the usual cause."],
               ["Headline", "Mirall can't reach other people", "Mirall found other people but couldn't connect to any of them. Invites and shares won't arrive while this is the case."],
-              ["Headline", "Reconnect", "Sits beside any headline other than healthy, and makes Mirall try again straight away instead of waiting for the next automatic attempt."],
+              ["Headline", "Reconnect", "Sits beside any headline other than healthy, and makes Mirall try again straight away instead of waiting for the next automatic attempt. Pressed again within a few seconds, it says **Mirall reconnected moments ago** instead."],
+              ["Headline", "Reconnect now", "Appears after a relay change while some connections are still on the old path. Moves them over."],
               ["Suggestions", "Your operating system reports no internet connection", "This device has no network at all. Shown on its own — nothing else applies."],
               ["Suggestions", "Couldn't determine your public IP", "Mirall can't work out how it appears to the rest of the network, so other people have no way to reach you."],
               ["Suggestions", "Your connection uses changing ports", "Your network hands out a different port every time Mirall reaches out, so connections to many people fail. No router setting fixes this one."],
@@ -1323,10 +1341,10 @@
               ["Connection summary", "Reachable from outside", "**Yes**, or the reason why not: your network uses changing ports, or Mirall can't tell how you appear to others."],
               ["Connection summary", "Connection test", "Mirall's own check against a device it knows should answer: **Passed**, **Failed**, **Test server unavailable**, **Not run**, or **Running…**, with when it last ran. A failure alone is never taken as proof your network is at fault."],
               ["Connection summary", "People", "How many other devices Mirall has found, and how many of those it is connected to."],
-              ["Connection summary", "Relay", "**Off** when no relay is in use, **Not in use** when one is configured and nothing has needed it, or **Used for 2 of 5 people** when one is carrying connections right now."],
+              ["Connection summary", "Relay", "**Used for 2 of 5 people** when a relay is carrying connections right now — yours, or another member's while yours is off. Otherwise **Not in use** when yours is on and nothing has needed it, or **Off**."],
               ["Connection summary", "Running for", "How long this copy of Mirall has been up."],
               ["Connection summary", "Connection history", "Opens your activity log filtered to connection events."],
-              ["Relayed connections", "Relay", "The masked key of the relay carrying the connection, with **Reveal** and a copy button. Its badge reads **Open relay** or **Private relay** when it is the one you configured, or **Relay provided by Sarah** when someone else's relay is carrying you."],
+              ["Relayed connections", "Relay", "The masked key of the relay carrying the connection, with **Reveal** and a copy button. Its badge reads **Open relay** or **Private relay** when it is the one you configured, or **Provided by Sarah** when someone else's relay is carrying you."],
               ["Relayed connections", "People", "Who is on the other end of each relayed connection, and whether it carries **chat**, **files**, or **chat and files**. One person on their own also gets how long it has been relayed."],
               ["Troubleshooting", "Diagnostics", "Opens the Diagnostics screen — saving a file that describes how your network behaves."],
               ["Troubleshooting", "Advanced details", "Opens the raw values behind your connection: address, NAT, DHT, relaying counters and the connection test."],
@@ -1369,10 +1387,10 @@
           "table": {
             "columns": ["Kind", "What it covers"],
             "rows": [
-              ["Members", "Spaces you created, joined, renamed, or left; invite links you created; join requests, and the ones you approved or declined; members joining and leaving."],
+              ["Members", "Spaces you created, joined, renamed, or left; invite links you created; join requests, and the ones you approved or declined; a member giving you access; an approval of yours that no longer applies; members joining and leaving."],
               ["Files", "Files you shared or stopped sharing; downloads you finished or that failed; a file of yours someone else downloaded; files a member shared or stopped sharing."],
               ["Folders", "Folder shares you created, renamed, deleted, or moved; folders you mirrored, moved, or stopped mirroring; the same actions by other members, including someone mirroring a folder of yours."],
-              ["Security", "File requests Mirall refused, and why; files that failed their integrity check; a space reporting a conflicting owner."],
+              ["Security", "File requests Mirall refused, and why; files that failed their integrity check; a space reporting a conflicting owner; a note when repeated events were summarised."],
               ["Network", "Stretches when this device went offline, when Mirall couldn't reach anyone, and when a connection was limited — each closed by a restored entry carrying how long the gap lasted and the cause Mirall settled on. Also members dropping out and coming back, which is recorded only while your own connection is working, and each connection that is made through a relay, naming the relay as yours or as the one that person brought."]
             ]
           }
@@ -1424,7 +1442,7 @@
           "id": "privacy-security",
           "title": "Privacy & security model",
           "blocks": [
-            { "type": "p", "text": "Every connection between devices is end-to-end encrypted, so nobody can see your files or metadata in transit, and there's no central server that could be breached. There are no accounts and no tracking." },
+            { "type": "p", "text": "Every connection between devices is end-to-end encrypted, so nobody in between can see your files, their names, or what's in your spaces, and there's no central server that could be breached. There are no accounts and no tracking. A relay, if you use one, still sees when you are online and who you connect to — [Relays](/docs/explanation#relays) covers what that means." },
             { "type": "subheading", "text": "Getting in is not the same as being able to read" },
             { "type": "p", "text": "A space's contents are protected by a key of their own. That key is handed to you only once an existing member approves your request to join. Reaching a space, or holding a link to it, is therefore not the same as being able to read what's shared in it — a pending member is outside the door, not merely unlisted." },
             { "type": "p", "text": "Every space Mirall creates or joins works this way, without exception. A space made before that became true can't be brought up to it: the key would have to be minted by whoever created the space and handed out to every member again, which is a coordinated change across everyone's devices rather than something your own copy can do. Such a space is marked **Unsupported** rather than left half-working." },
@@ -1443,6 +1461,7 @@
             { "type": "p", "text": "Joining a space is a **request**, not an entitlement. Someone who follows your invite link becomes a pending member: they're visible to the space, but they hold none of its contents and can take no member-only action until an existing member approves them. Approving them is what hands over the key." },
             { "type": "p", "text": "The link itself is not the key. An invite carries the address of the space and enough detail to show you what you are joining — never the key to its contents. That key is handed over by a device that is already a member, which is why joining needs one of them to be online and reachable, and why a link that gets forwarded lets someone knock rather than read." },
             { "type": "p", "text": "**Any** member can approve, not just whoever created the space — and a request only needs answering once. As soon as one member approves or denies someone, that decision propagates and the request clears for everyone else." },
+            { "type": "p", "text": "The two answers are not symmetric. Approval is final: the key, once handed over, can't be taken back, and nothing in Mirall replaces it or removes a member. A later deny changes nothing, and the person keeps access to the space — including to anything shared in it afterwards. Approve only people you mean to keep." },
             { "type": "p", "text": "If you'd rather not gate-keep, turn on **auto-approve** when you create the invite link. Anyone holding that link is then admitted without a member having to decide, as soon as their device reaches one. Either way the link carries an expiry — 2 hours, 2 days, or 2 weeks — after which Mirall refuses it." },
             { "type": "note", "text": "The trade-off is deliberate. Auto-approve trades a moment of your attention for the risk that a forwarded link admits someone you didn't intend. Approval keeps that decision with the people already in the room." }
           ]
@@ -1488,9 +1507,10 @@
             { "type": "p", "text": "A **private relay** admits only the people its operator has minted an invite for, and that invite can be revoked. The invite also carries a lasting identity for your device on that relay, which is the difference that matters: an open relay sees a key that changes every time Mirall starts, a private one sees the same member every time." },
             { "type": "subheading", "text": "Why your relay can end up carrying other people" },
             { "type": "p", "text": "Only one of the two ends needs a relay for a relayed connection to be made. So Mirall offers an open relay you have configured to the people you connect with: if the person on the other end has none, they are carried by yours without configuring anything. It is the quickest way to unblock a group — one person runs a relay and everyone benefits." },
+            { "type": "p", "text": "The same rule works in the other direction. Turning your relay off doesn't stop another member's open relay from carrying their connection to you, because either end offering one is enough. That is their choice, not yours to overrule, so Mirall names those members in your relay settings rather than pretending the connection is direct." },
             { "type": "p", "text": "A private relay is never offered that way. Somebody who adopted its key would be refused at the door, and that refusal is deliberately indistinguishable from the relay being down — so they would see a connection that silently never works, and the operator would see unexplained refusals. Offering a path guaranteed to fail is worse than offering nothing. The consequence is worth planning around: a private relay helps its own members reach each other, so both ends of any pair that needs it have to be enrolled." },
             { "type": "subheading", "text": "It stays out of the way" },
-            { "type": "p", "text": "Configuring a relay changes nothing on a network that already works. Mirall reaches for it when a direct connection cannot be made, or when it can already see that this network hands out a different port every time and a direct attempt is unlikely to land. Everything else goes straight between the two devices, as it did before. The one exception is the setting that routes everything through the relay, which exists so you can prove a relay works — not so you can run on it day to day." },
+            { "type": "p", "text": "Configuring a relay changes nothing on a network that already works. Mirall reaches for it when a direct connection cannot be made, or when it can already see that this network hands out a different port every time and a direct attempt is unlikely to land. Everything else goes straight between the two devices, as it did before. The one exception is the setting that prefers the relay for every connection, which exists so you can prove a relay works — not so you can run on it day to day. Even then a direct path can still win." },
             { "type": "note", "text": "A relay does not keep a file available while the person who shared it is offline. Nothing in Mirall stores your files but the devices that hold them, so an offline member is still an offline member. A relay only makes the connection possible while they are there." }
           ]
         },
@@ -1510,7 +1530,7 @@
           "title": "Mirroring & the read-only model",
           "blocks": [
             { "type": "p", "text": "When you mirror a shared folder to disk, you get a live copy that tracks the owner's folder. The owner is the single source of truth, which is why a mirror is **read-only**." },
-            { "type": "p", "text": "If you change a file inside a mirror, the next sync puts the owner's version back at its own name — that is what keeps every mirror faithful to the original. Your edit isn't destroyed to get there, though: Mirall moves it aside first, into the same folder as `name (conflicted copy).ext`. To work on a file without leaving a second copy behind, copy it out of the mirror first; to propose changes back, share them with the owner separately." },
+            { "type": "p", "text": "If you change or delete a file inside a mirror, Mirall notices within seconds, marks it **Edited locally**, and puts the owner's version back at its own name — that is what keeps every mirror faithful to the original. Your edit isn't destroyed to get there, though: Mirall moves it aside first, into the same folder as `name (conflicted copy).ext`. To work on a file without leaving a second copy behind, copy it out of the mirror first; to propose changes back, share them with the owner separately." },
             { "type": "p", "text": "A mirror only ever manages the files it put there. A file of your own that happens to sit in the same folder is left alone — including when the owner deletes the shared file it collided with. For the same reason, a mirror can't be placed directly on a top-level personal folder like Home, Desktop, Documents, or Downloads." },
             { "type": "p", "text": "Who has a folder is not a private fact about the owner's screen. Every folder names its owner and everyone keeping a live copy of it, each with whether they're synced, still catching up, or paused, and anyone in the folder can read it — so the owner can tell whether the people who need the files have them, and a mirrorer can tell whether they're the only one." }
           ]
@@ -1610,7 +1630,7 @@
       },
       {
         "version": "1.11.0",
-        "date": "2026-09-17",
+        "date": "2026-09-18",
         "sections": [
           {
             "heading": "Added",
