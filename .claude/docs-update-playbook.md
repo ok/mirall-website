@@ -136,8 +136,8 @@ Forget step 2 and the image silently falls back to a bare `src` that 404s (nothi
 ### 2.5 Anchors the desktop app links to (do not rename)
 
 Mirall's empty states link straight into these sections, and the Help menu opens `/docs`.
-The links are built from a typed union in the app (`src/renderer/docs-links.js` +
-`docs-links.d.ts`), so a typo *there* is a compile error — but nothing on this side can see
+The links are built from a typed union in the app (`src/renderer/shell/docs-links.js`),
+so a typo *there* is a compile error — but nothing on this side can see
 a rename *here*. The failure is silent in both directions: the reader lands on the right
 page, unscrolled, with no error anywhere.
 
@@ -180,7 +180,7 @@ a `200` proves nothing here.
    In v1.7.0 this caught three whole features the docs still described in detail (eager/on-demand sharing, per-space cache clearing, per-space reclaim) — a bigger job than the additions.
 3. **Verify every UI label against the source**, not the changelog's paraphrase. The authoritative string table is `mirall-app/src/renderer/locales/en/common.json`; components reference it by key. Dialog titles, toggle labels, badge text, statuses, menu items, shortcut accelerators — all of it.
    - Shortcuts: `src/renderer/keyboard/known-commands.ts`
-   - Statuses/badges: `src/renderer/statusBadge.js`
+   - Statuses/badges: `src/renderer/model/status-badge.js`
    - App menu: `src/main/menu.js`
    - Feature flags (is it actually on by default?): `feature-flags.json`
 4. **Beware orphaned i18n keys.** `common.json` keeps strings for removed UI. A key existing does **not** mean the UI does — grep the `.tsx` files for the key before documenting it.
