@@ -48,7 +48,7 @@ Screenshots come from **`/Users/oliver/Code/mirall/mirall-docs-rig`** — a sepa
 ## Guardrails
 
 - **Never push to `main` or `stage` directly.** Work on a feature branch, open a PR.
-- **Branch from `origin/stage`, and PR into `stage`.** Vercel renders a preview for `stage` but not for arbitrary feature branches, so that is where work gets reviewed. `stage` merges to `main` separately. (This used to say to branch from `main` and to treat `stage` as stale — that stopped being true; `stage` now leads `main`.)
+- **Branch from `origin/stage`, and PR into `stage`.** Vercel renders a preview for `stage` but not for arbitrary feature branches, so that is where work gets reviewed. `stage` merges to `main` on the app's release day: docs for an upcoming release are prepared and reviewed on `stage` before it ships (playbook §3.10). (This used to say to branch from `main` and to treat `stage` as stale — that stopped being true; `stage` now leads `main`.)
 - **No commits or pushes unless asked in the current turn.**
 - **No `Co-Authored-By` trailer.** No mention of AI anywhere in content, commits, or PRs.
 - **No version markers in the docs** ("New in 1.6", "now", "previously"). The docs describe how the app works *today*; the changelog records when things landed.
