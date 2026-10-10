@@ -923,12 +923,12 @@
               "blocks": [
                 { "type": "steps", "items": [
                   { "text": "Open **Settings → Backup** and click **Set up backup**. Mirall also offers this on the Shared Spaces screen as **Protect Your Spaces** once you have a space." },
-                  { "text": "Under **Where should the backup live?**, choose a folder with **Browse…**. Pick another drive, a network folder, or a folder that syncs to the cloud, such as iCloud Drive, Dropbox or OneDrive. A folder on the same disk as Mirall gets a **Same disk as this computer** warning, because one failing disk would take both — **Use it anyway** carries on regardless." },
+                  { "text": "Under **Where should the backup live?**, choose an **empty folder** with **Browse…** — on another drive, a network folder, or a folder that syncs to the cloud, such as iCloud Drive, Dropbox or OneDrive. The folder you choose becomes the backup itself, so it can't hold anything else: a folder with other files in it reads **This folder already holds other files**, and you create a new one instead. Hidden files, and the ones a drive or sync service leaves in every folder, don't count. A folder on the same disk as Mirall gets a **Same disk as this computer** warning, because one failing disk would take both — **Use it anyway** carries on regardless." },
                   { "text": "Choose a passphrase of at least 10 characters and type it again to confirm it. A short sentence is easy to remember and hard to guess." },
                   { "text": "Click **Turn on backup**. The first backup starts straight away, and the banner at the top of the page reads **You're protected** once it has finished." }
                 ] },
                 { "type": "note", "text": "**Mirall can't reset your passphrase.** It is the only thing that opens your backup — for you or for us. Keep it in your password manager, or write it down and keep it with your important papers." },
-                { "type": "p", "text": "With **Back up automatically** on, Mirall backs up after changes to your spaces, every hour, and when you quit. **Back up now** runs one straight away. The **Backup Folder** keeps the latest backup and a few older ones, from up to two months back." },
+                { "type": "p", "text": "With **Back up automatically** on, Mirall backs up after changes to your spaces, every hour, and when you quit. **Back up now** runs one straight away. The **Backup Folder** keeps the latest backup and a few older ones, from up to two months back. **Change** starts the backup afresh in another folder, which has to be empty too; the backups already made stay where they were." },
                 { "type": "p", "text": "Twice a year, Mirall asks you to type your passphrase once, so you find out you have forgotten it while that is still harmless. **Check passphrase** does the same whenever you like, and **Remind me to check my passphrase** turns the reminder off. **Change passphrase** switches the backup folder to a new passphrase at once." },
                 { "type": "subheading", "text": "What's in a backup" },
                 { "type": "bullets", "items": [
@@ -952,7 +952,7 @@
                 { "type": "note", "text": "Restore only once your old installation is gone. The same identity on two devices at once breaks it for the people you share with." },
                 { "type": "steps", "items": [
                   { "text": "Install Mirall and open it. On the welcome screen, click **Already used Mirall? Restore from a backup**." },
-                  { "text": "Choose the folder that holds your backup — the one containing **Mirall Backup**. Mirall reads **Found your backup** and when it was last made." },
+                  { "text": "Choose your backup folder itself — the one you picked when you set up the backup, not the folder around it. Mirall reads **Found your backup** and when it was last made. Any other folder reads **This folder holds no Mirall backup**." },
                   { "text": "Type your passphrase and click **Show backups**." },
                   { "text": "Pick a backup. The newest, marked **Latest**, is usually right. An older one can be marked **Before data went missing on this computer** or **Before you left “<space>”** — choose that if the newer backup lost something you need." },
                   { "text": "Click **Restore**. Mirall restarts and opens your data." }
