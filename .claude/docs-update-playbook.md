@@ -98,6 +98,8 @@ All copy is data. Top-level relevant namespaces: `docs.*` and `changelog.*`.
 { type: "code",       text, language? }            // copyable block, mono, no highlighting
 ```
 
+**The file is hand-formatted** — a block on one line, table rows on one line each, list members one per line. Loading it and writing it back with a JSON library reflows thousands of lines; edit the text in place, or splice only the members you changed.
+
 **Inline markup** inside any string: `**bold**`, `` `code` `` and `[label](href)` — that is the whole set. A bare `http` href opens in a new tab; anything else routes through React Router. There is **no italic**: a single `*` renders as a literal asterisk. And **do not wrap a link in `**`** — the bold alternative wins the match and the whole `[label](href)` prints raw; a link already renders bold, so it needs nothing. Escape JSON quotes as `\"`; prefer rephrasing over heavy escaping.
 
 **Which pages render what — verify before you invent a field:**
@@ -305,7 +307,7 @@ grep -o '/docs-[a-z-]*\.webp' src/i18n/locales/en.json | sort -u
 ```
 Capture a fresh PNG for each. Afterwards, **delete any `src/assets/docs/*.webp` no longer referenced, and its `images.ts` entry.**
 
-The set at v1.10.0 is **25 doc images plus `hero` and `support`**, all light mode, docs at
+The set at v1.12.0 is **27 doc images plus `hero` and `support`**, all light mode, docs at
 **1344×1165** and marketing at **1600×1387**. The rig's `docs/capture-rig.md` §3 is
 authoritative for which scene produces which shot; the table below describes the core frames
 but has not been extended for every shot added since v1.7.0.

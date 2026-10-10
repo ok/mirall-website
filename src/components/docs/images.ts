@@ -11,6 +11,7 @@ import addFolder from '../../assets/docs/add-folder.webp?w=672;1008;1344&format=
 import approvalReview from '../../assets/docs/approval-review.webp?w=672;1008;1344&format=webp&as=srcset'
 import editFolderMirror from '../../assets/docs/edit-folder-mirror.webp?w=672;1008;1344&format=webp&as=srcset'
 import editFolder from '../../assets/docs/edit-folder.webp?w=672;1008;1344&format=webp&as=srcset'
+import fileRecipients from '../../assets/docs/file-recipients.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderBrowse from '../../assets/docs/folder-browse.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderFilter from '../../assets/docs/folder-filter.webp?w=672;1008;1344&format=webp&as=srcset'
 import folderIndexPaused from '../../assets/docs/folder-index-paused.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -24,8 +25,9 @@ import joinWaiting from '../../assets/docs/join-waiting.webp?w=672;1008;1344&for
 import networkStatus from '../../assets/docs/network-status.webp?w=672;1008;1344&format=webp&as=srcset'
 import onboarding from '../../assets/docs/onboarding.webp?w=672;1008;1344&format=webp&as=srcset'
 import peerDownloads from '../../assets/docs/peer-downloads.webp?w=672;1008;1344&format=webp&as=srcset'
-import profilePage from '../../assets/docs/profile-page.webp?w=672;1008;1344&format=webp&as=srcset'
+import settingsBackup from '../../assets/docs/settings-backup.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsNetwork from '../../assets/docs/settings-network.webp?w=672;1008;1344&format=webp&as=srcset'
+import settingsNotifications from '../../assets/docs/settings-notifications.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsStorage from '../../assets/docs/settings-storage.webp?w=672;1008;1344&format=webp&as=srcset'
 import sidebarCollapsible from '../../assets/docs/sidebar-collapsible.webp?w=672;1008;1344&format=webp&as=srcset'
 import spaceDownloadFolder from '../../assets/docs/space-download-folder.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -47,6 +49,7 @@ const SRCSETS: Record<string, string> = {
   '/docs-approval-review.webp': approvalReview,
   '/docs-edit-folder-mirror.webp': editFolderMirror,
   '/docs-edit-folder.webp': editFolder,
+  '/docs-file-recipients.webp': fileRecipients,
   '/docs-folder-browse.webp': folderBrowse,
   '/docs-folder-filter.webp': folderFilter,
   '/docs-folder-index-paused.webp': folderIndexPaused,
@@ -60,8 +63,9 @@ const SRCSETS: Record<string, string> = {
   '/docs-network-status.webp': networkStatus,
   '/docs-onboarding.webp': onboarding,
   '/docs-peer-downloads.webp': peerDownloads,
-  '/docs-profile-page.webp': profilePage,
+  '/docs-settings-backup.webp': settingsBackup,
   '/docs-settings-network.webp': settingsNetwork,
+  '/docs-settings-notifications.webp': settingsNotifications,
   '/docs-settings-storage.webp': settingsStorage,
   '/docs-sidebar-collapsible.webp': sidebarCollapsible,
   '/docs-space-download-folder.webp': spaceDownloadFolder,
