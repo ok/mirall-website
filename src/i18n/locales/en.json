@@ -195,13 +195,25 @@
     "note": "No external ticketing system, no email chains. Everything stays in the app.",
     "problems": {
       "title": "Common problems",
-      "intro": "A handful of things come up often enough to be worth naming. Each one is covered in full in the documentation.",
+      "intro": "These come up often enough to be worth naming. Each one links to the part of the documentation that goes further.",
       "items": [
         {
           "symptom": "On Windows, the installer says the app package can't be opened",
-          "check": "The error comes from **App Installer**, the Windows component behind a double-clicked `.msix` — not from Mirall, and not from the part of Windows that does the installing. One PowerShell command installs it directly and skips App Installer entirely.",
+          "check": "The error comes from **App Installer**, the Windows component behind a double-clicked `.msix` — not from Mirall, and not from the part of Windows that does the installing. One PowerShell command installs it directly and skips App Installer entirely. Mirall needs **Windows 10 version 1903 or later**; on anything older, neither way installs it.",
           "linkLabel": "Install Mirall on Windows when the package won't open",
           "to": "/docs/guides#install-on-windows"
+        },
+        {
+          "symptom": "Your avatar has a coloured ring, or a transfer won't start",
+          "check": "Red means Mirall can't reach anyone — this device has no network, or the network is blocking Mirall. Amber means it is still connecting, or can reach some people but not others. The notification's **What can I do?** opens a page that names the likely cause and lists what to try, in order. When this device has no network at all, the button reads **Show details** instead.",
+          "linkLabel": "Fix a connection problem",
+          "to": "/docs/guides#fix-a-connection-problem"
+        },
+        {
+          "symptom": "Your relay reads “Unreachable” and people stop connecting",
+          "check": "A relay that doesn't answer can get in the way of connections that would otherwise work. In **Settings → Network**, switch off **Use a relay** until whoever runs it has it back up, then switch it on again and run **Test** from the row's menu.",
+          "linkLabel": "Connect through a relay",
+          "to": "/docs/guides#use-a-relay"
         },
         {
           "symptom": "Someone you invited is stuck on “Waiting to be let into…”",
@@ -210,38 +222,98 @@
           "to": "/docs/guides#fix-a-stuck-join"
         },
         {
-          "symptom": "Your avatar has a coloured ring, or a transfer won't start",
-          "check": "Red means Mirall can't reach other people at all, amber that it can reach some but not others. The notification's **What can I do?** opens a page that names the likely cause and lists what to try, in order.",
-          "linkLabel": "Fix a connection problem",
-          "to": "/docs/guides#fix-a-connection-problem"
+          "symptom": "An invite link is refused",
+          "check": "Every link carries an expiry — 2 hours, 2 days, or 2 weeks. Once it lapses, Mirall reads **This invite link has expired**; if a member's device only catches the expiry while checking the request, it arrives as **declined** instead. **That invite link wasn't valid** means the link was cut short or altered on the way — copy it again in full. Either way, a fresh link from a member fixes it.",
+          "linkLabel": "Invite people to a space",
+          "to": "/docs/guides#invite-people"
         },
         {
           "symptom": "A file reads “Owner offline” and won't download",
-          "check": "Files are served from the device that shared them, not from a server. The person who shared it has to be online and running Mirall while you download.",
+          "check": "Files are served from the device that shared them, not from a server. The person who shared it has to be online, running Mirall and reachable from your network while you download.",
           "linkLabel": "Spaces, members & availability",
           "to": "/docs/explanation#spaces-members-availability"
         },
         {
           "symptom": "A large download stopped part-way",
-          "check": "Nothing is lost. A transfer picks up where it stopped as soon as you're both back online, and you can pause and resume it by hand. If the row names a local problem — **Disk full**, **Permission denied**, or **Download folder unavailable** — fix that and the download usually starts again on its own.",
+          "check": "A download keeps what it has received and carries on from there once you're both online again — unless you paused it yourself, in which case it waits for **Resume**. It starts over only if the sharer changed the file in the meantime. If the row names a local problem — **Permission denied** or **Download folder unavailable** — fix that and it resumes on its own. **Disk full** does too when Mirall caught it before starting; if the disk filled up partway, free some space and press **Retry**.",
           "linkLabel": "Pause, resume, cancel, or retry a transfer",
           "to": "/docs/guides#manage-a-transfer"
         },
         {
-          "symptom": "An invite link is refused",
-          "check": "Every link carries an expiry — 2 hours, 2 days, or 2 weeks. Once it lapses Mirall turns it down, and you need a fresh one.",
-          "linkLabel": "Invite people to a space",
-          "to": "/docs/guides#invite-people"
+          "symptom": "A notification says the download folder is unavailable",
+          "check": "Mirall can't reach the folder it saves into — usually an external drive or a network share that went away. Reconnect it, or use **Change folder** on the notification to pick another, and the waiting downloads resume on their own while the sharer is online. In a different folder they start from the beginning.",
+          "linkLabel": "Fix a download folder Mirall can't reach",
+          "to": "/docs/guides#fix-a-missing-download-folder"
         },
         {
-          "symptom": "Downloads fail because the download folder is unavailable",
-          "check": "Mirall can't reach the folder it saves into — usually an external drive or a network share that went away. Reconnect it, or choose another folder, and the waiting downloads resume on their own while the sharer is online.",
-          "linkLabel": "Choose where downloads go",
-          "to": "/docs/guides#set-download-folder"
+          "symptom": "A download stops with “File integrity check failed”",
+          "check": "What arrived didn't match the file the sharer published, so Mirall throws it away rather than keep a damaged copy. It usually means the file changed on their computer while you were downloading. Once their Mirall has picked up the change, the download starts over on its own — or press **Retry**.",
+          "linkLabel": "Pause, resume, cancel, or retry a transfer",
+          "to": "/docs/guides#manage-a-transfer"
+        },
+        {
+          "symptom": "Mirall won't let you share or mirror a folder",
+          "check": "Some places are off limits, and the dialog names the rule: a top-level personal folder such as Desktop or Documents (pick a subfolder instead), anything inside the folder Mirall downloads into — **Downloads**, unless you changed it — a folder synced by Dropbox, iCloud Drive, OneDrive or a similar service, and system folders. A mirror also can't go in a folder that starts programs or holds keys, such as `~/.ssh`. On Windows with OneDrive backing up your Desktop and Documents, everything in them counts as cloud-synced.",
+          "linkLabel": "Share a whole folder",
+          "to": "/docs/guides#share-a-folder"
+        },
+        {
+          "symptom": "A folder is too big to share, or a space won't take more files",
+          "check": "A shared folder holds up to **5,000 files** — the preview says so, and **Add Folder** stays unavailable — and a space takes up to **100 files** shared on their own. Every file counts, including generated or hidden folders such as `node_modules` and `.git`. Share a smaller folder, split it into several shares, or gather loose files into a folder and share that.",
+          "linkLabel": "Share a whole folder",
+          "to": "/docs/guides#share-a-folder"
+        },
+        {
+          "symptom": "On a Mac, a folder in Desktop or Documents says “Permission denied”",
+          "check": "macOS asks before any app reads those folders, and a **Don't Allow** sticks. Open **System Settings → Privacy & Security → Files and Folders**, switch on Desktop or Documents for Mirall, then press **Try again** on the folder.",
+          "linkLabel": "Share a whole folder",
+          "to": "/docs/guides#share-a-folder"
+        },
+        {
+          "symptom": "Your edits in a mirrored folder keep being undone",
+          "check": "A mirror is read-only: it always matches the owner's folder. An edited file reads **Edited locally**, the owner's version comes back within seconds, and your edit is kept beside it as `name (conflicted copy).ext`. A file you delete comes back the same way. Copy a file out of the mirror before you work on it.",
+          "linkLabel": "Mirroring & the read-only model",
+          "to": "/docs/explanation#mirroring-read-only"
+        },
+        {
+          "symptom": "Files the owner deleted are still in your mirror",
+          "check": "When a large part of a folder disappears at once, a mirror holds back from deleting it, so an incomplete file list can never wipe your disk. If the owner really did remove more than half the folder, the leftovers stay. Delete them yourself — they won't come back, because the owner no longer shares them.",
+          "linkLabel": "Mirroring & the read-only model",
+          "to": "/docs/explanation#mirroring-read-only"
+        },
+        {
+          "symptom": "After a restore, Mirall won't let you change anything",
+          "check": "A backup can be older than what your contacts last saw from you, so Mirall holds changes until someone you share a space with comes online and confirms nothing newer exists. If nobody does, ask anyone in one of your spaces for an invite code and use **Rejoin with invite**.",
+          "linkLabel": "Restore from a backup on a new computer",
+          "to": "/docs/guides#restore-from-a-backup"
+        },
+        {
+          "symptom": "Mirall opens on “Mirall can't open your data”",
+          "check": "Your operating system's secure storage changed — after a reset, a migration or on a new user account — so Mirall can no longer unlock your identity. Your data is still on the device. **Restore from a backup** brings everything back; **Try again** helps when the keychain was only briefly unavailable. Without a backup, **Start fresh and create a new identity** sets the old data aside, and you rejoin your spaces with new invites.",
+          "linkLabel": "Open your data when Mirall can't",
+          "to": "/docs/guides#if-mirall-cant-open-your-data"
+        },
+        {
+          "symptom": "You've forgotten your backup passphrase",
+          "check": "Nobody can reset it, us included. While your current computer still runs Mirall, use **Change passphrase** in **Settings → Backup** — it doesn't ask for the old one, and the backup switches to the new passphrase at once. Without that computer, the backup can't be opened.",
+          "linkLabel": "Back up Mirall",
+          "to": "/docs/guides#back-up-mirall"
+        },
+        {
+          "symptom": "Backup says another computer is backing up into this folder",
+          "check": "Each computer needs a backup folder of its own, so choose a separate one for this computer. And restore onto a new computer only once the old installation is gone: the same identity on two computers at once breaks it for the people you share with. To use Mirall on a second computer, install it fresh there and join your spaces with invites.",
+          "linkLabel": "Back up Mirall",
+          "to": "/docs/guides#back-up-mirall"
+        },
+        {
+          "symptom": "Desktop notifications don't arrive",
+          "check": "**Mute when Mirall is focused** is on to start with, so nothing pops up while Mirall's window is in front, and **Someone comes or goes** and **Download paused** start switched off. Mirall can't see your operating system's own settings either: check that Focus or Do Not Disturb is off and that notifications are allowed for Mirall.",
+          "linkLabel": "Configure notifications",
+          "to": "/docs/guides#configure-notifications"
         },
         {
           "symptom": "Mirall shows “Mirall needs to be restarted” or “Mirall's background service stopped”",
-          "check": "The part of Mirall that runs in the background couldn't keep going. Quit Mirall completely and open it again. If “needs to be restarted” keeps coming back, reinstall the latest version.",
+          "check": "**Mirall needs to be restarted** means parts of Mirall no longer match, usually after an update: quit Mirall completely and open it again, and reinstall the latest version if it keeps coming back. **Mirall's background service stopped** means the part that runs in the background failed several times in a row — quit and reopen Mirall, and if it happens again, tell us with **Send Feedback**.",
           "linkLabel": "Update Mirall",
           "to": "/docs/guides#update-mirall"
         }
@@ -1191,7 +1263,7 @@
                   ["`0x800B0109`", "The signing certificate chain ends in a root this machine doesn't trust", "Import the **Certum Trusted Network CA 2** root into Local Computer → Trusted Root Certification Authorities. Windows normally fetches it on demand, which fails on a machine that can't reach Windows Update."],
                   ["`0x80070005`", "Access denied", "You're in an elevated PowerShell window. Close it and use a normal one."]
                 ] },
-                { "type": "note", "text": "Still stuck? [install-windows.ps1](https://github.com/ok/mirall/blob/main/scripts/install-windows.ps1) in the Mirall repository collects what we need to diagnose it — Windows build, App Installer version, service states, the certificate chain as your machine sees it, and the last deployment events — and writes it to a text file. Download it, read it, then run it with `-Diagnose` and attach the file to your report." }
+                { "type": "note", "text": "Still stuck? [install-windows.ps1](https://github.com/ok/mirall/blob/main/scripts/install/install-windows.ps1) in the Mirall repository collects what we need to diagnose it — Windows build, App Installer version, service states, the certificate chain as your machine sees it, and the last deployment events — and writes it to a text file. Download it, read it, then run it with `-Diagnose` and attach the file to your report." }
               ],
               "related": [
                 { "label": "Before you report a problem", "to": "/support" },
