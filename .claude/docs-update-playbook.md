@@ -20,7 +20,7 @@ Read this top to bottom once, then work the **Procedure** checklist. The **Scree
 - **Capture through the rig** (`mirall-docs-rig`), which drives the app's frontend test harness for you. Do not write a throwaway capture script — this playbook used to tell you to, and that is exactly why the screenshots kept falling behind. §4.
 - **The homepage rots too.** Audit `features` / `howItWorks` / `faq` / `hero` every release — §6. And **never ship a capability claim you haven't found in the app source**; the homepage is the easiest place to publish a lie, because nothing type-checks it.
 - **agent-desktop must be ≥ 0.3.0** (0.4.4 verified). *An older version of this playbook demanded 0.1.14 — that is wrong now; the harness preflight rejects anything below 0.3.0.*
-- **Feature branch off `origin/stage`**, PR into `stage` — that is the branch Vercel builds a preview for, so it is where the work is reviewed. Never push to `main` or `stage` directly. *(Through v1.8.0 this said to branch from `main` and called `stage` stale; `stage` now leads `main`.)*
+- **Feature branch off `origin/stage`**, PR into `stage` — that is the branch Vercel builds a preview for, so it is where the work is reviewed. Never push to `main` or `stage` directly. **`stage` is where the next release's docs wait**: they are prepared before the app ships and published by merging `stage` into `main` on release day (§3.10). *(Through v1.8.0 this said to branch from `main` and called `stage` stale; `stage` now leads `main`.)*
 - **No mention of AI** anywhere in content, commits, or PRs. No `Co-Authored-By` trailer.
 - Target a **perfect Lighthouse score** — see §4.7 for the exact image spec.
 
@@ -48,7 +48,7 @@ agent-desktop status                  # Accessibility + Screen Recording granted
 cd /Users/oliver/Code/mirall/mirall-app && npm run build    # builds assets/dist (required before capture)
 ```
 
-The app repo's `mirall-app` must be on the branch you're documenting (usually `staging`) and **up to date** — `git fetch && git log HEAD..origin/staging`. A stale local tree will make you document the wrong thing (v1.7.0: a late commit renamed the partial-download suffix to `.mirall.part`, which the docs had as `.partial`).
+The app repo's `mirall-app` must be on the code that will ship and **up to date**. That is `release/<x.y>` once the minor has been cut from `main` at feature freeze, and `main` before then — `git fetch && git branch -r --list 'origin/release/*'`, then `git log HEAD..origin/<branch>`. After the cut, `main` keeps taking features that ship in the *next* minor, so documenting `main` then would describe UI the release does not have. A stale local tree will make you document the wrong thing (v1.7.0: a late commit renamed the partial-download suffix to `.mirall.part`, which the docs had as `.partial`).
 
 ---
 
@@ -170,7 +170,7 @@ a `200` proves nothing here.
 
 ### 3.1 Research the release — additions AND removals
 
-1. Read `mirall-app/CHANGELOG.md` (top entry = the new version). Check there is no `## Unreleased` section — **never document unreleased features.**
+1. Read `mirall-app/CHANGELOG.md` on the branch from §1 (top entry = the new version). **Docs are prepared ahead of the release**: the app's release-prep dates the version heading (`### 2026-10-12`) before the tag is pushed, and that dated entry is what you document. If the top entry still reads `### Unreleased`, the release is not settled yet — its scope can still change — so check with the user before documenting it. Either way the work lands on `stage` and reaches the live site only on release day (§3.10).
 2. **Hunt for removals.** The changelog's *Changed* section is where features die, and it understates them. For every guide, reference row, and explanation topic already in the docs, ask *"does this still exist?"* Grep the app source for the UI you describe:
    ```bash
    cd ../mirall-app
@@ -215,6 +215,10 @@ Mirror the new `CHANGELOG.md` entry into `changelog.releases[0]` (newest first),
 ### 3.9 Hand off
 
 Commit and push **only when asked**. Feature branch → PR into `stage`. No `Co-Authored-By`.
+
+### 3.10 Release day
+
+Once the app's `v<version>` tag is pushed and its build is out, publish by merging `stage` into `main` (a PR, never a direct push). Before merging, confirm nothing in the app changed after the docs were captured: `git -C ../mirall-app log <captured-sha>..v<version> --oneline -- src/` should be empty, or covered by a follow-up docs PR into `stage`. Until that merge, nothing on `stage` is live, so a release that slips needs no rollback.
 
 ---
 
