@@ -307,7 +307,7 @@
         },
         {
           "symptom": "Desktop notifications don't arrive",
-          "check": "**Mute when Mirall is focused** is on to start with, so nothing pops up while Mirall's window is in front, and **Someone comes or goes** and **Download paused** start switched off. Mirall can't see your operating system's own settings either: check that Focus or Do Not Disturb is off and that notifications are allowed for Mirall.",
+          "check": "**Mute when Mirall is focused** is on to start with, so nothing pops up while Mirall's window is in front, and **Online status changes** and **Download paused** start switched off. Mirall can't see your operating system's own settings either: check that Focus or Do Not Disturb is off and that notifications are allowed for Mirall.",
           "linkLabel": "Configure notifications",
           "to": "/docs/guides#configure-notifications"
         },
@@ -1214,9 +1214,9 @@
                 { "type": "p", "text": "Below them, each kind of alert has a switch of its own, grouped by who it concerns:" },
                 { "type": "table", "columns": ["Section", "Switch", "Alerts you when", "Starts"], "rows": [
                   ["People", "Join requests", "Someone asks to join a space you're in, or your own request is answered.", "On"],
-                  ["People", "Someone comes or goes", "A member is back online, or has been away for a few minutes.", "Off"],
+                  ["People", "Online status changes", "A member is back online, or has been away for a few minutes.", "Off"],
                   ["Shared with you", "New shared files", "A member shares files or a folder in one of your spaces.", "On"],
-                  ["Your shared files", "Someone got your file", "A member has received a complete copy of a file or folder you share.", "On"],
+                  ["Your shared files", "File delivered", "A member has received a complete copy of a file or folder you share.", "On"],
                   ["Your downloads", "Download finished", "A file you are receiving has finished downloading.", "On"],
                   ["Your downloads", "Download failed", "A download could not be completed.", "On"],
                   ["Your downloads", "Download paused", "A download paused because the sender went offline.", "Off"]
