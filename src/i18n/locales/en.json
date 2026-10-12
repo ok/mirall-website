@@ -877,7 +877,8 @@
                   "**Shared-file index** — compact maps of the files you share, never their contents.",
                   "**Activity Log** — the history of what happened in your spaces. **Manage Activity Log** opens its settings.",
                   "**Download history** — records of downloaded files and pending transfers.",
-                  "**App updates** — the update Mirall downloaded. Only the current one is kept.",
+                  "**Installed version** — a copy of the version of Mirall you are running, kept so the next update only downloads what changed.",
+                  "**App updates** — an update Mirall downloaded but hasn't installed yet, and older versions it removes on its own.",
                   "**Other** — your profile, settings, older versions of Mirall's own records, and deleted data waiting to be compacted."
                 ] },
                 { "type": "p", "text": "When at least 20 MB can be reclaimed, a row reads **<size> can be freed** with a **Free up <size>** button. It removes old app updates and older versions of Mirall's own records, briefly restarts Mirall's background service, and finishes with **Freed <size>**. Your files, spaces and members are not touched." },
@@ -1300,8 +1301,9 @@
               ["On your device", "Green", "A file you downloaded from another member. It's yours to keep and works offline."],
               ["Downloading", "Blue", "A transfer is in progress, showing progress, speed, and time remaining."],
               ["Verifying…", "Blue", "The download finished and Mirall is checking the contents match the owner's original."],
-              ["Preparing…", "Blue", "The owner is still indexing this file. You can watch their progress while you wait."],
+              ["Preparing…", "Blue", "The owner is still indexing this file, or it is waiting its turn to be indexed. You can watch their progress while you wait."],
               ["Adding", "Blue", "A file you just added is being indexed so other members can fetch it."],
+              ["Queued", "Grey", "A file you added along with others, waiting for the ones ahead of it to finish adding. Members already see it listed, as **Preparing…**."],
               ["Paused", "Yellow", "A download stopped — because you paused it, or because it was interrupted. Resume to continue."],
               ["Edited locally", "Yellow", "The copy on your device changed after it was downloaded and verified. In a mirror, the owner's version is restored and your edit kept as a conflicted copy."],
               ["Failed", "Red", "A transfer errored out, and the row says why. **Disk full**, **Permission denied** and **Download folder unavailable** clear on their own once you fix the cause; otherwise Retry to try again, or dismiss it."],
@@ -1433,7 +1435,7 @@
               ["Appearance", "Theme Mode (Light / System / Dark), Display Size, Language, and — on Windows and Linux — auto-hide the menu bar."],
               ["Notifications", "Master switch, system sound, mute-when-focused, and a switch for each kind of alert — join requests, people coming and going, new shared files, someone getting your file, and downloads finishing, failing or pausing."],
               ["Network", "Transfer Limits — a download and an upload cap, each Unlimited, a preset, or a figure you type — and **Relay**, where you add the one relay this device uses and choose when it is reached for."],
-              ["Storage", "Download folder — with a warning when Mirall can't reach it — and Mirall's own App Storage, broken down by space, shared-file index, Activity Log, download history and app updates, with **Free up** when there is enough to reclaim."],
+              ["Storage", "Download folder — with a warning when Mirall can't reach it — and Mirall's own App Storage, broken down by space, shared-file index, Activity Log, download history, the installed version and app updates, with **Free up** when there is enough to reclaim."],
               ["Backup", "Whether Mirall backs up automatically, the backup folder, and your passphrase — check it, change it, and whether Mirall reminds you to. The banner at the top says whether you're protected."],
               ["Activity Log", "Whether activity is recorded, how long events are kept, and actions to export or delete the log."]
             ]
