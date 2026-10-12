@@ -884,7 +884,7 @@
                 { "type": "p", "text": "When at least 20 MB can be reclaimed, a row reads **<size> can be freed** with a **Free up <size>** button. It removes old app updates and older versions of Mirall's own records, briefly restarts Mirall's background service, and finishes with **Freed <size>**. Your files, spaces and members are not touched." },
                 { "type": "note", "text": "You never have to use it. Mirall compacts its own records on a schedule, clears what a space or a mirrored share left behind when it goes, and forgets downloads that failed for good over 30 days ago. **Free up** only does now what Mirall would otherwise get to later." }
               ],
-              "image": { "src": "/docs-settings-storage.webp", "alt": "Mirall's Storage settings showing the download folder and App Storage broken down by space, shared-file index, Activity Log, download history and app updates", "width": 1344, "height": 1165 },
+              "image": { "src": "/docs-settings-storage.webp", "alt": "Mirall's Storage settings showing the download folder and App Storage broken down by space, shared-file index, Activity Log, download history, installed version, app updates and other data", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
               ]
@@ -1222,7 +1222,7 @@
                   ["Your downloads", "Download paused", "A download paused because the sender went offline.", "Off"]
                 ] },
                 { "type": "p", "text": "Alerts that come in a burst are combined. Several files shared by one person in one space arrive as **shared 3 items in <space>** rather than one alert per file, and a burst of downloads finishing, failing or pausing in one space arrives as a single alert that counts the files — **3 files — Disk full**. A member who is in several of your spaces comes online once, not once per space." },
-                { "type": "image", "src": "/docs-settings-notifications.webp", "alt": "Mirall's Notifications settings with the General switches at the top and per-alert switches grouped under People, Shared with you, Your shared files and Your downloads", "width": 1344, "height": 1165 },
+                { "type": "image", "src": "/docs-settings-notifications.webp", "alt": "Mirall's Notifications settings with the General switches at the top and per-alert switches grouped under People and Shared with you", "width": 1344, "height": 1165 },
                 { "type": "note", "text": "A join request also shows inside the app, as a banner on the space and a notice you can act on, whatever you set here." }
               ]
             },
