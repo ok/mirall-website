@@ -1774,14 +1774,15 @@
               "**See who has the files you share.** Each shared file shows how many members have it, and who has it, has an older version or doesn't yet.",
               "**Choose which desktop notifications you get.** New alerts for join requests, newly shared files and a member receiving your file, with a burst from one person combined into one.",
               "**About Mirall has its own page** under Profile, with the update status, a check for updates, and links to the privacy policy, legal notice and license.",
-              "**See what takes up Mirall's storage.** Settings → Storage breaks it down by space, file index, Activity Log, downloads and app updates, and \"Free up\" clears what can go.",
+              "**See what takes up Mirall's storage.** Settings → Storage breaks it down by space, file index, Activity Log, downloads, the installed version and app updates, and \"Free up\" clears what can go.",
               "**The Activity Log shows your relay at work:** when a relayed member is connected directly again, and every change to your relay settings."
             ]
           },
           {
             "heading": "Changed",
             "items": [
-              "**Windows 10 version 1903 or later is now required.** On 1809, Windows kept Mirall's data in a private copy Mirall couldn't read."
+              "**Windows 10 version 1903 or later is now required.** On 1809, Windows kept Mirall's data in a private copy Mirall couldn't read.",
+              "**Long file and folder names keep their ending.** A name too long for its row is shortened in the middle, so the part that tells similar files apart stays visible instead of being cut just before the extension."
             ]
           },
           {
@@ -1789,9 +1790,11 @@
             "items": [
               "**A mirrored folder no longer deletes files it didn't put there.** When the owner deleted a file, your mirror removed whatever sat at that path, even your own file. A mirror folder you delete now stays deleted.",
               "**Mirall no longer stops when your computer's secure storage can't open your identity.** You can restore from your backup, try again, or start fresh; the old data is set aside, not deleted.",
+              "**Mirall no longer mistakes ordinary folders for cloud-synced ones.** A folder whose path merely contained a word like \"sandbox\", \"Inbox\" or \"Megan\" was taken for a Box or Mega folder and couldn't be shared or mirrored.",
               "**The window no longer goes blank on a list that only just needs scrolling.**",
               "**A download that can't be written now says why** instead of retrying as if the sender were offline.",
               "**A finished download no longer starts over** when the disk briefly returns too little data while Mirall checks the file.",
+              "**Sharing several files at once now lists all of them right away,** for you and for everyone in the space. Files waiting their turn show as \"Queued\" and are no longer lost if you quit before they start.",
               "**App Storage no longer grows every time Mirall starts.** An unused internal log is removed once when you update.",
               "**Old app updates no longer pile up.** Mirall keeps only the current one.",
               "**Leftover records are cleared** when you leave a space or a share you mirror is deleted, and downloads that failed for good over 30 days ago are forgotten.",
