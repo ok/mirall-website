@@ -2513,7 +2513,7 @@
           { "type": "subheading", "text": "7.2 Web links" },
           { "type": "p", "text": "When you open a Mirall invite or setup link in a browser, the code in it stays in your browser. It sits after the `#` in the address, which browsers never send to a server, and the page removes it from the address bar once it has handed it to Mirall. The page is not allowed to connect anywhere, so it cannot send the code even by mistake." },
           { "type": "p", "text": "What our server learns is that a link of that type was opened. We count how many links of each type are opened each day. The count keeps no address, no browser details and nothing from the link, and link previews in chat apps are not counted. Our server's request log records the time and the page, never your address. No content delivery network sits in front of these pages." },
-          { "type": "note", "text": "The link itself stays wherever it was sent to you, such as your chat or email, and browser extensions with access to web pages can read it like any other page." }
+          { "type": "note", "text": "The link itself stays wherever it was sent to you, such as your chat or email. Some browsers, Safari and Firefox among them, also keep the full link in their browsing history, as they do for any page you visit; if you share a device, clear it there. Browser extensions with access to web pages can read it like any other page." }
         ]
       },
       {
