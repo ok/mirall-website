@@ -2408,7 +2408,7 @@
   "privacy": {
     "label": "Legal",
     "title": "Privacy Policy",
-    "updated": "Last updated: September 24, 2026",
+    "updated": "Last updated: October 16, 2026",
     "intro": "Mirall is built so that we don't have your data — not as a promise, but as an architecture. Your files never pass through a server we control, because there is no such server. This policy sets out precisely what stays on your device, what necessarily leaves it, and the one case where you choose to send something to us.",
     "sections": [
       {
@@ -2445,9 +2445,9 @@
       },
       {
         "id": "feedback",
-        "title": "3. Feedback — the one thing you send us",
+        "title": "3. Feedback — the one thing the app sends us",
         "blocks": [
-          { "type": "p", "text": "The only data that ever reaches us is what you deliberately send with **Send Feedback** inside the app. Nothing is sent automatically, ever. If you never press that button, we receive nothing from you at all." },
+          { "type": "p", "text": "The only data the app ever sends us is what you deliberately send with **Send Feedback**. Nothing is sent automatically, ever. If you never press that button, we receive nothing from you at all." },
           { "type": "p", "text": "When you do submit feedback, it carries:" },
           { "type": "bullets", "items": [
             "**Your message** — the text you wrote.",
@@ -2486,7 +2486,7 @@
             "**Uninstall Mirall**, or delete its data folder, and everything it stored is gone. Your own files, your downloads, and any folder you mirrored are untouched — they're yours.",
             "**Stop sharing a file** whenever you like. Copies other members already downloaded stay on their devices; we have no way to reach into them, and neither do you."
           ] },
-          { "type": "p", "text": "The one exception is feedback you have already sent us. To ask what we hold, or to have it erased, write to us at the address below." }
+          { "type": "p", "text": "The exceptions are feedback you have already sent us and, if you use the Console, your Console account and what your organization keeps in it. To ask what we hold, or to have it erased, write to us at the address below." }
         ]
       },
       {
@@ -2505,23 +2505,35 @@
         ]
       },
       {
+        "id": "console",
+        "title": "7. The Console and web links",
+        "blocks": [
+          { "type": "subheading", "text": "7.1 The Console" },
+          { "type": "p", "text": "The Console at `console.mirall.app` is where organizations manage licenses and configuration. It runs on our own server and on Supabase, our database host, and it needs an account." },
+          { "type": "subheading", "text": "7.2 Web links" },
+          { "type": "p", "text": "When you open a Mirall invite or setup link in a browser, the code in it stays in your browser. It sits after the `#` in the address, which browsers never send to a server, and the page removes it from the address bar once it has handed it to Mirall. The page is not allowed to connect anywhere, so it cannot send the code even by mistake." },
+          { "type": "p", "text": "What our server learns is that a link of that type was opened. We count how many links of each type are opened each day. The count keeps no address, no browser details and nothing from the link, and link previews in chat apps are not counted. Our server's request log records the time and the page, never your address. No content delivery network sits in front of these pages." },
+          { "type": "note", "text": "The link itself stays wherever it was sent to you, such as your chat or email, and browser extensions with access to web pages can read it like any other page." }
+        ]
+      },
+      {
         "id": "rights",
-        "title": "7. Your rights",
+        "title": "8. Your rights",
         "blocks": [
           { "type": "p", "text": "If you are in the European Union or the United Kingdom, data protection law gives you the right to see the personal data an organisation holds about you, to correct it, and to have it erased." },
-          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have sent feedback, write to us and we will tell you what it contained and delete it on request." }
+          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback or use the Console, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have, write to us and we will tell you what we hold and delete it on request." }
         ]
       },
       {
         "id": "changes",
-        "title": "8. Changes to this policy",
+        "title": "9. Changes to this policy",
         "blocks": [
           { "type": "p", "text": "We may update this policy as Mirall changes. The date at the top always reflects the current version, and any material change will be announced in the app's release notes rather than made quietly." }
         ]
       },
       {
         "id": "contact",
-        "title": "9. Contact",
+        "title": "10. Contact",
         "blocks": [
           { "type": "p", "text": "Questions about this policy, or about data we hold, go to **privacy@mirall.app**." },
           { "type": "p", "text": "The data controller for the purposes of the GDPR is named, with a postal address, in the **Impressum**." },
