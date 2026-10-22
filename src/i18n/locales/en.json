@@ -56,7 +56,7 @@
       {
         "step": "2",
         "title": "Invite your people",
-        "description": "Create an invite link and send it. They ask to join, you approve — and they connect straight to you, with no account and no server storing your files."
+        "description": "Create an invite link and send it — even to someone who doesn't have Mirall yet. They ask to join, you approve — and they connect straight to you, with no account and no server storing your files."
       },
       {
         "step": "3",
@@ -83,7 +83,7 @@
       },
       {
         "question": "What happens when I'm offline?",
-        "answer": "Files you've already downloaded stay on your device — they're yours, and they work offline. Other members can still see what you've shared, but they can't download it from you until you're back. Downloading a file doesn't make you a second source for it either: the member who shared a file is the one who serves it, so while they're offline it's marked “Owner offline” and waits for them."
+        "answer": "Files you've already downloaded stay on your device — they're yours, and they work offline. Other members can still see what you've shared, but they can't download it from you until you're back. Downloading a file doesn't make you a second source for it either: the member who shared a file is the one who serves it, so while they're offline the file says its owner is offline and waits for them."
       },
       {
         "question": "Is it really encrypted?",
@@ -95,7 +95,7 @@
       },
       {
         "question": "How do I invite someone to a space?",
-        "answer": "A space gives you an invite link. Getting it to the other person is up to you — Mirall never sends it on your behalf, so pass it through a channel you trust, ideally an end-to-end encrypted messenger. Treat the link like a key: anyone holding it can ask to join, and it works until the expiry you chose. Approval is the backstop — by default you still let each person in yourself, so a link that gets forwarded doesn't quietly hand someone access."
+        "answer": "A space gives you an invite link. Getting it to the other person is up to you — Mirall never sends it on your behalf, so pass it through a channel you trust, ideally an end-to-end encrypted messenger. Treat the link like a key: anyone holding it can ask to join, and it works until the expiry you chose. Approval is the backstop — by default you still let each person in yourself, so a link that gets forwarded doesn't quietly hand someone access. If they don't have Mirall yet, turn on the Web link option: the link then opens in a browser and offers them the download first."
       },
       {
         "question": "What languages does Mirall support?",
@@ -228,7 +228,7 @@
           "to": "/docs/guides#invite-people"
         },
         {
-          "symptom": "A file reads “Owner offline” and won't download",
+          "symptom": "A file reads “Not available” or “Owner offline” and won't download",
           "check": "Files are served from the device that shared them, not from a server. The person who shared it has to be online, running Mirall and reachable from your network while you download.",
           "linkLabel": "Spaces, members & availability",
           "to": "/docs/explanation#spaces-members-availability"
@@ -241,7 +241,7 @@
         },
         {
           "symptom": "A notification says the download folder is unavailable",
-          "check": "Mirall can't reach the folder it saves into — usually an external drive or a network share that went away. Reconnect it, or use **Change folder** on the notification to pick another, and the waiting downloads resume on their own while the sharer is online. In a different folder they start from the beginning.",
+          "check": "Mirall can't reach the folder it saves into — usually an external drive or a network share that went away. Reconnect it, or use **Choose another folder** on the notification to pick another for that space, and the waiting downloads resume on their own while the sharer is online. In a different folder they start from the beginning.",
           "linkLabel": "Fix a download folder Mirall can't reach",
           "to": "/docs/guides#fix-a-missing-download-folder"
         },
@@ -312,8 +312,8 @@
           "to": "/docs/guides#configure-notifications"
         },
         {
-          "symptom": "Mirall shows “Mirall needs to be restarted” or “Mirall's background service stopped”",
-          "check": "**Mirall needs to be restarted** means parts of Mirall no longer match, usually after an update: quit Mirall completely and open it again, and reinstall the latest version if it keeps coming back. **Mirall's background service stopped** means the part that runs in the background failed several times in a row — quit and reopen Mirall, and if it happens again, tell us with **Send Feedback**.",
+          "symptom": "Mirall shows “Mirall needs to be restarted”, “Mirall's background service stopped” or “Mirall is already running”",
+          "check": "**Mirall needs to be restarted** means parts of Mirall no longer match, usually after an update: quit Mirall completely and open it again, and reinstall the latest version if it keeps coming back. **Mirall's background service stopped** means the part that runs in the background failed several times in a row — quit and reopen Mirall, and if it happens again, tell us with **Send Feedback**. **Mirall is already running** means another copy — a beta beside the regular app, say — is using the same data: quit the other copy, then quit this one and open it again.",
           "linkLabel": "Update Mirall",
           "to": "/docs/guides#update-mirall"
         }
@@ -403,15 +403,15 @@
             { "type": "steps", "items": [
               { "title": "Install and open Mirall", "text": "Download Mirall for your platform from the download page and open it. The first time it launches, Mirall asks for a **display name** and an optional **avatar** — that's how other members will see you. Your OS language is detected automatically. (Moving from another computer? **Already used Mirall? Restore from a backup** on the same screen brings your spaces with you.)" },
               { "title": "Create a space", "text": "On the **Shared Spaces** screen, click **Create Space**, give it a name, pick an icon, and click **Initialize Space**. Mirall confirms with **Space Created** — click **Done**. A space is a private group where you and the people you approve share files." },
-              { "title": "Create an invite link", "text": "Open the space and click **Invite**. Choose whether to **auto-approve** anyone who uses the link, pick how long it stays valid — **2 hours**, **2 days**, or **2 weeks** — and click **Create invite link**. Copy the link and send it however you like: chat, email, anything." },
+              { "title": "Create an invite link", "text": "Open the space and click **Invite**. Choose whether to **auto-approve** anyone who uses the link, pick how long it stays valid — **2 hours**, **2 days**, or **2 weeks** — and click **Create invite link**. If they don't have Mirall yet, turn on **Web link** first: the link then opens in a browser and offers them the download. Copy the link and send it however you like: chat, email, anything." },
               { "title": "Let them join", "text": "The other person clicks **Join Space**, pastes the link, and confirms. Unless you turned auto-approve on, they now wait: their screen reads **Waiting to be let into** the space, and they can't see anything shared in the space yet." },
               { "title": "Approve them", "text": "Back in your space, a banner appears reading **“<name> wants to join”**. Click **Approve**. They're admitted, the space contents open up to them, and you both appear in each other's **Members** panel." },
               { "title": "Share a file", "text": "Drag a file onto the **Drop to Share** zone in the sidebar, or use **Share…** to pick one. Mirall offers it to the space straight from the original on your disk — it never makes a second copy." },
-              { "title": "Download on the other side", "text": "On the other person's Mirall, the file appears with a download button. They click it and the file transfers directly from your device to theirs, with live progress, speed, and time remaining. When it lands, a green shield confirms the contents match your original exactly. No server stored a copy along the way." }
+              { "title": "Download on the other side", "text": "On the other person's Mirall, the file appears with a **Download to…** button. They click it, pick a folder — the space's own download folder is ticked — and the file transfers directly from your device to theirs, with live progress, speed, and time remaining. When it lands, a green shield confirms the contents match your original exactly. No server stored a copy along the way." }
             ] },
             { "type": "image", "src": "/docs-onboarding.webp", "alt": "Mirall's welcome screen asking for a display name and an optional avatar before first use", "width": 1344, "height": 1165 },
-            { "type": "image", "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1165 },
-            { "type": "image", "src": "/docs-join-approval.webp", "alt": "A Mirall space showing a “wants to join” banner with Approve and Deny buttons above the shared files", "width": 1344, "height": 1165 },
+            { "type": "image", "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with Auto-approve and Web link toggles and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1165 },
+            { "type": "image", "src": "/docs-join-approval.webp", "alt": "A Mirall space with nothing shared yet, showing a “wants to join” banner with Approve and Deny buttons", "width": 1344, "height": 1165 },
             { "type": "image", "src": "/docs-space-view.webp", "alt": "A Mirall space with shared files, the Drop to Share zone, and the Members panel in the sidebar", "width": 1344, "height": 1165 },
             { "type": "note", "text": "Nothing downloads automatically. Members always see what's available and choose what to pull onto their own device." }
           ],
@@ -477,7 +477,7 @@
               "blocks": [
                 { "type": "steps", "items": [
                   { "text": "Click **Join Space** on the Shared Spaces screen." },
-                  { "text": "Paste the invite link you received. Both the `mirall://join/…` link and the bare code work." },
+                  { "text": "Paste the invite link you received. A `mirall://join/…` link, a web link copied from your browser or any other site, and the bare code all work." },
                   { "text": "Optionally give the space a local name — only you will see it." },
                   { "text": "Click **Join Space**." }
                 ] },
@@ -496,15 +496,16 @@
               "id": "invite-people",
               "title": "Invite people to a space",
               "blocks": [
-                { "type": "p", "text": "Open the space and click **Invite**. The dialog asks you two things before it mints a link:" },
+                { "type": "p", "text": "Open the space and click **Invite**. The dialog asks you three things before it mints a link:" },
                 { "type": "bullets", "items": [
                   "**Auto-approve** — off by default. Leave it off and everyone who uses the link asks to join, and you approve each one. Turn it on and nobody has to approve: anyone holding the link is let in as soon as their device reaches a member of the space.",
-                  "**Link expires after** — **2 hours**, **2 days**, or **2 weeks**. After that the link stops working and Mirall refuses anyone who tries to use it."
+                  "**Link expires after** — **2 hours**, **2 days**, or **2 weeks**. After that the link stops working and Mirall refuses anyone who tries to use it.",
+                  "**Web link** — off by default. Turn it on for people who don't have Mirall yet: the link opens in a browser, offers them the download first, and then joins them to the space."
                 ] },
-                { "type": "p", "text": "Click **Create invite link**. Mirall shows a single `mirall://join/…` link, tagged with the choices you made, and a **Copy** button. Send it however you like — chat, email, anything. The same link works for as many people as you want to admit, until it expires. **Change** takes you back to adjust the settings; **Done** closes the dialog." },
-                { "type": "note", "text": "The link carries the space name, so the person joining sees what they're joining. It does not carry the key to the space — that is handed over by a device that is already a member, so someone has to be online and reachable when the link is used, auto-approve or not." }
+                { "type": "p", "text": "Click **Create invite link**. Mirall shows a single link — a `mirall://join/…` link, or a web link starting `https://` when **Web link** is on — tagged with the choices you made, and a **Copy** button. Send it however you like — chat, email, anything. The same link works for as many people as you want to admit, until it expires. **Change** takes you back to adjust the settings; **Done** closes the dialog." },
+                { "type": "note", "text": "The link carries the space name, so the person joining sees what they're joining. It does not carry the key to the space — that is handed over by a device that is already a member, so someone has to be online and reachable when the link is used, auto-approve or not. A web link holds the invite after the `#`, the part of an address a browser never sends to the web server." }
               ],
-              "image": { "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with an auto-approve toggle and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1165 },
+              "image": { "src": "/docs-invite-to-space.webp", "alt": "Mirall's Invite to Space dialog with Auto-approve and Web link toggles and a link expiry choice of 2 hours, 2 days, or 2 weeks", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Approve or deny join requests", "to": "/docs/guides#approve-join-requests" },
                 { "label": "Membership & approval", "to": "/docs/explanation#membership-approval" },
@@ -552,7 +553,9 @@
               "id": "favorite-a-space",
               "title": "Favorite a space",
               "blocks": [
-                { "type": "p", "text": "Open the space, open the **More** menu, and choose **Add to Favorites**. Back on the Shared Spaces screen you can then filter the list by **All Spaces** or **Favorites**. Once a space is pinned, the same menu entry reads **Remove from Favorites**." }
+                { "type": "p", "text": "Open the space, open the **More** menu, and choose **Add to Favorites**. Back on the Shared Spaces screen you can then filter the list by **All Spaces** or **Favorites**. Once a space is pinned, the same menu entry reads **Remove from Favorites**." },
+                { "type": "p", "text": "Each favorite gets its own keyboard shortcut: `Cmd/Ctrl + 1` to `9` open your first nine favorites, oldest favorite first, from anywhere in Mirall. A favorite keeps its number while the list reorders, and its card shows the number when you hover over or focus it." },
+                { "type": "p", "text": "The Shared Spaces screen lists spaces by recent activity: the space where something last happened, by you or a member, comes first, and each card says when — **Active <when>**." }
               ]
             },
             {
@@ -604,10 +607,13 @@
               "id": "download-a-file",
               "title": "Download a file",
               "blocks": [
-                { "type": "p", "text": "Click the download button on any file shared by another member. The file transfers directly from their device to yours, showing live progress, average speed, and an estimate of the time remaining. Downloads land in your chosen download folder." },
+                { "type": "p", "text": "Click **Download to…** on any file shared by another member. A menu opens with the space's download folder ticked, any other folders you've used recently, and **Choose Folder…**. Pick one and the file transfers directly from their device to yours, showing live progress, average speed, and an estimate of the time remaining." },
+                { "type": "image", "src": "/docs-download-to-menu.webp", "alt": "A shared file in Mirall with its Download to… menu open, the space's Downloads folder ticked above Choose Folder…", "width": 1344, "height": 1165 },
+                { "type": "p", "text": "Every space has its own download folder, and the folder you pick becomes it — Mirall confirms with **Downloads from <space> now go to <folder>**. A file from a shared folder keeps its subfolders under it. To pick the folder before you download anything, see [Choose where a space's downloads go](/docs/guides#set-a-space-download-folder)." },
                 { "type": "p", "text": "When a download finishes, a green shield appears next to the file. That's Mirall confirming the contents it received match the owner's original exactly." }
               ],
               "related": [
+                { "label": "Download or unshare several files at once", "to": "/docs/guides#select-several-files" },
                 { "label": "File statuses", "to": "/docs/reference#file-statuses" }
               ]
             },
@@ -615,7 +621,7 @@
               "id": "manage-a-transfer",
               "title": "Pause, resume, cancel, or retry a transfer",
               "blocks": [
-                { "type": "p", "text": "If your network drops or the member you're downloading from goes offline, the transfer pauses on its own and picks back up from where it left off once that person is back. A member who has set an upload limit is a different case — they are still there, just sending slowly — so the transfer waits its turn instead of failing, and an interrupted download keeps retrying on its own for as long as it makes progress. You can also take control by hand — the buttons on a file row change with its state:" },
+                { "type": "p", "text": "If your network drops or the member you're downloading from goes offline, the transfer pauses on its own and picks back up from where it left off once that person is back. A member who has set an upload limit is a different case — they are still there, just sending slowly — so the transfer waits its turn instead of failing, and an interrupted download keeps retrying on its own for as long as it makes progress. Only a few downloads run at once; the rest read **Waiting** until one ahead of them finishes. You can also take control by hand — the buttons on a file row change with its state:" },
                 { "type": "bullets", "items": [
                   "**Pause Download** — stop a running download. Its progress is kept, so resuming costs you nothing.",
                   "**Cancel** — stop a running download outright and throw away what's been received.",
@@ -637,10 +643,10 @@
               "intro": "For any file you share, Mirall shows who already has it, who is downloading it right now, and who has yet to.",
               "blocks": [
                 { "type": "p", "text": "Once a member has your file, its row says how many do — **3 of 5 have it**, or **All 5 have it** — with the faces of whoever received it most recently. With one other member in the space it names them: **Sarah has it**. Members who mirror a folder count as having the files in it." },
-                { "type": "p", "text": "Click the indicator to expand it. Each person appears as a pill with their avatar, their name and a dot that shows whether they are online, one line per group: a check for those who have it, with when they received it; an arrow for those downloading it now; and an empty ring for those who don't have it yet. Someone holding a copy from before you last changed the file is marked as having an earlier version." },
+                { "type": "p", "text": "Click the indicator to expand it. Each person appears as a pill with their avatar, their name and a dot that shows whether they are online, one line per group: a check for those who have it, with when they received it; an arrow for those downloading it now; a clock for those waiting — on your indexing, or for themselves to come back online; and an empty ring for those who don't have it yet. Someone holding a copy from before you last changed the file is marked as having an earlier version." },
                 { "type": "image", "src": "/docs-file-recipients.webp", "alt": "A file shared in Mirall with its people list expanded, showing one member who has the file and one who does not yet", "width": 1344, "height": 1165 },
                 { "type": "subheading", "text": "While someone downloads" },
-                { "type": "p", "text": "While someone downloads a file you've shared, their avatar appears on that file's row, along with a combined progress bar, the transfer speed, and an estimate of the time remaining. Expand it and each downloader shows as a pill with their name and their own progress. Someone who has paused shows as **Paused**; someone who has dropped offline mid-transfer shows as **Waiting**." },
+                { "type": "p", "text": "While someone downloads a file you've shared, their avatar appears on that file's row, along with a combined progress bar, the transfer speed, and an estimate of the time remaining. Expand it and each downloader shows as a pill with their name and their own progress. Someone who has paused shows as **Paused**; someone who has dropped offline mid-transfer moves to the **Waiting** group." },
                 { "type": "p", "text": "People can ask for a file before you've finished indexing it. While the indexing bar is showing, their avatars sit beside it with a count — **2 waiting** — and each of them reads **Waiting for indexing** in the expanded list. Quitting Mirall at that point leaves them waiting until you're back." },
                 { "type": "note", "text": "This works for loose files in a space and for files inside a folder you share. It only appears on files you own — you don't see who has other people's files." }
               ],
@@ -650,7 +656,30 @@
               "id": "unshare-a-file",
               "title": "Unshare a file",
               "blocks": [
-                { "type": "p", "text": "Use a file's menu and choose **Unshare from Space** to remove a file you added so it's no longer offered to other members. Files they've already downloaded stay on their devices — unsharing only stops offering new copies. Your own original is untouched." }
+                { "type": "p", "text": "Hover over a file you added, or move to it with the keyboard, and click the trash button — **Unshare from Space** — so it's no longer offered to other members. To remove several at once, tick them and use **Unshare N** (see [Download or unshare several files at once](/docs/guides#select-several-files)). Files members have already downloaded stay on their devices — unsharing only stops offering new copies. Your own original is untouched." }
+              ]
+            },
+            {
+              "id": "select-several-files",
+              "title": "Download or unshare several files at once",
+              "intro": "Tick files in a space or in a folder someone shares, then download or unshare them together.",
+              "blocks": [
+                { "type": "steps", "items": [
+                  { "text": "Open a space, or a folder another member shares." },
+                  { "text": "Tick the box at the top of the list — **Select all 12 files** — to select everything, or press `Cmd/Ctrl + A`. To start with one file, `Cmd/Ctrl`-click it; `Shift`-click selects every file between it and the last one you clicked. In a folder, a subfolder's box — **Select all files in <name>** — takes every file inside it." },
+                  { "text": "Tick and untick files until the strip above the list says what you want: **4 selected**, their total size, and how many are already on your device." },
+                  { "text": "Click **Download 4**. The files go to the space's download folder, and files from a shared folder keep their subfolders under it. The arrow beside the button — **More download options** — picks another folder instead." },
+                  { "text": "Click **Done**, or press `Esc`, to end the selection." }
+                ] },
+                { "type": "image", "src": "/docs-batch-selection.webp", "alt": "A shared folder in Mirall with four of its five files ticked and a strip reading 4 selected, with a Download 4 to Downloads button and Done", "width": 1344, "height": 1165 },
+                { "type": "p", "text": "In a space, **Unshare 4** removes the ticked files you shared yourself, after you confirm in **Unshare 4 files?**. Files other members shared are left out of the count. Members who already downloaded a file keep their copy." },
+                { "type": "p", "text": "With a filter typed, the top box selects only what matches — **Select all 4 matching files**. Files you ticked that the filter now hides are counted in the strip, and **Deselect hidden** drops them." },
+                { "type": "p", "text": "While the files download, a strip above the list reads **Downloading 12 files · 3 done · 1.2 GB left**, with **Cancel All** to stop every one of them." },
+                { "type": "note", "text": "Selecting works on a space's own files and on folders you browse. A folder you share or mirror has no boxes." }
+              ],
+              "related": [
+                { "label": "Download a file", "to": "/docs/guides#download-a-file" },
+                { "label": "Find a file in a big folder", "to": "/docs/guides#find-a-file-in-a-folder" }
               ]
             }
           ]
@@ -667,7 +696,7 @@
                 { "type": "steps", "items": [
                   { "text": "Open the space you want to share into." },
                   { "text": "Open **Add Folder** from **Share…** in the sidebar, the **File** menu, or `Cmd/Ctrl + Shift + U`." },
-                  { "text": "Choose a folder on your computer with **Browse…** and give it a **share name** — how it appears to other members. The name must be unique within the space." },
+                  { "text": "Choose a folder on your computer with **Browse…**, or paste its path into the field, and give it a **share name** — how it appears to other members. The name must be unique within the space." },
                   { "text": "Click **Next: Preview**. Mirall scans the folder and shows what it's about to share — the file count and total size." },
                   { "text": "Click **Add Folder**. Mirall starts offering the folder's files. Changes you make to the folder later sync to the space automatically." }
                 ] },
@@ -690,7 +719,7 @@
                   { "text": "Click **Pause** in the band to hold the queue where it is. The band turns amber and reads **Adding files is paused**, the **Folder** tile beside the list reads **Paused**, and so does the folder's card in the space." },
                   { "text": "Click **Resume** to carry on from where it stopped." }
                 ] },
-                { "type": "image", "src": "/docs-folder-indexing.webp", "alt": "A folder shared in Mirall with a band reading “Adding 6 files to this folder · 805.3 MB to read” and a Pause button, and a Folder tile badged Adding", "width": 1344, "height": 1165 },
+                { "type": "image", "src": "/docs-folder-indexing.webp", "alt": "A folder shared in Mirall with a band reading “Adding 5 files to this folder · 805.3 MB to read” and a Pause button, and a Folder tile badged Adding", "width": 1344, "height": 1165 },
                 { "type": "p", "text": "A pause is remembered: the folder stays paused until you resume it, and quitting Mirall and starting it again leaves it paused. That is why the badge follows the folder onto its card in the space — without it, a folder you had held would look no different from one that had finished." },
                 { "type": "image", "src": "/docs-folder-index-paused.webp", "alt": "A paused folder in Mirall, with an amber band reading “Adding files is paused. Resume to finish adding this folder.”, a Resume button, and a Folder tile badged Paused", "width": 1344, "height": 1165 },
                 { "type": "note", "text": "Pausing doesn't unshare the folder, and it doesn't withdraw the files already added — those stay available to the space. **Pause** belongs to whoever owns the folder: open a folder someone else shares and the same band tells you what the owner is still adding, with nothing for you to act on." },
@@ -707,12 +736,12 @@
               "title": "Browse a folder someone shared",
               "blocks": [
                 { "type": "p", "text": "Open a folder another member shared to see what's inside without downloading everything. A folder you're only looking through is marked **Browse**." },
-                { "type": "p", "text": "Subfolders are rows you can open and close. Each one tells you what's inside before you open it: how many files it holds and their total size, how many are already on your device, how many are downloading right now, and how many subfolders it contains. A filter box sits above the list, with **Expand all** beside it — it opens the whole tree at once, and flips to **Collapse all** to fold it back up." },
+                { "type": "p", "text": "Subfolders are rows you can open and close. Each one tells you what's inside before you open it: how many files it holds and their total size, how many are already on your device, how many are downloading right now, and how many subfolders it contains. Above the list sit a box to select files, the filter, a button naming where downloads go, and **Expand all** — it opens the whole tree at once, and flips to **Collapse all** to fold it back up." },
                 { "type": "p", "text": "If the owner is still working through the folder, a band above the list says so — **Michael is adding 6 files to this folder**, with how much is left to read. Those files appear as the owner gets to them, so a folder can keep growing while you look at it." },
-                { "type": "p", "text": "Click **Download** on any individual file to save just that one, or use **Mirror to Disk…** to keep the whole folder synced instead." },
+                { "type": "p", "text": "Click **Download to…** on any individual file to save just that one, tick several to download them together, or use **Mirror to Disk…** to keep the whole folder synced instead." },
                 { "type": "note", "text": "Folders you leave open stay open as you move around the app. Restarting Mirall resets the tree to its default, with the top-level folders open." }
               ],
-              "image": { "src": "/docs-folder-browse.webp", "alt": "A shared folder in Mirall browsed as a tree, with a filter box and Collapse all above the list and the People and Folder tiles beside it", "width": 1344, "height": 1165 },
+              "image": { "src": "/docs-folder-browse.webp", "alt": "A shared folder in Mirall browsed as a tree, with a select box, a filter box, a Downloads button and Collapse all above the list and the People and Folder tiles beside it", "width": 1344, "height": 1165 },
               "related": [
                 { "label": "Find a file in a big folder", "to": "/docs/guides#find-a-file-in-a-folder" },
                 { "label": "Mirror a folder to disk", "to": "/docs/guides#mirror-a-folder-to-disk" }
@@ -721,16 +750,16 @@
             {
               "id": "find-a-file-in-a-folder",
               "title": "Find a file in a big folder",
-              "intro": "A shared folder can hold thousands of files. The filter above the list narrows it as you type — on your screen only, and without touching what anyone else sees.",
+              "intro": "A shared folder can hold thousands of files. The filter above the list narrows it as you type — on your screen only, and without touching what anyone else sees. A space's own files have the same filter.",
               "blocks": [
                 { "type": "steps", "items": [
-                  { "text": "Open the folder and click the **Filter files…** box above the file list." },
+                  { "text": "Open the folder and click the **Filter files…** box above the file list, or press `Cmd/Ctrl + F`." },
                   { "text": "Type any part of a name. The list narrows as you type, and the count inside the box — **2 of 5** — says how many of the folder's files matched." },
                   { "text": "Click the **×** at the end of the box to clear the filter and put the whole folder back." }
                 ] },
                 { "type": "image", "src": "/docs-folder-filter.webp", "alt": "A folder in Mirall narrowed by the filter “day”, with “2 of 5” and a clear button inside the filter box and only the matching clips listed", "width": 1344, "height": 1165 },
                 { "type": "bullets", "items": [
-                  "Matching is on names, and capitals don't matter.",
+                  "Matching is on names. Capitals don't matter, and an accented name such as **März** matches however it was typed.",
                   "A subfolder whose own name matches keeps everything inside it. One that doesn't match survives only through what's inside it, so a match buried deep in the tree still reaches you.",
                   "Branches open on their own to show what matched, up to a couple of hundred files. Past that they stay folded, because a term matching nearly everything is only readable closed.",
                   "A subfolder row under a filter counts what's showing beneath it, not what the folder holds — so its file count and size always describe the rows you can see."
@@ -750,7 +779,7 @@
               "blocks": [
                 { "type": "steps", "items": [
                   { "text": "Open the shared folder and choose **Mirror to Disk…**." },
-                  { "text": "Pick a location on your computer with **Browse…**, then click **Next: Preview** to see what will be downloaded. The preview gives the folder's file count and size, what will land on your disk, and anything already at the destination." },
+                  { "text": "Pick a location on your computer with **Browse…**, or paste its path into the field, then click **Next: Preview** to see what will be downloaded. The preview gives the folder's file count and size, what will land on your disk, and anything already at the destination." },
                   { "text": "Click **Start Mirroring**. Mirall downloads the contents and keeps them in sync as the owner makes changes." }
                 ] },
                 { "type": "note", "text": "A mirror is **read-only**. If you edit a file inside the mirror, it reads **Edited locally** and the owner's version comes back at its own name within seconds — your edit is kept beside it, renamed to `name (conflicted copy).ext`. A file you delete from a mirror is fetched back the same way. To work on a file without leaving a second copy in the folder, copy it out of the mirror first." },
@@ -772,7 +801,7 @@
                 ] },
                 { "type": "p", "text": "While the mirror is fetching, a band above the file list says what's left — **Syncing 4 files from Michael · 460 MB to fetch** — and carries the same **Pause**. The **Folder** tile reads **Syncing** until the last file lands, then **Up to date**." },
                 { "type": "p", "text": "When the owner goes offline, the mirror says so rather than pretending. A band above the file list reads **Michael is offline — showing last synced files. Downloads will resume when they're back online**, and a mirror that is demonstrably short of the owner's folder is badged **Owner offline** instead of **Syncing**. Nothing is lost: what is already on your disk stays yours, and the rest picks up when they return." },
-                { "type": "note", "text": "If a write fails — a full disk, no permission, or a destination that's gone — the mirror stops instead of pressing on. It's badged **Problem**, the band above the file list reads **Syncing stopped** with the reason and a **Try again**, and it picks up on its own once the cause is fixed." }
+                { "type": "note", "text": "If a write fails — a full disk, a folder Mirall isn't allowed to write to, or a destination that's gone — the mirror stops instead of pressing on. It's badged **Problem**, the band above the file list reads **Syncing stopped** with the reason and a **Try again**, and it picks up on its own once the cause is fixed. One file that another program holds open doesn't stop it: Mirall retries that file while the rest of the folder keeps syncing." }
               ],
               "image": { "src": "/docs-folder-mirrored.webp", "alt": "A mirrored folder in Mirall with every file marked “On your device” and confirmed by a green verified shield, and a Folder tile reading Up to date", "width": 1344, "height": 1165 },
               "related": [
@@ -833,37 +862,37 @@
           "title": "Storage & disk space",
           "docs": [
             {
-              "id": "set-download-folder",
-              "title": "Choose where downloads go",
+              "id": "set-a-space-download-folder",
+              "title": "Choose where a space's downloads go",
+              "intro": "Every space has its own download folder — a scratch disk for the project you're cutting, say, while another space saves to Downloads.",
               "blocks": [
-                { "type": "p", "text": "Open **Settings → Storage**. The **Download Folder** section at the top shows where downloads land; **Change** opens your OS picker. This is the folder every space uses unless it has one of its own, and the choice persists across restarts. It defaults to your OS Downloads folder." },
-                { "type": "p", "text": "Not every folder can be used. If the one you pick sits inside — or contains — a folder you share or mirror, Mirall refuses it, because anything downloaded there would be published to your peers. A folder that doesn't exist, or that Mirall can't write to, is refused too. Mirall never creates the folder for you." },
-                { "type": "p", "text": "Mirall keeps checking that the folder is still reachable. If it goes away — an ejected drive, a network share that dropped, a folder you deleted or renamed — a warning appears here and downloads stop rather than failing one by one." },
-                { "type": "note", "text": "Changing this folder doesn't move files you've already downloaded, and it leaves spaces that have set their own download folder alone." }
+                { "type": "steps", "items": [
+                  { "text": "Open the space. When it has files you can download, the button beside the filter names its download folder." },
+                  { "text": "Click the button and pick one of your recent folders, or **Choose Folder…** for another. Nothing downloads: Mirall confirms with **Downloads from <space> now go to <folder>**." }
+                ] },
+                { "type": "p", "text": "A **Download to…** menu on a file does the same as part of a download — the folder you pick there becomes the space's. You can also open **More → Edit Space**, change **Downloads go to** with **Change** or by pasting a path, and click **Save Changes**." },
+                { "type": "p", "text": "A folder that sits inside — or contains — a folder you share or mirror is refused, since anything landing there would be published to your peers. A folder that doesn't exist, or that Mirall can't write to, is refused too. Two spaces may happily share one folder." },
+                { "type": "note", "text": "Files you already downloaded are never moved. A copy outside the space's current folder still reads **On your device**, with **In <path>** under it. A copy on a drive that isn't connected reads **Drive not connected**: reconnect the drive, or download the file again somewhere else. A download already under way finishes in the folder it started in." }
               ],
+              "image": { "src": "/docs-space-download-folder.webp", "alt": "Mirall's Edit Space dialog with the space's name, its icon, and a Downloads go to field with a Change button", "width": 1344, "height": 1165 },
               "related": [
-                { "label": "Give one space its own download folder", "to": "/docs/guides#set-a-space-download-folder" },
-                { "label": "Fix a download folder Mirall can't reach", "to": "/docs/guides#fix-a-missing-download-folder" }
+                { "label": "Download a file", "to": "/docs/guides#download-a-file" },
+                { "label": "Choose the download folder for new spaces", "to": "/docs/guides#set-download-folder" },
+                { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
               ]
             },
             {
-              "id": "set-a-space-download-folder",
-              "title": "Give one space its own download folder",
-              "intro": "A space can save its downloads somewhere other than your default — a scratch disk for the project you're cutting, say, while everything else lands in Downloads.",
+              "id": "set-download-folder",
+              "title": "Choose the download folder for new spaces",
               "blocks": [
-                { "type": "steps", "items": [
-                  { "text": "Open the space, click **More** in the header, and choose **Edit Space**." },
-                  { "text": "Under **Download Folder**, click **Change** and pick a folder." },
-                  { "text": "Click **Save Changes**. Closing the dialog without saving discards the change." }
-                ] },
-                { "type": "p", "text": "A space you leave alone keeps using the folder from **Settings → Storage**, and the dialog says so: **Using the default download folder**. Once a space has its own, a **Use default folder** button appears to put it back." },
-                { "type": "p", "text": "The same rule applies as for the default folder: a folder that sits inside — or contains — a folder you share or mirror is refused, since anything landing there would be published to your peers. Two spaces may happily share one folder." },
-                { "type": "note", "text": "Files you already downloaded are never moved. Ones now outside the space's folder simply read as **Available** again — point the space back at the old folder and they return to **On your device** without downloading anything twice. Let transfers finish or pause them before you switch." }
+                { "type": "p", "text": "Open **Settings → Storage**. **Download Folder for New Spaces** at the top is where a space you create or join starts downloading. **Change** opens your OS picker, or paste a path into the field. It defaults to your OS Downloads folder." },
+                { "type": "p", "text": "Not every folder can be used. If the one you pick sits inside — or contains — a folder you share or mirror, Mirall refuses it, because anything downloaded there would be published to your peers. A folder that doesn't exist, or that Mirall can't write to, is refused too. Mirall never creates the folder for you." },
+                { "type": "p", "text": "Mirall keeps checking that the folder is still reachable. If it goes away — an ejected drive, a network share that dropped, a folder you deleted or renamed — a warning appears here, because a new space would start downloading into it." },
+                { "type": "note", "text": "Changing this folder doesn't change the spaces you already have — each keeps its own — and it doesn't move files you've already downloaded." }
               ],
-              "image": { "src": "/docs-space-download-folder.webp", "alt": "Mirall's Edit Space dialog showing the Download Folder section with a Change button and a note that the space is using the default download folder", "width": 1344, "height": 1165 },
               "related": [
-                { "label": "Choose where downloads go", "to": "/docs/guides#set-download-folder" },
-                { "label": "How Mirall uses your disk", "to": "/docs/explanation#storage-model" }
+                { "label": "Choose where a space's downloads go", "to": "/docs/guides#set-a-space-download-folder" },
+                { "label": "Fix a download folder Mirall can't reach", "to": "/docs/guides#fix-a-missing-download-folder" }
               ]
             },
             {
@@ -892,16 +921,16 @@
             {
               "id": "fix-a-missing-download-folder",
               "title": "Fix a download folder Mirall can't reach",
-              "intro": "An ejected external drive, a network share that dropped, or a folder that was deleted or renamed leaves Mirall with nowhere to put a download.",
+              "intro": "An ejected external drive, a network share that dropped, or a folder that was deleted or renamed leaves a space with nowhere to put its downloads.",
               "blocks": [
-                { "type": "p", "text": "Rather than failing each download with a generic error, Mirall names the folder as the problem. A notification stays up for as long as the folder is unreachable and carries a **Change folder** action, and **Settings → Storage** shows the same warning under the download folder." },
-                { "type": "p", "text": "Reconnect the drive or remount the share and the warning clears on its own. If the folder is gone for good, use **Change folder** on the notification — or **Change** in **Settings → Storage** — and pick another one." },
-                { "type": "p", "text": "Downloads heading for a folder that isn't there stop retrying instead of hammering it, and Mirall never quietly recreates a folder you deleted. Once the folder is back, or you choose another one, they resume on their own while the sharer is online — or press **Retry** to start one straight away." },
-                { "type": "note", "text": "A space with its own download folder is checked the same way, so the warning can name a folder other than the one in **Settings → Storage**." }
+                { "type": "p", "text": "Rather than failing each download with a generic error, Mirall names the folder as the problem. A notification reads **<space> downloads to <folder>, which is not connected. Its downloads wait until you reconnect it or choose another folder.** When several spaces are affected it names one and counts the rest. In the space, the button beside the filter reads **<folder> · not connected**, and the download menus list that folder as **· drive not connected**." },
+                { "type": "p", "text": "Reconnect the drive or remount the share and the warning clears on its own. If the folder is gone for good, click **Choose another folder** on the notification — it opens the space — and pick another one from the button beside the filter." },
+                { "type": "p", "text": "Downloads heading for a folder that isn't there stop retrying instead of hammering it, and Mirall never quietly recreates a folder you deleted. Once the folder is back, or you choose another one, they resume on their own while the sharer is online — or press **Retry** to start one straight away. In a different folder they start from the beginning." },
+                { "type": "note", "text": "**Settings → Storage** warns separately when the folder for new spaces can't be reached. It doesn't affect the spaces you already have." }
               ],
               "related": [
-                { "label": "Choose where downloads go", "to": "/docs/guides#set-download-folder" },
-                { "label": "Give one space its own download folder", "to": "/docs/guides#set-a-space-download-folder" }
+                { "label": "Choose where a space's downloads go", "to": "/docs/guides#set-a-space-download-folder" },
+                { "label": "Choose the download folder for new spaces", "to": "/docs/guides#set-download-folder" }
               ]
             }
           ]
@@ -924,7 +953,7 @@
               "blocks": [
                 { "type": "steps", "items": [
                   { "text": "Open **Settings → Backup** and click **Set up backup**. Mirall also offers this on the Shared Spaces screen as **Protect Your Spaces** once you have a space." },
-                  { "text": "Under **Where should the backup live?**, choose an **empty folder** with **Browse…** — on another drive, a network folder, or a folder that syncs to the cloud, such as iCloud Drive, Dropbox or OneDrive. The folder you choose becomes the backup itself, so it can't hold anything else: a folder with other files in it reads **This folder already holds other files**, and you create a new one instead. Hidden files, and the ones a drive or sync service leaves in every folder, don't count. A folder on the same disk as Mirall gets a **Same disk as this computer** warning, because one failing disk would take both — **Use it anyway** carries on regardless." },
+                  { "text": "Under **Where should the backup live?**, choose an **empty folder** with **Browse…**, or paste its path — on another drive, a network folder, or a folder that syncs to the cloud, such as iCloud Drive, Dropbox or OneDrive. The folder you choose becomes the backup itself, so it can't hold anything else: a folder with other files in it reads **This folder already holds other files**, and you create a new one instead. Hidden files, and the ones a drive or sync service leaves in every folder, don't count. A folder on the same disk as Mirall gets a **Same disk as this computer** warning, because one failing disk would take both — **Use it anyway** carries on regardless." },
                   { "text": "Choose a passphrase of at least 10 characters and type it again to confirm it. A short sentence is easy to remember and hard to guess." },
                   { "text": "Click **Turn on backup**. The first backup starts straight away, and the banner at the top of the page reads **You're protected** once it has finished." }
                 ] },
@@ -937,7 +966,7 @@
                   "**Not backed up:** the files themselves. They stay in your folders — back those up as you do today.",
                   "**Private:** everything is encrypted. Only your passphrase opens it."
                 ] },
-                { "type": "p", "text": "If something goes wrong, the banner says so: **Your backup needs attention** when the last backup didn't finish, and **Your backup has stopped** when nothing has been backed up for over 10 days — usually a backup drive that isn't connected. The **Backup** row on your Profile page carries the same verdict." }
+                { "type": "p", "text": "If something goes wrong, the banner says so: **Your backup needs attention** when the last backup didn't finish, **Your backup folder isn't connected** when the drive or network share holding it is gone, and **Your backup has stopped** when nothing has been backed up for over 10 days. A notification also tells you once when the backup folder disconnects, and again when it's back. The **Backup** row on your Profile page carries the same verdict." }
               ],
               "image": { "src": "/docs-settings-backup.webp", "alt": "Mirall's Backup settings reading You're protected, with Back up automatically switched on, the backup folder, and the passphrase section below", "width": 1344, "height": 1165 },
               "related": [
@@ -955,7 +984,7 @@
                   { "text": "Install Mirall and open it. On the welcome screen, click **Already used Mirall? Restore from a backup**." },
                   { "text": "Choose your backup folder itself — the one you picked when you set up the backup, not the folder around it. Mirall reads **Found your backup** and when it was last made. Any other folder reads **This folder holds no Mirall backup**." },
                   { "text": "Type your passphrase and click **Show backups**." },
-                  { "text": "Pick a backup. The newest, marked **Latest**, is usually right. An older one can be marked **Before data went missing on this computer** or **Before you left “<space>”** — choose that if the newer backup lost something you need." },
+                  { "text": "Pick a backup. The newest, marked **Latest**, is usually right. An older one can be marked **Before a drop Mirall couldn't explain** or **Before you left “<space>”** — choose that if the newer backup lost something you need. The newer one then reads **holds less than an earlier backup**." },
                   { "text": "Click **Restore**. Mirall restarts and opens your data." }
                 ] },
                 { "type": "subheading", "text": "While Mirall checks with the people you share with" },
@@ -1133,7 +1162,7 @@
               "intro": "Mirall keeps a record on your device of who joined, left, or was approved, what was shared and downloaded, and when this device's connection went wrong.",
               "blocks": [
                 { "type": "p", "text": "Click your avatar to open **Profile**, then choose **Activity Log** under **This Device**. The row itself tells you how many events are recorded." },
-                { "type": "p", "text": "Search across people, files and folders with the box at the top, and narrow the list with three menus — **All spaces**, **Anyone**, and **Any time** (last 7, 30, or 90 days). The **All / Members / Files / Folders / Security / Network** buttons filter by kind, and you can press more than one. Every filter you apply becomes a chip you can remove individually, or clear in one go with **Clear all**. Press **⌘F** (**Ctrl-F**) to jump to the search box." },
+                { "type": "p", "text": "Search with the box at the top — by person, file or folder, by a path or relay name, or by what happened, such as **space created** or **downloaded**. Accented names match however they were typed. Narrow the list with three menus — **All spaces**, **Anyone**, and **Any time** (last 7, 30, or 90 days). The **All / Members / Files / Folders / Security / Network** buttons filter by kind, and you can press more than one. Every filter you apply becomes a chip you can remove individually, or clear in one go with **Clear all**. Press **⌘F** (**Ctrl-F**) to jump to the search box." },
                 { "type": "p", "text": "Events are grouped by day, newest first, with your own actions attributed to **You**. A refused request or a failed transfer carries a **DENIED** or **FAILED** badge. Twenty events load at a time — **Load more** fetches the next page." },
                 { "type": "subheading", "text": "Connection history" },
                 { "type": "p", "text": "**Network** is the log's account of the stretches when nothing could happen. It records when this device went offline, when Mirall couldn't reach anyone, and when a connection was restored, along with members dropping out and coming back. A restored entry carries how long the gap lasted — **Offline for 20m** — and names the cause it settled on, such as **Your VPN is the only route out** or **Your router changes ports**." },
@@ -1173,7 +1202,8 @@
               "blocks": [
                 { "type": "p", "text": "Press **⌘K** (**Ctrl-K** on Windows and Linux) to open the command palette, then start typing. It searches your spaces by name and every action Mirall can run — including the screens with no shortcut of their own: **Network Status**, the Settings pages, **About Mirall**, **What's New**, **Send Feedback**, and the documentation." },
                 { "type": "p", "text": "**⌘/** (**Ctrl-/**) shows the full list of shortcuts inside the app at any time." },
-                { "type": "p", "text": "**⌘1** to **⌘9** jump straight to the first nine spaces in your list. On macOS that chord lives in the **View → Go to Space** menu, which is also where you can see which number belongs to which space." },
+                { "type": "p", "text": "**⌘F** (**Ctrl-F**) jumps to the filter on a space or folder screen, and to the search box in the Activity Log. **⌘A** (**Ctrl-A**) selects all files on a space or folder screen; **Esc** ends the selection." },
+                { "type": "p", "text": "**⌘1** to **⌘9** open your first nine favorites, oldest favorite first. The chord lives in the **View → Go to Favorite** menu, which is also where you can see which number belongs to which space; the menu appears once you have a favorite." },
                 { "type": "p", "text": "Actions that act on a space — **Invite**, **Edit Space**, **Add to Favorites**, **Manage storage** — appear in the palette only while a space is open, and stay hidden while you're still waiting to be approved into one. Leaving is the exception: it stays available while you wait, because withdrawing the request is the thing you might want to do." },
                 { "type": "note", "text": "Shortcuts keep out of your way while you're typing: only **⌘K**, **⌘,**, **⌘/** and **⌘F** stay live inside a text field." }
               ],
@@ -1233,7 +1263,7 @@
               "blocks": [
                 { "type": "p", "text": "Open **Settings → Network**. Under **Transfer Limits** there's a row for **Download** and one for **Upload**, each offering **Unlimited**, **1 MB/s**, **5 MB/s**, **25 MB/s**, or **Custom**. Both start out unlimited." },
                 { "type": "p", "text": "**Custom** reveals a box where you type a figure in kilobytes per second — a plain number, no units to pick. Enter `0` for no limit. Anything below 32 KB/s is rounded up to it, and Mirall tells you so." },
-                { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect. If Mirall can't apply it straight away, it keeps the new limit and says **Saved. The new limit takes effect after Mirall restarts.**" },
+                { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect. If Mirall can't save a limit, it says **Couldn't save that limit. The previous one is still in use.**" },
                 { "type": "note", "text": "A limit is a **total, not a figure per transfer**. Two downloads running under a 5 MB/s cap get roughly half each rather than 5 MB/s apiece, and serving several people at once splits one upload cap between them." }
               ],
               "image": { "src": "/docs-settings-network.webp", "alt": "Mirall's Network settings showing Transfer limits at the top, with separate Download and Upload rows offering Unlimited, 1 MB/s, 5 MB/s, 25 MB/s, or a custom figure", "width": 1344, "height": 1165 },
@@ -1298,8 +1328,9 @@
             "columns": ["Status", "Colour", "Meaning"],
             "rows": [
               ["Shared by you", "Green", "A file you added to the space. It stays where it is on your disk and is offered to other members."],
-              ["On your device", "Green", "A file you downloaded from another member. It's yours to keep and works offline."],
+              ["On your device", "Green", "A file you downloaded from another member. It's yours to keep and works offline. If it sits outside the space's current download folder, **In <path>** under it says where."],
               ["Downloading", "Blue", "A transfer is in progress, showing progress, speed, and time remaining."],
+              ["Waiting", "Grey", "Only a few downloads run at once. This one starts when a download ahead of it finishes."],
               ["Verifying…", "Blue", "The download finished and Mirall is checking the contents match the owner's original."],
               ["Preparing…", "Blue", "The owner is still indexing this file, or it is waiting its turn to be indexed. You can watch their progress while you wait."],
               ["Adding", "Blue", "A file you just added is being indexed so other members can fetch it."],
@@ -1307,9 +1338,10 @@
               ["Paused", "Yellow", "A download stopped — because you paused it, or because it was interrupted. Resume to continue."],
               ["Edited locally", "Yellow", "The copy on your device changed after it was downloaded and verified. In a mirror, the owner's version is restored and your edit kept as a conflicted copy."],
               ["Failed", "Red", "A transfer errored out, and the row says why. **Disk full**, **Permission denied** and **Download folder unavailable** clear on their own once you fix the cause; otherwise Retry to try again, or dismiss it."],
-              ["Available", "Grey", "The member who shared this file is online, so you can pull it. Click download."],
-              ["Owner offline", "Grey", "The member who shared this file is offline. The download resumes on its own once they're back, and a partly downloaded file keeps **Discard Partial**."],
-              ["Not available", "Grey", "The file can't be obtained right now."]
+              ["Available", "Grey", "The member who shared this file is online, so you can pull it. Click **Download to…** and pick a folder."],
+              ["Owner offline", "Grey", "A partly downloaded file whose sharer is offline. The download resumes on its own once they're back, and the file keeps **Discard Partial**."],
+              ["Not available", "Grey", "The file can't be obtained right now — usually because the member who shared it is offline, which its download button says. It turns **Available** once they're back."],
+              ["Drive not connected", "Grey", "You downloaded this file to a drive that isn't connected now. Reconnect the drive, or download it again somewhere else."]
             ]
           }
         },
@@ -1337,7 +1369,7 @@
         {
           "id": "folder-screen",
           "title": "The folder screen",
-          "intro": "Open a folder and you get one screen whatever your relationship to it — only what you can do with it changes. The header carries the folder's name, who owns it and which space it's in, then one main button (**Open Folder**, or **Mirror to Disk…** on a folder you're only browsing) and a **More** menu. Under that, a band appears whenever the folder is doing something and carries the one control that helps: **Pause**, **Resume**, **Locate folder…**, or **Try again**. Then the file list, with a filter and an **Expand all** / **Collapse all** toggle pinned above it, and two tiles beside it. **People** names the owner and everyone mirroring the folder, carries the count of both in its heading, and folds away when you don't need it. **Folder** gives its size, its file count, how many of those are on your device, and its status.",
+          "intro": "Open a folder and you get one screen whatever your relationship to it — only what you can do with it changes. The header carries the folder's name, who owns it and which space it's in, then one main button (**Open Folder**, or **Mirror to Disk…** on a folder you're only browsing) and a **More** menu. Under that, a band appears whenever the folder is doing something and carries the one control that helps: **Pause**, **Resume**, **Locate folder…**, or **Try again**. Then the file list, with a row pinned above it: a box to select files, the filter, a button naming where downloads go on a folder you're only browsing, and an **Expand all** / **Collapse all** toggle. Two tiles sit beside it. **People** names the owner and everyone mirroring the folder, carries the count of both in its heading, and folds away when you don't need it. **Folder** gives its size, its file count, how many of those are on your device, and its status.",
           "table": {
             "columns": ["Folder status", "Colour", "Meaning"],
             "rows": [
@@ -1363,7 +1395,10 @@
           "id": "file-folder-actions",
           "title": "File & folder actions",
           "list": [
-            "**Download** — pull a file another member is offering onto your device.",
+            "**Download to…** — pull a file another member is offering onto your device, into the space's download folder or one you pick.",
+            "**Downloads go to <folder>** — the button beside the filter: change the space's download folder without downloading anything.",
+            "**Download N** / **Unshare N** — act on the files you ticked; **Deselect hidden** drops ticked files the filter hides, and **Done** ends the selection.",
+            "**Cancel All** — stop every download in a batch you started.",
             "**Reveal in Folder** — open a downloaded or shared file in your OS file browser.",
             "**Unshare from Space** — remove a file you added so it's no longer offered (files others already downloaded stay on their devices).",
             "**Browse Files** — look inside a shared folder without mirroring it.",
@@ -1378,7 +1413,7 @@
             "**Pause syncing** / **Resume syncing** — hold a folder's work and pick it back up: the reading, on a folder you share; the fetching, on one you mirror.",
             "**Edit Folder…** — rename a folder you share, or move a mirror to a different folder.",
             "**Unmount Mirror** — stop mirroring and remove the mirrored copy; the folder reverts to Browse.",
-            "**Clear filter** — drop the filter above a folder's file list and put every row back."
+            "**Clear filter** — drop the filter above a space's or a folder's file list and put every row back."
           ]
         },
         {
@@ -1395,13 +1430,14 @@
               ["Esc", "Esc", "Dismiss a dialog"],
               ["⌘←", "Ctrl-←", "Go back to the previous screen"],
               ["⌘⇧H", "Ctrl-H", "Jump to your Shared Spaces"],
-              ["⌘1 – ⌘9", "Ctrl-1 – Ctrl-9", "Jump to a space by number — the first nine in your list"],
+              ["⌘1 – ⌘9", "Ctrl-1 – Ctrl-9", "Jump to a favorite by number — your first nine favorites, oldest first"],
               ["⌘,", "Ctrl-,", "Open Settings"],
               ["⌘⇧P", "Ctrl-Shift-P", "Open your Profile"],
               ["⌘⇧L", "Ctrl-Shift-L", "Open the Activity Log"],
               ["⌘N", "Ctrl-N", "Create a new space"],
               ["⌘J", "Ctrl-J", "Join a space with an invite"],
-              ["⌘F", "Ctrl-F", "Jump to the search box (Activity Log only)"],
+              ["⌘F", "Ctrl-F", "Jump to the filter on a space or folder screen, or the Activity Log's search box"],
+              ["⌘A", "Ctrl-A", "Select all files on a space or folder screen"],
               ["⌘U", "Ctrl-U", "Add files to the current space"],
               ["⌘⇧U", "Ctrl-Shift-U", "Share a folder in the current space"],
               ["⌘Q", "Ctrl-Q", "Quit Mirall (from the application menu)"]
@@ -1415,7 +1451,7 @@
           "list": [
             "**Back** — your mouse's back button, a two-finger swipe on macOS, `Cmd/Ctrl + ←`, or **View → Back**.",
             "**Home** — click the Mirall logo, or press `Ctrl-H` (`Cmd-Shift-H` on macOS) to return to your Shared Spaces.",
-            "**A space by number** — `Cmd/Ctrl + 1` to `9` for the first nine spaces in your list, also listed by name under **View → Go to Space**.",
+            "**A favorite by number** — `Cmd/Ctrl + 1` to `9` for your first nine favorites, oldest first, also listed by name under **View → Go to Favorite**.",
             "**Command palette** — `Cmd/Ctrl + K` to search and jump to any space or run any action.",
             "**Profile** and the **Activity Log** have chords of their own — `Cmd/Ctrl + Shift + P` and `Cmd/Ctrl + Shift + L`.",
             "**Network Status**, the **Settings** pages, **About Mirall**, **What's New**, **Send Feedback** and the documentation have no key of their own and are reached from the command palette.",
@@ -1435,7 +1471,7 @@
               ["Appearance", "Theme Mode (Light / System / Dark), Display Size, Language, and — on Windows and Linux — auto-hide the menu bar."],
               ["Notifications", "Master switch, system sound, mute-when-focused, and a switch for each kind of alert — join requests, people coming and going, new shared files, someone getting your file, and downloads finishing, failing or pausing."],
               ["Network", "Transfer Limits — a download and an upload cap, each Unlimited, a preset, or a figure you type — and **Relay**, where you add the one relay this device uses and choose when it is reached for."],
-              ["Storage", "Download folder — with a warning when Mirall can't reach it — and Mirall's own App Storage, broken down by space, shared-file index, Activity Log, download history, the installed version and app updates, with **Free up** when there is enough to reclaim."],
+              ["Storage", "Download Folder for New Spaces — with a warning when Mirall can't reach it — and Mirall's own App Storage, broken down by space, shared-file index, Activity Log, download history, the installed version and app updates, with **Free up** when there is enough to reclaim."],
               ["Backup", "Whether Mirall backs up automatically, the backup folder, and your passphrase — check it, change it, and whether Mirall reminds you to. The banner at the top says whether you're protected."],
               ["Activity Log", "Whether activity is recorded, how long events are kept, and actions to export or delete the log."]
             ]
@@ -1562,7 +1598,7 @@
               ["Mirall (macOS)", "About Mirall — opens the About Mirall page; Preferences… (⌘,); Services; Hide / Hide Others / Show All; Quit."],
               ["File", "New Space (⌘/Ctrl-N); Join Space (⌘/Ctrl-J); Add Files… (⌘/Ctrl-U); Add Folder… (⌘/Ctrl-Shift-U); Invite People…. On macOS, also Close. On Windows and Linux, also Preferences… (Ctrl-,) and Quit Mirall (Ctrl-Q)."],
               ["Edit", "The standard Undo, Redo, Cut, Copy, Paste, and Select All."],
-              ["View", "Back; Home; Profile (⌘/Ctrl-Shift-P); Activity Log (⌘/Ctrl-Shift-L); Go to Space, listing your first nine spaces by name with ⌘/Ctrl-1 to 9; Command Palette; Keyboard Shortcuts; zoom in, out, and reset; full screen."],
+              ["View", "Back; Home; Profile (⌘/Ctrl-Shift-P); Activity Log (⌘/Ctrl-Shift-L); Go to Favorite, listing your first nine favorites by name with ⌘/Ctrl-1 to 9, once you have one; Command Palette; Keyboard Shortcuts; zoom in, out, and reset; full screen."],
               ["Window (macOS)", "The standard Minimize, Zoom, and window list."],
               ["Help", "What's New…; Documentation; Send Feedback…. On Windows and Linux, also About Mirall."]
             ]
@@ -1622,7 +1658,7 @@
             { "type": "p", "text": "A backup holds your spaces, their file lists, your profile and your settings — the things that exist nowhere but on your device. It does not hold the files themselves. Those already live in your own folders, or with the person who shared them, and you back them up the way you always have." },
             { "type": "subheading", "text": "Why a restore waits for someone else" },
             { "type": "p", "text": "A backup can be older than what your contacts last saw from you. If a restored device started changing things straight away, the old and new versions of your profile would clash for everyone you share with. So after a restore, Mirall holds changes until someone you share a space with confirms nothing newer exists — then it fetches your newest profile from them. That's also why the same identity must never run on two devices at once." },
-            { "type": "p", "text": "Mirall keeps a few older backups, from up to two months back. When a newer backup holds noticeably less than the one before it — fewer spaces, or a shorter profile — Mirall flags it as **Data went missing on this computer**, and the older one stays available to restore from." }
+            { "type": "p", "text": "Mirall keeps a few older backups, from up to two months back. When a newer backup holds noticeably less than the one before it — fewer spaces, or a shorter profile — and nothing you did explains it, the restore list says so: the newer backup **holds less than an earlier backup**, and the older one is offered as **Before a drop Mirall couldn't explain**. Leaving a space or cancelling a join is never counted as a loss." }
           ]
         },
         {
@@ -1642,7 +1678,7 @@
           "title": "Spaces, members & availability",
           "blocks": [
             { "type": "p", "text": "A space is a private group with its own members and its own files. Because files live on members' devices rather than a server, a file is downloadable only while the member who shared it is **online**." },
-            { "type": "p", "text": "Whoever shared a file is the one who serves it. Downloading it gives you a copy that's yours to keep and works offline, but it doesn't make you a second source others can pull from — so if the person who shared it goes offline, the file is marked **Owner offline** until they're back, and any download in flight picks up where it left off. If another member happens to share the same file themselves, Mirall notes that it's **also shared by** them, and either copy can be downloaded." },
+            { "type": "p", "text": "Whoever shared a file is the one who serves it. Downloading it gives you a copy that's yours to keep and works offline, but it doesn't make you a second source others can pull from — so if the person who shared it goes offline, the file reads **Not available**, and its download button says the owner is offline, until they're back, and any download in flight picks up where it left off. If another member happens to share the same file themselves, Mirall notes that it's **also shared by** them, and either copy can be downloaded." },
             { "type": "note", "text": "Plan around this for anything time-critical: the person sharing a file needs to be online and running Mirall while someone downloads it. Mirall doesn't hand a file off to the rest of the space to keep serving in their absence." }
           ]
         },
@@ -1718,7 +1754,7 @@
             ] },
             { "type": "p", "text": "Only the third is Mirall's to manage, and it stays small precisely because there's no second copy of your files inside it. You don't have to run anything: Mirall compacts its own records on a cadence it keeps across restarts, clears what's left of a space when you leave it and of a mirrored share when its owner deletes it, forgets downloads that failed for good more than 30 days ago, and keeps only the current app update. **Free up** in Settings → Storage is there for when you want that space back now rather than later." },
             { "type": "subheading", "text": "Where downloads land" },
-            { "type": "p", "text": "Downloads go to the folder set in **Settings → Storage**, unless a space has been given one of its own — so there can be several download folders in play at once. Mirrors are separate again: each one lives at the location you chose when you set it up." },
+            { "type": "p", "text": "Every space has its own download folder, which you can change from the space or from any download; a new space starts with the one set in **Settings → Storage**. So there can be several download folders in play at once, and a file from a shared folder keeps its subfolders under the one it lands in. Mirrors are separate again: each one lives at the location you chose when you set it up." },
             { "type": "p", "text": "Whichever folder you pick, it can't overlap a folder you share or mirror, in either direction. The reason is worth understanding rather than working around: Mirall publishes what's inside a shared folder, so a download landing there would be offered to your peers without you asking for it." }
           ]
         },

@@ -9,6 +9,8 @@
 import activityLog from '../../assets/docs/activity-log.webp?w=672;1008;1344&format=webp&as=srcset'
 import addFolder from '../../assets/docs/add-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import approvalReview from '../../assets/docs/approval-review.webp?w=672;1008;1344&format=webp&as=srcset'
+import batchSelection from '../../assets/docs/batch-selection.webp?w=672;1008;1344&format=webp&as=srcset'
+import downloadToMenu from '../../assets/docs/download-to-menu.webp?w=672;1008;1344&format=webp&as=srcset'
 import editFolderMirror from '../../assets/docs/edit-folder-mirror.webp?w=672;1008;1344&format=webp&as=srcset'
 import editFolder from '../../assets/docs/edit-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import fileRecipients from '../../assets/docs/file-recipients.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -47,6 +49,8 @@ const SRCSETS: Record<string, string> = {
   '/docs-activity-log.webp': activityLog,
   '/docs-add-folder.webp': addFolder,
   '/docs-approval-review.webp': approvalReview,
+  '/docs-batch-selection.webp': batchSelection,
+  '/docs-download-to-menu.webp': downloadToMenu,
   '/docs-edit-folder-mirror.webp': editFolderMirror,
   '/docs-edit-folder.webp': editFolder,
   '/docs-file-recipients.webp': fileRecipients,
