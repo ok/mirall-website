@@ -1149,6 +1149,27 @@
                 { "label": "Fix a connection problem", "to": "/docs/guides#fix-a-connection-problem" },
                 { "label": "Network status", "to": "/docs/reference#network-status" }
               ]
+            },
+            {
+              "id": "connect-to-an-organization",
+              "title": "Connect Mirall to your organization",
+              "intro": "An organization can manage some of Mirall's settings on the computers it looks after. Your administrator sends you an activation link to connect this computer.",
+              "blocks": [
+                { "type": "steps", "items": [
+                  { "text": "Open the activation link on the computer where Mirall is installed. It opens in your browser, which hands it to Mirall." },
+                  { "text": "Mirall checks with your organization, then asks **Connect Mirall to <organization>?** and says what connecting means." },
+                  { "text": "Click **Connect**. **Connected to <organization>** confirms it." }
+                ] },
+                { "type": "p", "text": "An organization can set your relay, whether the Activity Log records and how long it keeps events, and your backup: it can require automatic backups and choose the folder they go to, in which Mirall makes this computer's own folder. A setting it manages reads **Set by <organization>** and can't be changed while you're connected. While it keeps recording on, **Delete the log** is unavailable; **Export as JSON** still works." },
+                { "type": "p", "text": "To see what it manages, open **Profile → About Mirall → Organization**, or **Open organization** in the command palette. The page lists the managed settings by settings page, with your organization's support links." },
+                { "type": "p", "text": "To leave, click **Leave…** on that page, then **Leave**. The settings it managed go back to yours. Backups already on its share stay there, encrypted with your passphrase." },
+                { "type": "note", "text": "While connected, Mirall tells your organization this computer's name, its Mirall version and operating system, which of the organization's settings are in effect, and whether its backup is working — and that it left, when you leave. Never your files, your spaces, or who you share with. The [privacy policy](/privacy#managed) has the details." }
+              ],
+              "related": [
+                { "label": "Back up Mirall", "to": "/docs/guides#back-up-mirall" },
+                { "label": "Choose what Mirall records", "to": "/docs/guides#configure-activity-recording" },
+                { "label": "Connect through a relay", "to": "/docs/guides#use-a-relay" }
+              ]
             }
           ]
         },
@@ -1502,6 +1523,7 @@
           "table": {
             "columns": ["Section", "Row", "What it's for"],
             "rows": [
+              ["Organization", "Organization", "Appears only on a computer an organization manages, reading **Managed by <organization>**. Opens its page: the settings it manages, its support links, and **Leave…**."],
               ["Updates", "Status", "**Mirall is up to date**, **Checking for updates…**, **Downloading an update**, **Update ready: v<version>**, or **Couldn't check for updates**. On Linux installed from a `.deb` package it reads **Updated by your package manager**."],
               ["Updates", "Check now", "Checks for a new version straight away instead of waiting for the next automatic check."],
               ["Updates", "Restart now", "Appears once an update is ready, on macOS and the Linux AppImage. Quits Mirall and reopens it on the new version."],
@@ -1810,6 +1832,7 @@
               "**Choose where downloads go.** Each space keeps its own download folder, named next to the filter. Every Download button offers your recent folders and the folder picker, and the folder you pick becomes the space's.",
               "**Select several files and act on them together.** In a folder you browse and on a space's file list, tick files and download or unshare them at once. A folder's files keep their folders under your download folder.",
               "**Invite with a web link.** The invite dialog can hand out a link that opens in a browser. People who don't have Mirall yet are offered the download first, then join the space; the Join dialog accepts the link pasted from any site.",
+              "**Connect Mirall to your organization.** With an activation link from its administrator, an organization can set your relay, Activity Log recording and a required backup folder. About Mirall → Organization lists what it manages, and you can leave there.",
               "**Filter a space's files.** The space screen gained the folder screen's filter field, so a file can be found by name among folders and loose files.",
               "**⌘F (Ctrl+F) jumps to the filter** on a space or folder screen. The command palette also opens Backup settings and, on a computer an organization manages, the organization's page."
             ]
@@ -2502,7 +2525,7 @@
   "privacy": {
     "label": "Legal",
     "title": "Privacy Policy",
-    "updated": "Last updated: October 16, 2026",
+    "updated": "Last updated: October 23, 2026",
     "intro": "Mirall is built so that we don't have your data — not as a promise, but as an architecture. Your files never pass through a server we control, because there is no such server. This policy sets out precisely what stays on your device, what necessarily leaves it, and the one case where you choose to send something to us.",
     "sections": [
       {
@@ -2510,7 +2533,7 @@
         "title": "1. Information we do not collect",
         "blocks": [
           { "type": "subheading", "text": "1.1 No telemetry, no analytics" },
-          { "type": "p", "text": "Mirall contains no analytics, no tracking, and no automatic crash reporting. We do not measure how you use the app, which features you open, or how often you run it. Mirall sends us no report about what you do with it — not on a schedule, not on a crash, not at all." },
+          { "type": "p", "text": "Mirall contains no analytics, no tracking, and no automatic crash reporting. We do not measure how you use the app, which features you open, or how often you run it. Mirall sends us no report about what you do with it — not on a schedule, not on a crash, not at all. The one exception is a computer you connect to an organization: it reports its state to that organization through our servers, as [section 8](/privacy#managed) describes." },
           { "type": "subheading", "text": "1.2 No accounts" },
           { "type": "p", "text": "There is no sign-up, no password, and no email address required to use Mirall. Your identity is a cryptographic key generated on your device the first time you open the app. We never see it." },
           { "type": "subheading", "text": "1.3 Your files" },
@@ -2539,9 +2562,9 @@
       },
       {
         "id": "feedback",
-        "title": "3. Feedback — the one thing the app sends us",
+        "title": "3. Feedback",
         "blocks": [
-          { "type": "p", "text": "The only data the app ever sends us is what you deliberately send with **Send Feedback**. Nothing is sent automatically, ever. If you never press that button, we receive nothing from you at all." },
+          { "type": "p", "text": "Unless you connect Mirall to an organization ([section 8](/privacy#managed)), the only data the app ever sends us is what you deliberately send with **Send Feedback**. Nothing is sent automatically. If you never press that button, we receive nothing from you at all." },
           { "type": "p", "text": "When you do submit feedback, it carries:" },
           { "type": "bullets", "items": [
             "**Your message** — the text you wrote.",
@@ -2603,7 +2626,7 @@
         "title": "7. The Console and web links",
         "blocks": [
           { "type": "subheading", "text": "7.1 The Console" },
-          { "type": "p", "text": "The Console at `console.mirall.app` is where organizations manage licenses and configuration. It runs on our own server and on Supabase, our database host, and it needs an account." },
+          { "type": "p", "text": "The Console at `console.mirall.app` is where organizations manage licenses and configuration. It runs on our own server and on Supabase, our database host, and it needs an account. Mirall reaches it at `api.mirall.app`, a gateway we run on Cloudflare. What a computer an organization manages sends there is in [section 8](/privacy#managed)." },
           { "type": "subheading", "text": "7.2 Web links" },
           { "type": "p", "text": "When you open a Mirall invite or setup link in a browser, the code in it stays in your browser. It sits after the `#` in the address, which browsers never send to a server, and the page removes it from the address bar once it has handed it to Mirall. The page is not allowed to connect anywhere, so it cannot send the code even by mistake." },
           { "type": "p", "text": "What our server learns is that a link of that type was opened. We count how many links of each type are opened each day. The count keeps no address, no browser details and nothing from the link, and link previews in chat apps are not counted. Our server's request log records the time and the page, never your address. No content delivery network sits in front of these pages." },
@@ -2611,23 +2634,47 @@
         ]
       },
       {
+        "id": "managed",
+        "title": "8. Computers an organization manages",
+        "blocks": [
+          { "type": "p", "text": "An organization can manage Mirall on the computers it looks after: lock some settings, and see that each computer is set up as it asked. This happens only if you open an activation link from the organization and click **Connect**. Mirall shows what the organization will see before you do." },
+          { "type": "subheading", "text": "8.1 Before you connect" },
+          { "type": "p", "text": "Opening an activation link asks `api.mirall.app` for the organization's configuration, so that Mirall can show who is asking. The request names that configuration, not you. Our gateway logs only which endpoint was called and how it answered — never your IP address — and does not pass your address on to the Console." },
+          { "type": "subheading", "text": "8.2 While you are connected" },
+          { "type": "p", "text": "Mirall keeps the organization's configuration current over the peer-to-peer network, and asks `api.mirall.app` for it while no peer has it. It also reports to the organization when it starts, when the configuration changes, once a day, and when you leave. A report carries:" },
+          { "type": "bullets", "items": [
+            "**This computer's name** — its short name, without the network's domain.",
+            "**Mirall's version and release channel, the platform and the operating system version.**",
+            "**Which of the organization's configurations is in effect**, and any of its settings this version of Mirall could not apply.",
+            "**Whether backups are set up and working**, when the last one succeeded, and whether they go to the organization's folder.",
+            "**Whether this computer is connected or has left.**"
+          ] },
+          { "type": "p", "text": "A report never carries your files or their names, your spaces, the people you share with, your Activity Log, or your identity key. It is signed with a random key made for this computer when you connect, which is not derived from your identity key." },
+          { "type": "subheading", "text": "8.3 Who sees it" },
+          { "type": "p", "text": "Reports are stored in the Console, on Supabase, and shown to the organization's administrators. The organization decides what it does with them and is responsible for them; we keep them on its behalf. [DRAFT — how long a computer's record is kept after it leaves, or after the organization's account ends, is not settled.]" },
+          { "type": "subheading", "text": "8.4 Leaving" },
+          { "type": "p", "text": "**Leave** on the organization's page sends one last report saying this computer has left, then stops reporting; your own settings come back. If the organization revokes this computer's license, Mirall stops reporting too." },
+          { "type": "note", "text": "Your organization may have its own privacy notice about the computers it manages. Ask your administrator what it keeps and why." }
+        ]
+      },
+      {
         "id": "rights",
-        "title": "8. Your rights",
+        "title": "9. Your rights",
         "blocks": [
           { "type": "p", "text": "If you are in the European Union or the United Kingdom, data protection law gives you the right to see the personal data an organisation holds about you, to correct it, and to have it erased." },
-          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback or use the Console, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have, write to us and we will tell you what we hold and delete it on request." }
+          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback or use the Console, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have, write to us and we will tell you what we hold and delete it on request. What we keep about a computer an organization manages, we keep for that organization: ask it first, and we will help it answer." }
         ]
       },
       {
         "id": "changes",
-        "title": "9. Changes to this policy",
+        "title": "10. Changes to this policy",
         "blocks": [
           { "type": "p", "text": "We may update this policy as Mirall changes. The date at the top always reflects the current version, and any material change will be announced in the app's release notes rather than made quietly." }
         ]
       },
       {
         "id": "contact",
-        "title": "10. Contact",
+        "title": "11. Contact",
         "blocks": [
           { "type": "p", "text": "Questions about this policy, or about data we hold, go to **privacy@mirall.app**." },
           { "type": "p", "text": "The data controller for the purposes of the GDPR is named, with a postal address, in the **Impressum**." },
