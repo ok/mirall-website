@@ -2637,7 +2637,7 @@
         "id": "managed",
         "title": "8. Computers an organization manages",
         "blocks": [
-          { "type": "p", "text": "An organization can manage Mirall on the computers it looks after: lock some settings, and see that each computer is set up as it asked. This happens only if you open an activation link from the organization and click **Connect**. Mirall shows what the organization will see before you do." },
+          { "type": "p", "text": "An organization can manage Mirall on the computers it looks after: lock some settings, and see that each computer is set up as it asked. This happens only if you open an activation link from the organization and click **Connect**." },
           { "type": "subheading", "text": "8.1 Before you connect" },
           { "type": "p", "text": "Opening an activation link asks `api.mirall.app` for the organization's configuration, so that Mirall can show who is asking. The request names that configuration, not you. Our gateway logs only which endpoint was called and how it answered — never your IP address — and does not pass your address on to the Console." },
           { "type": "subheading", "text": "8.2 While you are connected" },
@@ -2651,7 +2651,7 @@
           ] },
           { "type": "p", "text": "A report never carries your files or their names, your spaces, the people you share with, your Activity Log, or your identity key. It is signed with a random key made for this computer when you connect, which is not derived from your identity key." },
           { "type": "subheading", "text": "8.3 Who sees it" },
-          { "type": "p", "text": "Reports are stored in the Console, on Supabase, and shown to the organization's administrators. The organization decides what it does with them and is responsible for them; we keep them on its behalf. [DRAFT — how long a computer's record is kept after it leaves, or after the organization's account ends, is not settled.]" },
+          { "type": "p", "text": "Reports are stored in the Console, on Supabase, and shown to the organization's administrators. The organization decides what it does with them and is responsible for them; we keep them on its behalf. A computer that leaves is marked as left; its record is deleted when the license it used or the organization's account is deleted." },
           { "type": "subheading", "text": "8.4 Leaving" },
           { "type": "p", "text": "**Leave** on the organization's page sends one last report saying this computer has left, then stops reporting; your own settings come back. If the organization revokes this computer's license, Mirall stops reporting too." },
           { "type": "note", "text": "Your organization may have its own privacy notice about the computers it manages. Ask your administrator what it keeps and why." }
