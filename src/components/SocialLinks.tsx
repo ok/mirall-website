@@ -3,10 +3,13 @@ import { InstagramLogo, XLogo } from '@phosphor-icons/react'
 import GithubMark from './GithubMark'
 import { GITHUB_URL, INSTAGRAM_URL, X_URL } from '../lib/links'
 
-const LINK_CLASS =
-  'flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors'
+const LINK_CLASS = 'flex items-center justify-center w-10 h-10 rounded-lg transition-colors'
+const TONE_CLASS = {
+  light: 'text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low',
+  dark: 'text-[#8f939c] hover:text-[#fd9c42] hover:bg-white/5',
+}
 
-export default function SocialLinks({ className }: { className: string }) {
+export default function SocialLinks({ className, tone = 'light' }: { className: string; tone?: 'light' | 'dark' }) {
   const { t } = useTranslation()
   const links = [
     { href: GITHUB_URL, label: t('nav.githubAria'), icon: <GithubMark size={22} /> },
@@ -24,7 +27,7 @@ export default function SocialLinks({ className }: { className: string }) {
           rel="noopener noreferrer"
           aria-label={label}
           title={label}
-          className={LINK_CLASS}
+          className={`${LINK_CLASS} ${TONE_CLASS[tone]}`}
         >
           {icon}
         </a>
