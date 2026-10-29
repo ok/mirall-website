@@ -31,4 +31,6 @@ export const routes: RouteDef[] = [
   { path: '/preview', load: () => import('./pages/Preview') },
   { path: '/privacy', load: () => import('./pages/Privacy') },
   { path: '/impressum', load: () => import('./pages/Impressum') },
+  { path: '/studios', load: () => import('./pages/Studios') },
+  { path: '/studios/relay', load: () => import('./pages/StudiosRelay') },
 ]

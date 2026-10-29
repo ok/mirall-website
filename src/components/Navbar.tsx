@@ -23,10 +23,49 @@ function HashLink({ to, className, children }: { to: string; className: string; 
   return <a href={to} className={className} onClick={handleClick}>{children}</a>
 }
 
-export default function Navbar() {
+export interface NavItem {
+  label: string
+  /** `#id` for a section of this page, `/path#id` for another page's section, or a route. */
+  to: string
+}
+
+interface NavbarProps {
+  /** Dark is the studios pages. Only colours change between tones, never the layout. */
+  tone?: 'light' | 'dark'
+  /** Replaces the site links. The studios pages list their own sections. */
+  items?: NavItem[]
+  cta?: { label: string; shortLabel?: string; to: string }
+}
+
+const TONES = {
+  light: {
+    header: 'glass-nav shadow-sm',
+    link: 'text-slate-600 hover:text-emerald-500',
+    mobileLink: 'text-slate-700 hover:text-emerald-500',
+    burger: 'text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low',
+    cta: 'hero-gradient text-on-primary ambient-shadow',
+    divider: 'border-outline-variant/10',
+  },
+  dark: {
+    header: 'bg-[#090b0f]/80 backdrop-blur-[24px] shadow-[0_1px_2px_rgba(0,0,0,0.4)]',
+    link: 'text-[#8f939c] hover:text-[#fd9c42]',
+    mobileLink: 'text-[#8f939c] hover:text-[#fd9c42]',
+    burger: 'text-[#8f939c] hover:text-[#fd9c42] hover:bg-white/5',
+    cta: 'bg-[#fd9c42] text-[#282c34] shadow-[0_8px_30px_rgba(253,156,66,0.12)]',
+    divider: 'border-white/10',
+  },
+}
+
+function NavLink({ item, className }: { item: NavItem; className: string }) {
+  if (item.to.startsWith('#')) return <a className={className} href={item.to}>{item.label}</a>
+  return <Link className={className} to={item.to}>{item.label}</Link>
+}
+
+export default function Navbar({ tone = 'light', items, cta }: NavbarProps = {}) {
   const { t } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const c = TONES[tone]
 
   useEffect(() => {
     setMobileOpen(false)
@@ -41,41 +80,64 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', onKey)
   }, [mobileOpen])
 
+  const siteLinks = (linkClass: string) => (
+    <>
+      <HashLink className={linkClass} to="/#features">
+        {t('nav.features')}
+      </HashLink>
+      <HashLink className={linkClass} to="/#faq">
+        {t('faq.title')}
+      </HashLink>
+      <Link className={linkClass} to="/docs">
+        {t('docs.title')}
+      </Link>
+      <Link className={linkClass} to="/support">
+        {t('support.title')}
+      </Link>
+    </>
+  )
+  const links = (linkClass: string) =>
+    items ? items.map((item) => <NavLink key={item.to} item={item} className={linkClass} />) : siteLinks(linkClass)
+
+  const ctaClass = `${c.cta} px-6 py-2.5 rounded-lg font-bold text-sm hover:scale-105 transition-transform`
+  const ctaLabel = cta && (
+    cta.shortLabel ? (
+      <>
+        <span className="max-[479px]:hidden">{cta.label}</span>
+        <span className="min-[480px]:hidden">{cta.shortLabel}</span>
+      </>
+    ) : cta.label
+  )
+
   return (
-    <header className="fixed top-0 w-full z-50 glass-nav shadow-sm">
+    <header className={`fixed top-0 w-full z-50 ${c.header}`}>
       <nav className="flex justify-between items-center px-8 h-20 max-w-screen-2xl mx-auto">
         <div className="flex items-center gap-12">
           <Link to="/" className="flex items-center gap-2">
-            <BrandLogo />
+            <BrandLogo inverse={tone === 'dark'} />
           </Link>
           <div className="hidden lg:flex items-center gap-8 font-body font-semibold tracking-tight">
-            <HashLink className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/#features">
-              {t('nav.features')}
-            </HashLink>
-            <HashLink className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/#faq">
-              {t('faq.title')}
-            </HashLink>
-            <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/docs">
-              {t('docs.title')}
-            </Link>
-            <Link className="text-slate-600 hover:text-emerald-500 transition-colors duration-300" to="/support">
-              {t('support.title')}
-            </Link>
+            {links(`${c.link} transition-colors duration-300`)}
           </div>
         </div>
         <div className="flex items-center gap-3">
           {/* Muted and icon-only: Download is the page's one call to action, and a
               second high-contrast control beside it would compete with it. */}
-          <SocialLinks className="hidden lg:flex items-center gap-1" />
-          <Link
-            to="/download"
-            className="hero-gradient text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm ambient-shadow hover:scale-105 transition-transform"
-          >
-            {t('nav.download')}
-          </Link>
+          <SocialLinks className="hidden lg:flex items-center gap-1" tone={tone} />
+          {cta ? (
+            cta.to.startsWith('#') ? (
+              <a href={cta.to} className={ctaClass}>{ctaLabel}</a>
+            ) : (
+              <Link to={cta.to} className={ctaClass}>{ctaLabel}</Link>
+            )
+          ) : (
+            <Link to="/download" className={ctaClass}>
+              {t('nav.download')}
+            </Link>
+          )}
           <button
             type="button"
-            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low transition-colors"
+            className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-lg ${c.burger} transition-colors`}
             onClick={() => setMobileOpen(o => !o)}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
@@ -88,25 +150,14 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="lg:hidden border-t border-outline-variant/10"
+          className={`lg:hidden border-t ${c.divider}`}
           onClick={() => setMobileOpen(false)}
         >
           <div className="flex flex-col px-8 py-2 font-body font-semibold text-base">
-            <HashLink className="py-3 text-slate-700 hover:text-emerald-500 transition-colors" to="/#features">
-              {t('nav.features')}
-            </HashLink>
-            <HashLink className="py-3 text-slate-700 hover:text-emerald-500 transition-colors" to="/#faq">
-              {t('faq.title')}
-            </HashLink>
-            <Link className="py-3 text-slate-700 hover:text-emerald-500 transition-colors" to="/docs">
-              {t('docs.title')}
-            </Link>
-            <Link className="py-3 text-slate-700 hover:text-emerald-500 transition-colors" to="/support">
-              {t('support.title')}
-            </Link>
+            {links(`py-3 ${c.mobileLink} transition-colors`)}
           </div>
           {/* The header icons are desktop-only, so they would otherwise vanish here. */}
-          <SocialLinks className="flex justify-center gap-4 px-8 pt-2 pb-6" />
+          <SocialLinks className="flex justify-center gap-4 px-8 pt-2 pb-6" tone={tone} />
         </div>
       )}
     </header>

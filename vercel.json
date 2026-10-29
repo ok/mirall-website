@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "/studios", "destination": "/", "statusCode": 302 },
     { "source": "/download/darwin-arm64", "destination": "https://dl.mirall.app/desktop/latest/darwin-arm64/Mirall.dmg", "statusCode": 302 },
     { "source": "/download/darwin-x64", "destination": "https://dl.mirall.app/desktop/latest/darwin-x64/Mirall.dmg", "statusCode": 302 },
     { "source": "/download/win32-x64", "destination": "https://dl.mirall.app/desktop/latest/win32-x64/signed/Mirall.msix", "statusCode": 302 },
