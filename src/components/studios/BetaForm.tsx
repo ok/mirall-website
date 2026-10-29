@@ -1,11 +1,8 @@
 import { useRef, useState, type FormEvent } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
-import { DELIVERY_SIZES, TEAM_SIZES, TOOLS, sendBetaRequest } from '../../lib/betaRequest'
+import { BetaRequestError, CONSENT_VERSION, DELIVERY_SIZES, TEAM_SIZES, TOOLS, invalidField, sendBetaRequest, type BetaRequest } from '../../lib/betaRequest'
 
 type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'error'; message: string } | { kind: 'done'; name: string; email: string }
-
-const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/
 
 export default function BetaForm() {
   const { t } = useTranslation()
@@ -25,7 +22,9 @@ export default function BetaForm() {
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
-    const text = (k: string) => String(data.get(k) ?? '').trim()
+    // Control characters (a pasted one, say) are dropped rather than refused; the
+    // Console takes none in a line, and only tabs and line breaks in the message.
+    const text = (k: string) => String(data.get(k) ?? '').replace(/\p{Cc}/gu, '').trim()
     const missing = ['name', 'email', 'studio'].filter((k) => !text(k))
     if (missing.length) {
       setInvalid(missing)
@@ -33,26 +32,34 @@ export default function BetaForm() {
       form.current?.querySelector<HTMLElement>(`#bf-${missing[0]}`)?.focus()
       return
     }
-    if (!EMAIL.test(text('email'))) return fail(t('studios.beta.errorEmail'), 'email')
-    if (!data.get('consent')) return fail(t('studios.beta.errorConsent'), 'consent')
+
+    const request: BetaRequest = {
+      name: text('name'),
+      email: text('email'),
+      studio: text('studio'),
+      teamSize: TEAM_SIZES[Number(data.get('teamSize'))],
+      tools: data.getAll('tools').map((i) => TOOLS[Number(i)]),
+      deliverySize: DELIVERY_SIZES[Number(data.get('deliverySize'))],
+      message: String(data.get('message') ?? '').replace(/[^\P{Cc}\t\n\r]/gu, '').trim(),
+      consent: data.get('consent') !== null,
+      consentVersion: CONSENT_VERSION,
+      website: text('website'),
+    }
+    // Checked against the Console's own schema, so what it would refuse is caught
+    // here with a message that says what to fix.
+    const field = invalidField({ ...request })
+    if (field === 'email') return fail(t('studios.beta.errorEmail'), 'email')
+    if (field === 'consent') return fail(t('studios.beta.errorConsent'), 'consent')
+    if (field) return fail(t('studios.beta.errorSend'))
 
     setInvalid([])
     setStatus({ kind: 'sending' })
     try {
-      await sendBetaRequest({
-        name: text('name'),
-        email: text('email'),
-        studio: text('studio'),
-        teamSize: TEAM_SIZES[Number(data.get('teamSize'))],
-        tools: data.getAll('tools').map((i) => TOOLS[Number(i)]),
-        deliverySize: DELIVERY_SIZES[Number(data.get('deliverySize'))],
-        message: text('message'),
-        consent: true,
-        website: text('website'),
-      })
-      setStatus({ kind: 'done', name: text('name').split(/\s+/)[0], email: text('email') })
-    } catch {
-      setStatus({ kind: 'error', message: t('studios.beta.errorSend') })
+      await sendBetaRequest(request)
+      setStatus({ kind: 'done', name: request.name.split(/\s+/)[0], email: request.email })
+    } catch (err) {
+      const busy = err instanceof BetaRequestError && err.status === 429
+      setStatus({ kind: 'error', message: t(busy ? 'studios.beta.errorBusy' : 'studios.beta.errorSend') })
     }
   }
 
@@ -73,15 +80,15 @@ export default function BetaForm() {
     <form ref={form} className="st-lead" noValidate onSubmit={submit} data-reveal>
       <div className="st-f">
         <label htmlFor="bf-name">{t('studios.beta.name')}</label>
-        <input id="bf-name" name="name" autoComplete="name" required aria-invalid={bad('name')} placeholder={t('studios.beta.namePlaceholder')} />
+        <input id="bf-name" name="name" autoComplete="name" maxLength={120} required aria-invalid={bad('name')} placeholder={t('studios.beta.namePlaceholder')} />
       </div>
       <div className="st-f">
         <label htmlFor="bf-email">{t('studios.beta.email')}</label>
-        <input id="bf-email" name="email" type="email" autoComplete="email" required aria-invalid={bad('email')} placeholder={t('studios.beta.emailPlaceholder')} />
+        <input id="bf-email" name="email" type="email" autoComplete="email" maxLength={254} required aria-invalid={bad('email')} placeholder={t('studios.beta.emailPlaceholder')} />
       </div>
       <div className="st-f">
         <label htmlFor="bf-studio">{t('studios.beta.studio')}</label>
-        <input id="bf-studio" name="studio" autoComplete="organization" required aria-invalid={bad('studio')} placeholder={t('studios.beta.studioPlaceholder')} />
+        <input id="bf-studio" name="studio" autoComplete="organization" maxLength={120} required aria-invalid={bad('studio')} placeholder={t('studios.beta.studioPlaceholder')} />
       </div>
       <div className="st-f">
         <label htmlFor="bf-size">{t('studios.beta.size')}</label>
@@ -114,12 +121,12 @@ export default function BetaForm() {
       </div>
       <div className="st-hp" aria-hidden="true">
         <label htmlFor="bf-website">Website</label>
-        <input id="bf-website" name="website" tabIndex={-1} autoComplete="off" />
+        <input id="bf-website" name="website" tabIndex={-1} autoComplete="off" maxLength={200} />
       </div>
       <label className="st-consent" htmlFor="bf-consent">
         <input id="bf-consent" type="checkbox" name="consent" required aria-invalid={bad('consent')} />
         <span>
-          <Trans i18nKey="studios.beta.consent" components={{ privacy: <Link to="/privacy" className="underline underline-offset-2 hover:text-[#fce8d2]" /> }} />
+          <Trans i18nKey="studios.beta.consent" components={{ privacy: <a href="/privacy#website" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-[#fce8d2]" /> }} />
         </span>
       </label>
       <div className="st-submit">
