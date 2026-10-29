@@ -43,7 +43,7 @@ export default function BetaForm() {
       message: String(data.get('message') ?? '').replace(/[^\P{Cc}\t\n\r]/gu, '').trim(),
       consent: data.get('consent') !== null,
       consentVersion: CONSENT_VERSION,
-      website: text('website'),
+      website: text('bf-extra'),
     }
     // Checked against the Console's own schema, so what it would refuse is caught
     // here with a message that says what to fix.
@@ -119,9 +119,12 @@ export default function BetaForm() {
         </label>
         <textarea id="bf-message" name="message" maxLength={2000} placeholder={t('studios.beta.messagePlaceholder')} />
       </div>
+      {/* The honeypot, sent as `website`. Its name and label give autofill and password
+          managers nothing to match (they fill a field named "website" even off screen), and the
+          data- attributes tell the common managers to skip it outright. */}
       <div className="st-hp" aria-hidden="true">
-        <label htmlFor="bf-website">Website</label>
-        <input id="bf-website" name="website" tabIndex={-1} autoComplete="off" maxLength={200} />
+        <label htmlFor="bf-extra">Leave this empty</label>
+        <input id="bf-extra" name="bf-extra" type="text" tabIndex={-1} autoComplete="off" maxLength={200} data-1p-ignore="" data-lpignore="true" data-bwignore="" data-form-type="other" />
       </div>
       <label className="st-consent" htmlFor="bf-consent">
         <input id="bf-consent" type="checkbox" name="consent" required aria-invalid={bad('consent')} />
