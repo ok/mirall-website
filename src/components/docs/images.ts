@@ -35,6 +35,7 @@ import sidebarCollapsible from '../../assets/docs/sidebar-collapsible.webp?w=672
 import spaceDownloadFolder from '../../assets/docs/space-download-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import spaceFolder from '../../assets/docs/space-folder.webp?w=672;1008;1344&format=webp&as=srcset'
 import spaceView from '../../assets/docs/space-view.webp?w=672;1008;1344&format=webp&as=srcset'
+import { STUDIOS_DOC_IMAGES } from './studios-images'
 
 // A srcset reads "<url> 672w, <url> 1008w, <url> 1344w". Reuse its widest entry as
 // the plain `src` fallback rather than importing the same asset a second time —
@@ -77,9 +78,12 @@ const SRCSETS: Record<string, string> = {
   '/docs-space-view.webp': spaceView,
 }
 
-export const DOC_IMAGES: Record<string, { src: string; srcSet: string }> = Object.fromEntries(
-  Object.entries(SRCSETS).map(([key, srcSet]) => [key, { src: widest(srcSet), srcSet }])
-)
+export const DOC_IMAGES: Record<string, { src: string; srcSet: string; sizes?: string }> = {
+  ...Object.fromEntries(Object.entries(SRCSETS).map(([key, srcSet]) => [key, { src: widest(srcSet), srcSet }])),
+  ...Object.fromEntries(
+    Object.entries(STUDIOS_DOC_IMAGES).map(([key, image]) => [key, { src: widest(image.srcSet), ...image }])
+  ),
+}
 
 // The docs column caps at max-w-2xl (672px); below that the image is full-bleed.
 export const DOC_IMAGE_SIZES = '(max-width: 768px) 100vw, 672px'

@@ -513,4 +513,29 @@ Before writing any capability claim, confirm it in `mirall-app/src/` (see §3.1)
 
 ---
 
+## 9. Mirall for Studios docs
+
+A second documentation set, for studios running Mirall with the Mirall Console, lives at
+`/studios/documentation` (hub + the same four Diátaxis pages). It documents the Console's
+**production tag** only, never `/ops`, and what the Console changes on each computer — including
+**Connect Mirall to your organization**, which is not in the app docs.
+
+It is kept apart so either set can be updated and published on its own:
+
+| | App docs | Studios docs |
+|---|---|---|
+| Copy | `en.json` → `docs.*` | `src/i18n/locales/studios-docs.en.json`, loaded as `studiosDocs.*` by `src/i18n/resources.ts` |
+| Pages | `src/pages/docs/*` | `src/pages/studios-docs/*` |
+| Screenshots | `src/assets/docs/`, `images.ts` | `src/assets/studios-docs/`, `studios-images.ts` (keys `/studios-docs-<name>.webp`) |
+| Sidebar + header | `DocsLayout` defaults | `STUDIOS_DOCS_NAV` and `studiosDocsHeader()` in `components/docs/studios.ts` |
+
+The source of truth is the console repo at its newest `v*` tag (`/Users/oliver/Code/mirall/mirall-console`),
+not `main`. Screenshots come from the rig's console target (`node scripts/console-capture.mjs`, then
+`node scripts/process-console-shots.mjs`; its `docs/console-rig.md` has the procedure), plus the app
+rig's `04-managed` scene for the screens on a managed computer. Close-ups of dialogs and drawers
+keep their 2x capture size: `DocImage` shows every image at no more than half its width, and
+`studios-images.ts` gives a close-up its own two widths and `sizes`.
+
+---
+
 *Keep this file in sync with `src/components/docs/*`, `src/components/docs/images.ts`, `src/components/Features.tsx`, and the `docs` / `changelog` / `features` namespaces in `en.json`. If the content model, the capture mechanics, or the homepage grid change, update the relevant section here.*

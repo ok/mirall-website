@@ -172,14 +172,19 @@ export function DocImage({
       {/* No rounded-* here: the asset carries the window's own corners in its alpha, and
           the macOS shadow is cropped off in the capture pipeline. rounded-xl (12px) clipped
           harder than the window's real 5.6px radius and squared the corners back off.
-          drop-shadow() follows the alpha, so the shadow traces the true rounded shape. */}
+          drop-shadow() follows the alpha, so the shadow traces the true rounded shape.
+          Every asset is captured at 2x, so it is shown at no more than half its width: a
+          close-up of a dialog stays at the size the screen draws it. */}
       <img
         className="w-full max-w-2xl mx-auto object-cover"
-        style={{ filter: 'drop-shadow(0 1px 1.5px rgba(16, 24, 40, 0.12)) drop-shadow(0 5px 7px rgba(16, 24, 40, 0.22))' }}
+        style={{
+          maxWidth: width / 2,
+          filter: 'drop-shadow(0 1px 1.5px rgba(16, 24, 40, 0.12)) drop-shadow(0 5px 7px rgba(16, 24, 40, 0.22))',
+        }}
         alt={alt}
         src={resolved?.src ?? src}
         srcSet={resolved?.srcSet}
-        sizes={resolved ? DOC_IMAGE_SIZES : undefined}
+        sizes={resolved ? (resolved.sizes ?? DOC_IMAGE_SIZES) : undefined}
         width={width}
         height={height}
         loading="lazy"
