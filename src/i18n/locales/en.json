@@ -188,6 +188,7 @@
       "how": "How it works",
       "infrastructure": "Infrastructure",
       "console": "Console",
+      "docs": "Docs",
       "cta": "Request beta access",
       "ctaShort": "Request access"
     },
@@ -1320,27 +1321,6 @@
                 { "label": "Fix a connection problem", "to": "/docs/guides#fix-a-connection-problem" },
                 { "label": "Network status", "to": "/docs/reference#network-status" }
               ]
-            },
-            {
-              "id": "connect-to-an-organization",
-              "title": "Connect Mirall to your organization",
-              "intro": "An organization can manage some of Mirall's settings on the computers it looks after. Your administrator sends you an activation link to connect this computer.",
-              "blocks": [
-                { "type": "steps", "items": [
-                  { "text": "Open the activation link on the computer where Mirall is installed. It opens in your browser, which hands it to Mirall." },
-                  { "text": "Mirall checks with your organization, then asks **Connect Mirall to <organization>?** and says what connecting means." },
-                  { "text": "Click **Connect**. **Connected to <organization>** confirms it." }
-                ] },
-                { "type": "p", "text": "An organization can set your relay, whether the Activity Log records and how long it keeps events, and your backup: it can require automatic backups and choose the folder they go to, in which Mirall makes this computer's own folder. A setting it manages reads **Set by <organization>** and can't be changed while you're connected. While it keeps recording on, **Delete the log** is unavailable; **Export as JSON** still works." },
-                { "type": "p", "text": "To see what it manages, open **Profile → About Mirall → Organization**, or **Open organization** in the command palette. The page lists the managed settings by settings page, with your organization's support links." },
-                { "type": "p", "text": "To leave, click **Leave…** on that page, then **Leave**. The settings it managed go back to yours. Backups already on its share stay there, encrypted with your passphrase." },
-                { "type": "note", "text": "While connected, Mirall tells your organization this computer's name, its Mirall version and operating system, which of the organization's settings are in effect, and whether its backup is working — and that it left, when you leave. Never your files, your spaces, or who you share with. The [privacy policy](/privacy#managed) has the details." }
-              ],
-              "related": [
-                { "label": "Back up Mirall", "to": "/docs/guides#back-up-mirall" },
-                { "label": "Choose what Mirall records", "to": "/docs/guides#configure-activity-recording" },
-                { "label": "Connect through a relay", "to": "/docs/guides#use-a-relay" }
-              ]
             }
           ]
         },
@@ -1690,11 +1670,10 @@
         {
           "id": "about-mirall",
           "title": "The About Mirall page",
-          "intro": "**Profile → About Mirall** opens it, as do **About Mirall** in the application menu and **Open About Mirall** in the command palette. A card at the top shows the version, with a button to copy it.",
+          "intro": "**Profile → About Mirall** opens it, as do **About Mirall** in the application menu and **Open About Mirall** in the command palette. A card at the top shows the version, with a button to copy it. On a computer an organization manages, an **Organization** row comes first: the [Mirall for Studios docs](/studios/documentation/reference#on-a-managed-computer) describe it.",
           "table": {
             "columns": ["Section", "Row", "What it's for"],
             "rows": [
-              ["Organization", "Organization", "Appears only on a computer an organization manages, reading **Managed by <organization>**. Opens its page: the settings it manages, its support links, and **Leave…**."],
               ["Updates", "Status", "**Mirall is up to date**, **Checking for updates…**, **Downloading an update**, **Update ready: v<version>**, or **Couldn't check for updates**. On Linux installed from a `.deb` package it reads **Updated by your package manager**."],
               ["Updates", "Check now", "Checks for a new version straight away instead of waiting for the next automatic check."],
               ["Updates", "Restart now", "Appears once an update is ready, on macOS and the Linux AppImage. Quits Mirall and reopens it on the new version."],

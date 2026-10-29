@@ -25,6 +25,7 @@ export default function StudioLayout({ children, subpage = false }: { children: 
           { label: t('studios.nav.how'), to: `${base}#how` },
           { label: t('studios.nav.infrastructure'), to: `${base}#infrastructure` },
           { label: t('studios.nav.console'), to: `${base}#console` },
+          { label: t('studios.nav.docs'), to: '/studios/documentation' },
         ]}
         cta={{ label: t('studios.nav.cta'), shortLabel: t('studios.nav.ctaShort'), to: `${base}#beta` }}
       />

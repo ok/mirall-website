@@ -33,4 +33,9 @@ export const routes: RouteDef[] = [
   { path: '/impressum', load: () => import('./pages/Impressum') },
   { path: '/studios', load: () => import('./pages/Studios') },
   { path: '/studios/relay', load: () => import('./pages/StudiosRelay') },
+  { path: '/studios/documentation', load: () => import('./pages/studios-docs/Hub') },
+  { path: '/studios/documentation/tutorials', load: () => import('./pages/studios-docs/Tutorials') },
+  { path: '/studios/documentation/guides', load: () => import('./pages/studios-docs/Guides') },
+  { path: '/studios/documentation/reference', load: () => import('./pages/studios-docs/Reference') },
+  { path: '/studios/documentation/explanation', load: () => import('./pages/studios-docs/Explanation') },
 ]

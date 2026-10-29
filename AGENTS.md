@@ -8,7 +8,7 @@ Vite 8 + React 19 SPA, React Router 7, Tailwind 4, i18next, TypeScript. Deployed
 
 There is no SSR server. Every route in `src/routes.ts` is rendered to a static HTML file at build time — `src/entry-server.tsx` renders it, `scripts/prerender.mjs` writes it, and Vercel serves the result. A route added to `routes.ts` is prerendered automatically; one added anywhere else ships as an empty shell.
 
-Routes: `/` · `/download` · `/preview` · `/support` · `/changelog` · `/privacy` · `/impressum` · `/docs` (+ `/docs/{tutorials,guides,reference,explanation}`).
+Routes: `/` · `/download` · `/preview` · `/support` · `/changelog` · `/privacy` · `/impressum` · `/docs` (+ `/docs/{tutorials,guides,reference,explanation}`) · `/studios` · `/studios/relay` · `/studios/documentation` (+ the same four; playbook §9).
 
 ```sh
 npm run dev      # dev server
