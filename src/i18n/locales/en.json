@@ -310,6 +310,7 @@
       "errorEmail": "That email address looks incomplete.",
       "errorConsent": "Tick the box so we can store your details.",
       "errorSend": "Your request didn't go through. Please try again, or write to hello@mirall.app.",
+      "errorBusy": "Too many requests from your network just now. Please try again in a minute.",
       "doneTitle": "Thanks, {{name}}.",
       "doneText": "We'll be in touch at {{email}}."
     },
@@ -2675,7 +2676,7 @@
   "privacy": {
     "label": "Legal",
     "title": "Privacy Policy",
-    "updated": "Last updated: October 23, 2026",
+    "updated": "Last updated: October 29, 2026",
     "intro": "Mirall is built so that we don't have your data — not as a promise, but as an architecture. Your files never pass through a server we control, because there is no such server. This policy sets out precisely what stays on your device, what necessarily leaves it, and the one case where you choose to send something to us.",
     "sections": [
       {
@@ -2767,7 +2768,15 @@
           { "type": "subheading", "text": "6.3 No analytics, no cookies" },
           { "type": "p", "text": "This site runs no analytics, no tracking pixels, and no third-party scripts. Fonts, images and code are all served from this domain, so reading these pages causes your browser to contact nobody else. We set no cookies." },
           { "type": "p", "text": "Your browser does keep one value in its local storage, remembering which language you last read the site in. It never leaves your browser, and you can clear it from your browser's settings at any time." },
-          { "type": "subheading", "text": "6.4 Links to other sites" },
+          { "type": "subheading", "text": "6.4 Asking to join the studios beta" },
+          { "type": "p", "text": "The form at the end of [Mirall for Studios](/studios) is the one place on this site that sends us anything, and only when you press **Request beta access**. It goes to `api.mirall.app`, our gateway at Cloudflare, which passes it on to the Console ([section 7](/privacy#console)). We store:" },
+          { "type": "bullets", "items": [
+            "**Your name, work email and studio** — so we can reply.",
+            "**Your answers** — team size, the tools you use today, a typical delivery size, and your message if you wrote one.",
+            "**Which version of this policy you agreed to** — the month it is dated, so we know what you were told."
+          ] },
+          { "type": "p", "text": "We don't store your IP address, your browser's details or the page you came from. The gateway uses your IP address only to limit how often the form can be sent from one address, and neither logs it nor passes it on. Only Mirall staff see a request, in the Console's operator area. We keep it while we talk with you about the beta, and delete it at once if you ask." },
+          { "type": "subheading", "text": "6.5 Links to other sites" },
           { "type": "p", "text": "This site links to places we don't run — our source code on GitHub, for instance. Follow such a link and that site's privacy policy applies, not ours." }
         ]
       },
@@ -2812,7 +2821,7 @@
         "title": "9. Your rights",
         "blocks": [
           { "type": "p", "text": "If you are in the European Union or the United Kingdom, data protection law gives you the right to see the personal data an organisation holds about you, to correct it, and to have it erased." },
-          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback or use the Console, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have, write to us and we will tell you what we hold and delete it on request. What we keep about a computer an organization manages, we keep for that organization: ask it first, and we will help it answer." }
+          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback, asked to join the studios beta, or use the Console, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have, write to us and we will tell you what we hold and delete it on request. What we keep about a computer an organization manages, we keep for that organization: ask it first, and we will help it answer." }
         ]
       },
       {

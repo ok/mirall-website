@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build && npm run build:ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr"
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "check:contract": "node scripts/check-beta-request.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.8",
