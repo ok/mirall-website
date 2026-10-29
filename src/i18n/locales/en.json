@@ -163,7 +163,8 @@
       "features": "Features",
       "security": "Security",
       "download": "Download",
-      "changelog": "Changelog"
+      "changelog": "Changelog",
+      "studios": "For studios"
     },
     "resources": {
       "title": "Resources",
@@ -176,6 +177,178 @@
       "impressum": "Impressum",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
+    }
+  },
+  "studios": {
+    "seo": {
+      "title": "Mirall for Studios — File Transfer Without the Cloud",
+      "description": "Move plates, renders and masters straight between your studio's computers. No cloud upload, no transfer service, no third party holding a copy. Request access to the closed beta."
+    },
+    "nav": {
+      "how": "How it works",
+      "infrastructure": "Infrastructure",
+      "console": "Console",
+      "docs": "Docs",
+      "cta": "Request beta access",
+      "ctaShort": "Request access"
+    },
+    "hero": {
+      "eyebrow": "Mirall for Studios",
+      "beta": "Closed beta",
+      "title": "Your studio's files.",
+      "titleLine2": "On your studio's machines.",
+      "lede": "Mirall moves plates, renders and masters straight between the computers that need them. Your work never passes through anyone else's servers: no cloud upload, no transfer service in between, no third party holding a copy. The Mirall Console gives you control over every install.",
+      "cta": "Request beta access",
+      "secondary": "See how it works",
+      "facts": ["No cloud storage", "No accounts", "Encrypted end to end", "Computer to computer", "macOS · Windows · Linux"],
+      "imageAlt": "The Mirall app showing the Northlight · Ep 104 space: two shared folders, one of them mirrored, three shared files with one downloading, a drop zone and five members"
+    },
+    "replaces": {
+      "line": "Client work doesn't belong on someone else's servers.",
+      "label": "What Mirall replaces",
+      "items": ["Dropbox", "Google Drive", "WeTransfer", "Shared FTP"]
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "One space per project.",
+      "titleLine2": "The people on it decide who gets in.",
+      "steps": [
+        { "title": "Create a space for the project", "text": "A space holds a project's files, folders and people. Name it, pick an icon, and it exists on your machine. There's no account to sign up for and no server to set up.", "ui": "In the app: “Create a New Space” → “Initialize Space”", "alt": "The Create a New Space dialog with the name Northlight · Ep 104" },
+        { "title": "Invite people, then approve them", "text": "Send an invite link that expires after 2 hours, 2 days or 2 weeks. With approval required, everyone who opens it asks to join, and a member lets them in. An invite carries the address of the space, never the key to it.", "ui": "In the app: “Auto-approve” off, then “Requests to Join”", "alt": "The Invite to Space dialog with auto-approve off and the link set to expire after 2 days", "altB": "Requests to Join, with Chris Wheeley and Helen Bishop waiting to be approved" },
+        { "title": "Drop in files or whole folders", "text": "Drop a cut, a turnover or a folder of plates onto the space. Files are shared in place, straight from your disk, so nothing is copied or uploaded first.", "ui": "In the app: “Release to share 3 files”", "alt": "Three files dragged onto a space, with the drop zone reading Release to share 3 files" },
+        { "title": "Download files. Mirror folders.", "text": "Members download the files they need, when they need them. Folders can be mirrored: a read-only copy on their disk that keeps in step with the owner's folder as it changes.", "ui": "In the app: “Download to…”, “Mirror to Disk…”", "alt": "The Mirror to Disk dialog for the NL104_SH040_plates folder, a read-only copy of Sarah Conner's folder" }
+      ],
+      "download": {
+        "label": "Download",
+        "title": "Take the files you need",
+        "items": [
+          "Resumes where it stopped after a dropped connection, a sleep or a restart.",
+          "Every piece is checked on arrival, and the finished file is verified against its hash.",
+          "Each project downloads to its own folder.",
+          "See who already has a file, and who is still waiting for it.",
+          "Set upload and download limits so transfers don't take over the line."
+        ]
+      },
+      "mirror": {
+        "label": "Mirror",
+        "title": "Keep a folder in step",
+        "items": [
+          "A read-only copy kept in sync at the location you pick.",
+          "New and changed files arrive without anyone asking for them.",
+          "Edit a mirrored file and the shared version comes back, with your edit kept as a conflicted copy.",
+          "A mirror only removes files it delivered itself. Stop mirroring and the files stay on disk."
+        ]
+      },
+      "access": {
+        "eyebrow": "Access",
+        "title": "Permissions live on the project.",
+        "items": [
+          { "title": "Only members see a space", "text": "Files are served only to approved members. To anyone else, a request looks like the file isn't there." },
+          { "title": "Whoever shares, owns", "text": "Only the person who shared a file or folder can rename it or stop sharing it. Mirrors are read-only for everyone else." },
+          { "title": "Invites that expire", "text": "Every invite link stops working after 2 hours, 2 days or 2 weeks. Choose whether each new person needs approval." }
+        ]
+      }
+    },
+    "infra": {
+      "eyebrow": "Infrastructure",
+      "title": "We don't store your files.",
+      "titleLine2": "We have nowhere to put them.",
+      "lede": "There's no Mirall cloud. Files travel from one member's disk to another's over an encrypted connection. When a direct connection can't be made, they pass through a relay, and that relay can be one you run.",
+      "diagramLabel": "Two studio computers connect directly over an encrypted connection. A blind relay you run forwards encrypted traffic only when a direct connection fails. The Mirall Console sends signed settings and never sees files.",
+      "relay": {
+        "eyebrow": "Relay",
+        "title": "Run your own relay",
+        "text": "Studios behind strict firewalls still need a way through. Mirall's relay is blind: it forwards encrypted data and can't read what it carries. It runs on your own server, and the Console sets it for every install.",
+        "cta": "More about the relay",
+        "items": [
+          "Used only when a direct connection can't be made.",
+          "Keep it private with an invite list, or open to anyone holding its key.",
+          "Open source: Relay Lite under Apache-2.0, the full relay under AGPL-3.0 like the app."
+        ]
+      }
+    },
+    "console": {
+      "eyebrow": "Mirall Console",
+      "title": "Run Mirall across the studio",
+      "titleLine2": "from one place.",
+      "lede": "The Console issues licenses and sets the configuration of every install. It manages Mirall without ever touching your work. No file, file name or space key ever reaches it.",
+      "licenses": { "label": "License keys", "title": "A key for each person", "text": "Each key belongs to one person and carries the configuration their computers receive. One person can use it on several machines. Suspend or revoke a key at any time." },
+      "profiles": { "label": "Configuration profiles", "title": "Set it once, lock it everywhere", "text": "Choose the relay, require the activity log and encrypted backups, and lock them on every install. Publish a new version and computers pick it up, signed and sealed to their license." },
+      "instances": { "label": "Instances", "title": "Every computer, at a glance", "text": "See which version of Mirall each computer runs, whether its configuration is up to date, and whether its backup is working." },
+      "audit": { "label": "Audit log", "title": "Every change, with who and when", "text": "Issued keys, published profiles, new computers and member changes, each recorded with who did it. Filter by person or period and export to CSV." },
+      "previewLabel": "Example from the Mirall Console",
+      "seesTitle": "What the Console sees",
+      "sees": ["Each computer's name", "Its Mirall version and operating system", "Which of its settings apply", "Whether its backups work"],
+      "neverTitle": "What it never sees",
+      "never": ["Your files", "Your spaces", "Who you share with"],
+      "assure": ["Mirall keeps working if the Console is unreachable.", "A license never stops a transfer.", "Backups are encrypted with each person's own passphrase."]
+    },
+    "beta": {
+      "eyebrow": "Closed beta",
+      "title": "Bring your studio into the beta.",
+      "lede": "We're adding a small number of studios at a time. Tell us how you move files today, and we'll get in touch to set you up.",
+      "benefits": ["A Console for your organization, with license keys for your team", "Your own relay, set up with you", "A direct line to the people building Mirall"],
+      "name": "Name",
+      "namePlaceholder": "Anna Hartmann",
+      "email": "Work email",
+      "emailPlaceholder": "anna@northlight.studio",
+      "studio": "Studio",
+      "studioPlaceholder": "Northlight Pictures",
+      "size": "People who'd use Mirall",
+      "sizes": ["1–10", "11–50", "51–200", "More than 200"],
+      "tools": "What you use today",
+      "toolOptions": ["Dropbox", "Google Drive", "WeTransfer", "Aspera", "MASV", "FTP / own servers", "Shipping drives"],
+      "volume": "A typical delivery",
+      "volumes": ["Under 10 GB", "10–100 GB", "100 GB – 1 TB", "Over 1 TB"],
+      "message": "Anything else",
+      "optional": "(optional)",
+      "messagePlaceholder": "Who you exchange files with, and what gets in the way today",
+      "consent": "Mirall may store these details to contact me about the beta. See the <privacy>privacy policy</privacy>.",
+      "submit": "Request beta access",
+      "sending": "Sending…",
+      "errorRequired": "Add your name, work email and studio so we can reach you.",
+      "errorEmail": "That email address looks incomplete.",
+      "errorConsent": "Tick the box so we can store your details.",
+      "errorSend": "Your request didn't go through. Please try again, or write to hello@mirall.app.",
+      "errorBusy": "Too many requests from your network just now. Please try again in a minute.",
+      "doneTitle": "Thanks, {{name}}.",
+      "doneText": "We'll be in touch at {{email}}."
+    },
+    "relayPage": {
+      "seo": {
+        "title": "Relay — Mirall for Studios",
+        "description": "When a network blocks direct connections, a Mirall relay carries them without being able to read them, on infrastructure your studio owns. Set up with you as part of your rollout."
+      },
+      "crumb": "Mirall for Studios",
+      "crumbHere": "Relay",
+      "title": "When the network says no,",
+      "titleLine2": "your relay gets through.",
+      "lede": "Some networks won't let two computers connect directly: locked-down facility firewalls, hotel Wi-Fi, mobile hotspots. A relay carries those connections, without being able to read them, on infrastructure that belongs to your studio.",
+      "cta": "Talk to us",
+      "what": {
+        "eyebrow": "What it does",
+        "title": "Most connections never touch it.",
+        "titleLine2": "Some can't happen without it.",
+        "items": [
+          { "title": "Steps in when direct fails", "text": "Mirall connects computers directly wherever it can. The relay only carries the connections a network won't allow, so a vendor on hotel Wi-Fi still gets the plates." },
+          { "title": "Blind to your files", "text": "The two computers encrypt everything between themselves. The relay forwards data it has no key for: no file names, no contents, no idea which project it belongs to." },
+          { "title": "Runs on your side", "text": "On your own server or in your cloud account. Every Mirall install in your studio picks it up from the Console, with nothing for anyone to configure." }
+        ]
+      },
+      "delivery": {
+        "eyebrow": "Available for studios",
+        "title": "Set up with you,",
+        "titleLine2": "as part of your rollout.",
+        "lede": "We plan and set up the relay together with your IT team when Mirall comes into your studio, and make sure it works from every place your people and vendors connect from.",
+        "items": [
+          "Where it should run: your server, your cloud, your region",
+          "Connected to the Console, so every install uses it",
+          "Tested from your facility and your vendors' networks",
+          "Handed over with the technical guide for your IT team"
+        ],
+        "forIt": "For IT teams: the full setup is in the docs,",
+        "forItLink": "Run your own relay →"
+      }
     }
   },
   "support": {
@@ -1149,27 +1322,6 @@
                 { "label": "Fix a connection problem", "to": "/docs/guides#fix-a-connection-problem" },
                 { "label": "Network status", "to": "/docs/reference#network-status" }
               ]
-            },
-            {
-              "id": "connect-to-an-organization",
-              "title": "Connect Mirall to your organization",
-              "intro": "An organization can manage some of Mirall's settings on the computers it looks after. Your administrator sends you an activation link to connect this computer.",
-              "blocks": [
-                { "type": "steps", "items": [
-                  { "text": "Open the activation link on the computer where Mirall is installed. It opens in your browser, which hands it to Mirall." },
-                  { "text": "Mirall checks with your organization, then asks **Connect Mirall to <organization>?** and says what connecting means." },
-                  { "text": "Click **Connect**. **Connected to <organization>** confirms it." }
-                ] },
-                { "type": "p", "text": "An organization can set your relay, whether the Activity Log records and how long it keeps events, and your backup: it can require automatic backups and choose the folder they go to, in which Mirall makes this computer's own folder. A setting it manages reads **Set by <organization>** and can't be changed while you're connected. While it keeps recording on, **Delete the log** is unavailable; **Export as JSON** still works." },
-                { "type": "p", "text": "To see what it manages, open **Profile → About Mirall → Organization**, or **Open organization** in the command palette. The page lists the managed settings by settings page, with your organization's support links." },
-                { "type": "p", "text": "To leave, click **Leave…** on that page, then **Leave**. The settings it managed go back to yours. Backups already on its share stay there, encrypted with your passphrase." },
-                { "type": "note", "text": "While connected, Mirall tells your organization this computer's name, its Mirall version and operating system, which of the organization's settings are in effect, and whether its backup is working — and that it left, when you leave. Never your files, your spaces, or who you share with. The [privacy policy](/privacy#managed) has the details." }
-              ],
-              "related": [
-                { "label": "Back up Mirall", "to": "/docs/guides#back-up-mirall" },
-                { "label": "Choose what Mirall records", "to": "/docs/guides#configure-activity-recording" },
-                { "label": "Connect through a relay", "to": "/docs/guides#use-a-relay" }
-              ]
             }
           ]
         },
@@ -1519,11 +1671,10 @@
         {
           "id": "about-mirall",
           "title": "The About Mirall page",
-          "intro": "**Profile → About Mirall** opens it, as do **About Mirall** in the application menu and **Open About Mirall** in the command palette. A card at the top shows the version, with a button to copy it.",
+          "intro": "**Profile → About Mirall** opens it, as do **About Mirall** in the application menu and **Open About Mirall** in the command palette. A card at the top shows the version, with a button to copy it. On a computer an organization manages, an **Organization** row comes first: the [Mirall for Studios docs](/studios/documentation/reference#on-a-managed-computer) describe it.",
           "table": {
             "columns": ["Section", "Row", "What it's for"],
             "rows": [
-              ["Organization", "Organization", "Appears only on a computer an organization manages, reading **Managed by <organization>**. Opens its page: the settings it manages, its support links, and **Leave…**."],
               ["Updates", "Status", "**Mirall is up to date**, **Checking for updates…**, **Downloading an update**, **Update ready: v<version>**, or **Couldn't check for updates**. On Linux installed from a `.deb` package it reads **Updated by your package manager**."],
               ["Updates", "Check now", "Checks for a new version straight away instead of waiting for the next automatic check."],
               ["Updates", "Restart now", "Appears once an update is ready, on macOS and the Linux AppImage. Quits Mirall and reopens it on the new version."],
@@ -2525,7 +2676,7 @@
   "privacy": {
     "label": "Legal",
     "title": "Privacy Policy",
-    "updated": "Last updated: October 23, 2026",
+    "updated": "Last updated: October 29, 2026",
     "intro": "Mirall is built so that we don't have your data — not as a promise, but as an architecture. Your files never pass through a server we control, because there is no such server. This policy sets out precisely what stays on your device, what necessarily leaves it, and the one case where you choose to send something to us.",
     "sections": [
       {
@@ -2617,7 +2768,15 @@
           { "type": "subheading", "text": "6.3 No analytics, no cookies" },
           { "type": "p", "text": "This site runs no analytics, no tracking pixels, and no third-party scripts. Fonts, images and code are all served from this domain, so reading these pages causes your browser to contact nobody else. We set no cookies." },
           { "type": "p", "text": "Your browser does keep one value in its local storage, remembering which language you last read the site in. It never leaves your browser, and you can clear it from your browser's settings at any time." },
-          { "type": "subheading", "text": "6.4 Links to other sites" },
+          { "type": "subheading", "text": "6.4 Asking to join the studios beta" },
+          { "type": "p", "text": "The form at the end of [Mirall for Studios](/studios) is the one place on this site that sends us anything, and only when you press **Request beta access**. It goes to `api.mirall.app`, our gateway at Cloudflare, which passes it on to the Console ([section 7](/privacy#console)). We store:" },
+          { "type": "bullets", "items": [
+            "**Your name, work email and studio** — so we can reply.",
+            "**Your answers** — team size, the tools you use today, a typical delivery size, and your message if you wrote one.",
+            "**Which version of this policy you agreed to** — the month it is dated, so we know what you were told."
+          ] },
+          { "type": "p", "text": "We don't store your IP address, your browser's details or the page you came from. The gateway uses your IP address only to limit how often the form can be sent from one address, and neither logs it nor passes it on. Only Mirall staff see a request, in the Console's operator area. We keep it while we talk with you about the beta, and delete it at once if you ask." },
+          { "type": "subheading", "text": "6.5 Links to other sites" },
           { "type": "p", "text": "This site links to places we don't run — our source code on GitHub, for instance. Follow such a link and that site's privacy policy applies, not ours." }
         ]
       },
@@ -2662,7 +2821,7 @@
         "title": "9. Your rights",
         "blocks": [
           { "type": "p", "text": "If you are in the European Union or the United Kingdom, data protection law gives you the right to see the personal data an organisation holds about you, to correct it, and to have it erased." },
-          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback or use the Console, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have, write to us and we will tell you what we hold and delete it on request. What we keep about a computer an organization manages, we keep for that organization: ask it first, and we will help it answer." }
+          { "type": "p", "text": "In Mirall's case the answer is short. Unless you have sent us feedback, asked to join the studios beta, or use the Console, we hold nothing about you, and so there is nothing to disclose, correct or erase. If you have, write to us and we will tell you what we hold and delete it on request. What we keep about a computer an organization manages, we keep for that organization: ask it first, and we will help it answer." }
         ]
       },
       {

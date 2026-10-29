@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
-import Navbar from '../Navbar'
+import Navbar, { type NavItem } from '../Navbar'
 import Footer from '../Footer'
+import { RichText } from './blocks'
 
 export type DocsSection = 'overview' | 'tutorials' | 'guides' | 'reference' | 'explanation' | 'changelog'
 
-interface NavEntry {
+export interface NavEntry {
   key: DocsSection
   to: string
   labelKey: string
@@ -27,9 +28,24 @@ interface DocsLayoutProps {
   sections?: Array<{ id: string; label: string }>
   seo: React.ReactNode
   children: React.ReactNode
+  /**
+   * Another documentation set's sidebar, its accessible name, and the links its header shows in
+   * place of the site's. The app docs use the defaults; the Mirall for Studios docs pass their own.
+   */
+  nav?: NavEntry[]
+  navLabelKey?: string
+  header?: { items: NavItem[]; cta?: { label: string; shortLabel?: string; to: string } }
 }
 
-export default function DocsLayout({ active, sections = [], seo, children }: DocsLayoutProps) {
+export default function DocsLayout({
+  active,
+  sections = [],
+  seo,
+  children,
+  nav = NAV,
+  navLabelKey = 'docs.title',
+  header,
+}: DocsLayoutProps) {
   const { t } = useTranslation()
   const { hash } = useLocation()
 
@@ -44,17 +60,17 @@ export default function DocsLayout({ active, sections = [], seo, children }: Doc
   return (
     <>
       {seo}
-      <Navbar />
+      <Navbar items={header?.items} cta={header?.cta} />
       <main className="pt-20">
         <div className="max-w-6xl mx-auto px-8 py-16">
           <div className="lg:grid lg:grid-cols-[14rem_1fr] lg:gap-12">
             <aside className="hidden lg:block">
               <nav
-                aria-label={t('docs.title')}
+                aria-label={t(navLabelKey)}
                 className="sticky top-28 text-sm"
               >
                 <ul className="space-y-1">
-                  {NAV.map((entry) => {
+                  {nav.map((entry) => {
                     const isActive = entry.key === active
                     return (
                       <li key={entry.key}>
@@ -117,7 +133,7 @@ export function DocsHeader({
       <h1 className="text-4xl md:text-5xl font-black font-headline text-on-surface tracking-tighter mb-5">
         {heading}
       </h1>
-      <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl">{intro}</p>
+      <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl"><RichText text={intro} /></p>
     </header>
   )
 }

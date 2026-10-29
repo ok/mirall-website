@@ -1,0 +1,666 @@
+{
+  "title": "Mirall for Studios documentation",
+  "nav": {
+    "overview": "Overview",
+    "tutorials": "Tutorials",
+    "guides": "How-to guides",
+    "reference": "Reference",
+    "explanation": "Explanation"
+  },
+  "hub": {
+    "label": "Mirall for Studios",
+    "heading": "Mirall for Studios documentation",
+    "intro": "Mirall for Studios is Mirall on every computer in your studio, managed from the Mirall Console, with your own relay for the connections a firewall would stop. These docs cover the Console and what it changes on each computer. How Mirall itself works is in the [Mirall documentation](/docs).",
+    "cards": [
+      {
+        "id": "tutorials",
+        "to": "/studios/documentation/tutorials",
+        "title": "Tutorials",
+        "description": "New to the Console? Set up your organization, publish its first configuration and connect the first computer, start to finish."
+      },
+      {
+        "id": "guides",
+        "to": "/studios/documentation/guides",
+        "title": "How-to guides",
+        "description": "One task each: invite an admin, issue a license key, change a setting for everyone, point every install at your relay."
+      },
+      {
+        "id": "reference",
+        "to": "/studios/documentation/reference",
+        "title": "Reference",
+        "description": "Every setting the Console manages, what each role may do, and what the statuses on keys, profiles and computers mean."
+      },
+      {
+        "id": "explanation",
+        "to": "/studios/documentation/explanation",
+        "title": "Explanation",
+        "description": "What the Console holds and never sees, how keys, profiles and templates fit together, and why nothing it shows is enforced."
+      }
+    ],
+    "popularTitle": "Popular",
+    "popular": [
+      { "label": "Set up your studio in the Console", "to": "/studios/documentation/tutorials#set-up-your-studio" },
+      { "label": "Issue a license key", "to": "/studios/documentation/guides#issue-a-license-key" },
+      { "label": "Connect Mirall to your organization", "to": "/studios/documentation/guides#connect-to-an-organization" },
+      { "label": "Change a setting for everyone", "to": "/studios/documentation/guides#change-and-publish-a-profile" },
+      { "label": "Point every install at your relay", "to": "/studios/documentation/guides#use-your-studios-relay" },
+      { "label": "The settings the Console manages", "to": "/studios/documentation/reference#managed-settings" },
+      { "label": "What the Console sees", "to": "/studios/documentation/explanation#what-the-console-does" }
+    ]
+  },
+  "tutorials": {
+    "label": "Tutorials",
+    "heading": "Tutorials",
+    "intro": "A guided first run through the Console. Follow it in order: each step builds on the one before.",
+    "items": [
+      {
+        "id": "set-up-your-studio",
+        "title": "Set up your studio in the Console",
+        "intro": "In this tutorial you create your studio's organization, decide what every install keeps in its Activity Log, and connect the first computer. You need a work email address at your studio's domain and a computer with Mirall installed.",
+        "blocks": [
+          { "type": "subheading", "text": "1. Sign in" },
+          { "type": "p", "text": "Open `console.mirall.app`. The Console has no passwords: enter your **Work email** and click **Email me a sign-in link**. The link in that email works once and expires in an hour. Open it in the same browser." },
+          { "type": "image", "src": "/studios-docs-sign-in.webp", "alt": "The Mirall Console sign-in page: Sign in to Mirall Console, a Work email field and an Email me a sign-in link button.", "width": 1344, "height": 1165 },
+          { "type": "note", "text": "During the closed beta, an organization can only be created from an email domain we have enabled for your studio. If creating one fails, write to us at `support@mirall.app`." },
+          { "type": "subheading", "text": "2. Create your organization" },
+          { "type": "p", "text": "The first time you sign in, the Console asks you to **Set up your organization**. Enter your studio's name, choose **A company or team**, and click **Create organization**. You are its owner." },
+          { "type": "p", "text": "The **Overview** shows how the organization is set up: its address, your role, and whether its plan has team features." },
+          { "type": "image", "src": "/studios-docs-overview.webp", "alt": "The Console Overview for Northlight Pictures: the Organization card lists the address northlight-pictures, the role Owner, and Team features enabled.", "width": 1344, "height": 1165 },
+          { "type": "subheading", "text": "3. Protect your account" },
+          { "type": "p", "text": "As the owner you can reveal license keys and decide who has access, so the Overview asks you to turn on two-factor authentication until you do. Click **Turn it on** and follow [Turn on two-factor authentication](/studios/documentation/guides#turn-on-two-factor)." },
+          { "type": "subheading", "text": "4. Say who people can ask" },
+          { "type": "p", "text": "Open **Organization**. Every computer you manage shows your organization's name beside each setting it locks, and the support contacts when someone is asked to connect. Add a **Support page** and a **Support email**, then click **Save**." },
+          { "type": "image", "src": "/studios-docs-settings-organization.webp", "alt": "The Organization page: What managed installs show, with the name Northlight Pictures, the support page https://it.northlight.example/mirall and the support email it@northlight.example.", "width": 1344, "height": 1165 },
+          { "type": "subheading", "text": "5. Decide what every install keeps" },
+          { "type": "p", "text": "Open **Profiles**, then **Default**. Every license key starts on this profile. Under **Activity log**, tick **Set here** beside **Keep activity for** and choose **365 days**. The row now reads **Locked on every install**." },
+          { "type": "p", "text": "Click **Save**, then **Publish** in the delivery line at the top. The line reads **Live** once the configuration reaches your fleet, with the version it delivered." },
+          { "type": "image", "src": "/studios-docs-profile-editor.webp", "alt": "The Default profile's Configuration tab: Live, version 1 reached your fleet; Keep activity for is set here to 365 days and locked on every install; the other settings show the app's defaults.", "width": 1344, "height": 1165 },
+          { "type": "note", "text": "Right after you create the organization, the delivery line can read that delivery is still being set up. **Publish** appears when it is ready, usually within a few minutes." },
+          { "type": "subheading", "text": "6. Issue the first license key" },
+          { "type": "p", "text": "Open **License keys** and click **Issue key**. Enter the **Email of the person** the key is for (start with your own), keep the **Default** profile, add a **Label** such as the computer's name, and click **Issue key**." },
+          { "type": "image", "src": "/studios-docs-issue-key.webp", "alt": "The Issue a license key dialog: fields for the person's email, an optional name, the configuration profile Default and an optional label.", "width": 896, "height": 1092 },
+          { "type": "p", "text": "The dialog shows the full key once. Click **Copy activation link** and keep it for the next step, then click **I've stored the key**." },
+          { "type": "subheading", "text": "7. Connect a computer" },
+          { "type": "p", "text": "On the computer with Mirall, open the activation link. Your browser hands it to Mirall, which asks **Connect Mirall to <your organization>?** with the support contacts you entered. Click **Connect**." },
+          { "type": "image", "src": "/studios-docs-managed-connect.webp", "alt": "Mirall asking Connect Mirall to Northlight Pictures? It explains that settings it manages can't be changed while connected, lists it@northlight.example and the support page, and offers Not now and Connect.", "width": 1344, "height": 1165 },
+          { "type": "subheading", "text": "8. See it report" },
+          { "type": "p", "text": "Back in the Console, open **Instances**. The computer is listed under your name with its Mirall version, and **Configuration** reads **Up to date** once it has applied what you published." },
+          { "type": "image", "src": "/studios-docs-instances.webp", "alt": "The Instances page: four computers for three people, each with its Mirall version, configuration state and status, and one organization node below them.", "width": 1344, "height": 1165 },
+          { "type": "p", "text": "You have an organization, a published configuration and a computer that reports to you. Issue a key for each person next, and invite whoever helps you run the Console." }
+        ],
+        "related": [
+          { "label": "Issue a license key", "to": "/studios/documentation/guides#issue-a-license-key" },
+          { "label": "Invite a member", "to": "/studios/documentation/guides#invite-a-member" },
+          { "label": "Keys, seats and computers", "to": "/studios/documentation/explanation#keys-and-seats" }
+        ]
+      }
+    ]
+  },
+  "guides": {
+    "label": "How-to guides",
+    "heading": "How-to guides",
+    "intro": "Task-focused recipes for the Console and for the computers it manages. Each one gets you to a single goal.",
+    "groups": [
+      {
+        "id": "organization",
+        "title": "Your organization",
+        "docs": [
+          {
+            "id": "sign-in",
+            "title": "Sign in to the Console",
+            "intro": "The Console signs you in with a link by email. There is no password to set or forget.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open `console.mirall.app` and enter your **Work email**." },
+                { "text": "Click **Email me a sign-in link**." },
+                { "text": "Open the link from the email in the same browser. It works once and expires in an hour." }
+              ] },
+              { "type": "p", "text": "If the link has expired or was already used, the sign-in page says so: request a new one there. **Sign out** is at the bottom of the sidebar." }
+            ]
+          },
+          {
+            "id": "set-support-contacts",
+            "title": "Change your organization's name and support contacts",
+            "intro": "What managed computers show: your name beside each setting you lock, and where people can ask for help. Only an owner can change it.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Organization** in the sidebar." },
+                { "text": "Change the **Name** (up to 80 characters), the **Support page** (https only) or the **Support email**." },
+                { "text": "Click **Save**." }
+              ] },
+              { "type": "p", "text": "Computers receive the new details with the next delivery, within a few minutes." },
+              { "type": "note", "text": "Fill in both the support page and the support email: saving while either is empty fails in the current Console." }
+            ],
+            "related": [
+              { "label": "On a managed computer", "to": "/studios/documentation/reference#on-a-managed-computer" }
+            ]
+          },
+          {
+            "id": "turn-on-two-factor",
+            "title": "Turn on two-factor authentication",
+            "intro": "Adds a code from an authenticator app to your Console account. It is recommended for everyone who manages license keys, and the Overview asks every owner until it is on.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Security** in the sidebar and click **Set up two-factor authentication**." },
+                { "text": "Scan the code with your authenticator app, or enter the key shown below it." },
+                { "text": "Type the **6-digit code** your app shows right now and click **Turn on two-factor authentication**." }
+              ] },
+              { "type": "image", "src": "/studios-docs-two-factor-setup.webp", "alt": "The Security page during setup: a QR code to scan, the key to enter instead, and a field for the 6-digit code.", "width": 1344, "height": 1165 },
+              { "type": "p", "text": "**Two-factor authentication is on** confirms it. If the code didn't match, wait for the next one: codes change every 30 seconds." }
+            ]
+          },
+          {
+            "id": "invite-a-member",
+            "title": "Invite a member",
+            "intro": "Members share the work of running the Console. You invite them with a link that works for one address.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Members** and click **Invite member**." },
+                { "text": "Enter their **Email** and choose a **Role**. Only an owner can invite another owner." },
+                { "text": "Click **Create invitation link**, copy the link and send it to them." }
+              ] },
+              { "type": "image", "src": "/studios-docs-invite-member.webp", "alt": "The Invite a member dialog: an Email field, a Role menu set to Member, and Create invitation link.", "width": 896, "height": 712 },
+              { "type": "p", "text": "The link is shown only once. It works for that address only and expires after seven days. They open it, click **Accept and sign in**, and join with the sign-in link the Console emails them." },
+              { "type": "p", "text": "Until then the invitation is listed under **Open invitations**. **New link** replaces a lost or expired link, and the old one stops working; **Revoke** withdraws the invitation." },
+              { "type": "note", "text": "An email address belongs to one organization in the Console. Someone already in another organization can't accept." }
+            ],
+            "related": [
+              { "label": "Roles and what they may do", "to": "/studios/documentation/reference#roles" }
+            ]
+          },
+          {
+            "id": "change-or-remove-a-member",
+            "title": "Change a member's role, or remove them",
+            "intro": "Owners and admins manage the members list. You can't change your own row, and only an owner can change an owner's.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Members**." },
+                { "text": "To change a role, choose it in the member's row and click **Save**." },
+                { "text": "To remove someone, click **Remove**, then **Remove member**." }
+              ] },
+              { "type": "image", "src": "/studios-docs-members.webp", "alt": "The Members page: Michael as owner, Sarah Conner as admin and Chris Wheley as member, each with a role menu, Save and Remove, and Helen Bishop's open invitation with New link and Revoke.", "width": 1344, "height": 1165 },
+              { "type": "p", "text": "A removed member loses access to the Console at once. Their license keys stay as they are: revoke those separately if they should stop working too." },
+              { "type": "note", "text": "An organization needs at least one owner. To change the last owner's role, make someone else an owner first." }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "keys",
+        "title": "License keys",
+        "docs": [
+          {
+            "id": "issue-a-license-key",
+            "title": "Issue a license key",
+            "intro": "Each person who uses Mirall gets a key. The key decides which profile their computers receive, and one key covers all of that person's computers.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **License keys** and click **Issue key**." },
+                { "text": "Enter the **Email of the person**, and optionally their **Name**." },
+                { "text": "Choose the **Configuration profile** their computers receive, and optionally a **Label** such as `Edit suite`." },
+                { "text": "Click **Issue key**, then copy the key or the activation link." },
+                { "text": "Click **I've stored the key**." }
+              ] },
+              { "type": "p", "text": "The dialog is the only place the full key is shown without a record. After that, the list shows only the key's first characters, and seeing the whole key again is a [recorded reveal](/studios/documentation/guides#send-an-activation-link)." },
+              { "type": "image", "src": "/studios-docs-licenses.webp", "alt": "The License keys page: four keys with the person's email, the Default profile, a status, the number of computers and the date issued; one key is revoked.", "width": 1344, "height": 1165 },
+              { "type": "p", "text": "The line under the heading counts the seats in use. Going over your plan is shown, never blocked." }
+            ],
+            "related": [
+              { "label": "Send someone their activation link", "to": "/studios/documentation/guides#send-an-activation-link" },
+              { "label": "Keys, seats and computers", "to": "/studios/documentation/explanation#keys-and-seats" }
+            ]
+          },
+          {
+            "id": "send-an-activation-link",
+            "title": "Send someone their activation link",
+            "intro": "The activation link is what connects a person's Mirall to your organization. It carries their key, so it is shown only beside the full key.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **License keys** and click **Details** on the person's key." },
+                { "text": "Click **Reveal**. The full key appears, with the activation link buttons below it." },
+                { "text": "Click **Copy activation link** and send it to the person." }
+              ] },
+              { "type": "image", "src": "/studios-docs-license-details.webp", "alt": "A license key's details: the masked key with Copy and Reveal, the note that revealing is recorded in the audit log, the key's status, person, profile and issue date, the computer using it, and the profile and key actions.", "width": 768, "height": 1324 },
+              { "type": "p", "text": "Each reveal is recorded in the audit log with your name, and the key hides itself again after 30 seconds. **Copy app link** copies the same link in the form a script can open with `open`, `start` or `xdg-open`, for connecting computers you set up yourself." },
+              { "type": "note", "text": "The activation link becomes available once configuration delivery is set up for your organization. Until then the details say so instead of offering the buttons." }
+            ],
+            "related": [
+              { "label": "Connect Mirall to your organization", "to": "/studios/documentation/guides#connect-to-an-organization" }
+            ]
+          },
+          {
+            "id": "move-a-key-to-another-profile",
+            "title": "Move a key to another profile",
+            "intro": "Changes which configuration a person's computers receive, without a new key.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **License keys** and click **Details** on the key." },
+                { "text": "Choose the new **Configuration profile** and click **Change**." }
+              ] },
+              { "type": "p", "text": "Their computers receive the other profile's live version. Until they have applied it, **Instances** shows them as **Other profile**." }
+            ]
+          },
+          {
+            "id": "suspend-or-revoke-a-key",
+            "title": "Suspend or revoke a key",
+            "intro": "Suspending is reversible. Revoking is permanent: when a person leaves, revoke their key.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **License keys** and click **Details** on the key." },
+                { "text": "Click **Suspend key**. **Resume key** makes it active again." },
+                { "text": "Or click **Revoke key**, read what it does, and click **Revoke key** again." }
+              ] },
+              { "type": "p", "text": "A revoked key stops receiving configuration, frees its seat, and retires its computers in **Instances**. No computer can connect with it again. To give the person access again, issue a new key." },
+              { "type": "note", "text": "Revoking does not remove configuration a computer has already applied, and it cannot recall anything already shared with that computer." }
+            ],
+            "related": [
+              { "label": "License key statuses", "to": "/studios/documentation/reference#key-statuses" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "configuration",
+        "title": "Configuration",
+        "docs": [
+          {
+            "id": "change-and-publish-a-profile",
+            "title": "Change a setting for everyone",
+            "intro": "A profile is the set of settings its computers receive. Changing one is two steps: save the profile, then publish it.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Profiles** and click **Open** on the profile." },
+                { "text": "Find the setting. Tick **Set here** and choose its value. Untick **Set here** to leave the setting to each computer again." },
+                { "text": "Click **Save**. The bar at the bottom reads **All changes saved**." },
+                { "text": "Click **Publish** in the delivery line at the top." }
+              ] },
+              { "type": "p", "text": "Publishing creates the profile's next version and sends it to every computer whose key uses the profile, within minutes. The delivery line reads **Publishing**, then **Live** with the version and when it reached your fleet." },
+              { "type": "p", "text": "A setting you set is locked on every install: the person sees **Set by <your organization>** and can't change it. Settings marked **Security · can only be tightened** can only be required, never relaxed." },
+              { "type": "note", "text": "**Publish** waits while the form has unsaved changes. If delivery fails, the line reads **Failed** and offers **Retry**." }
+            ],
+            "related": [
+              { "label": "The settings the Console manages", "to": "/studios/documentation/reference#managed-settings" },
+              { "label": "Profiles, templates and locks", "to": "/studios/documentation/explanation#profiles-templates-and-locks" }
+            ]
+          },
+          {
+            "id": "create-a-profile",
+            "title": "Create a profile for a group of people",
+            "intro": "Use a separate profile when some computers need different settings, such as field laptops that always go through your relay.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Profiles** and click **New profile**." },
+                { "text": "Enter a **Name** and optionally a **Description**. If your organization has templates, choose one under **Based on template**." },
+                { "text": "Click **Create profile**. The new profile opens: set its settings, save and publish it." },
+                { "text": "Move the keys of the people it is for onto it." }
+              ] },
+              { "type": "image", "src": "/studios-docs-profiles.webp", "alt": "The Configuration profiles page: the Default profile, live at version 1 and used by four keys, with New profile.", "width": 1344, "height": 1165 },
+              { "type": "p", "text": "To delete a profile, open it and choose **Delete profile** from the **⋯** menu. That works only when no key uses it." }
+            ],
+            "related": [
+              { "label": "Move a key to another profile", "to": "/studios/documentation/guides#move-a-key-to-another-profile" }
+            ]
+          },
+          {
+            "id": "build-on-a-template",
+            "title": "Share a baseline between profiles",
+            "intro": "A template holds settings several profiles share. A profile based on it inherits them and can't unlock what it locks.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Templates** and click **New template**." },
+                { "text": "Name it, for example `Company baseline`, and click **Create template**." },
+                { "text": "Set its settings and click **Save**." },
+                { "text": "Open each profile that should build on it, choose it under **Based on template**, then save and publish the profile." }
+              ] },
+              { "type": "p", "text": "In a profile, a setting the template sets reads **From template** and **Locked by template**. Profiles pick up a changed template the next time they are published." },
+              { "type": "p", "text": "Deleting a template (**Delete template** on its page) leaves its profiles in place; they stop inheriting from it." },
+              { "type": "note", "text": "**Templates** appears when your organization's plan has team features." }
+            ]
+          },
+          {
+            "id": "restore-an-earlier-version",
+            "title": "Go back to an earlier version",
+            "intro": "Each publish is kept as a version. Restoring one sends its settings again, as a new version.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open the profile and choose the **Versions** tab." },
+                { "text": "Click **Restore** on the version. Its settings load into the **Configuration** tab." },
+                { "text": "Check them, click **Save**, then **Publish**." }
+              ] },
+              { "type": "p", "text": "**Add note** records why a version exists; the note stays in the Console and never reaches a computer. **Hide** takes an old version out of the list, and **Show hidden** brings it back. The live version can't be hidden." }
+            ]
+          },
+          {
+            "id": "set-a-backup-folder",
+            "title": "Require backups and choose where they go",
+            "intro": "Each computer keeps its encrypted backup in its own folder on a share you provide. People still choose their own passphrase, and nobody else ever holds it.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open the profile. Under **Backup**, tick **Set here** beside **Backup folder** for each platform your studio uses." },
+                { "text": "Enter the folder as the share is reached on that platform, with `{install}` in it, for example `\\\\server\\share\\{user}\\{host}-{install}` on Windows or `/Volumes/share/{user}/{host}-{install}` on macOS." },
+                { "text": "To make a backup mandatory, tick **Set here** beside **Require a backup**." },
+                { "text": "Save and publish the profile." }
+              ] },
+              { "type": "p", "text": "Below the field, the Console shows what the path becomes on an example computer, or why it would be refused. The share itself must exist; Mirall creates each computer's folders below it." },
+              { "type": "note", "text": "Backups stay encrypted with each person's own passphrase. Your organization stores them; it cannot open them." }
+            ],
+            "related": [
+              { "label": "Backup folder paths", "to": "/studios/documentation/reference#backup-folder-paths" },
+              { "label": "Back up Mirall", "to": "/docs/guides#back-up-mirall" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "relay",
+        "title": "Relay",
+        "docs": [
+          {
+            "id": "use-your-studios-relay",
+            "title": "Point every install at your relay",
+            "intro": "Your studio's relay carries the connections a firewall would otherwise stop. We set it up with you as part of the rollout; this is how the Console hands it to every computer.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open the profile. Under **Network**, tick **Set here** beside **Relay key** and paste your relay's public key." },
+                { "text": "Tick **Set here** beside **Relay** and choose when to use it: **Automatic — when a direct connection fails**, or **Always — hide addresses from peers**." },
+                { "text": "Save and publish the profile." }
+              ] },
+              { "type": "p", "text": "The relay key is not a secret: anyone who has it can use the relay, and it can't read what it carries. Each computer shows both settings as set by your organization." }
+            ],
+            "related": [
+              { "label": "Your studio's relay", "to": "/studios/documentation/explanation#studio-relay" },
+              { "label": "Relays, and what they can see", "to": "/docs/explanation#relays" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "computers",
+        "title": "Computers",
+        "docs": [
+          {
+            "id": "connect-to-an-organization",
+            "title": "Connect Mirall to your organization",
+            "intro": "For the person at the computer. Your organization can manage some of Mirall's settings on the computers it looks after, and your administrator sends you an activation link to connect this one.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open the activation link on the computer where Mirall is installed. It opens in your browser, which hands it to Mirall." },
+                { "text": "Mirall checks with your organization, then asks **Connect Mirall to <organization>?** and says what connecting means." },
+                { "text": "Click **Connect**. **Connected to <organization>** confirms it." }
+              ] },
+              { "type": "p", "text": "An organization can set your relay, whether the Activity Log records and how long it keeps events, and your backup: it can require automatic backups and choose the folder they go to, in which Mirall makes this computer's own folder. A setting it manages reads **Set by <organization>** and can't be changed while you're connected. While it keeps recording on, **Delete the log** is unavailable; **Export as JSON** still works." },
+              { "type": "image", "src": "/studios-docs-managed-activity-log.webp", "alt": "Mirall's Activity Log settings on a connected computer: Record activity and Keep events for 365 days are locked and read Set by Northlight Pictures.", "width": 1344, "height": 1165 },
+              { "type": "p", "text": "To see what it manages, open **Profile → About Mirall → Organization**, or **Open organization** in the command palette. The page lists the managed settings by settings page, with your organization's support links." },
+              { "type": "image", "src": "/studios-docs-managed-organization.webp", "alt": "Mirall's Organization page: Managed by Northlight Pictures, the managed Activity Log settings, the support page and email, and Leave organization.", "width": 1344, "height": 1165 },
+              { "type": "p", "text": "To leave, click **Leave…** on that page, then **Leave**. The settings it managed go back to yours. Backups already on its share stay there, encrypted with your passphrase." },
+              { "type": "note", "text": "While connected, Mirall tells your organization this computer's name, its Mirall version and operating system, which of the organization's settings are in effect, and whether its backup is working — and that it left, when you leave. Never your files, your spaces, or who you share with. The [privacy policy](/privacy#managed) has the details." }
+            ],
+            "related": [
+              { "label": "Back up Mirall", "to": "/docs/guides#back-up-mirall" },
+              { "label": "Choose what Mirall records", "to": "/docs/guides#configure-activity-recording" },
+              { "label": "Connect through a relay", "to": "/docs/guides#use-a-relay" }
+            ]
+          },
+          {
+            "id": "check-a-computer",
+            "title": "Check a computer's configuration and backup",
+            "intro": "**Instances** lists every computer that reports with one of your keys, grouped by person, and your organization's own nodes below them.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Instances**." },
+                { "text": "Read the computer's row: its Mirall version, whether its **Configuration** is up to date, and its **Status**." },
+                { "text": "Click **Details** for its last report: when it connected and was last seen, when it applied its configuration, any settings it did not apply, and its backup." }
+              ] },
+              { "type": "p", "text": "A computer is **Dormant** after 14 days without a report, and active again with its next one. Computers that left or whose key was revoked are **Retired**; **Show retired** lists them." },
+              { "type": "p", "text": "From a key's details, **Show in Instances** lists only that key's computers. **New on this key** marks a computer that joined a key in the last 14 days while another computer still used it." },
+              { "type": "note", "text": "Everything here is reported by the app. Nothing on this page is enforced, and no report blocks anyone." }
+            ],
+            "related": [
+              { "label": "Computer statuses", "to": "/studios/documentation/reference#instance-statuses" },
+              { "label": "What computers report", "to": "/studios/documentation/explanation#what-computers-report" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "audit",
+        "title": "Audit log",
+        "docs": [
+          {
+            "id": "review-the-audit-log",
+            "title": "Find out who changed what",
+            "intro": "The audit log records every change in the Console, every revealed key, and every computer that connected or left.",
+            "blocks": [
+              { "type": "steps", "items": [
+                { "text": "Open **Audit log**." },
+                { "text": "Narrow it by **Action**, **Person** and **Period**, then click **Apply**." },
+                { "text": "Click **Older entries** at the bottom to go further back." }
+              ] },
+              { "type": "image", "src": "/studios-docs-audit-log.webp", "alt": "The Audit log, newest first: an invitation, a revoked key and its retired computer, computers connecting, keys issued, invitations accepted and the first profile published, each with who did it and what it concerned.", "width": 1344, "height": 1165 },
+              { "type": "p", "text": "**Who** names the member, or **Mirall app** for a computer that connected or left, or **System**. **Export CSV** downloads the entries that match the filters." }
+            ],
+            "related": [
+              { "label": "Audit log actions", "to": "/studios/documentation/reference#audit-actions" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reference": {
+    "label": "Reference",
+    "heading": "Reference",
+    "intro": "The facts, in tables: what each Console page is for, what each role may do, every setting the Console manages, and what each status means.",
+    "sections": [
+      {
+        "id": "console-pages",
+        "title": "Console pages",
+        "intro": "The sidebar lists them. **Members** and **Templates** appear when your organization's plan has team features; the **Overview** shows whether it does.",
+        "table": {
+          "columns": ["Page", "What it's for"],
+          "rows": [
+            ["Overview", "The organization's address, your role and its plan. Owners are asked to turn on two-factor authentication here until they do."],
+            ["License keys", "One key per person: who it is for, its profile, status and computers. Issue, reveal, suspend, revoke, and move a key to another profile."],
+            ["Profiles", "The configurations computers receive, which version of each is live, and whether it has reached your fleet."],
+            ["Templates", "Baselines several profiles share."],
+            ["Instances", "Every computer that reports with your keys, and your organization's own nodes."],
+            ["Members", "Who runs the Console with you, their roles, and open invitations."],
+            ["Audit log", "Every change, reveal, connection and departure, with filters and a CSV export."],
+            ["Organization", "The name and support contacts managed computers show."],
+            ["Security", "Two-factor authentication for your own account."]
+          ]
+        }
+      },
+      {
+        "id": "roles",
+        "title": "Roles",
+        "intro": "A member's role decides what they can change. Controls a role can't use are not shown.",
+        "table": {
+          "columns": ["Can", "Owner", "Admin", "Member"],
+          "rows": [
+            ["See every page", "Yes", "Yes", "Yes"],
+            ["Change the organization's name and support contacts", "Yes", "—", "—"],
+            ["Make someone an owner", "Yes", "—", "—"],
+            ["Invite, change and remove members", "Yes", "Yes", "—"],
+            ["Issue, suspend, revoke and move license keys", "Yes", "Yes", "—"],
+            ["Reveal a full license key", "Yes", "Yes", "—"],
+            ["Change profiles and templates", "Yes", "Yes", "—"],
+            ["Publish a profile", "Yes", "Yes", "—"]
+          ]
+        }
+      },
+      {
+        "id": "managed-settings",
+        "title": "Settings the Console manages",
+        "intro": "Every setting a profile or template can set. A setting set there is locked on every install; one left alone stays each person's own, at the app's default until they change it. **Security** settings can only be tightened; **Policy** settings are honoured by the app, not enforced.",
+        "table": {
+          "columns": ["Setting", "Values", "App default", "Kind"],
+          "rows": [
+            ["Relay (`network.relayMode`)", "**Off — direct connections only**, **Automatic — when a direct connection fails**, **Always — hide addresses from peers**", "Off", "Policy"],
+            ["Relay key (`network.relayKey`)", "The relay's public key: 52 z-base-32 or 64 hex characters", "None", "Policy"],
+            ["Record local activity (`audit.enabled`)", "**Required**. Can be required, never turned off; the person always sees that it is on.", "On", "Security"],
+            ["Keep activity for (`audit.retentionDays`)", "30, 90 or 365 days", "90 days", "Policy"],
+            ["Send activity to this Console (`audit.forwardingEnabled`)", "Shown, but can't be set yet: it waits for the Mirall release that forwards activity.", "Off", "Security"],
+            ["Backup folder — Windows (`backup.folder.windows`)", "A [folder path](#backup-folder-paths) with `{install}`", "None", "Policy"],
+            ["Backup folder — macOS (`backup.folder.macos`)", "The same, as the share is mounted on macOS, e.g. `/Volumes/…`", "None", "Policy"],
+            ["Backup folder — Linux (`backup.folder.linux`)", "The same, as the share is mounted on Linux, e.g. `/mnt/…`", "None", "Policy"],
+            ["Require a backup (`backup.required`)", "**Required**. Each computer must keep a backup; the person still chooses their own passphrase.", "Off", "Security"]
+          ]
+        }
+      },
+      {
+        "id": "backup-folder-paths",
+        "title": "Backup folder paths",
+        "intro": "A backup folder is written once for every computer, with placeholders each computer fills in.",
+        "list": [
+          "`{install}` is required, once: it gives each computer its own folder.",
+          "`{user}` and `{host}` are optional: the person's user name and the computer's name.",
+          "On Windows, start with a share (`\\\\server\\share\\…`) or a drive (`D:\\…`) and use `\\`. On macOS and Linux, start with `/` and use `/`.",
+          "Write the server and share out in full, and name at least one folder before the first placeholder.",
+          "Keep the path to 400 characters and each folder name to 255, counting `{user}` and `{host}` as 64 and `{install}` as 12.",
+          "The part before the first placeholder must exist. Mirall creates each computer's folders below it."
+        ]
+      },
+      {
+        "id": "key-statuses",
+        "title": "License key statuses",
+        "table": {
+          "columns": ["Status", "Means"],
+          "rows": [
+            ["Active", "In use. Computers can connect with it and receive its profile."],
+            ["Suspended", "Paused. **Resume key** makes it active again."],
+            ["Revoked", "Ended for good. It stopped receiving configuration, freed its seat and retired its computers. It can't be changed again."]
+          ]
+        }
+      },
+      {
+        "id": "delivery-statuses",
+        "title": "Profile delivery",
+        "intro": "The **Delivery** column on **Profiles** and the line at the top of a profile.",
+        "table": {
+          "columns": ["Status", "Means"],
+          "rows": [
+            ["Not published", "Nothing has been sent to your fleet yet."],
+            ["Unpublished changes", "Saved changes have not been published. On the profile's own page this reads **Not delivered**."],
+            ["Publishing", "A version is on its way to your fleet."],
+            ["Live", "The version reached your fleet, on the date shown."],
+            ["Failed", "The version could not be delivered. **Retry** sends it again."]
+          ]
+        }
+      },
+      {
+        "id": "instance-statuses",
+        "title": "Computer statuses",
+        "intro": "What the columns on **Instances** and a computer's details say.",
+        "table": {
+          "columns": ["Column", "Value", "Means"],
+          "rows": [
+            ["Status", "Active", "Reported in the last 14 days."],
+            ["Status", "Dormant", "No report for 14 days. Its next report makes it active again."],
+            ["Status", "Retired", "It left the organization, or its key was revoked. Hidden until you click **Show retired**."],
+            ["Configuration", "Up to date", "It applied its profile's live version."],
+            ["Configuration", "Behind by <n>", "It applied an older version of its profile."],
+            ["Configuration", "Other profile", "It applied a version of another profile, such as before its key was moved."],
+            ["Configuration", "Nothing applied", "It hasn't applied any of your configuration yet."],
+            ["Backup", "Protected · At risk · Stopped", "How its backup is doing, as the app judges it."],
+            ["Backup", "Not set up", "It has no backup."],
+            ["Computer", "New on this key", "It joined the key in the last 14 days while another computer still used the key."],
+            ["Details", "Not applied", "Settings it received but did not apply."],
+            ["Details", "Not locked, ignored", "Settings it received without a lock, which it ignores."]
+          ]
+        }
+      },
+      {
+        "id": "audit-actions",
+        "title": "Audit log actions",
+        "intro": "The **Action** filter's groups and what each records.",
+        "table": {
+          "columns": ["Group", "Actions"],
+          "rows": [
+            ["License keys", "Key issued · Key revealed · Key suspended · Key resumed · Key revoked · Key moved to another profile"],
+            ["Configuration", "Profile created, details changed, saved, published, republished or deleted · Profile version saved · Version note changed · Version hidden · Version shown again · Delivery failed · Template created, details changed, version saved or deleted"],
+            ["Computers", "Computer connected · Computer left the organization · Computers retired (key revoked)"],
+            ["Members", "Member invited · Invitation revoked · Invitation accepted · Role changed · Member removed"],
+            ["Organization", "Organization created · Organization details changed"]
+          ]
+        }
+      },
+      {
+        "id": "on-a-managed-computer",
+        "title": "On a managed computer",
+        "intro": "What Mirall shows on a computer connected to your organization.",
+        "table": {
+          "columns": ["Where", "What it shows"],
+          "rows": [
+            ["Profile → About Mirall → Organization", "Appears only on a computer an organization manages, reading **Managed by <organization>**. Opens its page: the settings it manages, its support links, and **Leave…**."],
+            ["Command palette", "**Open organization** opens the same page."],
+            ["Settings", "Each setting the organization manages reads **Set by <organization>** and can't be changed. A folder it sets is shown read-only, with a Copy button."],
+            ["Activity Log", "While the organization keeps recording on, **Delete the log** is unavailable; **Export as JSON** still works."]
+          ]
+        }
+      }
+    ]
+  },
+  "explanation": {
+    "label": "Explanation",
+    "heading": "Explanation",
+    "intro": "Background on how Mirall for Studios works, and why it is built the way it is.",
+    "topics": [
+      {
+        "id": "what-the-console-does",
+        "title": "What the Console does, and what it never sees",
+        "blocks": [
+          { "type": "p", "text": "Mirall moves files directly between the computers that need them. The Console sits beside that, not in the middle of it: it issues license keys, holds the configuration each computer should have, and shows what each computer reports about itself." },
+          { "type": "p", "text": "So the Console holds your organization's keys, profiles, members and audit log, and the reports computers send. It never holds your files, your spaces, or who shares with whom; none of that passes through it." },
+          { "type": "p", "text": "Mirall keeps the configuration it has received and keeps it current over the peer-to-peer network, asking our servers only while no peer has it. If the Console is unreachable, every computer goes on working with the configuration it already has. The same holds if your organization is ever suspended: the Console closes, and Mirall keeps working on every machine." }
+        ]
+      },
+      {
+        "id": "keys-and-seats",
+        "title": "Keys, seats and computers",
+        "blocks": [
+          { "type": "p", "text": "A license key belongs to one person, not to a computer. Someone with a laptop and an edit-suite workstation uses one key on both, and both receive the profile the key carries. The key is what you move, suspend or revoke when that person's situation changes." },
+          { "type": "p", "text": "Each person with an active key takes one seat, however many computers they use. The seat count is a signal for you and for us, never a lock: going over your plan shows on **License keys**, and no transfer ever stops because of a license." },
+          { "type": "p", "text": "Because a key is the credential that connects a computer to your organization, the Console treats it like one. The full key is shown once when it is issued. After that, each reveal is recorded with the name of whoever revealed it, and it hides itself again after 30 seconds." },
+          { "type": "p", "text": "Revoking a key ends it: it stops receiving configuration, frees its seat, and retires its computers. What it cannot do is reach back into a computer. Settings that computer already applied stay applied, and anything already shared with it stays shared." }
+        ]
+      },
+      {
+        "id": "profiles-templates-and-locks",
+        "title": "Profiles, templates and locks",
+        "blocks": [
+          { "type": "p", "text": "A profile is a set of settings for a group of people, and each key carries one. A template is a baseline several profiles share: a profile based on one inherits its settings, adds its own, and can't undo what the template locks." },
+          { "type": "p", "text": "Setting a value is the same as locking it. A computer applies the settings its organization locks and shows each as **Set by <organization>**; everything else stays the person's own choice. That keeps the line clear for the person at the computer: a setting is either theirs or yours, never a default you might quietly change later." },
+          { "type": "p", "text": "Some settings are security controls, such as recording activity or requiring a backup. These can only be tightened from the Console, never relaxed, so a mistaken profile can't switch a safeguard off. Others are policies, such as the relay or how long activity is kept: the app honours them, but nothing enforces them cryptographically, and the Console labels them so." },
+          { "type": "p", "text": "Everything a person sets for their own comfort — bandwidth, startup, notifications, theme — is deliberately not something the Console can manage." }
+        ]
+      },
+      {
+        "id": "publishing-and-delivery",
+        "title": "Saving, publishing and versions",
+        "blocks": [
+          { "type": "p", "text": "A profile has one draft. **Save** keeps your changes to it; nothing reaches a computer until you **Publish**. That lets you prepare a change, have someone check it, and send it when it suits you." },
+          { "type": "p", "text": "Each publish creates the profile's next version and delivers it to every computer on the profile within minutes. Versions are never edited after the fact. Going back means restoring an old version into the draft and publishing it again, so the history always shows what each computer was sent, and when." },
+          { "type": "p", "text": "Your organization's name and support contacts travel with every version, which is why changing them on **Organization** redelivers your published profiles. A template has no separate publish: profiles pick up a changed template the next time they are published." }
+        ]
+      },
+      {
+        "id": "what-computers-report",
+        "title": "What computers report, and why nothing is enforced",
+        "blocks": [
+          { "type": "p", "text": "A connected computer reports its name, its Mirall version and operating system, which of your configuration it has applied and anything it could not apply, and whether its backup is set up and working. It reports when it starts, when its configuration changes, once a day, and when it leaves." },
+          { "type": "p", "text": "**Instances** shows those reports as they are. A computer behind on its configuration, or with a backup at risk, is something to follow up on: the Console never blocks a computer, a person or a transfer because of a report. The privacy policy sets out exactly what a report holds, in [section 8](/privacy#managed)." }
+        ]
+      },
+      {
+        "id": "studio-relay",
+        "title": "Your studio's relay",
+        "blocks": [
+          { "type": "p", "text": "Most connections between Mirall computers are direct. Behind strict firewalls, some can't be, and a relay carries them instead. A Mirall relay is blind: it forwards encrypted data and can't read what it carries." },
+          { "type": "p", "text": "For a studio, the relay runs on your side, on your own server or in your cloud account. We set it up with you as part of the rollout, because where it should run depends on your network. After that the Console hands its key to every install, so nobody at a computer has to configure anything." },
+          { "type": "p", "text": "Whether a computer uses it is a setting of its profile: off, only when a direct connection fails, or always, which also hides each computer's address from its peers. More about the Mirall for Studios relay is on the [relay page](/studios/relay)." }
+        ]
+      }
+    ]
+  }
+}

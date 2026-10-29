@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@fontsource-variable/manrope";
 @import "@fontsource-variable/plus-jakarta-sans";
+/* Global rather than imported by the page: inlineCss (vite.config.ts) folds every
+   stylesheet into the shell and deletes the files, so a route-level CSS chunk would
+   leave its lazy loader requesting a file that no longer exists. */
+@import "./styles/studios.css" layer(components);
 
 @theme {
   --font-headline: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
