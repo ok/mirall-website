@@ -5,12 +5,17 @@
     "features": "Features",
     "security": "Security",
     "download": "Download",
+    "studios": "Studios",
+    "beta": "Beta",
     "githubAria": "Mirall on GitHub",
     "instagramAria": "Mirall on Instagram",
     "xAria": "Mirall on X"
   },
   "hero": {
-    "label": "Secure Data Transfer",
+    "studios": {
+      "badge": "New",
+      "text": "Mirall for Studios is in closed beta"
+    },
     "title": "Move data <1>directly</1>.\nNo cloud.\nNo accounts.",
     "description": "Mirall is built for very large files. Move hundreds of gigabytes or even terabytes straight between devices: create a space, invite the people who need the data, and it travels device to device, encrypted end-to-end, with no cloud in the middle.",
     "cta": "Download for Desktop",
@@ -129,6 +134,7 @@
     "description": "Available for macOS, Windows, and Linux. Pick your platform and start moving data directly between devices in seconds. Once installed, Mirall keeps itself up to date — new versions arrive in the background.",
     "downloadFor": "Download for {{platform}}",
     "otherPlatforms": "Other platforms",
+    "anotherComputer": "Downloading for another computer?",
     "desktop": "Desktop app",
     "platforms": {
       "macArm": "macOS (Apple Silicon)",
@@ -153,7 +159,33 @@
     "title": "Your files. Your devices. No copies in between.",
     "description": "Join the movement that share files the way it should be — direct, encrypted, and free from cloud lock-in.",
     "primaryButton": "Download Mirall",
-    "secondaryButton": "Read the Docs"
+    "secondaryButton": "Read the Docs",
+    "studios": "Running a studio?",
+    "studiosLink": "See Mirall for Studios"
+  },
+  "studiosTeaser": {
+    "text": "For teams that move plates, renders and masters every day. The Mirall Console issues a license key for each person and sets the configuration of every install, and a relay you run gets through strict firewalls.",
+    "chips": [
+      "License keys",
+      "Locked configuration",
+      "Your own relay",
+      "Audit log"
+    ],
+    "cta": "Explore Mirall for Studios"
+  },
+  "handoff": {
+    "title": "Mirall runs on your computer",
+    "text": "Mirall is a desktop app for macOS, Windows and Linux, free for personal use. Send yourself the link and open it on your computer.",
+    "share": "Send to my computer",
+    "copy": "Copy link",
+    "copied": "Link copied",
+    "email": "Email link",
+    "type": "Or type this on your computer",
+    "shareTitle": "Download Mirall",
+    "shareText": "Mirall for macOS, Windows and Linux",
+    "emailSubject": "Download Mirall",
+    "emailBody": "Download Mirall on your computer: {{url}}",
+    "close": "Close"
   },
   "footer": {
     "tagline": "Secure data transfer for teams. No cloud, no accounts, no compromises.",
@@ -163,8 +195,7 @@
       "features": "Features",
       "security": "Security",
       "download": "Download",
-      "changelog": "Changelog",
-      "studios": "For studios"
+      "changelog": "Changelog"
     },
     "resources": {
       "title": "Resources",
@@ -190,7 +221,9 @@
       "console": "Console",
       "docs": "Docs",
       "cta": "Request beta access",
-      "ctaShort": "Request access"
+      "ctaShort": "Request access",
+      "freeApp": "Free desktop app",
+      "home": "Mirall home"
     },
     "hero": {
       "eyebrow": "Mirall for Studios",
@@ -200,6 +233,10 @@
       "lede": "Mirall moves plates, renders and masters straight between the computers that need them. Your work never passes through anyone else's servers: no cloud upload, no transfer service in between, no third party holding a copy. The Mirall Console gives you control over every install.",
       "cta": "Request beta access",
       "secondary": "See how it works",
+      "free": {
+        "title": "Working on your own?",
+        "link": "Get the free desktop app"
+      },
       "facts": ["No cloud storage", "No accounts", "Encrypted end to end", "Computer to computer", "macOS · Windows · Linux"],
       "imageAlt": "The Mirall app showing the Northlight · Ep 104 space: two shared folders, one of them mirrored, three shared files with one downloading, a drop zone and five members"
     },

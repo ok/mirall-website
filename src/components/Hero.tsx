@@ -1,6 +1,6 @@
 import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Download } from '@phosphor-icons/react'
+import { ArrowRight, Download } from '@phosphor-icons/react'
 import heroSrcSet from '../assets/hero-screenshot.webp?w=400;640;960;1280;1600&format=webp&as=srcset'
 import heroSrc from '../assets/hero-screenshot.webp?w=960&format=webp'
 
@@ -11,9 +11,17 @@ export default function Hero() {
     <section className="relative pt-20 pb-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="z-10">
-          <span className="uppercase tracking-[0.1em] text-primary font-bold mb-6 block text-sm">
-            {t('hero.label')}
-          </span>
+          {/* Studios' own dark and orange: a different offer, without competing with Download. */}
+          <Link
+            to="/studios"
+            className="inline-flex items-center gap-2.5 rounded-full bg-on-surface py-1.5 pl-1.5 pr-4 mb-8 text-sm font-semibold text-[#fce8d2] hover:bg-[#282c34] transition-colors"
+          >
+            <span className="rounded-full bg-[#fd9c42] px-2.5 py-1 text-[11px] font-extrabold uppercase leading-none tracking-[0.06em] text-[#282c34]">
+              {t('hero.studios.badge')}
+            </span>
+            {t('hero.studios.text')}
+            <ArrowRight size={14} weight="bold" className="text-[#fd9c42]" />
+          </Link>
           <h1 className="text-6xl font-black font-headline text-on-surface leading-[1.1] tracking-tighter mb-8 whitespace-pre-line">
             <Trans i18nKey="hero.title">
               The art of <span className="text-primary-container">seamless</span> sharing.

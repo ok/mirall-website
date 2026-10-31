@@ -4,8 +4,10 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Seo from '../components/Seo'
 import { RichText } from '../components/docs/blocks'
+import SendToComputer from '../components/SendToComputer'
 import { breadcrumbSchema } from '../lib/schema'
 import { detectPlatform, type Platform } from '../lib/detectPlatform'
+import { useHandheld } from '../lib/handheld'
 import { AppleLogo, WindowsLogo, LinuxLogo, Download as DownloadIcon, type Icon } from '@phosphor-icons/react'
 
 interface PlatformInfo {
@@ -27,6 +29,7 @@ const platforms: PlatformInfo[] = [
 export default function Download() {
   const { t } = useTranslation()
   const [detected, setDetected] = useState<Platform | null>(null)
+  const handheld = useHandheld()
 
   useEffect(() => {
     let cancelled = false
@@ -34,8 +37,10 @@ export default function Download() {
     return () => { cancelled = true }
   }, [])
 
-  const detectedPlatform = platforms.find(p => p.key === detected)
-  const otherPlatforms = platforms.filter(p => p.key !== detected)
+  // An iPad passes for a Mac, so a handheld never gets a platform of its own.
+  const target = handheld ? null : detected
+  const detectedPlatform = platforms.find(p => p.key === target)
+  const otherPlatforms = platforms.filter(p => p.key !== target)
 
   return (
     <>
@@ -61,6 +66,13 @@ export default function Download() {
             <p className="text-xl text-on-surface-variant leading-relaxed mb-8 max-w-2xl mx-auto">
               {t('download.description')}
             </p>
+            {/* A phone has no installer of its own, so it gets the link onto a computer
+                instead, and the full list follows for anyone who wants a file anyway. */}
+            {handheld && (
+              <div className="mb-16 max-w-lg mx-auto">
+                <SendToComputer />
+              </div>
+            )}
             {detectedPlatform && (() => {
               const DetectedIcon = detectedPlatform.Icon
               return (
@@ -80,12 +92,14 @@ export default function Download() {
               )
             })()}
 
-            <div className={detected ? 'border-t border-outline-variant pt-12' : ''}>
-              {detected && (
-                <p className="text-on-surface-variant font-semibold mb-8">{t('download.otherPlatforms')}</p>
+            <div className={target ? 'border-t border-outline-variant pt-12' : ''}>
+              {(target || handheld) && (
+                <p className="text-on-surface-variant font-semibold mb-8">
+                  {t(handheld ? 'download.anotherComputer' : 'download.otherPlatforms')}
+                </p>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                {(detected ? otherPlatforms : platforms).map(platform => {
+                {(target ? otherPlatforms : platforms).map(platform => {
                   const PlatformIcon = platform.Icon
                   return (
                     <a
