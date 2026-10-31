@@ -28,6 +28,10 @@ export default function StudioLayout({ children, subpage = false }: { children: 
           { label: t('studios.nav.docs'), to: '/studios/documentation' },
         ]}
         cta={{ label: t('studios.nav.cta'), shortLabel: t('studios.nav.ctaShort'), to: `${base}#beta` }}
+        menuExtras={[
+          { label: t('studios.nav.freeApp'), to: '/download' },
+          { label: t('studios.nav.home'), to: '/' },
+        ]}
       />
       <main className="pt-20">{children}</main>
       <Footer tone="dark" />

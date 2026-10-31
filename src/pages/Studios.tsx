@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
@@ -7,9 +6,9 @@ import Words from '../components/studios/Words'
 import Steps from '../components/studios/Steps'
 import InfraDiagram from '../components/studios/InfraDiagram'
 import BetaForm from '../components/studios/BetaForm'
+import FreeApp from '../components/studios/FreeApp'
 import { AuditPanel, InstancesPanel, LicensesPanel, ProfilePanel } from '../components/studios/ConsolePanels'
 import { HERO } from '../components/studios/shots'
-import { useHeroTilt } from '../components/studios/useStudioMotion'
 import { breadcrumbSchema } from '../lib/schema'
 
 interface Ticks { label: string; title: string; items: string[] }
@@ -37,8 +36,6 @@ function Head({ eyebrow, title, line2, lede, id, statement = false }: {
 
 export default function Studios() {
   const { t } = useTranslation()
-  const shot = useRef<HTMLDivElement>(null)
-  useHeroTilt(shot)
   const download = t('studios.how.download', { returnObjects: true }) as Ticks
   const mirror = t('studios.how.mirror', { returnObjects: true }) as Ticks
   const access = t('studios.how.access.items', { returnObjects: true }) as Tile[]
@@ -72,10 +69,13 @@ export default function Studios() {
             <a className="st-btn st-btn-primary" href="#beta">{t('studios.hero.cta')}</a>
             <a className="st-btn st-btn-ghost" href="#how">{t('studios.hero.secondary')}</a>
           </div>
-          <ul className="st-facts st-in" style={{ '--i': 4 } as React.CSSProperties}>
+          <div className="st-free-slot st-in" style={{ '--i': 4 } as React.CSSProperties}>
+            <FreeApp />
+          </div>
+          <ul className="st-facts st-in" style={{ '--i': 5 } as React.CSSProperties}>
             {list(t('studios.hero.facts', { returnObjects: true })).map((f) => <li key={f}>{f}</li>)}
           </ul>
-          <div className="st-hero-shot st-in" style={{ '--i': 5 } as React.CSSProperties} ref={shot}>
+          <div className="st-hero-shot st-in" style={{ '--i': 6 } as React.CSSProperties}>
             <picture>
               <source media="(max-width: 1024px)" srcSet={HERO.small} sizes="calc(100vw - 32px)" width={1080} height={675} />
               <img

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { List, X } from '@phosphor-icons/react'
 import BrandLogo from './BrandLogo'
+import BetaChip from './BetaChip'
 import SocialLinks from './SocialLinks'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
@@ -35,6 +36,8 @@ interface NavbarProps {
   /** Replaces the site links. The studios pages list their own sections. */
   items?: NavItem[]
   cta?: { label: string; shortLabel?: string; to: string }
+  /** Extra links for the mobile menu only, set apart below `items`: the way back to the rest of the site. */
+  menuExtras?: NavItem[]
 }
 
 const TONES = {
@@ -45,6 +48,7 @@ const TONES = {
     burger: 'text-slate-600 hover:text-emerald-500 hover:bg-surface-container-low',
     cta: 'hero-gradient text-on-primary ambient-shadow',
     divider: 'border-outline-variant/10',
+    extra: 'text-primary hover:text-emerald-500',
   },
   dark: {
     header: 'bg-[#090b0f]/80 backdrop-blur-[24px] shadow-[0_1px_2px_rgba(0,0,0,0.4)]',
@@ -53,6 +57,7 @@ const TONES = {
     burger: 'text-[#8f939c] hover:text-[#fd9c42] hover:bg-white/5',
     cta: 'bg-[#fd9c42] text-[#282c34] shadow-[0_8px_30px_rgba(253,156,66,0.12)]',
     divider: 'border-white/10',
+    extra: 'text-[#5cc4b8] hover:text-[#fd9c42]',
   },
 }
 
@@ -61,7 +66,7 @@ function NavLink({ item, className }: { item: NavItem; className: string }) {
   return <Link className={className} to={item.to}>{item.label}</Link>
 }
 
-export default function Navbar({ tone = 'light', items, cta }: NavbarProps = {}) {
+export default function Navbar({ tone = 'light', items, cta, menuExtras }: NavbarProps = {}) {
   const { t } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
@@ -93,6 +98,10 @@ export default function Navbar({ tone = 'light', items, cta }: NavbarProps = {})
       </Link>
       <Link className={linkClass} to="/support">
         {t('support.title')}
+      </Link>
+      <Link className={linkClass} to="/studios">
+        {t('nav.studios')}
+        <BetaChip />
       </Link>
     </>
   )
@@ -155,6 +164,11 @@ export default function Navbar({ tone = 'light', items, cta }: NavbarProps = {})
         >
           <div className="flex flex-col px-8 py-2 font-body font-semibold text-base">
             {links(`py-3 ${c.mobileLink} transition-colors`)}
+            {menuExtras && (
+              <div className={`mt-2 pt-2 border-t ${c.divider} flex flex-col`}>
+                {menuExtras.map((item) => <NavLink key={item.to} item={item} className={`py-3 ${c.extra} transition-colors`} />)}
+              </div>
+            )}
           </div>
           {/* The header icons are desktop-only, so they would otherwise vanish here. */}
           <SocialLinks className="flex justify-center gap-4 px-8 pt-2 pb-6" tone={tone} />

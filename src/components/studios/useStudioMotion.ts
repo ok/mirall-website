@@ -59,31 +59,6 @@ export function useStudioMotion(root: RefObject<HTMLElement | null>) {
   }, [root])
 }
 
-/** The hero window starts tilted back and lies flat as it scrolls up. */
-export function useHeroTilt(shot: RefObject<HTMLElement | null>) {
-  useEffect(() => {
-    const el = shot.current
-    const img = el?.querySelector('img')
-    if (!el || !img || matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    let raf = 0
-    const draw = () => {
-      raf = 0
-      const p = Math.max(0, Math.min(1, (innerHeight - el.getBoundingClientRect().top) / (innerHeight * 0.85)))
-      img.style.transform = `perspective(1800px) rotateX(${18 * (1 - p)}deg) scale(${0.93 + 0.07 * p})`
-    }
-    const req = () => { if (!raf) raf = requestAnimationFrame(draw) }
-    addEventListener('scroll', req, { passive: true })
-    addEventListener('resize', req)
-    draw()
-    return () => {
-      removeEventListener('scroll', req)
-      removeEventListener('resize', req)
-      cancelAnimationFrame(raf)
-      img.style.transform = ''
-    }
-  }, [shot])
-}
-
 /**
  * The pinned story: index of the step whose number has scrolled up past the middle
  * of the screen. A step takes over only then, so the picture never runs ahead of the
