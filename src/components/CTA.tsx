@@ -23,6 +23,12 @@ export default function CTA() {
               {t('cta.secondaryButton')}
             </Link>
           </div>
+          <p className="mt-10 relative z-10 opacity-90">
+            {t('cta.studios')}{' '}
+            <Link to="/studios" className="font-bold underline underline-offset-4 hover:opacity-80">
+              {t('cta.studiosLink')} →
+            </Link>
+          </p>
         </div>
       </div>
     </section>

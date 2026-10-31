@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import BrandLogo from './BrandLogo'
+import BetaChip from './BetaChip'
 import { GITHUB_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
@@ -46,7 +47,7 @@ export default function Footer({ tone = 'light' }: { tone?: 'light' | 'dark' }) 
             <li><HashLink className={`${c.link} transition-all`} to="/#features">{t('footer.product.features')}</HashLink></li>
             <li><Link className={`${c.link} transition-all`} to="/download">{t('footer.product.download')}</Link></li>
             <li><Link className={`${c.link} transition-all`} to="/changelog">{t('footer.product.changelog')}</Link></li>
-            <li><Link className={`${c.link} transition-all`} to="/studios">{t('footer.product.studios')}</Link></li>
+            <li><Link className={`${c.link} transition-all`} to="/studios">{t('nav.studios')}<BetaChip /></Link></li>
           </ul>
         </div>
         <div>

@@ -88,13 +88,50 @@
 .st-facts li::before { content: "■ "; color: var(--st-dot); font-size: 9px; vertical-align: 2px; }
 .st-hero-shot { position: relative; z-index: 1; margin-top: clamp(48px, 7vw, 88px); }
 .st-hero-shot img { display: block; width: 100%; height: auto; border-radius: 12px;
-  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .55)) drop-shadow(0 0 60px rgba(253, 156, 66, .10)); transform-origin: 50% 0; }
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .55)) drop-shadow(0 0 60px rgba(253, 156, 66, .10)); }
+/* the free app: the hero's quieter second path, in the app's online teal */
+.st-free { display: inline-grid; grid-template-columns: auto auto; gap: 2px 14px; align-items: center; padding: 14px 20px 14px 14px; border-radius: 16px; background: var(--st-ink-2); text-decoration: none; transition: background .15s; }
+.st-free:hover { background: #1d222b; }
+.st-free-icon { grid-row: span 2; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--st-online-soft); color: var(--st-online); }
+.st-free-title { font: 700 15px/1.3 var(--st-display); color: var(--st-cream); }
+.st-free-link { font-size: 14px; font-weight: 700; color: var(--st-online); }
+/* On a phone the headline fills the first screen, so the card would sit below it, out
+   of sight of anyone who just scanned our card. There it moves above the eyebrow as a
+   small pill instead: seen at once, and still quieter than the beta button. */
+@media (max-width: 600px) {
+  .st-free-slot { order: -1; margin-bottom: -4px; }
+  .st-free { grid-template-columns: auto auto; padding: 6px 16px 6px 6px; border-radius: 999px; gap: 10px; }
+  .st-free-icon { grid-row: auto; width: 30px; height: 30px; border-radius: 999px; }
+  .st-free-icon svg { width: 16px; height: 16px; }
+  .st-free-title { display: none; }
+}
+
+/* the sheet a phone gets instead of a download: docked to the bottom edge */
+.st-sheet { width: 100%; max-width: 480px; margin: auto auto 0; padding: 0; border: 0; border-radius: 24px 24px 0 0; background: var(--st-ink-2); color: var(--st-text); }
+.st-sheet::backdrop { background: rgba(0, 0, 0, .6); }
+.st-sheet-body { position: relative; padding: 28px 20px max(24px, env(safe-area-inset-bottom)); }
+.st-sheet-close { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: transparent; border: 0; color: var(--st-muted); cursor: pointer; }
+.st-sheet-close:hover { color: var(--st-cream); }
+
 .st-hero.st-sub { padding-bottom: clamp(56px, 8vw, 96px); }
 .st-hero.st-sub h1 { font-size: clamp(42px, 6.6vw, 84px); }
 .st-crumb { display: flex; gap: 10px; align-items: center; font: 500 12px/1 var(--st-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--st-muted); }
 .st-crumb a { color: var(--st-dot); text-decoration: none; }
 .st-crumb a:hover { text-decoration: underline; }
 .st-crumb [aria-current] { color: var(--st-cream); }
+
+/* ───────── homepage teaser (a .studio section on the light homepage) ───────── */
+.st-teaser { position: relative; overflow: hidden; padding-block: clamp(72px, 10vw, 128px); color: var(--st-text); font: 400 17px/1.6 var(--st-body); }
+.st-teaser::before { content: ""; position: absolute; right: -10%; top: -30%; width: 60%; height: 120%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(253, 156, 66, .14), transparent); }
+.st-teaser .st-wrap { position: relative; display: grid; gap: clamp(40px, 6vw, 64px); align-items: center; }
+@media (min-width: 1024px) { .st-teaser .st-wrap { grid-template-columns: 1fr 1.05fr; } }
+.st-teaser-copy { display: grid; gap: 24px; justify-items: start; }
+.st-teaser h2 { font-size: clamp(36px, 4.6vw, 56px); }
+.st-teaser-copy p { max-width: 50ch; }
+.st-teaser-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.st-teaser-chips li { font-size: 13px; padding: 7px 12px; border-radius: 999px; background: var(--st-ink-2); }
+.st-teaser-shot { display: block; width: 100%; height: auto; border-radius: 12px; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .55)); }
 
 /* ───────── replaces strip ───────── */
 .st-replaces { padding-block: clamp(40px, 6vw, 64px); box-shadow: inset 0 1px 0 var(--st-hair), inset 0 -1px 0 var(--st-hair); }
@@ -265,6 +302,8 @@
 @media (prefers-reduced-motion: no-preference) {
   @keyframes st-rise { from { transform: translateY(115%); } to { transform: none; } }
   @keyframes st-fade { from { opacity: 0; transform: translateY(32px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+  @keyframes st-sheet-in { from { transform: translateY(100%); } to { transform: none; } }
+  .st-sheet[open] { animation: st-sheet-in .35s var(--st-ease); }
   @keyframes st-flip { 0%, 42% { opacity: 0; } 50%, 92% { opacity: 1; } 100% { opacity: 0; } }
 
   .st-hero h1 .st-w > span { animation: st-rise 1.05s var(--st-ease) both; animation-delay: calc(100ms + var(--wi) * 45ms); }
