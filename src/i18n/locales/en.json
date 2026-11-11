@@ -2011,6 +2011,19 @@
     "intro": "Notable changes you'll notice as a user. Internal refactors and build-pipeline tweaks are intentionally left out.",
     "releases": [
       {
+        "version": "1.13.1",
+        "date": "2026-11-10",
+        "sections": [
+          {
+            "heading": "Fixed",
+            "items": [
+              "**Downloads no longer stall on some Wi-Fi networks.** On a network that loses packets often, a download could pause for a second or more at a time and run well below the connection's speed.",
+              "**The Mirall icon shows in the window's title bar on KDE Plasma (Wayland).** It showed a generic placeholder there."
+            ]
+          }
+        ]
+      },
+      {
         "version": "1.13.0",
         "date": "2026-10-24",
         "sections": [
