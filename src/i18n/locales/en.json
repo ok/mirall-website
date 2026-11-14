@@ -84,7 +84,7 @@
       },
       {
         "question": "Will Mirall work on my network?",
-        "answer": "Almost always, and with no setup — Mirall finds its own way through home and office routers, so there are no ports to forward and nothing to configure. The exception is a network that blocks the traffic it needs to connect two devices directly, which some strict corporate firewalls, mobile routers and VPNs do. When that happens Mirall says so instead of leaving you guessing: it checks whether other people can actually reach you, names what's in the way, and lists what to try, in order. For the networks that stay shut, Mirall can route a connection through a relay — a machine you or someone you know runs, which forwards the traffic without being able to read it. And if none of that is enough, Mirall can save a diagnostics file — with your identifying details left out — to send us."
+        "answer": "Almost always, and with no setup — Mirall finds its own way through home and office routers, so there are no ports to forward and nothing to configure, beyond letting Mirall through when Windows asks on first launch. The exception is a network that blocks the traffic it needs to connect two devices directly, which some strict corporate firewalls, mobile routers and VPNs do. When that happens Mirall says so instead of leaving you guessing: it checks whether other people can actually reach you, names what's in the way, and lists what to try, in order. For the networks that stay shut, Mirall can route a connection through a relay — a machine you or someone you know runs, which forwards the traffic without being able to read it. And if none of that is enough, Mirall can save a diagnostics file — with your identifying details left out — to send us."
       },
       {
         "question": "What happens when I'm offline?",
@@ -444,6 +444,12 @@
           "to": "/docs/explanation#spaces-members-availability"
         },
         {
+          "symptom": "Two of your devices on the same Wi-Fi show each other as offline",
+          "check": "When everyone else sees both devices online, the two are on one network and the firewall on each is refusing the other. Allow Mirall through the firewall on one of them — either one is enough.",
+          "linkLabel": "Allow Mirall through your firewall",
+          "to": "/docs/guides#allow-mirall-through-a-firewall"
+        },
+        {
           "symptom": "A large download stopped part-way",
           "check": "A download keeps what it has received and carries on from there once you're both online again — unless you paused it yourself, in which case it waits for **Resume**. It starts over only if the sharer changed the file in the meantime. If the row names a local problem — **Permission denied** or **Download folder unavailable** — fix that and it resumes on its own. **Disk full** does too when Mirall caught it before starting; if the disk filled up partway, free some space and press **Retry**.",
           "linkLabel": "Pause, resume, cancel, or retry a transfer",
@@ -748,7 +754,7 @@
                   { "title": "Check both devices are running Mirall", "text": "A join request travels straight from one device to the other, so a member of the space has to be online and running Mirall at the moment the link is used. A closed app or a sleeping laptop on your side is enough to stall it. Running in the background counts — Mirall in the menu bar or the notification area is reachable." },
                   { "title": "Look where the request actually appears", "text": "The banner is **inside the space**. From the Shared Spaces overview all you get is a **“1 waiting”** pill on that space's tile. Mirall also raises a notice with a **Review** button, and a desktop notification — unless **Join requests** is switched off in **Settings → Notifications**, or Mirall isn't running at all." },
                   { "title": "Check your own connection", "text": "Open your **Profile** page and click **Connection**. If the headline reads **Connecting to the Mirall network…** rather than **Network is healthy**, nothing can reach you yet. Read the **Suggestions** under the headline — that is where the warnings about your network type appear, such as **Your connection uses changing ports** or **Your network keeps dropping traffic to the Mirall network**. A relay carries the connections a network like that will not." },
-                  { "title": "Rule out a firewall or a VPN", "text": "Mirall connects over UDP, and a VPN, a company network, or a firewall that blocks it will stop two devices finding each other. On Windows, open **Windows Security → Firewall & network protection → Allow an app through firewall** and check that Mirall is ticked for both **Private** and **Public** — the prompt shown on first launch is easy to dismiss by accident. If you are on a VPN, try again with it off. Sharing a phone's connection has the same effect: both devices end up behind the carrier's network, where a direct connection often cannot be made." },
+                  { "title": "Rule out a firewall or a VPN", "text": "Mirall connects over UDP, and a VPN, a company network, or a firewall that blocks it will stop two devices finding each other. On Windows, open **Windows Security → Firewall & network protection → Allow an app through firewall** and check that Mirall is ticked for both **Private** and **Public**. The list holds two entries named **Mirall**, and both need both ticks — Windows asks about each on first launch, and those prompts are easy to dismiss by accident. A Linux firewall can keep two devices on the same network apart in the same way; [Allow Mirall through your firewall](/docs/guides#allow-mirall-through-a-firewall) has the rule for it. If you are on a VPN, try again with it off. Sharing a phone's connection has the same effect: both devices end up behind the carrier's network, where a direct connection often cannot be made." },
                   { "title": "Leave both apps running", "text": "A device that is waiting keeps knocking on its own, so once you are reachable the request arrives without anyone having to paste the link again." }
                 ] },
                 { "type": "note", "text": "**Auto-approve** changes none of this. It removes the decision, not the hand-over: the link carries the address of the space, never the key to it, so a device that is already a member still has to be reachable to let someone in. Until one is, the person joining waits exactly as they would without it." }
@@ -1244,7 +1250,7 @@
                 { "type": "subheading", "text": "Things worth checking" },
                 { "type": "bullets", "items": [
                   "**A VPN.** Many route or block the traffic Mirall needs. Try again with it off.",
-                  "**Your firewall.** On Windows, open **Windows Security → Firewall & network protection → Allow an app through firewall** and check that Mirall is ticked for both **Private** and **Public**. The prompt shown on first launch is easy to dismiss by accident.",
+                  "**Your firewall.** On Windows, open **Windows Security → Firewall & network protection → Allow an app through firewall** and check that Mirall is ticked for both **Private** and **Public**. The list holds two entries named **Mirall**, and both need both ticks — Windows asks about each on first launch, and those prompts are easy to dismiss by accident. On Linux, a firewall that refuses incoming traffic keeps two devices on the same network apart; [Allow Mirall through your firewall](/docs/guides#allow-mirall-through-a-firewall) has the rule for it.",
                   "**A company or campus network.** Strict networks often block a direct connection between two devices outright.",
                   "**A phone's shared connection.** Tethering puts both devices behind the carrier's network, where a direct connection frequently cannot be made."
                 ] },
@@ -1256,7 +1262,32 @@
                 { "label": "Send us a diagnostics file", "to": "/docs/guides#save-diagnostics" },
                 { "label": "Why Mirall can tell your network is the problem", "to": "/docs/explanation#reachability" },
                 { "label": "Connect through a relay", "to": "/docs/guides#use-a-relay" },
-                { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" }
+                { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" },
+                { "label": "Allow Mirall through your firewall", "to": "/docs/guides#allow-mirall-through-a-firewall" }
+              ]
+            },
+            {
+              "id": "allow-mirall-through-a-firewall",
+              "title": "Allow Mirall through your firewall",
+              "intro": "Two of your devices on the same Wi-Fi or cable network show each other as offline, while everyone else sees both of them online. The firewall on the devices themselves is in the way, and allowing Mirall on one of the two fixes it.",
+              "blocks": [
+                { "type": "p", "text": "On one network, Mirall connects two devices directly across it, and that needs one of the two to accept a connection coming in. When the firewall on both refuses, they stay offline to each other. Devices on different networks are not affected. Allowing incoming traffic on either device is enough — you do not need to change both." },
+                { "type": "subheading", "text": "On Windows" },
+                { "type": "steps", "items": [
+                  { "title": "Open the list of allowed apps", "text": "Open **Windows Security → Firewall & network protection → Allow an app through firewall**." },
+                  { "title": "Find both Mirall entries", "text": "The list holds two entries named **Mirall** — one for the app and one for its background process. Windows asks about each of them on first launch, so a prompt that was dismissed leaves its entry without permission." },
+                  { "title": "Tick Private and Public on both", "text": "Windows applies the permission per type of network: a Wi-Fi it treats as **Public** ignores a tick under **Private**. Tick both columns on both entries." }
+                ] },
+                { "type": "subheading", "text": "On Linux" },
+                { "type": "p", "text": "A firewall that refuses incoming traffic has the same effect, and `ufw` does exactly that once it is switched on. Mirall uses a different port every time it starts, so there is no single port to open. Allow incoming UDP from your local network instead:" },
+                { "type": "code", "language": "sh", "text": "sudo ufw allow from 192.168.0.0/16 proto udp" },
+                { "type": "p", "text": "That range covers a network whose addresses begin with `192.168`, as most home networks do. If yours begin with `10`, or with `172.16` to `172.31`, put that range in place of `192.168.0.0/16` — `10.0.0.0/8` or `172.16.0.0/12`. The rule accepts UDP from devices on your local network only, not from the internet." },
+                { "type": "p", "text": "Once one device accepts incoming traffic, the two find each other within a few minutes." }
+              ],
+              "related": [
+                { "label": "Fix a connection problem", "to": "/docs/guides#fix-a-connection-problem" },
+                { "label": "Fix a join that gets stuck", "to": "/docs/guides#fix-a-stuck-join" },
+                { "label": "Network status", "to": "/docs/reference#network-status" }
               ]
             },
             {
