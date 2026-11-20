@@ -8,6 +8,7 @@
     "studios": "Studios",
     "beta": "Beta",
     "githubAria": "Mirall on GitHub",
+    "youtubeAria": "Mirall on YouTube",
     "instagramAria": "Mirall on Instagram",
     "xAria": "Mirall on X"
   },
@@ -201,7 +202,8 @@
       "title": "Resources",
       "docs": "Documentation",
       "support": "Support",
-      "github": "Mirall on GitHub"
+      "github": "Mirall on GitHub",
+      "youtube": "Mirall on YouTube"
     },
     "legal": {
       "title": "Legal",
