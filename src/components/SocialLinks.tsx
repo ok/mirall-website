@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import { InstagramLogo, XLogo } from '@phosphor-icons/react'
+import { InstagramLogo, XLogo, YoutubeLogo } from '@phosphor-icons/react'
 import GithubMark from './GithubMark'
-import { GITHUB_URL, INSTAGRAM_URL, X_URL } from '../lib/links'
+import { GITHUB_URL, INSTAGRAM_URL, X_URL, YOUTUBE_URL } from '../lib/links'
 
 const LINK_CLASS = 'flex items-center justify-center w-10 h-10 rounded-lg transition-colors'
 const TONE_CLASS = {
@@ -13,6 +13,7 @@ export default function SocialLinks({ className, tone = 'light' }: { className: 
   const { t } = useTranslation()
   const links = [
     { href: GITHUB_URL, label: t('nav.githubAria'), icon: <GithubMark size={22} /> },
+    { href: YOUTUBE_URL, label: t('nav.youtubeAria'), icon: <YoutubeLogo size={24} weight="bold" aria-hidden="true" /> },
     { href: INSTAGRAM_URL, label: t('nav.instagramAria'), icon: <InstagramLogo size={24} weight="bold" aria-hidden="true" /> },
     { href: X_URL, label: t('nav.xAria'), icon: <XLogo size={22} weight="bold" aria-hidden="true" /> },
   ]

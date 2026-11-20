@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import BrandLogo from './BrandLogo'
 import BetaChip from './BetaChip'
-import { GITHUB_URL } from '../lib/links'
+import { GITHUB_URL, YOUTUBE_URL } from '../lib/links'
 
 function HashLink({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
   const navigate = useNavigate()
@@ -58,6 +58,11 @@ export default function Footer({ tone = 'light' }: { tone?: 'light' | 'dark' }) 
             <li>
               <a className={`${c.link} transition-all`} href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
                 {t('footer.resources.github')}
+              </a>
+            </li>
+            <li>
+              <a className={`${c.link} transition-all`} href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer">
+                {t('footer.resources.youtube')}
               </a>
             </li>
           </ul>

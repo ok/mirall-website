@@ -89,12 +89,13 @@
 .st-hero-shot { position: relative; z-index: 1; margin-top: clamp(48px, 7vw, 88px); }
 .st-hero-shot img { display: block; width: 100%; height: auto; border-radius: 12px;
   filter: drop-shadow(0 40px 60px rgba(0, 0, 0, .55)) drop-shadow(0 0 60px rgba(253, 156, 66, .10)); }
-/* the free app: the hero's quieter second path, in the app's online teal */
-.st-free { display: inline-grid; grid-template-columns: auto auto; gap: 2px 14px; align-items: center; padding: 14px 20px 14px 14px; border-radius: 16px; background: var(--st-ink-2); text-decoration: none; transition: background .15s; }
-.st-free:hover { background: #1d222b; }
-.st-free-icon { grid-row: span 2; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--st-online-soft); color: var(--st-online); }
-.st-free-title { font: 700 15px/1.3 var(--st-display); color: var(--st-cream); }
-.st-free-link { font-size: 14px; font-weight: 700; color: var(--st-online); }
+/* the free app: the hero's second path. The one cream surface on the dark page, so
+   someone who isn't choosing for a studio spots it without reading for it. */
+.st-free { display: inline-grid; grid-template-columns: auto auto; gap: 2px 14px; align-items: center; padding: 14px 20px 14px 14px; border-radius: 16px; background: var(--st-cream); text-decoration: none; transition: background .15s; }
+.st-free:hover { background: #fff4e6; }
+.st-free-icon { grid-row: span 2; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--st-ink-1); color: var(--st-online); }
+.st-free-title { font: 700 15px/1.3 var(--st-display); color: var(--st-ink-1); }
+.st-free-link { font-size: 14px; font-weight: 700; color: #0b6359; }
 /* On a phone the headline fills the first screen, so the card would sit below it, out
    of sight of anyone who just scanned our card. There it moves above the eyebrow as a
    small pill instead: seen at once, and still quieter than the beta button. */
@@ -146,7 +147,11 @@
 .st-step { display: grid; gap: 28px; }
 .st-copy { display: grid; gap: 16px; align-content: center; }
 .st-copy p { max-width: 46ch; }
-.st-num { font: 800 clamp(72px, 9vw, 120px)/.8 var(--st-display); letter-spacing: -.06em; color: transparent; -webkit-text-stroke: 1.5px rgba(253, 156, 66, .55); transition: -webkit-text-stroke-color .5s; }
+/* Outlined numerals. The variable font draws 3 and 4 from overlapping contours, and a
+   stroke over a transparent fill shows every one of them as a knot inside the digit.
+   So the stroke is painted first at double width and the fill, in the band's own
+   colour, covers its inner half along with the overlaps: 1.5px of outline remains. */
+.st-num { font: 800 clamp(72px, 9vw, 120px)/.8 var(--st-display); letter-spacing: -.06em; color: var(--st-ink-0); paint-order: stroke fill; -webkit-text-stroke: 3px rgba(253, 156, 66, .55); transition: -webkit-text-stroke-color .5s; }
 .st-ui { font: 400 12.5px/1.5 var(--st-mono); color: var(--st-muted); }
 .st-stage { position: relative; border-radius: 22px; overflow: hidden; background: #1b1e24; box-shadow: inset 0 0 0 1px var(--st-hair); aspect-ratio: 4 / 5; }
 .st-stage picture, .st-stage img { display: block; width: 100%; height: 100%; }
