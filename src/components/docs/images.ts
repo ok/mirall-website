@@ -27,6 +27,7 @@ import joinWaiting from '../../assets/docs/join-waiting.webp?w=672;1008;1344&for
 import networkStatus from '../../assets/docs/network-status.webp?w=672;1008;1344&format=webp&as=srcset'
 import onboarding from '../../assets/docs/onboarding.webp?w=672;1008;1344&format=webp&as=srcset'
 import peerDownloads from '../../assets/docs/peer-downloads.webp?w=672;1008;1344&format=webp&as=srcset'
+import transfers from '../../assets/docs/transfers.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsBackup from '../../assets/docs/settings-backup.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsNetwork from '../../assets/docs/settings-network.webp?w=672;1008;1344&format=webp&as=srcset'
 import settingsNotifications from '../../assets/docs/settings-notifications.webp?w=672;1008;1344&format=webp&as=srcset'
@@ -68,6 +69,7 @@ const SRCSETS: Record<string, string> = {
   '/docs-network-status.webp': networkStatus,
   '/docs-onboarding.webp': onboarding,
   '/docs-peer-downloads.webp': peerDownloads,
+  '/docs-transfers.webp': transfers,
   '/docs-settings-backup.webp': settingsBackup,
   '/docs-settings-network.webp': settingsNetwork,
   '/docs-settings-notifications.webp': settingsNotifications,
