@@ -125,7 +125,7 @@
       },
       {
         "question": "How do I keep Mirall up to date?",
-        "answer": "You don't have to. Once installed, Mirall updates itself in the background and the new version is live the next time you launch — no reinstalls, no installer downloads."
+        "answer": "You don't have to. Once installed, Mirall updates itself in the background and the new version is live the next time you launch — no reinstalls, no installer downloads. If you'd rather decide yourself, set Mirall to notify you, and it downloads a new version only when you choose."
       }
     ]
   },
@@ -393,13 +393,13 @@
   "support": {
     "title": "Support",
     "heading": "Get help with Mirall",
-    "description": "Mirall has built-in support. Click **Send Feedback** in the top right corner of the app to report a problem, request a feature, or ask a question. Add your email if you'd like a reply, and tick **Include a screenshot of the current view** when a picture explains it faster. Mirall attaches the version you're running and your platform, so we start from the same facts. Your message goes directly to our team.",
-    "screenshotAlt": "Mirall app with the Send Feedback button highlighted",
+    "description": "Mirall has built-in support. Click the **Send Feedback** icon in the top right corner of the app to report a problem, request a feature, or ask a question. Add your email if you'd like a reply, and tick **Include a screenshot of the current view** when a picture explains it faster. Mirall attaches the version you're running and your platform, so we start from the same facts. Your message goes directly to our team.",
+    "screenshotAlt": "Mirall's Shared Spaces screen, with the Send Feedback icon in the header beside Transfers and Settings",
     "steps": {
       "title": "How to reach us",
       "items": [
         "Open Mirall on your desktop",
-        "Click **Send Feedback** in the top right corner",
+        "Click the **Send Feedback** icon in the top right corner",
         "Describe your issue or question — add your email if you want a reply",
         "Hit send — we'll get back to you"
       ]
@@ -839,7 +839,7 @@
               "id": "manage-a-transfer",
               "title": "Pause, resume, cancel, or retry a transfer",
               "blocks": [
-                { "type": "p", "text": "If your network drops or the member you're downloading from goes offline, the transfer pauses on its own and picks back up from where it left off once that person is back. A member who has set an upload limit is a different case — they are still there, just sending slowly — so the transfer waits its turn instead of failing, and an interrupted download keeps retrying on its own for as long as it makes progress. Only a few downloads run at once; the rest read **Waiting** until one ahead of them finishes. You can also take control by hand — the buttons on a file row change with its state:" },
+                { "type": "p", "text": "If your network drops or the member you're downloading from goes offline, the transfer pauses on its own and picks back up from where it left off once that person is back. A member who has set an upload limit is a different case — they are still there, just sending slowly — so the transfer waits its turn instead of failing, and an interrupted download keeps retrying on its own for as long as it makes progress. Only a few downloads run at once; the rest read **Waiting** until one ahead of them finishes. You can also take control by hand — the buttons on a file row change with its state. The [Transfers page](/docs/guides#see-all-transfers) carries the same buttons for every download in every space, and pauses or resumes them all at once:" },
                 { "type": "bullets", "items": [
                   "**Pause Download** — stop a running download. Its progress is kept, so resuming costs you nothing.",
                   "**Cancel** — stop a running download outright and throw away what's been received.",
@@ -853,6 +853,27 @@
               ],
               "related": [
                 { "label": "Pause, resume, move, or stop a mirror", "to": "/docs/guides#manage-a-mirror" }
+              ]
+            },
+            {
+              "id": "see-all-transfers",
+              "title": "See every transfer in one place",
+              "intro": "The Transfers page lists the downloads you started and the files other members are fetching from you, across all your spaces.",
+              "blocks": [
+                { "type": "p", "text": "Click **Transfers** in the header, the arrows to the left of **Send Feedback**, or press `Cmd/Ctrl + Shift + T`. While files move, the control shows the current speed: your download speed, or your upload speed when you're only sending. A dot on it means nothing is moving but a download is paused or has failed. **Back** returns you to the screen you came from." },
+                { "type": "image", "src": "/docs-transfers.webp", "alt": "Mirall's Transfers page with one download running in the space Project Fairlight, the Speed tile showing 4.2 MB/s and a chart of the last five minutes, and the Transfer Limits tile with Download set to 5 MB/s", "width": 1344, "height": 1165 },
+                { "type": "p", "text": "Transfers are grouped by space, and a space with a download that needs you comes first. Each group says how many transfers it has and how many are paused or failed, and **Open Space** takes you there. The rows are the ones the space itself shows: a download carries **Pause Download**, **Cancel**, **Resume** or **Retry**, and a file you're sending shows who is downloading it." },
+                { "type": "p", "text": "The buttons above the list narrow it: **All**, **Downloading**, **Sending** and **Needs attention**, each with its count. **Needs attention** holds the downloads that are paused, waiting for an owner who is offline, or failed." },
+                { "type": "p", "text": "**Pause Downloads** pauses every download that is running or waiting. Once none is running and one of them is paused, the button reads **Resume Downloads**. A download that waits for its owner to come back online resumes on its own." },
+                { "type": "subheading", "text": "Speed and limits" },
+                { "type": "p", "text": "**Speed** shows your current download and upload speed, and a chart of both over **5 min**, **1 hour** or **Today**, with download above the line and upload below it. Point at the chart to read the speeds at that moment. What a mirrored folder fetches counts toward the download speed without being listed, and the tile then reads **Mirrored folders are syncing.**" },
+                { "type": "p", "text": "**Transfer Limits** sets the download and the upload limit from a menu: **Unlimited**, **1 MB/s**, **5 MB/s** or **25 MB/s**. **Custom…** and **Network Settings** open **Settings → Network**, where you can type a figure of your own." },
+                { "type": "note", "text": "A download is listed while it is running, waiting, paused or failed. A file its owner is still indexing isn't listed yet, and a finished download leaves the page." }
+              ],
+              "related": [
+                { "label": "Pause, resume, cancel, or retry a transfer", "to": "/docs/guides#manage-a-transfer" },
+                { "label": "Limit how much bandwidth Mirall uses", "to": "/docs/guides#limit-bandwidth" },
+                { "label": "The Transfers page", "to": "/docs/reference#transfers-page" }
               ]
             },
             {
@@ -884,8 +905,8 @@
               "blocks": [
                 { "type": "steps", "items": [
                   { "text": "Open a space, or a folder another member shares." },
-                  { "text": "Tick the box at the top of the list — **Select all 12 files** — to select everything, or press `Cmd/Ctrl + A`. To start with one file, `Cmd/Ctrl`-click it; `Shift`-click selects every file between it and the last one you clicked. In a folder, a subfolder's box — **Select all files in <name>** — takes every file inside it." },
-                  { "text": "Tick and untick files until the strip above the list says what you want: **4 selected**, their total size, and how many are already on your device." },
+                  { "text": "Click **Select files**, the checklist button beside the filter. A box appears beside every file, with nothing ticked yet. `Cmd/Ctrl`-click a file to start with that one ticked instead, or press `Cmd/Ctrl + A` to start with all of them." },
+                  { "text": "Tick the files you want. The box at the top of the list — **Select all 12 files** — takes everything, and `Shift`-click selects every file between it and the last one you clicked. In a folder, a subfolder's box — **Select all files in <name>** — takes every file inside it. The strip above the list keeps count: **4 selected**, their total size, and how many are already on your device." },
                   { "text": "Click **Download 4**. The files go to the space's download folder, and files from a shared folder keep their subfolders under it. The arrow beside the button — **More download options** — picks another folder instead." },
                   { "text": "Click **Done**, or press `Esc`, to end the selection." }
                 ] },
@@ -954,7 +975,7 @@
               "title": "Browse a folder someone shared",
               "blocks": [
                 { "type": "p", "text": "Open a folder another member shared to see what's inside without downloading everything. A folder you're only looking through is marked **Browse**." },
-                { "type": "p", "text": "Subfolders are rows you can open and close. Each one tells you what's inside before you open it: how many files it holds and their total size, how many are already on your device, how many are downloading right now, and how many subfolders it contains. Above the list sit a box to select files, the filter, a button naming where downloads go, and **Expand all** — it opens the whole tree at once, and flips to **Collapse all** to fold it back up." },
+                { "type": "p", "text": "Subfolders are rows you can open and close. Each one tells you what's inside before you open it: how many files it holds and their total size, how many are already on your device, how many are downloading right now, and how many subfolders it contains. Above the list sit the **Select files** button, the filter, a button naming where downloads go, and **Expand all** — it opens the whole tree at once, and flips to **Collapse all** to fold it back up." },
                 { "type": "p", "text": "If the owner is still working through the folder, a band above the list says so — **Michael is adding 6 files to this folder**, with how much is left to read. Those files appear as the owner gets to them, so a folder can keep growing while you look at it." },
                 { "type": "p", "text": "Click **Download to…** on any individual file to save just that one, tick several to download them together, or use **Mirror to Disk…** to keep the whole folder synced instead." },
                 { "type": "note", "text": "Folders you leave open stay open as you move around the app. Restarting Mirall resets the tree to its default, with the top-level folders open." }
@@ -1173,7 +1194,7 @@
                   { "text": "Open **Settings → Backup** and click **Set up backup**. Mirall also offers this on the Shared Spaces screen as **Protect Your Spaces** once you have a space." },
                   { "text": "Under **Where should the backup live?**, choose an **empty folder** with **Browse…**, or paste its path — on another drive, a network folder, or a folder that syncs to the cloud, such as iCloud Drive, Dropbox or OneDrive. The folder you choose becomes the backup itself, so it can't hold anything else: a folder with other files in it reads **This folder already holds other files**, and you create a new one instead. Hidden files, and the ones a drive or sync service leaves in every folder, don't count. A folder on the same disk as Mirall gets a **Same disk as this computer** warning, because one failing disk would take both — **Use it anyway** carries on regardless." },
                   { "text": "Choose a passphrase of at least 10 characters and type it again to confirm it. A short sentence is easy to remember and hard to guess." },
-                  { "text": "Click **Turn on backup**. The first backup starts straight away, and the banner at the top of the page reads **You're protected** once it has finished." }
+                  { "text": "Click **Turn on backup**. The dialog closes as soon as your passphrase is checked, and Mirall confirms with **Backup is on. The first backup is running.** That first backup runs in the background while you keep working; **Settings → Backup** shows its progress, and the banner at the top of the page reads **You're protected** once it has finished." }
                 ] },
                 { "type": "note", "text": "**Mirall can't reset your passphrase.** It is the only thing that opens your backup — for you or for us. Keep it in your password manager, or write it down and keep it with your important papers." },
                 { "type": "p", "text": "With **Back up automatically** on, Mirall backs up after changes to your spaces, every hour, and when you quit. **Back up now** runs one straight away. The **Backup Folder** keeps the latest backup and a few older ones, from up to two months back. **Change** starts the backup afresh in another folder, which has to be empty too; the backups already made stay where they were." },
@@ -1317,8 +1338,8 @@
                 { "type": "p", "text": "A change to your relay applies to new connections straight away, and Mirall moves the existing ones over itself when nothing is transferring. If a transfer is running, a notice in **Settings → Network** and on **Network Status** says which connections are still on the old path, with a **Reconnect now** button to move them." },
                 { "type": "subheading", "text": "Test, replace, remove" },
                 { "type": "p", "text": "The row's **⋮** menu holds **Test**, **Replace** and **Remove**. **Test** dials the relay and waits for it to answer **as a relay** — reaching the machine is not enough to pass." },
-                { "type": "note", "text": "An invite to a private relay is stored **only on this device**, and removing or replacing one erases it. Going back to that relay then needs a fresh invite from whoever runs it, which is why both acts ask you to confirm. An open relay's key can simply be pasted again, so **Remove** on one of those just removes it." },
-                { "type": "p", "text": "A private-relay invite takes effect only once Mirall reconnects: it changes the identity this device presents, and that is fixed while the app is running. Until then the section carries a notice with a **Reconnect now** button, and **Test** is unavailable, because the relay will not admit you yet." },
+                { "type": "note", "text": "An invite to a private relay is stored **only on this device**, and removing or replacing one erases it. Going back to that relay then needs your invite link again, which is why both acts ask you to confirm. An open relay's key can simply be pasted again, so **Remove** on one of those just removes it." },
+                { "type": "p", "text": "Adding or replacing a private-relay invite takes effect only once Mirall reconnects: it changes the identity this device presents, and that is fixed while the app is running. Until then the section carries a notice with a **Reconnect now** button, and **Test** is unavailable, because the relay will not admit you yet. Removing a relay asks for no reconnect, whichever kind it was." },
                 { "type": "subheading", "text": "What the operator can see" },
                 { "type": "p", "text": "Your files stay encrypted end to end; the relay forwards them and cannot read them. What whoever runs it can see is that you are online and which keys you are connected to — never what you send. Use a relay run by someone you have reason to trust, or run your own." }
               ],
@@ -1385,7 +1406,7 @@
                   { "text": "Click **Save diagnostics**, then attach the file to your message." }
                 ] },
                 { "type": "p", "text": "The file describes how your network behaves — not what you share or who you share it with. With **Remove identifying details** on, your IP address, keys and space names are shortened or left out." },
-                { "type": "p", "text": "**Include detailed logs** is for a problem we can't reproduce. Switching it on turns detailed logging on straight away, so reproduce the problem first and save the file afterwards — otherwise the lines we need are the ones that were never recorded." },
+                { "type": "p", "text": "**Include detailed logs** is for a problem we can't reproduce. Switching it on turns detailed logging on straight away, so reproduce the problem first and save the file afterwards — otherwise the lines we need are the ones that were never recorded. Logging stays on while you go to other screens to reproduce the problem, and switches off once the file is saved." },
                 { "type": "note", "text": "Turning **Remove identifying details** off saves the same file with nothing withheld, and the preview says so in as many words. Only do that if we've asked you to." }
               ],
               "related": [
@@ -1443,7 +1464,8 @@
               "title": "Get around with the keyboard",
               "intro": "Every screen in Mirall is reachable without the mouse. The ones you go to most often have a chord of their own; the rest live in the command palette.",
               "blocks": [
-                { "type": "p", "text": "Press **⌘K** (**Ctrl-K** on Windows and Linux) to open the command palette, then start typing. It searches your spaces by name and every action Mirall can run — including the screens with no shortcut of their own: **Network Status**, the Settings pages, **About Mirall**, **What's New**, **Send Feedback**, and the documentation." },
+                { "type": "p", "text": "Press **⌘K** (**Ctrl-K** on Windows and Linux) to open the command palette, then start typing. It searches your spaces by name and every action Mirall can run — including the screens with no shortcut of their own: **Network Status**, **Network Diagnostics**, the Settings pages, **About Mirall**, **What's New**, **Send Feedback**, and the documentation. It also finds a screen by what it holds: type “dark mode” and it offers **Open Appearance Settings**." },
+                { "type": "p", "text": "Some things can be done straight from the palette: **Check for Updates**, **Back Up Now**, **Show Connection History** and **Export Activity Log**. An entry is offered only while it applies, so **Back Up Now** appears once a backup is set up, and **Update Mirall** or **Restart to Update** only when a new version is waiting." },
                 { "type": "p", "text": "**⌘/** (**Ctrl-/**) shows the full list of shortcuts inside the app at any time." },
                 { "type": "p", "text": "**⌘F** (**Ctrl-F**) jumps to the filter on a space or folder screen, and to the search box in the Activity Log. **⌘A** (**Ctrl-A**) selects all files on a space or folder screen; **Esc** ends the selection." },
                 { "type": "p", "text": "**⌘1** to **⌘9** open your first nine favorites, oldest favorite first. The chord lives in the **View → Go to Favorite** menu, which is also where you can see which number belongs to which space; the menu appears once you have a favorite." },
@@ -1504,8 +1526,8 @@
               "title": "Limit how much bandwidth Mirall uses",
               "intro": "Cap how fast Mirall transfers files, so a big download doesn't take the whole line with it.",
               "blocks": [
-                { "type": "p", "text": "Open **Settings → Network**. Under **Transfer Limits** there's a row for **Download** and one for **Upload**, each offering **Unlimited**, **1 MB/s**, **5 MB/s**, **25 MB/s**, or **Custom**. Both start out unlimited." },
-                { "type": "p", "text": "**Custom** reveals a box where you type a figure in kilobytes per second — a plain number, no units to pick. Enter `0` for no limit. Anything below 32 KB/s is rounded up to it, and Mirall tells you so." },
+                { "type": "p", "text": "Open **Settings → Network**. Under **Transfer Limits** there's a row for **Download** and one for **Upload**, each offering **Unlimited**, **1 MB/s**, **5 MB/s**, **25 MB/s**, or **Custom**. Both start out unlimited. The [Transfers page](/docs/guides#see-all-transfers) offers the same presets under **Transfer Limits**, next to the speed they act on." },
+                { "type": "p", "text": "**Custom** reveals a box where you type a figure in kilobytes per second — a plain number, no units to pick. Enter `0` for no limit. Anything below 32 KB/s is rounded up to it, and Mirall tells you so. A limit counts the way Mirall shows speed, so a download under a **5 MB/s** limit reads about 5 MB/s." },
                 { "type": "p", "text": "A change takes hold within a moment, including on transfers already running. There's nothing to restart and nothing to reconnect. If Mirall can't save a limit, it says **Couldn't save that limit. The previous one is still in use.**" },
                 { "type": "note", "text": "A limit is a **total, not a figure per transfer**. Two downloads running under a 5 MB/s cap get roughly half each rather than 5 MB/s apiece, and serving several people at once splits one upload cap between them." }
               ],
@@ -1548,10 +1570,17 @@
               "id": "update-mirall",
               "title": "Update Mirall",
               "blocks": [
-                { "type": "p", "text": "You don't have to do anything — Mirall checks for new versions on its own and downloads them in the background. A staged update is applied the next time you quit and reopen Mirall, on your schedule." },
-                { "type": "p", "text": "When an update is waiting, a banner appears at the top of the window (you can dismiss it), and the **About Mirall** row on your **Profile** page reads **v<version> is ready — restart Mirall to install it**. Open **About Mirall** to see the same under **Updates**, with **Restart now** to install it straight away on macOS and the Linux AppImage." },
-                { "type": "p", "text": "To look for a new version without waiting, click **Check now** on the About Mirall page." },
-                { "type": "note", "text": "On Linux, a Mirall installed from a `.deb` package is updated by your package manager instead, and the About Mirall page says so." }
+                { "type": "p", "text": "Unless you choose otherwise, you don't have to do anything — Mirall checks for new versions on its own and downloads them in the background. A downloaded update is applied the next time you quit and reopen Mirall, on your schedule." },
+                { "type": "p", "text": "When an update has been downloaded, a banner appears at the top of the window (you can dismiss it), and the **About Mirall** row on your **Profile** page reads **v<version> is ready — restart Mirall to install it**. Open **About Mirall** to see the same under **Updates**, with **Restart now** to install it straight away on macOS and the Linux AppImage. While an update downloads, that page shows a progress bar with a percentage." },
+                { "type": "p", "text": "To look for a new version without waiting, click **Check now** on the About Mirall page, or run **Check for Updates** from the command palette." },
+                { "type": "subheading", "text": "Decide for each update yourself" },
+                { "type": "steps", "items": [
+                  { "text": "Open **Settings → General**. Under **Updates**, set **Install updates** to **Notify me**. Mirall still looks for new versions, but downloads nothing on its own." },
+                  { "text": "When a new version is out, a banner reads **Mirall v<version> is available**. Click **Update** to download it, or **Later** to put the banner away." },
+                  { "text": "The update installs the next time you quit and reopen Mirall." }
+                ] },
+                { "type": "p", "text": "A version you put off stays on offer: the **About Mirall** page reads **Update available: v<version>** with an **Update** button, and the command palette has **Update Mirall**. Setting **Install updates** back to **Automatically** downloads a waiting version at once. If you switch to **Notify me** while an update is downloading, the download finishes but isn't installed until you choose **Update**." },
+                { "type": "note", "text": "On Linux, a Mirall installed from a `.deb` package is updated by your package manager instead. The About Mirall page says so, and **Install updates** is locked." }
               ]
             }
           ]
@@ -1612,7 +1641,7 @@
         {
           "id": "folder-screen",
           "title": "The folder screen",
-          "intro": "Open a folder and you get one screen whatever your relationship to it — only what you can do with it changes. The header carries the folder's name, who owns it and which space it's in, then one main button (**Open Folder**, or **Mirror to Disk…** on a folder you're only browsing) and a **More** menu. Under that, a band appears whenever the folder is doing something and carries the one control that helps: **Pause**, **Resume**, **Locate folder…**, or **Try again**. Then the file list, with a row pinned above it: a box to select files, the filter, a button naming where downloads go on a folder you're only browsing, and an **Expand all** / **Collapse all** toggle. Two tiles sit beside it. **People** names the owner and everyone mirroring the folder, carries the count of both in its heading, and folds away when you don't need it. **Folder** gives its size, its file count, how many of those are on your device, and its status.",
+          "intro": "Open a folder and you get one screen whatever your relationship to it — only what you can do with it changes. The header carries the folder's name, who owns it and which space it's in, then one main button (**Open Folder**, or **Mirror to Disk…** on a folder you're only browsing) and a **More** menu. Under that, a band appears whenever the folder is doing something and carries the one control that helps: **Pause**, **Resume**, **Locate folder…**, or **Try again**. Then the file list, with a row pinned above it: the **Select files** button, the filter, a button naming where downloads go on a folder you're only browsing, and an **Expand all** / **Collapse all** toggle. Two tiles sit beside it. **People** names the owner and everyone mirroring the folder, carries the count of both in its heading, and folds away when you don't need it. **Folder** gives its size, its file count, how many of those are on your device, and its status.",
           "table": {
             "columns": ["Folder status", "Colour", "Meaning"],
             "rows": [
@@ -1660,6 +1689,28 @@
           ]
         },
         {
+          "id": "transfers-page",
+          "title": "The Transfers page",
+          "intro": "**Transfers** in the header opens it from any screen, as do `Cmd/Ctrl + Shift + T`, **View → Transfers** and **Open Transfers** in the command palette. It lists this device's downloads and the files members are fetching from it, grouped by space. See [See every transfer in one place](/docs/guides#see-all-transfers).",
+          "table": {
+            "columns": ["Part", "Item", "What it shows or does"],
+            "rows": [
+              ["Header control", "Arrows", "Nothing is moving."],
+              ["Header control", "Arrows and a speed", "Files are moving. The figure is your download speed, or your upload speed when you're only sending."],
+              ["Header control", "Arrows with a dot", "Nothing is moving, but a download is paused or failed."],
+              ["List", "All, Downloading, Sending, Needs attention", "Narrow the list; each carries its count. **Needs attention** is downloads that are paused, waiting for an offline owner, or failed."],
+              ["List", "Space group", "The space's name, its number of transfers and how many are paused or failed, with **Open Space**. Spaces with a download that needs attention come first, then the rest by name."],
+              ["List", "Download row", "A download that is running, waiting, paused or failed, with the buttons its row has in the space. A file from a folder is named with the folder in front."],
+              ["List", "Sending row", "A file of yours that at least one member is fetching, with who is downloading it and **Reveal in Folder**."],
+              ["List", "No transfers right now", "Shown when nothing is listed."],
+              ["Top right", "Pause Downloads / Resume Downloads", "Pauses every running or waiting download, or resumes the paused ones once none is running. Hidden when neither applies."],
+              ["Speed", "Download, Upload", "The current speed in each direction. Downloads by mirrored folders are included, and the tile then reads **Mirrored folders are syncing.**"],
+              ["Speed", "5 min, 1 hour, Today", "The period the chart covers. Download is drawn above the line, upload below it."],
+              ["Transfer Limits", "Download, Upload", "Each a menu of **Unlimited**, **1 MB/s**, **5 MB/s** and **25 MB/s**. **Custom…** and **Network Settings** open **Settings → Network**."]
+            ]
+          }
+        },
+        {
           "id": "keyboard-shortcuts",
           "title": "Keyboard shortcuts",
           "intro": "Press ⌘K / Ctrl-K to jump to any space or run any action; press ⌘/ / Ctrl-/ for this list inside the app. Anything without a chord of its own is in the command palette.",
@@ -1677,6 +1728,7 @@
               ["⌘,", "Ctrl-,", "Open Settings"],
               ["⌘⇧P", "Ctrl-Shift-P", "Open your Profile"],
               ["⌘⇧L", "Ctrl-Shift-L", "Open the Activity Log"],
+              ["⌘⇧T", "Ctrl-Shift-T", "Open Transfers"],
               ["⌘N", "Ctrl-N", "Create a new space"],
               ["⌘J", "Ctrl-J", "Join a space with an invite"],
               ["⌘F", "Ctrl-F", "Jump to the filter on a space or folder screen, or the Activity Log's search box"],
@@ -1696,8 +1748,9 @@
             "**Home** — click the Mirall logo, or press `Ctrl-H` (`Cmd-Shift-H` on macOS) to return to your Shared Spaces.",
             "**A favorite by number** — `Cmd/Ctrl + 1` to `9` for your first nine favorites, oldest first, also listed by name under **View → Go to Favorite**.",
             "**Command palette** — `Cmd/Ctrl + K` to search and jump to any space or run any action.",
-            "**Profile** and the **Activity Log** have chords of their own — `Cmd/Ctrl + Shift + P` and `Cmd/Ctrl + Shift + L`.",
-            "**Network Status**, the **Settings** pages, **About Mirall**, **What's New**, **Send Feedback** and the documentation have no key of their own and are reached from the command palette.",
+            "**Profile**, the **Activity Log** and **Transfers** have chords of their own — `Cmd/Ctrl + Shift + P`, `Cmd/Ctrl + Shift + L` and `Cmd/Ctrl + Shift + T`. The header also carries **Transfers**, **Send Feedback**, **Settings** and your avatar on every screen.",
+            "**Network Status**, **Network Diagnostics**, **Advanced Network Details**, the **Settings** pages, **About Mirall**, **What's New**, **Send Feedback** and the documentation have no key of their own and are reached from the command palette. The palette also matches what a screen holds, so “dark mode” finds Appearance.",
+            "**Check for Updates**, **Back Up Now**, **Show Connection History** and **Export Activity Log** run from the command palette. **Back Up Now** is offered once a backup is set up; **Update Mirall** and **Restart to Update** replace **Check for Updates** while a new version is waiting.",
             "**Invite to this space**, **Edit Space**, **Add to Favorites**, **Manage storage** and **Leave this space** are in the command palette while a space is open.",
             "**Open folder**, **Pause syncing** / **Resume syncing** and **Edit folder** are in the command palette while a folder is open, on a folder you share and one you mirror alike. Each entry names the folder it acts on, so the folder's own name finds it.",
             "**Locate folder** replaces **Open folder** when a folder you share has lost its source, and a folder you're only browsing offers the one entry, **Mirror … to disk**. **Delete Folder** and **Unmount Mirror** are kept out of the palette — they stay in the folder's own header menu."
@@ -1710,7 +1763,7 @@
           "table": {
             "columns": ["Page", "What's there"],
             "rows": [
-              ["General", "Background mode — “Show Mirall in the menu bar” on macOS, “Run in the background” on Windows and Linux — and Launch at login."],
+              ["General", "Background mode — “Show Mirall in the menu bar” on macOS, “Run in the background” on Windows and Linux — Launch at login, and **Install updates**: **Automatically**, or **Notify me** to download a new version only when you choose Update."],
               ["Appearance", "Theme Mode (Light / System / Dark), Display Size, Language, and — on Windows and Linux — auto-hide the menu bar."],
               ["Notifications", "Master switch, system sound, mute-when-focused, and a switch for each kind of alert — join requests, people coming and going, new shared files, someone getting your file, and downloads finishing, failing or pausing."],
               ["Network", "Transfer Limits — a download and an upload cap, each Unlimited, a preset, or a figure you type — and **Relay**, where you add the one relay this device uses and choose when it is reached for."],
@@ -1745,9 +1798,10 @@
           "table": {
             "columns": ["Section", "Row", "What it's for"],
             "rows": [
-              ["Updates", "Status", "**Mirall is up to date**, **Checking for updates…**, **Downloading an update**, **Update ready: v<version>**, or **Couldn't check for updates**. On Linux installed from a `.deb` package it reads **Updated by your package manager**."],
+              ["Updates", "Status", "**Mirall is up to date**, **Checking for updates…**, **Downloading an update** with a progress bar, **Update ready: v<version>**, **Update available: v<version>**, or **Couldn't check for updates**. On Linux installed from a `.deb` package it reads **Updated by your package manager**."],
               ["Updates", "Check now", "Checks for a new version straight away instead of waiting for the next automatic check."],
               ["Updates", "Restart now", "Appears once an update is ready, on macOS and the Linux AppImage. Quits Mirall and reopens it on the new version."],
+              ["Updates", "Update", "Appears when **Install updates** is set to **Notify me** and a newer version is waiting. Downloads it; it installs the next time you reopen Mirall."],
               ["Mirall", "What's New", "Recent changes in Mirall."],
               ["Mirall", "Website, Support, Source Code", "Open Mirall's website, the support page, and the source code on GitHub in your browser."],
               ["Mirall", "Report a Security Issue", "How to report a vulnerability privately."],
@@ -1786,7 +1840,7 @@
               ["Troubleshooting", "Advanced Details", "Opens the raw values behind your connection: address, NAT, DHT, relaying counters and the connection test."],
               ["Troubleshooting", "Network Settings", "Opens **Settings → Network** — transfer limits and your relay. That screen links back here."],
               ["Diagnostics", "Remove identifying details", "On to begin with. Your IP address, keys and space names are shortened or left out — enough for us to diagnose a connection problem."],
-              ["Diagnostics", "Include detailed logs", "Turns detailed logging on straight away so you can reproduce the problem before saving the file."],
+              ["Diagnostics", "Include detailed logs", "Turns detailed logging on straight away so you can reproduce the problem before saving the file. It stays on while you use other screens, until you save the file or switch it off."],
               ["Diagnostics", "Preview what's included", "Shows exactly what will be saved, before you save it."],
               ["Diagnostics", "Save diagnostics", "Writes the file so you can attach it to a message to us. It describes how your network behaves — not what you share or who with."],
               ["Connection", "Connected peers", "How many other devices you are connected to right now. Under **Advanced Details**."],
@@ -1841,7 +1895,7 @@
               ["Mirall (macOS)", "About Mirall — opens the About Mirall page; Preferences… (⌘,); Services; Hide / Hide Others / Show All; Quit."],
               ["File", "New Space (⌘/Ctrl-N); Join Space (⌘/Ctrl-J); Add Files… (⌘/Ctrl-U); Add Folder… (⌘/Ctrl-Shift-U); Invite People…. On macOS, also Close. On Windows and Linux, also Preferences… (Ctrl-,) and Quit Mirall (Ctrl-Q)."],
               ["Edit", "The standard Undo, Redo, Cut, Copy, Paste, and Select All."],
-              ["View", "Back; Home; Profile (⌘/Ctrl-Shift-P); Activity Log (⌘/Ctrl-Shift-L); Go to Favorite, listing your first nine favorites by name with ⌘/Ctrl-1 to 9, once you have one; Command Palette; Keyboard Shortcuts; zoom in, out, and reset; full screen."],
+              ["View", "Back; Home; Profile (⌘/Ctrl-Shift-P); Activity Log (⌘/Ctrl-Shift-L); Transfers (⌘/Ctrl-Shift-T); Go to Favorite, listing your first nine favorites by name with ⌘/Ctrl-1 to 9, once you have one; Command Palette; Keyboard Shortcuts; zoom in, out, and reset; full screen."],
               ["Window (macOS)", "The standard Minimize, Zoom, and window list."],
               ["Help", "What's New…; Documentation; Send Feedback…. On Windows and Linux, also About Mirall."]
             ]
@@ -1853,7 +1907,7 @@
           "list": [
             "**Platforms** — macOS (Intel and Apple Silicon), Windows 10 version 1903 or later (x64), and Linux (x64 and ARM64).",
             "**Languages** — English, German, French, Spanish, and Italian, auto-detected from your OS on first launch.",
-            "**Updates** — delivered automatically in the background and applied when you next quit and reopen.",
+            "**Updates** — delivered automatically in the background and applied when you next quit and reopen, or downloaded only when you choose, if you set Mirall to notify you.",
             "**File sizes** — no limit. Files are streamed in chunks, so hundreds of gigabytes or a file into the terabytes transfer like any other.",
             "**File counts** — up to 100 individual files in a space, and up to 5,000 files in a folder you share. A larger folder someone else shares can still be mirrored in full; only its file list stops at 5,000."
           ]
@@ -2032,7 +2086,8 @@
           "title": "How updates work",
           "blocks": [
             { "type": "p", "text": "Mirall checks for new versions on its own and downloads them in the background while you keep working — no installer downloads, no reinstalls. Updates never restart the app on their own." },
-            { "type": "p", "text": "A staged update is applied the next time you quit and reopen Mirall, so restarts happen on your schedule. The **About Mirall** row on your Profile page shows a pending version before you restart, and the About Mirall page can check for one on demand." }
+            { "type": "p", "text": "A staged update is applied the next time you quit and reopen Mirall, so restarts happen on your schedule. The **About Mirall** row on your Profile page shows a pending version before you restart, and the About Mirall page can check for one on demand." },
+            { "type": "p", "text": "How much of this happens without you is your choice. Set to install updates **Automatically**, Mirall downloads each new version and installs it when you reopen the app. Set to **Notify me**, it tells you a version is out and fetches none of it until you say so. There is no setting that stops Mirall looking: you can decline a version, but you always get to know that one exists." }
           ]
         }
       ]
@@ -2043,6 +2098,59 @@
     "heading": "What's new",
     "intro": "Notable changes you'll notice as a user. Internal refactors and build-pipeline tweaks are intentionally left out.",
     "releases": [
+      {
+        "version": "1.14.0",
+        "date": "2026-11-24",
+        "sections": [
+          {
+            "heading": "Added",
+            "items": [
+              "**A Transfers page shows everything moving across all your spaces.** Open it from the new header control, which shows the current speed while files transfer. Pause or resume all downloads, watch the speed over time and change the transfer limits without a trip through Settings.",
+              "**You decide when Mirall updates.** Settings → General now has two choices: update automatically, as before, or notify me, which shows a new version and downloads nothing until you choose Update.",
+              "**More of Mirall is in the command palette.** Check for updates, restart to update, back up now, show connection history and export the Activity Log from ⌘K, and find a screen by what it holds: \"dark mode\" finds Appearance."
+            ]
+          },
+          {
+            "heading": "Changed",
+            "items": [
+              "**Large files are ready to share in about a third of the time.** Mirall now uses more than one processor core to prepare a file of 8 MB or more, so the wait before a big share becomes available is much shorter.",
+              "**Large transfers are faster and steadier.** Mirall now keeps more data in flight on fast connections. On a fast Wi-Fi network downloads ran about a third faster in our tests, and the pauses of around ten seconds that could slow a long transfer no longer appeared.",
+              "**Icons look more consistent.** All icons now share one line weight, and the header's three controls have the same size and style. The empty space screen no longer shows the drag-and-drop illustration.",
+              "**A transfer limit now matches the speed Mirall shows.** \"5 MB/s\" used to allow about 5.2 MB/s as the app displays speed; limits now count the same way as every other size. A preset you had picked stays selected.",
+              "**Connecting to an organization says what it will see.** Before you connect, Mirall lists what the organization sees, such as the computer's name and Mirall version, and what it never sees: your files, your spaces and who you share with.",
+              "**Removing a relay you joined with an invite takes effect at once.** Mirall no longer asks you to reconnect first, as it already did for an open relay. Adding or replacing one still asks.",
+              "**About shows how far an update download has come.** The Updates card now has a progress bar with a percentage, and says when the download is waiting for the update network instead of looking stuck.",
+              "**Selecting files no longer ticks every file first.** The control beside the filter is now a Select files button that shows the checkboxes with nothing selected; the box at the top still selects all of them.",
+              "**Setting up a backup no longer waits for the first backup.** The dialog closes once your passphrase is checked, and the first backup runs in the background while you keep working. Settings → Backup shows its progress."
+            ]
+          },
+          {
+            "heading": "Fixed",
+            "items": [
+              "**Shared folders no longer stay missing after you leave a space and join it again.** Other members' folders, and files they added afterwards, only came back once Mirall was restarted.",
+              "**Connecting to another organization could switch back to the previous one after a restart.** A configuration check still running for the old organization could overwrite the new one.",
+              "**A Leave that could not finish no longer goes quiet.** The computer stays managed and keeps reporting to its organization until Leave succeeds.",
+              "**Leaving an organization during its first backup no longer keeps backing up to the organization's folder.** That folder could become your own backup folder.",
+              "**An Activity Log your organization keeps can no longer be shortened.** A shorter retention deleted older entries, so those choices are now unavailable while the organization keeps the record.",
+              "**Joining or leaving an organization in the middle of a settings refresh or a report no longer leaves Mirall in the wrong state.** An organization that keeps the Activity Log also holds that lock while a deletion runs.",
+              "**Detailed logging for a diagnostics file stays on when you leave the Diagnostics screen.** It switched off at once, so a problem reproduced on another screen was never recorded. It now stays on until you save the file.",
+              "**Network Diagnostics and Advanced Details open from the command palette.**",
+              "**A mirrored file you edit while its owner is offline now shows \"Edited locally\" at once.** It kept its verified check until the folder view refreshed for another reason.",
+              "**Sharing a folder with many files no longer makes transfers stutter once a minute.** Mirall's check that shared files are still on disk held up everything else for over a second each time, most of all on Windows.",
+              "**A file shared in two spaces no longer shows its downloader in both.** The space the downloader is not in listed them as \"Unknown Member\".",
+              "**The drop highlight lines up with the drop area again.** When you drag files over a space, the highlight started lower than the \"Drop to Share\" box it replaces, so the two jumped as one faded into the other.",
+              "**The drop highlight no longer flashes a file icon and \"0 files\" as it fades.** Dragging a file or folder out of a space again showed that for a moment; it now keeps what you were dragging until it is gone."
+            ]
+          },
+          {
+            "heading": "Security",
+            "items": [
+              "**Someone who knows one space's address no longer receives details of your other spaces.** Mirall now answers only a device that proves it knows that space. Members on a Mirall older than 1.12 should update to keep spaces they share with updated members in step.",
+              "**Someone who knows a space's address can no longer cancel or turn down another person's request to join it.** A cancel or deny that does not name its sender is now ignored. Members on a Mirall older than 1.12 must update for their cancels and denies to count."
+            ]
+          }
+        ]
+      },
       {
         "version": "1.13.1",
         "date": "2026-11-10",
